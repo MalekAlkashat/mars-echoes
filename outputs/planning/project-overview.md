@@ -1,5 +1,7 @@
 # Rover game workspace
 
+Current direction, 14 November 2026: root `ROADMAP.md` supersedes this earlier rover-only overview. The player now explores Mars as a spirit, enters abandoned equipment, plays its past mission and returns to the spirit. The first episode is the rover's complete mission-to-shutdown story with cinematic time jumps; its original assignment is undecided. The source is still the preserved rover-only v2 prototype. The older context below does not mean the new loop is implemented.
+
 The project is set up at:
 
 `/Users/morshu/Documents/Codex/2026-11-11/https-youtu-be-czsnialtgwq-si-s9rjjxd2ai8bkvlb-3`

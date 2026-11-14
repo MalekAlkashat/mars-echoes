@@ -2,6 +2,14 @@
 
 Prepare a small, consistent asset set for a grounded cinematic Three.js opening. Concepts establish design; actual model files, materials, pivots and terrain establish usable game assets. Keep those statuses separate.
 
+## Revised protagonist and asset scope, 14 November 2026
+
+The new protagonist is a spirit that explores Mars, enters a wreck and replays its past mission. Root `ROADMAP.md` records the new scope. The spirit currently suggests a ghostly humanoid silhouette, explicitly tentative. Separate the movement controller from appearance so this can change. Start with a readable placeholder; no final spirit model, rig, palette or asset generation has been approved or produced. Movement is glide and leap with solid obstacles, not phasing or unrestricted flight.
+
+The first equipment memory develops the existing rover's mission, abandonment and eventual shutdown, using playable beats connected by cinematic time jumps. Its original assignment and required task-specific props remain open. Keep the selected rover design authority and pale damage references. Present-day wreck art and past-mission damage/functional states must be separately configurable; the previous stage-two opening does not force the memory to begin in the same condition. Other hub wrecks are scenery for the first demo unless an episode is explicitly added.
+
+The new source/runtime asset layout in `architecture.md` is proposed. Keep existing import URLs working during staged migration. New exports should be versioned with stable IDs, scale/orientation, node names and pivots, source/license/prompt and hashes. The runtime remains the earlier silent rover-only prototype until the planned migration and new scenes are implemented.
+
 ## Rover reference preparation
 
 Create one clearly labeled design candidate at a time. The initial study uses a neutral gray background, soft readable lighting, an unobstructed silhouette and enough space around the machine to inspect it. Dramatic lighting belongs in the scene study, not the primary modeling reference. Gray is a practical choice, not a technical requirement; contrast and visibility matter.

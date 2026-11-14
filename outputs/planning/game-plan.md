@@ -1,8 +1,12 @@
 # Rover game plan
 
-Build a playable Three.js opening around a vulnerable exploration machine on an extraterrestrial planet, beginning with approved rover and environment assets. The immediate deliverable is the opening scene; the complete game's duration and content remain open.
+Current vision, revised 14 November 2026: the protagonist is a spirit exploring present-day Mars. It enters abandoned equipment, replays that machine's past mission, and returns to the spirit. The hackathon target is one complete rover story, with other wrecks visible. Root `ROADMAP.md` is the current development plan; `architecture.md` and `team-development.md` define the proposed collaboration boundaries. Those new runtime boundaries are not implemented yet.
 
-## Confirmed direction
+Confirmed spirit movement is near-ground glide and bounded leap, inspired by Fortnite's Shadow Stone movement feel, with no passing through obstacles. A ghostly humanoid silhouette is tentative and may change. The rover memory follows mission, abandonment and eventual shutdown through playable moments linked by cinematic time jumps. Its original assignment remains open. The new game has no fixed duration or approved final title.
+
+The existing code remains the rover-only optical-repair/relay prototype, preserved at tag `rover-v2-baseline` (commit `179705b`). Its build passes; the spirit hub, entry/return transitions, full past mission, shutdown and sound are still planned. Earlier repair and call decisions below are retained as baseline context and potential episode material. They do not override the newly selected opening as a spirit or force a stage-two-damaged state at the beginning of the past mission.
+
+## Retained rover-episode direction and earlier decisions
 
 - The machine was sent on a mission expected to last days, without a planned return. It completes the assignment and continues for months before its eventual demise.
 - The emotional reference is the vulnerability and abandonment of machines in Markus's junkyard sequence in Detroit Become Human.

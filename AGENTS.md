@@ -1,6 +1,16 @@
-# Rover game project
+# Spirit and equipment-memory game
 
-Read `outputs/planning/game-plan.md` and `outputs/planning/asset-brief.md` before changing the game or its assets. They distinguish user decisions from proposals. Update them when a choice is accepted or an implementation changes.
+## Current vision, 14 November 2026
+
+Read root `ROADMAP.md` first, then `outputs/planning/architecture.md` and `outputs/planning/team-development.md` before new gameplay or parallel work. This latest direction takes precedence over the earlier rover-only opening below. The spirit explores present-day Mars, enters an abandoned machine, replays its past mission, and returns to the spirit. The first demo has one complete rover story (mission, abandonment, eventual shutdown) with playable moments connected by cinematic time jumps. The original assignment remains undecided.
+
+The spirit glides near the surface and leaps with bounded vertical movement. The user references Fortnite Chapter 1 Season 6 Shadow Stone movement but explicitly excludes passing through obstacles. Do not add phasing, unrestricted flight, a dash, combat or a consumable timer. A ghostly humanoid silhouette is tentative and may change; keep its appearance separate from its controller. The spirit's lore, progression reward, exact mission, final title and duration remain open.
+
+The current game source is still the rover-only v2 prototype, saved at tag `rover-v2-baseline`. The modular structure and new spirit loop in the roadmap are proposed, not implemented. One integrator owns runtime extraction, shared contracts/input/rendering, registry and dependencies. Other authors work in separate clones/worktrees and own separate hub, episode or versioned asset paths. Do not grow the current rover `Progress` into a global state machine or let each scene create its own renderer, listeners or animation loop. Preserve the baseline during staged migration. Generated builds, packages, scratch data and credentials are ignored by Git.
+
+## Retained context and rover baseline
+
+Read `outputs/planning/game-plan.md` and `outputs/planning/asset-brief.md` before changing the game or its assets. They distinguish user decisions from proposals. Update them when a choice is accepted or an implementation changes. The prior discarded-rover opening below describes the preserved prototype and potential episode material; it no longer defines the first player-controlled scene of the new game.
 
 The user has chosen Three.js for the first scene and grounded cinematic visuals: believable machinery, simplified detail, atmospheric lighting. There is one development day; the user and one colleague work with AI. Direct controls cover driving, looking and operating tools. Prepare rover and environment assets before implementing the first scene. Generated concept images are references, not approved models or playable maps.
 
