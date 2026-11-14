@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="96" viewBox="0 0 160 96" role="img"><title>Key Prompt</title><defs>
+    <linearGradient id="fade"><stop stop-color="#319fff" stop-opacity="0" /><stop offset=".5" stop-color="#89deff" stop-opacity=".9" /><stop offset="1" stop-color="#319fff" stop-opacity="0" /></linearGradient>
+    <linearGradient id="down" x2="0" y2="1"><stop stop-color="#319fff" stop-opacity="0" /><stop offset="1" stop-color="#319fff" stop-opacity=".19" /></linearGradient>
+    <radialGradient id="veil"><stop offset=".26" stop-color="#1886ff" stop-opacity="0" /><stop offset="1" stop-color="#0865c1" stop-opacity=".26" /></radialGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8 8 0" stroke="#89deff" stroke-width="1" opacity=".13" /></pattern>
+    </defs><rect x="47" y="17" width="66" height="62" stroke="#89DEFF" fill="#071522" stroke-width="1" opacity="0.9" /><g fill="#F0F8FF" opacity="1" aria-label="F"><path d="M153 0H90Q73 0 73 17V626Q73 643 90 643H404Q421 643 421 626V575Q421 558 404 558H182Q170 558 170 548V359Q170 348 182 348H375Q393 348 393 331V281Q393 263 375 263H182Q170 263 170 253V17Q170 0 153 0Z" transform="translate(72.5090 61.0) scale(0.033000 -0.033000)" /></g></svg>

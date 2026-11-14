@@ -1,0 +1,62 @@
+[
+  {
+    "id": "ghost-standing",
+    "path": "models/ghost-standing.glb",
+    "pose": "standing",
+    "units": "meters",
+    "rigged": false,
+    "animated": false,
+    "materials": "transparent cyan unlit hologram",
+    "triangles": 21908,
+    "bytes": 360904,
+    "forwardAxis": "+Z",
+    "upAxis": "+Y",
+    "intendedUse": "static reconstruction pose reference; not the approved spirit character",
+    "castShadow": false
+  },
+  {
+    "id": "ghost-walking",
+    "path": "models/ghost-walking.glb",
+    "pose": "walking",
+    "units": "meters",
+    "rigged": false,
+    "animated": false,
+    "materials": "transparent cyan unlit hologram",
+    "triangles": 21908,
+    "bytes": 360784,
+    "forwardAxis": "+Z",
+    "upAxis": "+Y",
+    "intendedUse": "static reconstruction pose reference; not the approved spirit character",
+    "castShadow": false
+  },
+  {
+    "id": "ghost-crouching",
+    "path": "models/ghost-crouching.glb",
+    "pose": "crouching",
+    "units": "meters",
+    "rigged": false,
+    "animated": false,
+    "materials": "transparent cyan unlit hologram",
+    "triangles": 21908,
+    "bytes": 360596,
+    "forwardAxis": "+Z",
+    "upAxis": "+Y",
+    "intendedUse": "static reconstruction pose reference; not the approved spirit character",
+    "castShadow": false
+  },
+  {
+    "id": "ghost-reaching",
+    "path": "models/ghost-reaching.glb",
+    "pose": "reaching",
+    "units": "meters",
+    "rigged": false,
+    "animated": false,
+    "materials": "transparent cyan unlit hologram",
+    "triangles": 21908,
+    "bytes": 360756,
+    "forwardAxis": "+Z",
+    "upAxis": "+Y",
+    "intendedUse": "static reconstruction pose reference; not the approved spirit character",
+    "castShadow": false
+  }
+]

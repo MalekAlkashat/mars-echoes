@@ -1,0 +1,60 @@
+﻿id,category,width,height,description,svg,png,png2x
+focus-idle,reticles,512,512,"Idle focus corners, with a precise central aiming point.",svg/reticles/focus-idle.svg,png/1x/reticles/focus-idle.png,png/2x/reticles/focus-idle.png
+focus-locked,reticles,512,512,Focused target brackets with a compact lock marker.,svg/reticles/focus-locked.svg,png/1x/reticles/focus-locked.png,png/2x/reticles/focus-locked.png
+focus-evidence,reticles,512,512,Amber evidence state for an object that can be inspected.,svg/reticles/focus-evidence.svg,png/1x/reticles/focus-evidence.png,png/2x/reticles/focus-evidence.png
+focus-scanning,reticles,512,512,Static scanning state with a horizontal sweep.,svg/reticles/focus-scanning.svg,png/1x/reticles/focus-scanning.png,png/2x/reticles/focus-scanning.png
+analysis-ring,reticles,512,512,"Analysis progress ring, with 60 calibrated tick marks.",svg/reticles/analysis-ring.svg,png/1x/reticles/analysis-ring.png,png/2x/reticles/analysis-ring.png
+object-boundary,reticles,768,512,Wide object bounding frame for evidence or subjects.,svg/reticles/object-boundary.svg,png/1x/reticles/object-boundary.png,png/2x/reticles/object-boundary.png
+focus-point,reticles,128,128,Minimal central aiming point.,svg/reticles/focus-point.svg,png/1x/reticles/focus-point.png,png/2x/reticles/focus-point.png
+target-diamond,reticles,256,256,Scalable diamond for a selected scene object.,svg/reticles/target-diamond.svg,png/1x/reticles/target-diamond.png,png/2x/reticles/target-diamond.png
+evidence-idle,markers,192,192,Unexamined evidence marker.,svg/markers/evidence-idle.svg,png/1x/markers/evidence-idle.png,png/2x/markers/evidence-idle.png
+evidence-selected,markers,192,192,Selected evidence marker.,svg/markers/evidence-selected.svg,png/1x/markers/evidence-selected.png,png/2x/markers/evidence-selected.png
+evidence-complete,markers,192,192,Analyzed evidence marker.,svg/markers/evidence-complete.svg,png/1x/markers/evidence-complete.png,png/2x/markers/evidence-complete.png
+evidence-locked,markers,192,192,Unavailable evidence marker.,svg/markers/evidence-locked.svg,png/1x/markers/evidence-locked.png,png/2x/markers/evidence-locked.png
+point-of-interest,markers,192,192,Pin an object in world space.,svg/markers/point-of-interest.svg,png/1x/markers/point-of-interest.png,png/2x/markers/point-of-interest.png
+direction-chevron,markers,192,128,Directional arrow for offscreen clues.,svg/markers/direction-chevron.svg,png/1x/markers/direction-chevron.png,png/2x/markers/direction-chevron.png
+path-node,markers,128,128,Trajectory control point or navigation waypoint.,svg/markers/path-node.svg,png/1x/markers/path-node.png,png/2x/markers/path-node.png
+evidence-counter,markers,360,96,Evidence collection counter with six progress segments.,svg/markers/evidence-counter.svg,png/1x/markers/evidence-counter.png,png/2x/markers/evidence-counter.png
+object-label,panels,560,120,Compact object identification card. All values are sample UI text.,svg/panels/object-label.svg,png/1x/panels/object-label.png,png/2x/panels/object-label.png
+analysis-card,panels,560,360,Detailed analysis readout; the labels and data can be changed in source/.,svg/panels/analysis-card.svg,png/1x/panels/analysis-card.png,png/2x/panels/analysis-card.png
+analysis-complete,panels,560,360,Completed readout with a mint confirmation accent.,svg/panels/analysis-complete.svg,png/1x/panels/analysis-complete.png,png/2x/panels/analysis-complete.png
+incomplete-data,panels,560,200,Incomplete analysis message with evidence slots.,svg/panels/incomplete-data.svg,png/1x/panels/incomplete-data.png,png/2x/panels/incomplete-data.png
+objective-banner,panels,640,150,Primary focus-mode objective.,svg/panels/objective-banner.svg,png/1x/panels/objective-banner.png,png/2x/panels/objective-banner.png
+warning-banner,panels,560,180,Obstruction or visibility warning.,svg/panels/warning-banner.svg,png/1x/panels/warning-banner.png,png/2x/panels/warning-banner.png
+subject-record,panels,560,360,Subject information card for a reconstruction scene.,svg/panels/subject-record.svg,png/1x/panels/subject-record.png,png/2x/panels/subject-record.png
+connection-label,panels,480,130,Label for a confirmed link between scene clues.,svg/panels/connection-label.svg,png/1x/panels/connection-label.png,png/2x/panels/connection-label.png
+analysis-progress,controls,640,112,Horizontal progress meter at 63 percent.,svg/controls/analysis-progress.svg,png/1x/controls/analysis-progress.png,png/2x/controls/analysis-progress.png
+confidence-meter,controls,560,140,Segmented confidence meter.,svg/controls/confidence-meter.svg,png/1x/controls/confidence-meter.png,png/2x/controls/confidence-meter.png
+hold-to-analyze,controls,400,112,Keyboard interaction prompt with a hold line.,svg/controls/hold-to-analyze.svg,png/1x/controls/hold-to-analyze.png,png/2x/controls/hold-to-analyze.png
+key-prompt,controls,160,96,Editable keyboard keycap.,svg/controls/key-prompt.svg,png/1x/controls/key-prompt.png,png/2x/controls/key-prompt.png
+navigation-hint,controls,500,96,Focus-mode control legend.,svg/controls/navigation-hint.svg,png/1x/controls/navigation-hint.png,png/2x/controls/navigation-hint.png
+reconstruction-timeline,controls,960,160,Replay scrubber with event markers and keyboard controls.,svg/controls/reconstruction-timeline.svg,png/1x/controls/reconstruction-timeline.png,png/2x/controls/reconstruction-timeline.png
+replay-controls,controls,360,144,"Rewind, play and fast-forward controls.",svg/controls/replay-controls.svg,png/1x/controls/replay-controls.png,png/2x/controls/replay-controls.png
+reconstruction-status,controls,560,170,Crime-scene reconstruction mode status.,svg/controls/reconstruction-status.svg,png/1x/controls/reconstruction-status.png,png/2x/controls/reconstruction-status.png
+focus-screen-frame,overlays,1920,1080,Full HD screen frame; scale proportionally with the viewport.,svg/overlays/focus-screen-frame.svg,png/1x/overlays/focus-screen-frame.png,png/2x/overlays/focus-screen-frame.png
+focus-blue-veil,overlays,1920,1080,"Subtle translucent focus tint, clear in the center.",svg/overlays/focus-blue-veil.svg,png/1x/overlays/focus-blue-veil.png,png/2x/overlays/focus-blue-veil.png
+focus-grid,overlays,1920,1080,Fine transparent square grid for focus mode.,svg/overlays/focus-grid.svg,png/1x/overlays/focus-grid.png,png/2x/overlays/focus-grid.png
+focus-scanlines,overlays,1920,1080,Very subtle horizontal scanning lines.,svg/overlays/focus-scanlines.svg,png/1x/overlays/focus-scanlines.png,png/2x/overlays/focus-scanlines.png
+ghost-standing,reconstruction,360,440,Faceted standing subject silhouette. Original transparent 2D reconstruction sprite.,svg/reconstruction/ghost-standing.svg,png/1x/reconstruction/ghost-standing.png,png/2x/reconstruction/ghost-standing.png
+ghost-walking,reconstruction,360,440,Faceted walking subject silhouette. Original transparent 2D reconstruction sprite.,svg/reconstruction/ghost-walking.svg,png/1x/reconstruction/ghost-walking.png,png/2x/reconstruction/ghost-walking.png
+ghost-crouching,reconstruction,360,440,Faceted crouching subject silhouette. Original transparent 2D reconstruction sprite.,svg/reconstruction/ghost-crouching.svg,png/1x/reconstruction/ghost-crouching.png,png/2x/reconstruction/ghost-crouching.png
+ghost-reaching,reconstruction,360,440,Faceted reaching subject silhouette. Original transparent 2D reconstruction sprite.,svg/reconstruction/ghost-reaching.svg,png/1x/reconstruction/ghost-reaching.png,png/2x/reconstruction/ghost-reaching.png
+subject-motion-trail,reconstruction,960,440,Four progressively visible subject positions for a movement reconstruction.,svg/reconstruction/subject-motion-trail.svg,png/1x/reconstruction/subject-motion-trail.png,png/2x/reconstruction/subject-motion-trail.png
+motion-trajectory,reconstruction,960,440,Dashed subject movement path with four event nodes.,svg/reconstruction/motion-trajectory.svg,png/1x/reconstruction/motion-trajectory.png,png/2x/reconstruction/motion-trajectory.png
+footprint-trail,reconstruction,860,320,Alternating translucent footprints following an event path.,svg/reconstruction/footprint-trail.svg,png/1x/reconstruction/footprint-trail.png,png/2x/reconstruction/footprint-trail.png
+evidence-connections,reconstruction,840,380,Connection graph linking four evidence points.,svg/reconstruction/evidence-connections.svg,png/1x/reconstruction/evidence-connections.png,png/2x/reconstruction/evidence-connections.png
+reconstruction-floor-grid,reconstruction,1600,900,Perspective floor grid for a reconstruction composition.,svg/reconstruction/reconstruction-floor-grid.svg,png/1x/reconstruction/reconstruction-floor-grid.png,png/2x/reconstruction/reconstruction-floor-grid.png
+event-marker,reconstruction,320,128,Timestamped event marker.,svg/reconstruction/event-marker.svg,png/1x/reconstruction/event-marker.png,png/2x/reconstruction/event-marker.png
+reconstruction-heading,reconstruction,820,150,Reconstruction title and playback state.,svg/reconstruction/reconstruction-heading.svg,png/1x/reconstruction/reconstruction-heading.png,png/2x/reconstruction/reconstruction-heading.png
+scan,icons,128,128,Scan line icon.,svg/icons/scan.svg,png/1x/icons/scan.png,png/2x/icons/scan.png
+evidence,icons,128,128,Evidence line icon.,svg/icons/evidence.svg,png/1x/icons/evidence.png,png/2x/icons/evidence.png
+complete,icons,128,128,Complete line icon.,svg/icons/complete.svg,png/1x/icons/complete.png,png/2x/icons/complete.png
+locked,icons,128,128,Locked line icon.,svg/icons/locked.svg,png/1x/icons/locked.png,png/2x/icons/locked.png
+warning,icons,128,128,Warning line icon.,svg/icons/warning.svg,png/1x/icons/warning.png,png/2x/icons/warning.png
+target,icons,128,128,Target line icon.,svg/icons/target.svg,png/1x/icons/target.png,png/2x/icons/target.png
+play,icons,128,128,Play line icon.,svg/icons/play.svg,png/1x/icons/play.png,png/2x/icons/play.png
+pause,icons,128,128,Pause line icon.,svg/icons/pause.svg,png/1x/icons/pause.png,png/2x/icons/pause.png
+rewind,icons,128,128,Rewind line icon.,svg/icons/rewind.svg,png/1x/icons/rewind.png,png/2x/icons/rewind.png
+reconstruct,icons,128,128,Reconstruct line icon.,svg/icons/reconstruct.svg,png/1x/icons/reconstruct.png,png/2x/icons/reconstruct.png
+link,icons,128,128,Link line icon.,svg/icons/link.svg,png/1x/icons/link.png,png/2x/icons/link.png
+fingerprint,icons,128,128,Fingerprint line icon.,svg/icons/fingerprint.svg,png/1x/icons/fingerprint.png,png/2x/icons/fingerprint.png

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080" role="img"><title>Focus Blue Veil</title><defs>
+    <linearGradient id="fade"><stop stop-color="#319fff" stop-opacity="0" /><stop offset=".5" stop-color="#89deff" stop-opacity=".9" /><stop offset="1" stop-color="#319fff" stop-opacity="0" /></linearGradient>
+    <linearGradient id="down" x2="0" y2="1"><stop stop-color="#319fff" stop-opacity="0" /><stop offset="1" stop-color="#319fff" stop-opacity=".19" /></linearGradient>
+    <radialGradient id="veil"><stop offset=".26" stop-color="#1886ff" stop-opacity="0" /><stop offset="1" stop-color="#0865c1" stop-opacity=".26" /></radialGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8 8 0" stroke="#89deff" stroke-width="1" opacity=".13" /></pattern>
+    </defs><rect x="0" y="0" width="1920" height="1080" stroke="none" fill="url(#veil)" stroke-width="0" opacity="1" /></svg>

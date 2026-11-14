@@ -1,0 +1,3344 @@
+{
+  "schemaVersion": 1,
+  "id": "focus-kit",
+  "version": "1.0.0",
+  "pathBase": "relative to this catalog directory",
+  "integrationStatus": "organized-assets-only; no runtime bindings installed",
+  "palette": {
+    "primary": "#319FFF",
+    "highlight": "#89DEFF",
+    "text": "#F0F8FF",
+    "muted": "#8BA9BD",
+    "evidence": "#FFD16B",
+    "complete": "#89E7C1",
+    "warning": "#FF788A",
+    "panel": "#071522"
+  },
+  "graphicsLicense": "LICENSE.txt",
+  "fontLicense": "fonts/OFL.txt",
+  "assets": {
+    "reticles.focusIdle": {
+      "id": "focus-idle",
+      "category": "reticles",
+      "description": "Idle focus corners, with a precise central aiming point.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 512,
+        "height": 512,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/focus-idle.svg",
+        "png1x": "png/1x/reticles/focus-idle.png",
+        "png2x": "png/2x/reticles/focus-idle.png",
+        "editableSvg": "source/svg-editable/reticles/focus-idle.svg"
+      }
+    },
+    "reticles.focusLocked": {
+      "id": "focus-locked",
+      "category": "reticles",
+      "description": "Focused target brackets with a compact lock marker.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 512,
+        "height": 512,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/focus-locked.svg",
+        "png1x": "png/1x/reticles/focus-locked.png",
+        "png2x": "png/2x/reticles/focus-locked.png",
+        "editableSvg": "source/svg-editable/reticles/focus-locked.svg"
+      }
+    },
+    "reticles.focusEvidence": {
+      "id": "focus-evidence",
+      "category": "reticles",
+      "description": "Amber evidence state for an object that can be inspected.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 512,
+        "height": 512,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/focus-evidence.svg",
+        "png1x": "png/1x/reticles/focus-evidence.png",
+        "png2x": "png/2x/reticles/focus-evidence.png",
+        "editableSvg": "source/svg-editable/reticles/focus-evidence.svg"
+      }
+    },
+    "reticles.focusScanning": {
+      "id": "focus-scanning",
+      "category": "reticles",
+      "description": "Static scanning state with a horizontal sweep.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 512,
+        "height": 512,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/focus-scanning.svg",
+        "png1x": "png/1x/reticles/focus-scanning.png",
+        "png2x": "png/2x/reticles/focus-scanning.png",
+        "editableSvg": "source/svg-editable/reticles/focus-scanning.svg"
+      }
+    },
+    "reticles.analysisRing": {
+      "id": "analysis-ring",
+      "category": "reticles",
+      "description": "Analysis progress ring, with 60 calibrated tick marks.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 512,
+        "height": 512,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/analysis-ring.svg",
+        "png1x": "png/1x/reticles/analysis-ring.png",
+        "png2x": "png/2x/reticles/analysis-ring.png",
+        "editableSvg": "source/svg-editable/reticles/analysis-ring.svg"
+      }
+    },
+    "reticles.objectBoundary": {
+      "id": "object-boundary",
+      "category": "reticles",
+      "description": "Wide object bounding frame for evidence or subjects.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 768,
+        "height": 512,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/object-boundary.svg",
+        "png1x": "png/1x/reticles/object-boundary.png",
+        "png2x": "png/2x/reticles/object-boundary.png",
+        "editableSvg": "source/svg-editable/reticles/object-boundary.svg"
+      }
+    },
+    "reticles.focusPoint": {
+      "id": "focus-point",
+      "category": "reticles",
+      "description": "Minimal central aiming point.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/focus-point.svg",
+        "png1x": "png/1x/reticles/focus-point.png",
+        "png2x": "png/2x/reticles/focus-point.png",
+        "editableSvg": "source/svg-editable/reticles/focus-point.svg"
+      }
+    },
+    "reticles.targetDiamond": {
+      "id": "target-diamond",
+      "category": "reticles",
+      "description": "Scalable diamond for a selected scene object.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 256,
+        "height": 256,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/target-diamond.svg",
+        "png1x": "png/1x/reticles/target-diamond.png",
+        "png2x": "png/2x/reticles/target-diamond.png",
+        "editableSvg": "source/svg-editable/reticles/target-diamond.svg"
+      }
+    },
+    "markers.evidenceIdle": {
+      "id": "evidence-idle",
+      "category": "markers",
+      "description": "Unexamined evidence marker.",
+      "intendedUse": "evidence, waypoints and points of interest",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 192,
+        "height": 192,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/markers/evidence-idle.svg",
+        "png1x": "png/1x/markers/evidence-idle.png",
+        "png2x": "png/2x/markers/evidence-idle.png",
+        "editableSvg": "source/svg-editable/markers/evidence-idle.svg"
+      }
+    },
+    "markers.evidenceSelected": {
+      "id": "evidence-selected",
+      "category": "markers",
+      "description": "Selected evidence marker.",
+      "intendedUse": "evidence, waypoints and points of interest",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 192,
+        "height": 192,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/markers/evidence-selected.svg",
+        "png1x": "png/1x/markers/evidence-selected.png",
+        "png2x": "png/2x/markers/evidence-selected.png",
+        "editableSvg": "source/svg-editable/markers/evidence-selected.svg"
+      }
+    },
+    "markers.evidenceComplete": {
+      "id": "evidence-complete",
+      "category": "markers",
+      "description": "Analyzed evidence marker.",
+      "intendedUse": "evidence, waypoints and points of interest",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 192,
+        "height": 192,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/markers/evidence-complete.svg",
+        "png1x": "png/1x/markers/evidence-complete.png",
+        "png2x": "png/2x/markers/evidence-complete.png",
+        "editableSvg": "source/svg-editable/markers/evidence-complete.svg"
+      }
+    },
+    "markers.evidenceLocked": {
+      "id": "evidence-locked",
+      "category": "markers",
+      "description": "Unavailable evidence marker.",
+      "intendedUse": "evidence, waypoints and points of interest",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 192,
+        "height": 192,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.9,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/markers/evidence-locked.svg",
+        "png1x": "png/1x/markers/evidence-locked.png",
+        "png2x": "png/2x/markers/evidence-locked.png",
+        "editableSvg": "source/svg-editable/markers/evidence-locked.svg"
+      }
+    },
+    "markers.pointOfInterest": {
+      "id": "point-of-interest",
+      "category": "markers",
+      "description": "Pin an object in world space.",
+      "intendedUse": "evidence, waypoints and points of interest",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 192,
+        "height": 192,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.90625,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/markers/point-of-interest.svg",
+        "png1x": "png/1x/markers/point-of-interest.png",
+        "png2x": "png/2x/markers/point-of-interest.png",
+        "editableSvg": "source/svg-editable/markers/point-of-interest.svg"
+      }
+    },
+    "markers.directionChevron": {
+      "id": "direction-chevron",
+      "category": "markers",
+      "description": "Directional arrow for offscreen clues.",
+      "intendedUse": "evidence, waypoints and points of interest",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 192,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/markers/direction-chevron.svg",
+        "png1x": "png/1x/markers/direction-chevron.png",
+        "png2x": "png/2x/markers/direction-chevron.png",
+        "editableSvg": "source/svg-editable/markers/direction-chevron.svg"
+      }
+    },
+    "markers.pathNode": {
+      "id": "path-node",
+      "category": "markers",
+      "description": "Trajectory control point or navigation waypoint.",
+      "intendedUse": "evidence, waypoints and points of interest",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/markers/path-node.svg",
+        "png1x": "png/1x/markers/path-node.png",
+        "png2x": "png/2x/markers/path-node.png",
+        "editableSvg": "source/svg-editable/markers/path-node.svg"
+      }
+    },
+    "markers.evidenceCounter": {
+      "id": "evidence-counter",
+      "category": "markers",
+      "description": "Evidence collection counter with six progress segments.",
+      "intendedUse": "evidence, waypoints and points of interest",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 360,
+        "height": 96,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/markers/evidence-counter.svg",
+        "png1x": "png/1x/markers/evidence-counter.png",
+        "png2x": "png/2x/markers/evidence-counter.png",
+        "editableSvg": "source/svg-editable/markers/evidence-counter.svg"
+      }
+    },
+    "panels.objectLabel": {
+      "id": "object-label",
+      "category": "panels",
+      "description": "Compact object identification card. All values are sample UI text.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 120,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/object-label.svg",
+        "png1x": "png/1x/panels/object-label.png",
+        "png2x": "png/2x/panels/object-label.png",
+        "editableSvg": "source/svg-editable/panels/object-label.svg"
+      }
+    },
+    "panels.analysisCard": {
+      "id": "analysis-card",
+      "category": "panels",
+      "description": "Detailed analysis readout; the labels and data can be changed in source/.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 360,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/analysis-card.svg",
+        "png1x": "png/1x/panels/analysis-card.png",
+        "png2x": "png/2x/panels/analysis-card.png",
+        "editableSvg": "source/svg-editable/panels/analysis-card.svg"
+      }
+    },
+    "panels.analysisComplete": {
+      "id": "analysis-complete",
+      "category": "panels",
+      "description": "Completed readout with a mint confirmation accent.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 360,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/analysis-complete.svg",
+        "png1x": "png/1x/panels/analysis-complete.png",
+        "png2x": "png/2x/panels/analysis-complete.png",
+        "editableSvg": "source/svg-editable/panels/analysis-complete.svg"
+      }
+    },
+    "panels.incompleteData": {
+      "id": "incomplete-data",
+      "category": "panels",
+      "description": "Incomplete analysis message with evidence slots.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 200,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/incomplete-data.svg",
+        "png1x": "png/1x/panels/incomplete-data.png",
+        "png2x": "png/2x/panels/incomplete-data.png",
+        "editableSvg": "source/svg-editable/panels/incomplete-data.svg"
+      }
+    },
+    "panels.objectiveBanner": {
+      "id": "objective-banner",
+      "category": "panels",
+      "description": "Primary focus-mode objective.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 640,
+        "height": 150,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/objective-banner.svg",
+        "png1x": "png/1x/panels/objective-banner.png",
+        "png2x": "png/2x/panels/objective-banner.png",
+        "editableSvg": "source/svg-editable/panels/objective-banner.svg"
+      }
+    },
+    "panels.warningBanner": {
+      "id": "warning-banner",
+      "category": "panels",
+      "description": "Obstruction or visibility warning.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 180,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/warning-banner.svg",
+        "png1x": "png/1x/panels/warning-banner.png",
+        "png2x": "png/2x/panels/warning-banner.png",
+        "editableSvg": "source/svg-editable/panels/warning-banner.svg"
+      }
+    },
+    "panels.subjectRecord": {
+      "id": "subject-record",
+      "category": "panels",
+      "description": "Subject information card for a reconstruction scene.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 360,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/subject-record.svg",
+        "png1x": "png/1x/panels/subject-record.png",
+        "png2x": "png/2x/panels/subject-record.png",
+        "editableSvg": "source/svg-editable/panels/subject-record.svg"
+      }
+    },
+    "panels.connectionLabel": {
+      "id": "connection-label",
+      "category": "panels",
+      "description": "Label for a confirmed link between scene clues.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 480,
+        "height": 130,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/connection-label.svg",
+        "png1x": "png/1x/panels/connection-label.png",
+        "png2x": "png/2x/panels/connection-label.png",
+        "editableSvg": "source/svg-editable/panels/connection-label.svg"
+      }
+    },
+    "controls.analysisProgress": {
+      "id": "analysis-progress",
+      "category": "controls",
+      "description": "Horizontal progress meter at 63 percent.",
+      "intendedUse": "progress, timeline and input hints",
+      "placement": "screen",
+      "dimensions": {
+        "width": 640,
+        "height": 112,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/controls/analysis-progress.svg",
+        "png1x": "png/1x/controls/analysis-progress.png",
+        "png2x": "png/2x/controls/analysis-progress.png",
+        "editableSvg": "source/svg-editable/controls/analysis-progress.svg"
+      }
+    },
+    "controls.confidenceMeter": {
+      "id": "confidence-meter",
+      "category": "controls",
+      "description": "Segmented confidence meter.",
+      "intendedUse": "progress, timeline and input hints",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 140,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/controls/confidence-meter.svg",
+        "png1x": "png/1x/controls/confidence-meter.png",
+        "png2x": "png/2x/controls/confidence-meter.png",
+        "editableSvg": "source/svg-editable/controls/confidence-meter.svg"
+      }
+    },
+    "controls.holdToAnalyze": {
+      "id": "hold-to-analyze",
+      "category": "controls",
+      "description": "Keyboard interaction prompt with a hold line.",
+      "intendedUse": "progress, timeline and input hints",
+      "placement": "screen",
+      "dimensions": {
+        "width": 400,
+        "height": 112,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/controls/hold-to-analyze.svg",
+        "png1x": "png/1x/controls/hold-to-analyze.png",
+        "png2x": "png/2x/controls/hold-to-analyze.png",
+        "editableSvg": "source/svg-editable/controls/hold-to-analyze.svg"
+      }
+    },
+    "controls.keyPrompt": {
+      "id": "key-prompt",
+      "category": "controls",
+      "description": "Editable keyboard keycap.",
+      "intendedUse": "progress, timeline and input hints",
+      "placement": "screen",
+      "dimensions": {
+        "width": 160,
+        "height": 96,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/controls/key-prompt.svg",
+        "png1x": "png/1x/controls/key-prompt.png",
+        "png2x": "png/2x/controls/key-prompt.png",
+        "editableSvg": "source/svg-editable/controls/key-prompt.svg"
+      }
+    },
+    "controls.navigationHint": {
+      "id": "navigation-hint",
+      "category": "controls",
+      "description": "Focus-mode control legend.",
+      "intendedUse": "progress, timeline and input hints",
+      "placement": "screen",
+      "dimensions": {
+        "width": 500,
+        "height": 96,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/controls/navigation-hint.svg",
+        "png1x": "png/1x/controls/navigation-hint.png",
+        "png2x": "png/2x/controls/navigation-hint.png",
+        "editableSvg": "source/svg-editable/controls/navigation-hint.svg"
+      }
+    },
+    "controls.reconstructionTimeline": {
+      "id": "reconstruction-timeline",
+      "category": "controls",
+      "description": "Replay scrubber with event markers and keyboard controls.",
+      "intendedUse": "progress, timeline and input hints",
+      "placement": "screen",
+      "dimensions": {
+        "width": 960,
+        "height": 160,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/controls/reconstruction-timeline.svg",
+        "png1x": "png/1x/controls/reconstruction-timeline.png",
+        "png2x": "png/2x/controls/reconstruction-timeline.png",
+        "editableSvg": "source/svg-editable/controls/reconstruction-timeline.svg"
+      }
+    },
+    "controls.replayControls": {
+      "id": "replay-controls",
+      "category": "controls",
+      "description": "Rewind, play and fast-forward controls.",
+      "intendedUse": "progress, timeline and input hints",
+      "placement": "screen",
+      "dimensions": {
+        "width": 360,
+        "height": 144,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/controls/replay-controls.svg",
+        "png1x": "png/1x/controls/replay-controls.png",
+        "png2x": "png/2x/controls/replay-controls.png",
+        "editableSvg": "source/svg-editable/controls/replay-controls.svg"
+      }
+    },
+    "controls.reconstructionStatus": {
+      "id": "reconstruction-status",
+      "category": "controls",
+      "description": "Crime-scene reconstruction mode status.",
+      "intendedUse": "progress, timeline and input hints",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 170,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/controls/reconstruction-status.svg",
+        "png1x": "png/1x/controls/reconstruction-status.png",
+        "png2x": "png/2x/controls/reconstruction-status.png",
+        "editableSvg": "source/svg-editable/controls/reconstruction-status.svg"
+      }
+    },
+    "overlays.focusScreenFrame": {
+      "id": "focus-screen-frame",
+      "category": "overlays",
+      "description": "Full HD screen frame; scale proportionally with the viewport.",
+      "intendedUse": "full-screen focus treatment",
+      "placement": "screen",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/overlays/focus-screen-frame.svg",
+        "png1x": "png/1x/overlays/focus-screen-frame.png",
+        "png2x": "png/2x/overlays/focus-screen-frame.png",
+        "editableSvg": "source/svg-editable/overlays/focus-screen-frame.svg"
+      }
+    },
+    "overlays.focusBlueVeil": {
+      "id": "focus-blue-veil",
+      "category": "overlays",
+      "description": "Subtle translucent focus tint, clear in the center.",
+      "intendedUse": "full-screen focus treatment",
+      "placement": "screen",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/overlays/focus-blue-veil.svg",
+        "png1x": "png/1x/overlays/focus-blue-veil.png",
+        "png2x": "png/2x/overlays/focus-blue-veil.png",
+        "editableSvg": "source/svg-editable/overlays/focus-blue-veil.svg"
+      }
+    },
+    "overlays.focusGrid": {
+      "id": "focus-grid",
+      "category": "overlays",
+      "description": "Fine transparent square grid for focus mode.",
+      "intendedUse": "full-screen focus treatment",
+      "placement": "screen",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/overlays/focus-grid.svg",
+        "png1x": "png/1x/overlays/focus-grid.png",
+        "png2x": "png/2x/overlays/focus-grid.png",
+        "editableSvg": "source/svg-editable/overlays/focus-grid.svg"
+      }
+    },
+    "overlays.focusScanlines": {
+      "id": "focus-scanlines",
+      "category": "overlays",
+      "description": "Very subtle horizontal scanning lines.",
+      "intendedUse": "full-screen focus treatment",
+      "placement": "screen",
+      "dimensions": {
+        "width": 1920,
+        "height": 1080,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/overlays/focus-scanlines.svg",
+        "png1x": "png/1x/overlays/focus-scanlines.png",
+        "png2x": "png/2x/overlays/focus-scanlines.png",
+        "editableSvg": "source/svg-editable/overlays/focus-scanlines.svg"
+      }
+    },
+    "reconstruction.ghostStanding": {
+      "id": "ghost-standing",
+      "category": "reconstruction",
+      "description": "Faceted standing subject silhouette. Original transparent 2D reconstruction sprite.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 360,
+        "height": 440,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.92,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/ghost-standing.svg",
+        "png1x": "png/1x/reconstruction/ghost-standing.png",
+        "png2x": "png/2x/reconstruction/ghost-standing.png",
+        "editableSvg": "source/svg-editable/reconstruction/ghost-standing.svg"
+      }
+    },
+    "reconstruction.ghostWalking": {
+      "id": "ghost-walking",
+      "category": "reconstruction",
+      "description": "Faceted walking subject silhouette. Original transparent 2D reconstruction sprite.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 360,
+        "height": 440,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.92,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/ghost-walking.svg",
+        "png1x": "png/1x/reconstruction/ghost-walking.png",
+        "png2x": "png/2x/reconstruction/ghost-walking.png",
+        "editableSvg": "source/svg-editable/reconstruction/ghost-walking.svg"
+      }
+    },
+    "reconstruction.ghostCrouching": {
+      "id": "ghost-crouching",
+      "category": "reconstruction",
+      "description": "Faceted crouching subject silhouette. Original transparent 2D reconstruction sprite.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 360,
+        "height": 440,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.92,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/ghost-crouching.svg",
+        "png1x": "png/1x/reconstruction/ghost-crouching.png",
+        "png2x": "png/2x/reconstruction/ghost-crouching.png",
+        "editableSvg": "source/svg-editable/reconstruction/ghost-crouching.svg"
+      }
+    },
+    "reconstruction.ghostReaching": {
+      "id": "ghost-reaching",
+      "category": "reconstruction",
+      "description": "Faceted reaching subject silhouette. Original transparent 2D reconstruction sprite.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 360,
+        "height": 440,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.92,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/ghost-reaching.svg",
+        "png1x": "png/1x/reconstruction/ghost-reaching.png",
+        "png2x": "png/2x/reconstruction/ghost-reaching.png",
+        "editableSvg": "source/svg-editable/reconstruction/ghost-reaching.svg"
+      }
+    },
+    "reconstruction.subjectMotionTrail": {
+      "id": "subject-motion-trail",
+      "category": "reconstruction",
+      "description": "Four progressively visible subject positions for a movement reconstruction.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 960,
+        "height": 440,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/subject-motion-trail.svg",
+        "png1x": "png/1x/reconstruction/subject-motion-trail.png",
+        "png2x": "png/2x/reconstruction/subject-motion-trail.png",
+        "editableSvg": "source/svg-editable/reconstruction/subject-motion-trail.svg"
+      }
+    },
+    "reconstruction.motionTrajectory": {
+      "id": "motion-trajectory",
+      "category": "reconstruction",
+      "description": "Dashed subject movement path with four event nodes.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 960,
+        "height": 440,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/motion-trajectory.svg",
+        "png1x": "png/1x/reconstruction/motion-trajectory.png",
+        "png2x": "png/2x/reconstruction/motion-trajectory.png",
+        "editableSvg": "source/svg-editable/reconstruction/motion-trajectory.svg"
+      }
+    },
+    "reconstruction.footprintTrail": {
+      "id": "footprint-trail",
+      "category": "reconstruction",
+      "description": "Alternating translucent footprints following an event path.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 860,
+        "height": 320,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/footprint-trail.svg",
+        "png1x": "png/1x/reconstruction/footprint-trail.png",
+        "png2x": "png/2x/reconstruction/footprint-trail.png",
+        "editableSvg": "source/svg-editable/reconstruction/footprint-trail.svg"
+      }
+    },
+    "reconstruction.evidenceConnections": {
+      "id": "evidence-connections",
+      "category": "reconstruction",
+      "description": "Connection graph linking four evidence points.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 840,
+        "height": 380,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/evidence-connections.svg",
+        "png1x": "png/1x/reconstruction/evidence-connections.png",
+        "png2x": "png/2x/reconstruction/evidence-connections.png",
+        "editableSvg": "source/svg-editable/reconstruction/evidence-connections.svg"
+      }
+    },
+    "reconstruction.reconstructionFloorGrid": {
+      "id": "reconstruction-floor-grid",
+      "category": "reconstruction",
+      "description": "Perspective floor grid for a reconstruction composition.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 1600,
+        "height": 900,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/reconstruction-floor-grid.svg",
+        "png1x": "png/1x/reconstruction/reconstruction-floor-grid.png",
+        "png2x": "png/2x/reconstruction/reconstruction-floor-grid.png",
+        "editableSvg": "source/svg-editable/reconstruction/reconstruction-floor-grid.svg"
+      }
+    },
+    "reconstruction.eventMarker": {
+      "id": "event-marker",
+      "category": "reconstruction",
+      "description": "Timestamped event marker.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 320,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/event-marker.svg",
+        "png1x": "png/1x/reconstruction/event-marker.png",
+        "png2x": "png/2x/reconstruction/event-marker.png",
+        "editableSvg": "source/svg-editable/reconstruction/event-marker.svg"
+      }
+    },
+    "reconstruction.reconstructionHeading": {
+      "id": "reconstruction-heading",
+      "category": "reconstruction",
+      "description": "Reconstruction title and playback state.",
+      "intendedUse": "memory reconstruction overlays; sample visuals, not mission facts",
+      "placement": "world-projected-ui",
+      "dimensions": {
+        "width": 820,
+        "height": 150,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reconstruction/reconstruction-heading.svg",
+        "png1x": "png/1x/reconstruction/reconstruction-heading.png",
+        "png2x": "png/2x/reconstruction/reconstruction-heading.png",
+        "editableSvg": "source/svg-editable/reconstruction/reconstruction-heading.svg"
+      }
+    },
+    "icons.scan": {
+      "id": "scan",
+      "category": "icons",
+      "description": "Scan line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/scan.svg",
+        "png1x": "png/1x/icons/scan.png",
+        "png2x": "png/2x/icons/scan.png",
+        "editableSvg": "source/svg-editable/icons/scan.svg"
+      }
+    },
+    "icons.evidence": {
+      "id": "evidence",
+      "category": "icons",
+      "description": "Evidence line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/evidence.svg",
+        "png1x": "png/1x/icons/evidence.png",
+        "png2x": "png/2x/icons/evidence.png",
+        "editableSvg": "source/svg-editable/icons/evidence.svg"
+      }
+    },
+    "icons.complete": {
+      "id": "complete",
+      "category": "icons",
+      "description": "Complete line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/complete.svg",
+        "png1x": "png/1x/icons/complete.png",
+        "png2x": "png/2x/icons/complete.png",
+        "editableSvg": "source/svg-editable/icons/complete.svg"
+      }
+    },
+    "icons.locked": {
+      "id": "locked",
+      "category": "icons",
+      "description": "Locked line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/locked.svg",
+        "png1x": "png/1x/icons/locked.png",
+        "png2x": "png/2x/icons/locked.png",
+        "editableSvg": "source/svg-editable/icons/locked.svg"
+      }
+    },
+    "icons.warning": {
+      "id": "warning",
+      "category": "icons",
+      "description": "Warning line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/warning.svg",
+        "png1x": "png/1x/icons/warning.png",
+        "png2x": "png/2x/icons/warning.png",
+        "editableSvg": "source/svg-editable/icons/warning.svg"
+      }
+    },
+    "icons.target": {
+      "id": "target",
+      "category": "icons",
+      "description": "Target line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/target.svg",
+        "png1x": "png/1x/icons/target.png",
+        "png2x": "png/2x/icons/target.png",
+        "editableSvg": "source/svg-editable/icons/target.svg"
+      }
+    },
+    "icons.play": {
+      "id": "play",
+      "category": "icons",
+      "description": "Play line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/play.svg",
+        "png1x": "png/1x/icons/play.png",
+        "png2x": "png/2x/icons/play.png",
+        "editableSvg": "source/svg-editable/icons/play.svg"
+      }
+    },
+    "icons.pause": {
+      "id": "pause",
+      "category": "icons",
+      "description": "Pause line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/pause.svg",
+        "png1x": "png/1x/icons/pause.png",
+        "png2x": "png/2x/icons/pause.png",
+        "editableSvg": "source/svg-editable/icons/pause.svg"
+      }
+    },
+    "icons.rewind": {
+      "id": "rewind",
+      "category": "icons",
+      "description": "Rewind line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/rewind.svg",
+        "png1x": "png/1x/icons/rewind.png",
+        "png2x": "png/2x/icons/rewind.png",
+        "editableSvg": "source/svg-editable/icons/rewind.svg"
+      }
+    },
+    "icons.reconstruct": {
+      "id": "reconstruct",
+      "category": "icons",
+      "description": "Reconstruct line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/reconstruct.svg",
+        "png1x": "png/1x/icons/reconstruct.png",
+        "png2x": "png/2x/icons/reconstruct.png",
+        "editableSvg": "source/svg-editable/icons/reconstruct.svg"
+      }
+    },
+    "icons.link": {
+      "id": "link",
+      "category": "icons",
+      "description": "Link line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/link.svg",
+        "png1x": "png/1x/icons/link.png",
+        "png2x": "png/2x/icons/link.png",
+        "editableSvg": "source/svg-editable/icons/link.svg"
+      }
+    },
+    "icons.fingerprint": {
+      "id": "fingerprint",
+      "category": "icons",
+      "description": "Fingerprint line icon.",
+      "intendedUse": "action or status icon; add a live accessible label",
+      "placement": "screen",
+      "dimensions": {
+        "width": 128,
+        "height": 128,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/icons/fingerprint.svg",
+        "png1x": "png/1x/icons/fingerprint.png",
+        "png2x": "png/2x/icons/fingerprint.png",
+        "editableSvg": "source/svg-editable/icons/fingerprint.svg"
+      }
+    }
+  },
+  "animations": {
+    "targetScan": {
+      "id": "target-scan",
+      "description": "A three-second target scan sweep.",
+      "frameWidth": 512,
+      "frameHeight": 512,
+      "frameCount": 36,
+      "framesPerSecond": 12,
+      "durationSeconds": 3.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 6,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "frameRectOrigin": "top-left",
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "reducedMotionPoster": "animations/frames/target-scan/000.png",
+      "intendedUse": "A three-second target scan sweep.",
+      "files": {
+        "svg": "animations/svg/target-scan.svg",
+        "apng": "animations/apng/target-scan.png",
+        "atlas": "animations/sprite-sheets/target-scan.png",
+        "atlasMetadata": "animations/sprite-sheets/target-scan.json",
+        "frames": [
+          "animations/frames/target-scan/000.png",
+          "animations/frames/target-scan/001.png",
+          "animations/frames/target-scan/002.png",
+          "animations/frames/target-scan/003.png",
+          "animations/frames/target-scan/004.png",
+          "animations/frames/target-scan/005.png",
+          "animations/frames/target-scan/006.png",
+          "animations/frames/target-scan/007.png",
+          "animations/frames/target-scan/008.png",
+          "animations/frames/target-scan/009.png",
+          "animations/frames/target-scan/010.png",
+          "animations/frames/target-scan/011.png",
+          "animations/frames/target-scan/012.png",
+          "animations/frames/target-scan/013.png",
+          "animations/frames/target-scan/014.png",
+          "animations/frames/target-scan/015.png",
+          "animations/frames/target-scan/016.png",
+          "animations/frames/target-scan/017.png",
+          "animations/frames/target-scan/018.png",
+          "animations/frames/target-scan/019.png",
+          "animations/frames/target-scan/020.png",
+          "animations/frames/target-scan/021.png",
+          "animations/frames/target-scan/022.png",
+          "animations/frames/target-scan/023.png",
+          "animations/frames/target-scan/024.png",
+          "animations/frames/target-scan/025.png",
+          "animations/frames/target-scan/026.png",
+          "animations/frames/target-scan/027.png",
+          "animations/frames/target-scan/028.png",
+          "animations/frames/target-scan/029.png",
+          "animations/frames/target-scan/030.png",
+          "animations/frames/target-scan/031.png",
+          "animations/frames/target-scan/032.png",
+          "animations/frames/target-scan/033.png",
+          "animations/frames/target-scan/034.png",
+          "animations/frames/target-scan/035.png"
+        ]
+      }
+    },
+    "analysisSpinner": {
+      "id": "analysis-spinner",
+      "description": "A continuous analyzing indicator.",
+      "frameWidth": 512,
+      "frameHeight": 512,
+      "frameCount": 36,
+      "framesPerSecond": 12,
+      "durationSeconds": 3.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 6,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        }
+      ],
+      "frameRectOrigin": "top-left",
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "reducedMotionPoster": "animations/frames/analysis-spinner/000.png",
+      "intendedUse": "A continuous analyzing indicator.",
+      "files": {
+        "svg": "animations/svg/analysis-spinner.svg",
+        "apng": "animations/apng/analysis-spinner.png",
+        "atlas": "animations/sprite-sheets/analysis-spinner.png",
+        "atlasMetadata": "animations/sprite-sheets/analysis-spinner.json",
+        "frames": [
+          "animations/frames/analysis-spinner/000.png",
+          "animations/frames/analysis-spinner/001.png",
+          "animations/frames/analysis-spinner/002.png",
+          "animations/frames/analysis-spinner/003.png",
+          "animations/frames/analysis-spinner/004.png",
+          "animations/frames/analysis-spinner/005.png",
+          "animations/frames/analysis-spinner/006.png",
+          "animations/frames/analysis-spinner/007.png",
+          "animations/frames/analysis-spinner/008.png",
+          "animations/frames/analysis-spinner/009.png",
+          "animations/frames/analysis-spinner/010.png",
+          "animations/frames/analysis-spinner/011.png",
+          "animations/frames/analysis-spinner/012.png",
+          "animations/frames/analysis-spinner/013.png",
+          "animations/frames/analysis-spinner/014.png",
+          "animations/frames/analysis-spinner/015.png",
+          "animations/frames/analysis-spinner/016.png",
+          "animations/frames/analysis-spinner/017.png",
+          "animations/frames/analysis-spinner/018.png",
+          "animations/frames/analysis-spinner/019.png",
+          "animations/frames/analysis-spinner/020.png",
+          "animations/frames/analysis-spinner/021.png",
+          "animations/frames/analysis-spinner/022.png",
+          "animations/frames/analysis-spinner/023.png",
+          "animations/frames/analysis-spinner/024.png",
+          "animations/frames/analysis-spinner/025.png",
+          "animations/frames/analysis-spinner/026.png",
+          "animations/frames/analysis-spinner/027.png",
+          "animations/frames/analysis-spinner/028.png",
+          "animations/frames/analysis-spinner/029.png",
+          "animations/frames/analysis-spinner/030.png",
+          "animations/frames/analysis-spinner/031.png",
+          "animations/frames/analysis-spinner/032.png",
+          "animations/frames/analysis-spinner/033.png",
+          "animations/frames/analysis-spinner/034.png",
+          "animations/frames/analysis-spinner/035.png"
+        ]
+      }
+    },
+    "evidencePulse": {
+      "id": "evidence-pulse",
+      "description": "Pulsing selected-evidence marker.",
+      "frameWidth": 192,
+      "frameHeight": 192,
+      "frameCount": 24,
+      "framesPerSecond": 12,
+      "durationSeconds": 2.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 4,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 192,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 384,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 576,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 768,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 960,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 0,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 192,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 384,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 576,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 768,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 960,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 0,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 192,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 384,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 576,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 768,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 960,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 0,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 192,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 384,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 576,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 768,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 960,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        }
+      ],
+      "frameRectOrigin": "top-left",
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "reducedMotionPoster": "animations/frames/evidence-pulse/000.png",
+      "intendedUse": "Pulsing selected-evidence marker.",
+      "files": {
+        "svg": "animations/svg/evidence-pulse.svg",
+        "apng": "animations/apng/evidence-pulse.png",
+        "atlas": "animations/sprite-sheets/evidence-pulse.png",
+        "atlasMetadata": "animations/sprite-sheets/evidence-pulse.json",
+        "frames": [
+          "animations/frames/evidence-pulse/000.png",
+          "animations/frames/evidence-pulse/001.png",
+          "animations/frames/evidence-pulse/002.png",
+          "animations/frames/evidence-pulse/003.png",
+          "animations/frames/evidence-pulse/004.png",
+          "animations/frames/evidence-pulse/005.png",
+          "animations/frames/evidence-pulse/006.png",
+          "animations/frames/evidence-pulse/007.png",
+          "animations/frames/evidence-pulse/008.png",
+          "animations/frames/evidence-pulse/009.png",
+          "animations/frames/evidence-pulse/010.png",
+          "animations/frames/evidence-pulse/011.png",
+          "animations/frames/evidence-pulse/012.png",
+          "animations/frames/evidence-pulse/013.png",
+          "animations/frames/evidence-pulse/014.png",
+          "animations/frames/evidence-pulse/015.png",
+          "animations/frames/evidence-pulse/016.png",
+          "animations/frames/evidence-pulse/017.png",
+          "animations/frames/evidence-pulse/018.png",
+          "animations/frames/evidence-pulse/019.png",
+          "animations/frames/evidence-pulse/020.png",
+          "animations/frames/evidence-pulse/021.png",
+          "animations/frames/evidence-pulse/022.png",
+          "animations/frames/evidence-pulse/023.png"
+        ]
+      }
+    },
+    "analysisProgress": {
+      "id": "analysis-progress",
+      "description": "Horizontal progress filling from zero to complete.",
+      "frameWidth": 640,
+      "frameHeight": 112,
+      "frameCount": 36,
+      "framesPerSecond": 12,
+      "durationSeconds": 3.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 6,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        }
+      ],
+      "frameRectOrigin": "top-left",
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "reducedMotionPoster": "animations/frames/analysis-progress/000.png",
+      "intendedUse": "Horizontal progress filling from zero to complete.",
+      "files": {
+        "svg": "animations/svg/analysis-progress.svg",
+        "apng": "animations/apng/analysis-progress.png",
+        "atlas": "animations/sprite-sheets/analysis-progress.png",
+        "atlasMetadata": "animations/sprite-sheets/analysis-progress.json",
+        "frames": [
+          "animations/frames/analysis-progress/000.png",
+          "animations/frames/analysis-progress/001.png",
+          "animations/frames/analysis-progress/002.png",
+          "animations/frames/analysis-progress/003.png",
+          "animations/frames/analysis-progress/004.png",
+          "animations/frames/analysis-progress/005.png",
+          "animations/frames/analysis-progress/006.png",
+          "animations/frames/analysis-progress/007.png",
+          "animations/frames/analysis-progress/008.png",
+          "animations/frames/analysis-progress/009.png",
+          "animations/frames/analysis-progress/010.png",
+          "animations/frames/analysis-progress/011.png",
+          "animations/frames/analysis-progress/012.png",
+          "animations/frames/analysis-progress/013.png",
+          "animations/frames/analysis-progress/014.png",
+          "animations/frames/analysis-progress/015.png",
+          "animations/frames/analysis-progress/016.png",
+          "animations/frames/analysis-progress/017.png",
+          "animations/frames/analysis-progress/018.png",
+          "animations/frames/analysis-progress/019.png",
+          "animations/frames/analysis-progress/020.png",
+          "animations/frames/analysis-progress/021.png",
+          "animations/frames/analysis-progress/022.png",
+          "animations/frames/analysis-progress/023.png",
+          "animations/frames/analysis-progress/024.png",
+          "animations/frames/analysis-progress/025.png",
+          "animations/frames/analysis-progress/026.png",
+          "animations/frames/analysis-progress/027.png",
+          "animations/frames/analysis-progress/028.png",
+          "animations/frames/analysis-progress/029.png",
+          "animations/frames/analysis-progress/030.png",
+          "animations/frames/analysis-progress/031.png",
+          "animations/frames/analysis-progress/032.png",
+          "animations/frames/analysis-progress/033.png",
+          "animations/frames/analysis-progress/034.png",
+          "animations/frames/analysis-progress/035.png"
+        ]
+      }
+    },
+    "screenSweep": {
+      "id": "screen-sweep",
+      "description": "Full-screen transparent scan sweep, half-HD; scale to your viewport.",
+      "frameWidth": 960,
+      "frameHeight": 540,
+      "frameCount": 24,
+      "framesPerSecond": 12,
+      "durationSeconds": 2.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 4,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 960,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 1920,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 2880,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 3840,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 4800,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 0,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 960,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 1920,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 2880,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 3840,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 4800,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 0,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 960,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 1920,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 2880,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 3840,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 4800,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 0,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 960,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 1920,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 2880,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 3840,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 4800,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        }
+      ],
+      "frameRectOrigin": "top-left",
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "reducedMotionPoster": "animations/frames/screen-sweep/000.png",
+      "intendedUse": "Full-screen transparent scan sweep, half-HD; scale to your viewport.",
+      "files": {
+        "svg": "animations/svg/screen-sweep.svg",
+        "apng": "animations/apng/screen-sweep.png",
+        "atlas": "animations/sprite-sheets/screen-sweep.png",
+        "atlasMetadata": "animations/sprite-sheets/screen-sweep.json",
+        "frames": [
+          "animations/frames/screen-sweep/000.png",
+          "animations/frames/screen-sweep/001.png",
+          "animations/frames/screen-sweep/002.png",
+          "animations/frames/screen-sweep/003.png",
+          "animations/frames/screen-sweep/004.png",
+          "animations/frames/screen-sweep/005.png",
+          "animations/frames/screen-sweep/006.png",
+          "animations/frames/screen-sweep/007.png",
+          "animations/frames/screen-sweep/008.png",
+          "animations/frames/screen-sweep/009.png",
+          "animations/frames/screen-sweep/010.png",
+          "animations/frames/screen-sweep/011.png",
+          "animations/frames/screen-sweep/012.png",
+          "animations/frames/screen-sweep/013.png",
+          "animations/frames/screen-sweep/014.png",
+          "animations/frames/screen-sweep/015.png",
+          "animations/frames/screen-sweep/016.png",
+          "animations/frames/screen-sweep/017.png",
+          "animations/frames/screen-sweep/018.png",
+          "animations/frames/screen-sweep/019.png",
+          "animations/frames/screen-sweep/020.png",
+          "animations/frames/screen-sweep/021.png",
+          "animations/frames/screen-sweep/022.png",
+          "animations/frames/screen-sweep/023.png"
+        ]
+      }
+    },
+    "reconstructionReveal": {
+      "id": "reconstruction-reveal",
+      "description": "A ghost subject appearing through a scan pass.",
+      "frameWidth": 360,
+      "frameHeight": 440,
+      "frameCount": 30,
+      "framesPerSecond": 12,
+      "durationSeconds": 2.5,
+      "loop": true,
+      "columns": 6,
+      "rows": 5,
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 0,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 0,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 0,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 0,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        }
+      ],
+      "frameRectOrigin": "top-left",
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "reducedMotionPoster": "animations/frames/reconstruction-reveal/000.png",
+      "intendedUse": "A ghost subject appearing through a scan pass.",
+      "files": {
+        "svg": "animations/svg/reconstruction-reveal.svg",
+        "apng": "animations/apng/reconstruction-reveal.png",
+        "atlas": "animations/sprite-sheets/reconstruction-reveal.png",
+        "atlasMetadata": "animations/sprite-sheets/reconstruction-reveal.json",
+        "frames": [
+          "animations/frames/reconstruction-reveal/000.png",
+          "animations/frames/reconstruction-reveal/001.png",
+          "animations/frames/reconstruction-reveal/002.png",
+          "animations/frames/reconstruction-reveal/003.png",
+          "animations/frames/reconstruction-reveal/004.png",
+          "animations/frames/reconstruction-reveal/005.png",
+          "animations/frames/reconstruction-reveal/006.png",
+          "animations/frames/reconstruction-reveal/007.png",
+          "animations/frames/reconstruction-reveal/008.png",
+          "animations/frames/reconstruction-reveal/009.png",
+          "animations/frames/reconstruction-reveal/010.png",
+          "animations/frames/reconstruction-reveal/011.png",
+          "animations/frames/reconstruction-reveal/012.png",
+          "animations/frames/reconstruction-reveal/013.png",
+          "animations/frames/reconstruction-reveal/014.png",
+          "animations/frames/reconstruction-reveal/015.png",
+          "animations/frames/reconstruction-reveal/016.png",
+          "animations/frames/reconstruction-reveal/017.png",
+          "animations/frames/reconstruction-reveal/018.png",
+          "animations/frames/reconstruction-reveal/019.png",
+          "animations/frames/reconstruction-reveal/020.png",
+          "animations/frames/reconstruction-reveal/021.png",
+          "animations/frames/reconstruction-reveal/022.png",
+          "animations/frames/reconstruction-reveal/023.png",
+          "animations/frames/reconstruction-reveal/024.png",
+          "animations/frames/reconstruction-reveal/025.png",
+          "animations/frames/reconstruction-reveal/026.png",
+          "animations/frames/reconstruction-reveal/027.png",
+          "animations/frames/reconstruction-reveal/028.png",
+          "animations/frames/reconstruction-reveal/029.png"
+        ]
+      }
+    }
+  },
+  "audio": {
+    "focusEnter": {
+      "id": "focus-enter",
+      "file": "audio/focus-enter.wav",
+      "durationSeconds": 0.55,
+      "sampleRateHz": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "loop": false,
+      "intendedUse": "focus enter UI feedback",
+      "autoplay": false
+    },
+    "focusExit": {
+      "id": "focus-exit",
+      "file": "audio/focus-exit.wav",
+      "durationSeconds": 0.45,
+      "sampleRateHz": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "loop": false,
+      "intendedUse": "focus exit UI feedback",
+      "autoplay": false
+    },
+    "targetLock": {
+      "id": "target-lock",
+      "file": "audio/target-lock.wav",
+      "durationSeconds": 0.28,
+      "sampleRateHz": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "loop": false,
+      "intendedUse": "target lock UI feedback",
+      "autoplay": false
+    },
+    "scanComplete": {
+      "id": "scan-complete",
+      "file": "audio/scan-complete.wav",
+      "durationSeconds": 0.64,
+      "sampleRateHz": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "loop": false,
+      "intendedUse": "scan complete UI feedback",
+      "autoplay": false
+    },
+    "evidenceWarning": {
+      "id": "evidence-warning",
+      "file": "audio/evidence-warning.wav",
+      "durationSeconds": 0.55,
+      "sampleRateHz": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "loop": false,
+      "intendedUse": "evidence warning UI feedback",
+      "autoplay": false
+    },
+    "timelineTick": {
+      "id": "timeline-tick",
+      "file": "audio/timeline-tick.wav",
+      "durationSeconds": 0.09,
+      "sampleRateHz": 44100,
+      "channels": 1,
+      "bitsPerSample": 16,
+      "loop": false,
+      "intendedUse": "timeline tick UI feedback",
+      "autoplay": false
+    }
+  },
+  "fonts": {
+    "rajdhaniMedium": {
+      "file": "fonts/Rajdhani-Medium.ttf",
+      "family": "Rajdhani",
+      "weight": 500,
+      "style": "normal",
+      "license": "fonts/OFL.txt"
+    },
+    "rajdhaniSemibold": {
+      "file": "fonts/Rajdhani-SemiBold.ttf",
+      "family": "Rajdhani",
+      "weight": 600,
+      "style": "normal",
+      "license": "fonts/OFL.txt"
+    }
+  },
+  "models": {
+    "ghostStanding": {
+      "id": "ghost-standing",
+      "path": "models/ghost-standing.glb",
+      "pose": "standing",
+      "units": "meters",
+      "rigged": false,
+      "animated": false,
+      "materials": "transparent cyan unlit hologram",
+      "triangles": 21908,
+      "bytes": 360904,
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "intendedUse": "static reconstruction pose reference; not the approved spirit character",
+      "castShadow": false
+    },
+    "ghostWalking": {
+      "id": "ghost-walking",
+      "path": "models/ghost-walking.glb",
+      "pose": "walking",
+      "units": "meters",
+      "rigged": false,
+      "animated": false,
+      "materials": "transparent cyan unlit hologram",
+      "triangles": 21908,
+      "bytes": 360784,
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "intendedUse": "static reconstruction pose reference; not the approved spirit character",
+      "castShadow": false
+    },
+    "ghostCrouching": {
+      "id": "ghost-crouching",
+      "path": "models/ghost-crouching.glb",
+      "pose": "crouching",
+      "units": "meters",
+      "rigged": false,
+      "animated": false,
+      "materials": "transparent cyan unlit hologram",
+      "triangles": 21908,
+      "bytes": 360596,
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "intendedUse": "static reconstruction pose reference; not the approved spirit character",
+      "castShadow": false
+    },
+    "ghostReaching": {
+      "id": "ghost-reaching",
+      "path": "models/ghost-reaching.glb",
+      "pose": "reaching",
+      "units": "meters",
+      "rigged": false,
+      "animated": false,
+      "materials": "transparent cyan unlit hologram",
+      "triangles": 21908,
+      "bytes": 360756,
+      "forwardAxis": "+Z",
+      "upAxis": "+Y",
+      "intendedUse": "static reconstruction pose reference; not the approved spirit character",
+      "castShadow": false
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "primary": "#319FFF",
+  "highlight": "#89DEFF",
+  "text": "#F0F8FF",
+  "muted": "#8BA9BD",
+  "evidence": "#FFD16B",
+  "complete": "#89E7C1",
+  "warning": "#FF788A",
+  "panel": "#071522"
+}

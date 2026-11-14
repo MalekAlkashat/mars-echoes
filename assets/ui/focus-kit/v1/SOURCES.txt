@@ -1,0 +1,5 @@
+Artwork, animations and audio: original procedural vector drawings and synthesis.
+No assets were copied or extracted from a game.
+Font source: https://github.com/google/fonts/tree/main/ofl/rajdhani
+Font author: Indian Type Foundry. License: fonts/OFL.txt.
+Game named by the user for visual direction: Detroit: Become Human / Quantic Dream.

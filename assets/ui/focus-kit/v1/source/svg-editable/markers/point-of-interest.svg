@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="192" height="192" viewBox="0 0 192 192" role="img"><title>Point Of Interest</title><defs>
+    <linearGradient id="fade"><stop stop-color="#319fff" stop-opacity="0"/><stop offset=".5" stop-color="#89deff" stop-opacity=".9"/><stop offset="1" stop-color="#319fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="down" x2="0" y2="1"><stop stop-color="#319fff" stop-opacity="0"/><stop offset="1" stop-color="#319fff" stop-opacity=".19"/></linearGradient>
+    <radialGradient id="veil"><stop offset=".26" stop-color="#1886ff" stop-opacity="0"/><stop offset="1" stop-color="#0865c1" stop-opacity=".26"/></radialGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8 8 0" stroke="#89deff" stroke-width="1" opacity=".13"/></pattern>
+    </defs><path d="M96 32 138 74 96 116 54 74Z" stroke="#319FFF" stroke-width="2" fill="none" opacity="1" stroke-linejoin="miter"/><circle cx="96" cy="74" r="10" stroke="#89DEFF" stroke-width="2" fill="none" opacity="1"/><line x1="96" y1="116" x2="96" y2="170" stroke="#319FFF" stroke-width="1" opacity="0.6"/><circle cx="96" cy="174" r="3" stroke="#89DEFF" stroke-width="1" fill="#89DEFF" opacity="1"/></svg>
