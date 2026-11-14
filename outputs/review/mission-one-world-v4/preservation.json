@@ -1,0 +1,10 @@
+{
+  "checkedFiles": 1484,
+  "changed": [],
+  "missing": [],
+  "head": "d87c05670bac9c77128edd409c73572a163300e1",
+  "headUnchanged": true,
+  "stashesUnchanged": true,
+  "status": "M AGENTS.md\n?? HANDOFF.md\n?? TEAM_CONTEXT.md\n?? assets/vendor/polyhaven/moon_flat_macro_02/\n?? run-game.bat",
+  "worktrees": "C:/Nasa 2026/mars-echoes                                d87c056 [main]\nC:/Nasa 2026/mars-echoes/work/k07-branch                8d200b1 [feat/k-07-skills]\nC:/Nasa 2026/mars-echoes/work/mission-one               a640096 [codex/mission-one]\nC:/Nasa 2026/mars-echoes/work/mission-one-world-polish  d87c056 [codex/mission-one-world-polish]\nC:/Nasa 2026/mars-echoes/work/mission-two-resources     9bd61b0 [codex/mission-two-resources]"
+}

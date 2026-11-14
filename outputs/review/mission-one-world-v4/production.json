@@ -1,0 +1,153 @@
+{
+  "mode": "production",
+  "errors": [],
+  "failedRequests": [],
+  "waterSave": {
+    "version": 2,
+    "savedAt": 1794692935051,
+    "entry": {
+      "scene": "episode-rover-01",
+      "wreckId": "wreck-rover-01",
+      "chapter": "blueberry-clue",
+      "resume": {
+        "position": [
+          1.1425563981355695,
+          0.2415103288729723
+        ],
+        "heading": 0.4,
+        "cameraYaw": 0.33,
+        "cameraPitch": 0.095,
+        "cameraDistance": 5.8,
+        "started": true,
+        "time": 13.216199999999992,
+        "kind": "blueberry-clue",
+        "phase": "water"
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        -1.8486331914372303,
+        -23.32
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [],
+    "skills": [],
+    "completed": []
+  },
+  "beforeReturn": {
+    "version": 2,
+    "savedAt": 1794692947369,
+    "entry": {
+      "scene": "episode-rover-01",
+      "wreckId": "wreck-rover-01",
+      "chapter": "blueberry-clue",
+      "resume": {
+        "position": [
+          1.1425563981355695,
+          0.2415103288729723
+        ],
+        "heading": 0.4,
+        "cameraYaw": 0.33,
+        "cameraPitch": 0.095,
+        "cameraDistance": 5.8,
+        "started": true,
+        "time": 24.982400000000123,
+        "kind": "blueberry-clue",
+        "phase": "water"
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        -1.8486331914372303,
+        -23.32
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [],
+    "skills": [],
+    "completed": []
+  },
+  "saved": {
+    "version": 2,
+    "savedAt": 1794692949096,
+    "entry": {
+      "scene": "mars-hub",
+      "bookmark": {
+        "position": [
+          0,
+          -1.8486331914372303,
+          -23.32
+        ],
+        "heading": 0,
+        "cameraYaw": 0,
+        "cameraPitch": 0.12,
+        "cameraDistance": 5.8
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        -1.8486331914372303,
+        -23.32
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [
+      "blueberry-clue"
+    ],
+    "skills": [
+      "grind"
+    ],
+    "completed": []
+  },
+  "reloaded": {
+    "version": 2,
+    "savedAt": 1794692949810,
+    "entry": {
+      "scene": "mars-hub",
+      "bookmark": {
+        "position": [
+          0,
+          -1.8486331914372303,
+          -23.32
+        ],
+        "heading": 0,
+        "cameraYaw": 0,
+        "cameraPitch": 0.12,
+        "cameraDistance": 5.8
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        -1.8486331914372303,
+        -23.32
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [
+      "blueberry-clue"
+    ],
+    "skills": [
+      "grind"
+    ],
+    "completed": []
+  },
+  "cleanNewGameToMissionToHub": true,
+  "passed": true
+}

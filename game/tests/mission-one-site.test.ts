@@ -5,7 +5,7 @@ import {Vector3,Group,InstancedMesh,SphereGeometry,MeshStandardMaterial,Matrix4}
 import {Vehicle} from '../src/entities/rover/controller.ts';
 import {SITE,SLABS,slabRadius,siteObstacles} from '../src/scenes/episodes/rover/missions/blueberry-clue/site.ts';
 import {sampleHeight} from '../src/scenes/episodes/rover/missions/blueberry-clue/surface.ts';
-import {outcropGeometry} from '../src/scenes/episodes/rover/missions/blueberry-clue/geology.ts';
+import {fieldRockGeometry,placeFieldRock} from '../src/scenes/episodes/rover/missions/blueberry-clue/field-rocks.ts';
 import {reconstructionFrame} from '../src/scenes/episodes/rover/missions/blueberry-clue/water-state.ts';
 import {createReconstruction} from '../src/scenes/episodes/rover/missions/blueberry-clue/reconstruction.ts';
 const metadata=JSON.parse(readFileSync(new URL('../public/assets/opportunity/rig-metadata.json',import.meta.url),'utf8'));
@@ -13,8 +13,12 @@ const config={wheelPoints:metadata.wheels.map((w:{center:number[]})=>new Vector3
 const obstacles=siteObstacles();
 test('major slab render footprints stay inside the matching navigation/camera obstacles',()=>{
  for(const [i,s] of SLABS.entries()){
-  const g=outcropGeometry(s.width,s.depth,s.height,i+2),p=g.getAttribute('position');
-  for(let j=0;j<p.count;j++)assert.ok(Math.hypot(p.getX(j),p.getZ(j))<slabRadius(s),s.id);
+  const g=fieldRockGeometry(i%6),p=g.getAttribute('position'),pose=placeFieldRock(s,i,g,sampleHeight),v=new Vector3();
+  for(let j=0;j<p.count;j++){
+   v.fromBufferAttribute(p,j).applyMatrix4(pose.matrix);
+   assert.ok(Math.hypot(v.x-s.x,v.z-s.z)<slabRadius(s),s.id);
+   if(p.getY(j)<.001)assert.ok(v.y<sampleHeight(v.x,v.z)-.02,`${s.id}: buried base`);
+  }
   assert.equal(obstacles[i].x,s.x);assert.equal(obstacles[i].z,s.z);g.dispose();
  }
 });

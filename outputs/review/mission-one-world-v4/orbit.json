@@ -1,0 +1,55 @@
+{
+  "errors": [],
+  "failed": [],
+  "turn": {
+    "engine": "three.js r181",
+    "phase": "approach",
+    "arrivalTime": "8.00",
+    "chapter": "blueberry-clue",
+    "hold": "0.000",
+    "comparison": "0",
+    "position": "3.09,2.75",
+    "near": "false",
+    "contacts": "111111",
+    "berries": "150",
+    "wet": "false",
+    "waterStage": "dry",
+    "waterTime": "0",
+    "heading": "-0.475",
+    "speed": "0.000",
+    "pitch": "-0.009",
+    "roll": "0.002",
+    "returning": "false",
+    "sceneId": "episode-rover-01",
+    "transitioning": "false",
+    "paused": "false",
+    "chapters": "0",
+    "grindUnlocked": "false",
+    "completed": "0",
+    "activeLoops": "1",
+    "geometries": "28",
+    "textures": "33",
+    "drawCalls": "100",
+    "triangles": "374954",
+    "renderCpuMs": "3.90",
+    "renderedFps": "44.5",
+    "fpsCap": "45",
+    "pixelRatio": "1",
+    "renderedFrames": "934"
+  },
+  "motion": {
+    "samples": 806,
+    "minCamera": 0.34908415102600765,
+    "minGap": 1.123478470268311,
+    "allContacts": true,
+    "xRange": [
+      0.7911447804738823,
+      7.777631198479279
+    ],
+    "zRange": [
+      -0.58965630788267,
+      7
+    ]
+  },
+  "passed": true
+}

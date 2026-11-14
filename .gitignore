@@ -77,3 +77,10 @@ graphify-out/
 !/outputs/review/mission-one-site-v3/*.md
 !/outputs/review/mission-one-site-v3/*.json
 !/outputs/review/mission-one-site-v3/*.png
+
+# Mission 1 world-continuity evidence; full-speed originals remain local.
+!/outputs/review/mission-one-world-v4/
+/outputs/review/mission-one-world-v4/*
+!/outputs/review/mission-one-world-v4/*.md
+!/outputs/review/mission-one-world-v4/*.json
+!/outputs/review/mission-one-world-v4/*.png
