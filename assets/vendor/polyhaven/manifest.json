@@ -1,0 +1,90 @@
+[
+  {
+    "asset": "sandy_gravel_02",
+    "channel": "color",
+    "resolution": 1024,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sandy_gravel_02/sandy_gravel_02_diff_1k.jpg",
+    "license": "CC0-1.0",
+    "original": "assets/vendor/polyhaven/sandy_gravel_02/sandy_gravel_02_diff_1k.jpg",
+    "runtime": "game/public/assets/surfaces/regolith/color.jpg",
+    "bytes": 947222,
+    "sha256": "c9d143db07db9a6be2eba285fae961d868520422ee5fa4d38d55da24f9968d51"
+  },
+  {
+    "asset": "sandy_gravel_02",
+    "channel": "normal",
+    "resolution": 1024,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sandy_gravel_02/sandy_gravel_02_nor_gl_1k.jpg",
+    "license": "CC0-1.0",
+    "original": "assets/vendor/polyhaven/sandy_gravel_02/sandy_gravel_02_nor_gl_1k.jpg",
+    "runtime": "game/public/assets/surfaces/regolith/normal.jpg",
+    "bytes": 1185078,
+    "sha256": "36db1d118fb74885991ada4a3028f4fe346c65a8e3c75edea123c08856068e41"
+  },
+  {
+    "asset": "sandy_gravel_02",
+    "channel": "roughness",
+    "resolution": 1024,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sandy_gravel_02/sandy_gravel_02_rough_1k.jpg",
+    "license": "CC0-1.0",
+    "original": "assets/vendor/polyhaven/sandy_gravel_02/sandy_gravel_02_rough_1k.jpg",
+    "runtime": "game/public/assets/surfaces/regolith/roughness.jpg",
+    "bytes": 382424,
+    "sha256": "a215a6cee823f170a5b2e51f8a30ff8ca49e00c72f73d9dbee1a9c0ec2d56ed1"
+  },
+  {
+    "asset": "sandy_gravel_02",
+    "channel": "ao",
+    "resolution": 1024,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/sandy_gravel_02/sandy_gravel_02_ao_1k.jpg",
+    "license": "CC0-1.0",
+    "original": "assets/vendor/polyhaven/sandy_gravel_02/sandy_gravel_02_ao_1k.jpg",
+    "runtime": "game/public/assets/surfaces/regolith/ao.jpg",
+    "bytes": 880161,
+    "sha256": "668c6e02f0f45dc9aebe4a4355d08a36c5e600a7c86d8eb23b0686bcd6163363"
+  },
+  {
+    "asset": "dry_riverbed_rock",
+    "channel": "color",
+    "resolution": 1024,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dry_riverbed_rock/dry_riverbed_rock_diff_1k.jpg",
+    "license": "CC0-1.0",
+    "original": "assets/vendor/polyhaven/dry_riverbed_rock/dry_riverbed_rock_diff_1k.jpg",
+    "runtime": "game/public/assets/surfaces/rock/color.jpg",
+    "bytes": 1099450,
+    "sha256": "5dc1fd5777f613451a703d2fc292d4a4e79987f90b991efa98c7ca02458c6a8a"
+  },
+  {
+    "asset": "dry_riverbed_rock",
+    "channel": "normal",
+    "resolution": 1024,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dry_riverbed_rock/dry_riverbed_rock_nor_gl_1k.jpg",
+    "license": "CC0-1.0",
+    "original": "assets/vendor/polyhaven/dry_riverbed_rock/dry_riverbed_rock_nor_gl_1k.jpg",
+    "runtime": "game/public/assets/surfaces/rock/normal.jpg",
+    "bytes": 1021996,
+    "sha256": "d7d8acb52f0ca5bf29a5b7c43fe5b88ab89d3bc399b9f8cbe9f4d3e53828ff34"
+  },
+  {
+    "asset": "dry_riverbed_rock",
+    "channel": "roughness",
+    "resolution": 1024,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dry_riverbed_rock/dry_riverbed_rock_rough_1k.jpg",
+    "license": "CC0-1.0",
+    "original": "assets/vendor/polyhaven/dry_riverbed_rock/dry_riverbed_rock_rough_1k.jpg",
+    "runtime": "game/public/assets/surfaces/rock/roughness.jpg",
+    "bytes": 676952,
+    "sha256": "289b9a950ddac5933e28db088d8bfa52bb7a75e1419e71db5b8dd4e0da6b792c"
+  },
+  {
+    "asset": "dry_riverbed_rock",
+    "channel": "ao",
+    "resolution": 1024,
+    "url": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dry_riverbed_rock/dry_riverbed_rock_ao_1k.jpg",
+    "license": "CC0-1.0",
+    "original": "assets/vendor/polyhaven/dry_riverbed_rock/dry_riverbed_rock_ao_1k.jpg",
+    "runtime": "game/public/assets/surfaces/rock/ao.jpg",
+    "bytes": 712243,
+    "sha256": "1f8ff8f2f888fec36ad860ae017042fe581999797128c56d697f85deaa7c34cf"
+  }
+]

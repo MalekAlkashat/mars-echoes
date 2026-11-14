@@ -1,0 +1,87 @@
+{
+  "assets": [
+    {
+      "id": "kenney-nature-kit-rock-largea",
+      "bytes": 7552,
+      "nodes": 2,
+      "meshes": 1,
+      "animations": 0,
+      "extensionsRequired": [],
+      "external_files": []
+    },
+    {
+      "id": "kenney-nature-kit-rock-largeb",
+      "bytes": 8560,
+      "nodes": 2,
+      "meshes": 1,
+      "animations": 0,
+      "extensionsRequired": [],
+      "external_files": []
+    },
+    {
+      "id": "kenney-nature-kit-rock-talla",
+      "bytes": 12072,
+      "nodes": 2,
+      "meshes": 1,
+      "animations": 0,
+      "extensionsRequired": [],
+      "external_files": []
+    },
+    {
+      "id": "kenney-nature-kit-cliff-rock",
+      "bytes": 3556,
+      "nodes": 2,
+      "meshes": 1,
+      "animations": 0,
+      "extensionsRequired": [],
+      "external_files": []
+    },
+    {
+      "id": "kenney-space-kit-rover",
+      "bytes": 13384,
+      "nodes": 2,
+      "meshes": 1,
+      "animations": 0,
+      "extensionsRequired": [],
+      "external_files": []
+    },
+    {
+      "id": "kenney-space-kit-machine-generator",
+      "bytes": 28044,
+      "nodes": 3,
+      "meshes": 2,
+      "animations": 0,
+      "extensionsRequired": [],
+      "external_files": []
+    },
+    {
+      "id": "kenney-space-kit-satellitedish",
+      "bytes": 19528,
+      "nodes": 2,
+      "meshes": 1,
+      "animations": 0,
+      "extensionsRequired": [],
+      "external_files": []
+    },
+    {
+      "id": "kenney-space-kit-structure",
+      "bytes": 11060,
+      "nodes": 2,
+      "meshes": 1,
+      "animations": 0,
+      "extensionsRequired": [],
+      "external_files": []
+    },
+    {
+      "id": "nasa-perseverance",
+      "bytes": 4987176,
+      "nodes": 88,
+      "meshes": 68,
+      "animations": 23,
+      "extensionsRequired": [
+        "KHR_draco_mesh_compression"
+      ],
+      "external_files": []
+    }
+  ]
+}

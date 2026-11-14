@@ -1,0 +1,129 @@
+{
+  "repository": "https://github.com/witnesstodark/mr-mak-workspace",
+  "revision": "cf1e1260253a61499dc67fe2332a330bf1b85c14",
+  "skills": [
+    {
+      "name": "plan",
+      "path": ".agents/skills/plan",
+      "reason": "Selected for planning, rover and environment asset preparation, or first-scene implementation review."
+    },
+    {
+      "name": "feature-handoff",
+      "path": ".agents/skills/feature-handoff",
+      "reason": "Selected for planning, rover and environment asset preparation, or first-scene implementation review."
+    },
+    {
+      "name": "image-reference-workflow",
+      "path": ".agents/skills/image-reference-workflow",
+      "reason": "Selected for planning, rover and environment asset preparation, or first-scene implementation review."
+    },
+    {
+      "name": "character-sheet-pipeline",
+      "path": ".agents/skills/character-sheet-pipeline",
+      "reason": "Selected for planning, rover and environment asset preparation, or first-scene implementation review."
+    },
+    {
+      "name": "img2threejs",
+      "path": ".agents/skills/img2threejs",
+      "reason": "Selected for planning, rover and environment asset preparation, or first-scene implementation review."
+    },
+    {
+      "name": "materials-to-game",
+      "path": ".agents/skills/materials-to-game",
+      "reason": "Selected for planning, rover and environment asset preparation, or first-scene implementation review."
+    },
+    {
+      "name": "game-level-design",
+      "path": ".agents/skills/game-level-design",
+      "reason": "Selected for planning, rover and environment asset preparation, or first-scene implementation review."
+    },
+    {
+      "name": "gameplay-visual-review",
+      "path": ".agents/skills/gameplay-visual-review",
+      "reason": "Selected for planning, rover and environment asset preparation, or first-scene implementation review."
+    },
+    {
+      "name": "fal-ai-generation",
+      "path": ".agents/skills/fal-ai-generation",
+      "reason": "Preserved explicit sibling dependency for provider-specific execution; importing this skill does not select fal.ai or authorize paid work."
+    }
+  ],
+  "support_files": [
+    {
+      "source": "LICENSE",
+      "reason": "Root MIT license applies to original workflow documentation; retain its copyright and permission notice."
+    },
+    {
+      "source": "THIRD_PARTY_NOTICES.md",
+      "reason": "Retain upstream attribution, including Apache-2.0 notice for img2threejs."
+    }
+  ],
+  "bundled_resources": "Copy each complete skill directory, including hidden files and all scripts, prompts, references and licenses. img2threejs/LICENSE remains within its original directory.",
+  "external_markdown_links": [
+    {
+      "source": ".agents/skills/image-reference-workflow/SKILL.md",
+      "target": "../fal-ai-generation/SKILL.md",
+      "resolved": ".agents/skills/fal-ai-generation/SKILL.md",
+      "exists": true
+    },
+    {
+      "source": ".agents/skills/character-sheet-pipeline/SKILL.md",
+      "target": "../fal-ai-generation/SKILL.md",
+      "resolved": ".agents/skills/fal-ai-generation/SKILL.md",
+      "exists": true
+    },
+    {
+      "source": ".agents/skills/materials-to-game/SKILL.md",
+      "target": "../fal-ai-generation/SKILL.md",
+      "resolved": ".agents/skills/fal-ai-generation/SKILL.md",
+      "exists": true
+    }
+  ],
+  "root_runtime_support_required": [],
+  "optional_skills": [
+    {
+      "name": "3d-production-routing",
+      "reason": "Convenience router only; it lists numerous routes. Not needed when the project explicitly selects the active workflow."
+    },
+    {
+      "name": "game-animation-integration",
+      "reason": "Add when importing character animation clips; rigid rover parts can initially use hierarchical transforms."
+    },
+    {
+      "name": "game-ui-workflow",
+      "reason": "Add when authoring the actual HUD or menus."
+    },
+    {
+      "name": "game-audio-workflow",
+      "reason": "Add when selecting and integrating sound."
+    },
+    {
+      "name": "game-vfx-workflow",
+      "reason": "Add when authoring effects."
+    },
+    {
+      "name": "blender-game-animation",
+      "reason": "Add if Blender rigging or clip production becomes necessary."
+    },
+    {
+      "name": "higgsfield-workflow",
+      "reason": "Only if the user selects that provider; no such provider is selected."
+    },
+    {
+      "name": "workspace-authoring",
+      "reason": "Only for Mr. Mak Workspace-specific deliverables; regular local planning files do not require it."
+    },
+    {
+      "name": "video-watch",
+      "reason": "Only for video analysis; it brings repository-root support dependencies unnecessary for this task."
+    }
+  ],
+  "important_limits": [
+    "No engines, paid service credentials, MCP connections or third-party plugins are installed by these instructions.",
+    "img2threejs is a code-only reference reconstruction pipeline, not a prerequisite for importing GLB assets or developing gameplay.",
+    "img2threejs animated-character profile depends on a separately installed plugin; a rigid modular rover need not use that profile.",
+    "Upstream docs contain generalizations about image-to-mesh outputs that must not override current provider capabilities or the user's selected pipeline."
+  ],
+  "link_audit_note": "Markdown links were checked mechanically for paths leaving the skill directory. Missing links inside the large img2threejs upstream tree are recorded below; they are existing source issues, not missing root support.",
+  "upstream_missing_local_links": []
+}

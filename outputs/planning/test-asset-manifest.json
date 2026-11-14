@@ -1,0 +1,112 @@
+{
+  "assets": [
+    {
+      "id": "kenney-nature-kit-rock-largea",
+      "name": "Rock largea",
+      "url": "https://raw.githubusercontent.com/Hidencod/tge-assets/main/packs/nature-kit/rock-largea.glb",
+      "path": "assets/vendor/kenney/nature-kit/rock-largea.glb",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "source_page": "https://kenney.nl/assets/nature-kit",
+      "delivery_mirror": "https://github.com/Hidencod/tge-assets",
+      "bytes": 7552,
+      "sha256": "6dd15390fd96501dcd1454765a17ba61dbbd8d47705dfe5149c8dd92b353ce25"
+    },
+    {
+      "id": "kenney-nature-kit-rock-largeb",
+      "name": "Rock largeb",
+      "url": "https://raw.githubusercontent.com/Hidencod/tge-assets/main/packs/nature-kit/rock-largeb.glb",
+      "path": "assets/vendor/kenney/nature-kit/rock-largeb.glb",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "source_page": "https://kenney.nl/assets/nature-kit",
+      "delivery_mirror": "https://github.com/Hidencod/tge-assets",
+      "bytes": 8560,
+      "sha256": "caa8b025833d4dabf6d98fe2e96cf2fbd886693ac990df0db75f9d827194374b"
+    },
+    {
+      "id": "kenney-nature-kit-rock-talla",
+      "name": "Rock talla",
+      "url": "https://raw.githubusercontent.com/Hidencod/tge-assets/main/packs/nature-kit/rock-talla.glb",
+      "path": "assets/vendor/kenney/nature-kit/rock-talla.glb",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "source_page": "https://kenney.nl/assets/nature-kit",
+      "delivery_mirror": "https://github.com/Hidencod/tge-assets",
+      "bytes": 12072,
+      "sha256": "88250f236a3b75f8b55c1d8afb6af020f8a91b1e81f9fb51f7ef513420d45a2d"
+    },
+    {
+      "id": "kenney-nature-kit-cliff-rock",
+      "name": "Cliff rock",
+      "url": "https://raw.githubusercontent.com/Hidencod/tge-assets/main/packs/nature-kit/cliff-rock.glb",
+      "path": "assets/vendor/kenney/nature-kit/cliff-rock.glb",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "source_page": "https://kenney.nl/assets/nature-kit",
+      "delivery_mirror": "https://github.com/Hidencod/tge-assets",
+      "bytes": 3556,
+      "sha256": "64b555b394b4312938ccd389862d5c01beb3fc417100aa41bb1e5e96a9889de0"
+    },
+    {
+      "id": "kenney-space-kit-rover",
+      "name": "Rover",
+      "url": "https://raw.githubusercontent.com/Hidencod/tge-assets/main/packs/space-kit/rover.glb",
+      "path": "assets/vendor/kenney/space-kit/rover.glb",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "source_page": "https://kenney.nl/assets/space-kit",
+      "delivery_mirror": "https://github.com/Hidencod/tge-assets",
+      "bytes": 13384,
+      "sha256": "9784549775017e540ab84e6fc0eb8a1902dbeff9ba4285cecb97c086d2937fa5"
+    },
+    {
+      "id": "kenney-space-kit-machine-generator",
+      "name": "Machine generator",
+      "url": "https://raw.githubusercontent.com/Hidencod/tge-assets/main/packs/space-kit/machine-generator.glb",
+      "path": "assets/vendor/kenney/space-kit/machine-generator.glb",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "source_page": "https://kenney.nl/assets/space-kit",
+      "delivery_mirror": "https://github.com/Hidencod/tge-assets",
+      "bytes": 28044,
+      "sha256": "98e8ac6aceada3b2483ed1eceb59bff7190ee774edac799350ccc11ad140f7f3"
+    },
+    {
+      "id": "kenney-space-kit-satellitedish",
+      "name": "Satellitedish",
+      "url": "https://raw.githubusercontent.com/Hidencod/tge-assets/main/packs/space-kit/satellitedish.glb",
+      "path": "assets/vendor/kenney/space-kit/satellitedish.glb",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "source_page": "https://kenney.nl/assets/space-kit",
+      "delivery_mirror": "https://github.com/Hidencod/tge-assets",
+      "bytes": 19528,
+      "sha256": "db27a561b66fabda45a6ce2bcf41d650852e89e15bb9f63b68133ad1293aed8b"
+    },
+    {
+      "id": "kenney-space-kit-structure",
+      "name": "Structure",
+      "url": "https://raw.githubusercontent.com/Hidencod/tge-assets/main/packs/space-kit/structure.glb",
+      "path": "assets/vendor/kenney/space-kit/structure.glb",
+      "author": "Kenney",
+      "license": "CC0-1.0",
+      "source_page": "https://kenney.nl/assets/space-kit",
+      "delivery_mirror": "https://github.com/Hidencod/tge-assets",
+      "bytes": 11060,
+      "sha256": "0cd503971ffb2773c9f7f5e54526612b08a625d518be3aac927d993f532d27f7"
+    },
+    {
+      "id": "nasa-perseverance",
+      "name": "Mars 2020 Perseverance Rover",
+      "path": "assets/vendor/nasa/perseverance.glb",
+      "bytes": 4987176,
+      "sha256": "10db7c03a5e63a5a3b3e7baa6243aa4918ba045fa8ff0a731d0217491adc727f",
+      "author": "NASA/JPL-Caltech",
+      "license": "NASA media usage guidelines; not CC0",
+      "source_page": "https://science.nasa.gov/3d-resources/mars-2020-perseverance-rover/",
+      "license_url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "url": "https://assets.science.nasa.gov/content/dam/science/cds/3d/resources/model/mars-2020-perseverance-rover/Mars%202020%20Perseverance%20Rover.glb"
+    }
+  ]
+}

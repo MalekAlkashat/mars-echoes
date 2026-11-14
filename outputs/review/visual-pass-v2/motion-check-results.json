@@ -1,0 +1,36 @@
+[
+  {
+    "check": "acceleration, braking and reverse",
+    "stopDistance": 1.1056666666666626,
+    "status": "pass"
+  },
+  {
+    "check": "30 Hz and 120 Hz movement agreement",
+    "difference": 0.011314753002697485,
+    "status": "pass"
+  },
+  {
+    "check": "six-wheel plane contact, settling and over-travel detection",
+    "maximumPlaneGap": 2.220446049250313e-16,
+    "overTravelContacts": [
+      false,
+      false,
+      true,
+      false,
+      true,
+      false
+    ],
+    "status": "pass"
+  },
+  {
+    "check": "collision stop, no wheel spin while blocked, reverse and pivot escape",
+    "blockedDrift": 1.7763568394002505e-14,
+    "blockedWheelTravel": 1.6267726410390537e-7,
+    "peakImpact": 0.7638888888889676,
+    "status": "pass"
+  },
+  {
+    "check": "camera phase stability and physical optical cut",
+    "status": "pass"
+  }
+]

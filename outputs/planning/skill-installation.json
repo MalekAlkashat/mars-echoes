@@ -1,0 +1,46 @@
+{
+  "source": "https://github.com/witnesstodark/mr-mak-workspace",
+  "revision": "cf1e1260253a61499dc67fe2332a330bf1b85c14",
+  "skills": [
+    {
+      "name": "character-sheet-pipeline",
+      "files": 10
+    },
+    {
+      "name": "fal-ai-generation",
+      "files": 10
+    },
+    {
+      "name": "feature-handoff",
+      "files": 1
+    },
+    {
+      "name": "game-level-design",
+      "files": 1
+    },
+    {
+      "name": "gameplay-visual-review",
+      "files": 1
+    },
+    {
+      "name": "image-reference-workflow",
+      "files": 1
+    },
+    {
+      "name": "img2threejs",
+      "files": 352
+    },
+    {
+      "name": "materials-to-game",
+      "files": 1
+    },
+    {
+      "name": "plan",
+      "files": 1
+    }
+  ],
+  "identical": true,
+  "mismatches": [],
+  "skill_count": 9,
+  "file_count": 378
+}

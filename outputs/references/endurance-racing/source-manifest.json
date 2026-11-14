@@ -1,0 +1,90 @@
+{
+  "retrieved_utc": "2026-11-11T11:21:55.515261+00:00",
+  "scope": "One HTML and directly referenced JS/CSS chunks only; static inspection; third-party game code not executed or reused.",
+  "source_map_reference_found": false,
+  "downloads": [
+    {
+      "file": "index.html",
+      "url": "https://endurance-racing.vercel.app/",
+      "bytes": 7003,
+      "sha256": "227a0d5e1cc044bdfbb1a4957a8e17b4a379645bf2b5b2a741f16d0217fe207e"
+    },
+    {
+      "file": "index-B9DY0o_4.js",
+      "url": "https://endurance-racing.vercel.app/assets/index-B9DY0o_4.js",
+      "bytes": 2575613,
+      "sha256": "7816cf7301f0d6f186635e13fd89be43f55e685e2ce131abd82f081266df8b24"
+    },
+    {
+      "file": "index-BQTZXbEr.css",
+      "url": "https://endurance-racing.vercel.app/assets/index-BQTZXbEr.css",
+      "bytes": 310562,
+      "sha256": "f5733453fadf22341aedd0e574ccbfa3f4c36fef2392b596146be1ae972f3c21"
+    },
+    {
+      "file": "applyRealLook-CMJJebgX.js",
+      "url": "https://endurance-racing.vercel.app/assets/applyRealLook-CMJJebgX.js",
+      "bytes": 3167,
+      "sha256": "e012a4ca9554fdc4f6b17cf772146484bd9b419455d8c6d9caf57f9a13adb32e"
+    },
+    {
+      "file": "applyNeonLook-D-Rdtv0X.js",
+      "url": "https://endurance-racing.vercel.app/assets/applyNeonLook-D-Rdtv0X.js",
+      "bytes": 3116,
+      "sha256": "58d4abe2e656e7a1454b1bee669fbab08a35982b9b2be6452c997fd3996e0f63"
+    },
+    {
+      "file": "realPaint-BPQxzWBp.js",
+      "url": "https://endurance-racing.vercel.app/assets/realPaint-BPQxzWBp.js",
+      "bytes": 2112,
+      "sha256": "31d967c91992fc78ada893d7efdc965579fa90b11fa2b53b3dcbc0fa94301079"
+    },
+    {
+      "file": "loadVehicleRig-BAkTE8im.js",
+      "url": "https://endurance-racing.vercel.app/assets/loadVehicleRig-BAkTE8im.js",
+      "bytes": 661,
+      "sha256": "9a656b1bbe03d746a5e7bcdc541598da2432f77454a01c29f1d61885cc2359b8"
+    },
+    {
+      "file": "ringWorldStandby-BwVJGO3R.js",
+      "url": "https://endurance-racing.vercel.app/assets/ringWorldStandby-BwVJGO3R.js",
+      "bytes": 39376,
+      "sha256": "048c0bc7dbb36bb0481cf64fa4984b1892b5e01c43a14e2a69cde50595176b3f"
+    },
+    {
+      "file": "index-CdBgRkwH.js",
+      "url": "https://endurance-racing.vercel.app/assets/index-CdBgRkwH.js",
+      "bytes": 5662,
+      "sha256": "3da28cede83ac4e37e3eca29c5d53ced1571c009a74650683df645b733c14696"
+    }
+  ],
+  "referenced_asset_names_not_downloaded": [
+    "/custom_noise.webp",
+    "/custom_perlin.webp",
+    "/hdri/sunflowers_puresky_1k.hdr",
+    "/models/billboards.glb",
+    "/models/colider.glb",
+    "/models/cyberpunk_compressed.glb",
+    "/models/game/chrysalis_rig.glb",
+    "/models/game/katana_rig.glb",
+    "/models/game/mclaren_rig.glb",
+    "/models/game/npc_car.glb",
+    "/models/game/quadra_rig.glb",
+    "/models/game/raijin_rig.glb",
+    "/models/game/sigils.glb",
+    "/models/game/strix_rig.glb",
+    "/models/game/tachyon_rig.glb",
+    "/models/game/tsurugi_rig.glb",
+    "/models/game/vanta_rig.glb",
+    "/models/game/velora_rig.glb",
+    "/models/plane.glb",
+    "/models/quadra.glb",
+    "/textures/lens-mod.webp",
+    "/textures/smoke.png",
+    "/textures/water-splash.webp",
+    "/textures/wet-puddles-albedo.jpg",
+    "/textures/wet-puddles-normal.jpg",
+    "/textures/wet-puddles-roughness.jpg",
+    "ring_vegetation.glb"
+  ]
+}
