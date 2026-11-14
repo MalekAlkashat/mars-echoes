@@ -24,13 +24,13 @@ Acceptance: camera-relative WASD glide, bounded leap/landing, slopes, obstacles,
 
 ## Episode author: rover memory
 
-Outcome: the player experiences purposeful machine work, mission completion, abandonment, continued effort and eventual shutdown before returning to the spirit.
+Outcome: the player experiences Opportunity’s rock discovery, Purgatory Dune and final storm before returning to the spirit, with historical facts and reconstructions clearly distinguished.
 
-Own `game/src/scenes/episodes/rover/`, including local `mission.ts`, `hud.ts`, layout and a future time-jump timeline. Use shared `entities/rover/`; request rig/controller interface changes rather than rewriting shared runtime. The current episode preserves the old repair/call sequence, not the complete memory story. Preserve the accepted pale six-wheel design and twin optics. A functional earlier machine and deteriorated later machine are temporal states, not separate identities.
+Own `game/src/scenes/episodes/rover/`, including local `mission.ts`, `hud.ts`, layout and a future time-jump timeline. Use shared `entities/rover/`; request rig/controller interface changes rather than rewriting shared runtime. The current episode preserves the old repair/call sequence, not the complete memory story. Preserve the accepted expressive fictional rover reference; the visual treatment of real Opportunity still needs a decision. A functional earlier machine and deteriorated later machine are temporal states, not separate identities.
 
-The original assignment is deliberately undecided. Prepare a beat sheet while waiting; mission-specific puzzles, success conditions and props depend on that choice. Technical episode extraction now exists, and `?scene=episode-rover-01` previews it through the production factory. The existing optical-repair and unanswered-call sequence is reusable material, not the complete mission/shutdown story. Cinematic jumps will connect playable moments; game/presentation duration is not fixed.
+Prepare a sourced beat sheet and propose scoped interactions for the three selected historical moments; see `opportunity-story.md`. Specific puzzle controls, props and success conditions are not yet decided. Technical episode extraction now exists, and `?scene=episode-rover-01` previews it through the production factory. The existing optical-repair and unanswered-call sequence is fictional prototype material, not Opportunity history. Cinematic jumps will connect playable moments; game/presentation duration is not fixed.
 
-Acceptance: clear playable action and success condition after mission selection; time jumps communicate elapsed time; pause does not advance a cinematic timer; input/camera return predictably after a cut; completion returns the agreed typed result once. A present-day wreck is not physically revived or repaired by playing its memory.
+Acceptance: clear playable actions and success conditions for the selected moments; time jumps communicate elapsed time; pause does not advance a cinematic timer; input/camera return predictably after a cut; completion returns the agreed typed result once. A present-day wreck is not physically revived or repaired by playing its memory.
 
 ## Asset author: reviewed imports and audio
 

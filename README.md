@@ -1,6 +1,6 @@
 # Mars Echoes (working name)
 
-A Three.js narrative game in development: a spirit explores Mars, enters abandoned equipment and lives through its past mission, then returns to the present. The hackathon target is one complete rover story with cinematic time jumps. The title and spirit appearance are provisional.
+A Three.js narrative game in development: a spirit explores Mars, enters abandoned equipment and lives through its past mission, then returns to the present. The hackathon target is one complete story about the real Opportunity rover, with cinematic time jumps. The current playable rover sequence is a fictional prototype; Opportunity’s historical chapters are not built yet. The title and spirit appearance are provisional.
 
 Start with [ROADMAP.md](ROADMAP.md) for the current vision and development stages. Read [CONTRIBUTING.md](CONTRIBUTING.md) before parallel work. AI contributors also read [AGENTS.md](AGENTS.md).
 
@@ -10,7 +10,7 @@ The local build command below is verified. A GitHub Actions build template is pr
 
 `game/` now has the actual owner-responsibility structure: shared application/input/assets/rendering services, a placeholder Mars hub and spirit controller, and an isolated rover episode. The default opens the hub. Approach its registered abandoned rover to enter the preserved repair/call sequence, then return to Mars. The earlier rover-only source is tagged `rover-v2-baseline`.
 
-This proves the shared runtime and entry/return foundation, not the complete selected past mission. The original assignment, cinematic time jumps, eventual shutdown, final spirit art and sound remain unfinished. The spirit's procedural humanoid silhouette is a tentative placeholder.
+This proves the shared runtime and entry/return foundation, not the complete selected past mission. The Opportunity chapters, cinematic time jumps, eventual shutdown, final spirit art and sound remain unfinished. The spirit's procedural humanoid silhouette is a tentative placeholder.
 
 Use Node.js 22.12 or newer, then from the repository root:
 

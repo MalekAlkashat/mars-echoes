@@ -2,11 +2,13 @@
 
 Current vision, revised 14 November 2026: the protagonist is a spirit exploring present-day Mars. It enters abandoned equipment, replays that machine's past mission, and returns to the spirit. The hackathon target is one complete rover story, with other wrecks visible. Root `ROADMAP.md` is the current development plan; `architecture.md` and `team-development.md` define the implemented runtime ownership boundaries and contributor handoffs.
 
-Confirmed spirit movement is near-ground glide and bounded leap, inspired by Fortnite's Shadow Stone movement feel, with no passing through obstacles. A ghostly humanoid silhouette is tentative and may change. The rover memory follows mission, abandonment and eventual shutdown through playable moments linked by cinematic time jumps. Its original assignment remains open. The new game has no fixed duration or approved final title.
+Confirmed spirit movement is near-ground glide and bounded leap, inspired by Fortnite's Shadow Stone movement feel, with no passing through obstacles. A ghostly humanoid silhouette is tentative and may change. The selected rover memory follows Opportunity through evidence of ancient water, Purgatory Dune and the final dust storm, with playable moments linked by cinematic time jumps. See `opportunity-story.md` for historical guardrails and proposed supporting features. The new game has no fixed duration or approved final title.
 
-The earlier rover-only optical-repair/relay prototype is preserved at tag `rover-v2-baseline` (commit `179705b`). The current source has shared app/core services, an isolated rover episode and HUD, reusable entities/Mars environment, and a placeholder spirit hub with entry/return plumbing. This implements the M1 foundation plus minimal M2/M3 integration. It does not yet implement the complete past mission, cinematic time jumps, shutdown or sound. Earlier repair and call decisions below remain baseline context and potential episode material; they do not force a stage-two-damaged state at the beginning of the past mission.
+The earlier rover-only optical-repair/relay prototype is preserved at tag `rover-v2-baseline` (commit `179705b`). The current source has shared app/core services, an isolated rover episode and HUD, reusable entities/Mars environment, and a placeholder spirit hub with entry/return plumbing. This implements the M1 foundation plus minimal M2/M3 integration. It does not yet implement the complete past mission, cinematic time jumps, shutdown or sound. Earlier repair and call decisions below are fictional baseline context, not Opportunity history; they do not force a stage-two-damaged state at the beginning of the past mission.
 
-## Retained rover-episode direction and earlier decisions
+## Historical fictional prototype and earlier decisions
+
+The fictional events in this section and the old scene proposals and acceptance checks below are preserved for reference, not as facts about Opportunity. The selected new story takes precedence.
 
 - The machine was sent on a mission expected to last days, without a planned return. It completes the assignment and continues for months before its eventual demise.
 - The emotional reference is the vulnerability and abandonment of machines in Markus's junkyard sequence in Detroit Become Human.
@@ -64,7 +66,7 @@ The user selected a hybrid of A and B, retaining A's terrain and distant light w
 
 ## Decisions still needed
 
-Presentation slot and target computer; final graveyard layout and art; original mission; what the rover expected after completion; full-game scope and duration. WASD driving is now explicitly selected. Implemented puzzle controls are WASD positioning, Q/E rotation and Enter insertion; these remain a prototype awaiting the user's gameplay review. The selected environment retains orange terrain, distant pale light and a heavy gray sky; implementation must preserve route and protagonist readability.
+Presentation slot and target computer; final layout and art; exact Opportunity chapter mechanics; historical rover visual treatment; skill/map/check scope; full-game duration. WASD driving is now explicitly selected. Implemented puzzle controls are WASD positioning, Q/E rotation and Enter insertion; these remain a prototype awaiting the user's gameplay review. The selected environment retains orange terrain, distant pale light and a heavy gray sky; implementation must preserve route and protagonist readability.
 
 These choices do not block installation, reference preparation or initial concept exploration. They must be resolved before dependent implementation or final story writing.
 
@@ -74,7 +76,7 @@ These choices do not block installation, reference preparation or initial concep
 
 The default entry and `?scene=mars-hub` run the placeholder hub factory. `?scene=episode-rover-01` previews the preserved rover sequence through the same registered production factory. The hub has a tentative humanoid placeholder and separate near-ground glide/leap controller; its appearance can change independently. The runtime has typed entry/return requests, bookmark restoration, cancellation/failure recovery and completion-versus-abort handling. These are implemented infrastructure, not evidence of the full selected story.
 
-The production build and current automated suite pass, covering 14 director/lifecycle, four rover movement/contact and five spirit controller checks. Native development-browser review passes the complete preserved repair/call sequence, alignment retry, installation, calibration, return to Mars and ten additional aborted visits. Each returned hub reports 134 geometries and 34 textures, restores the same horizontal position `(0, 2.33)` and retains exactly one prior prototype completion; browser errors are empty. These observed resource counts are not a memory-size or performance benchmark. Fault UI, mobile and production-browser checks are tracked separately. The original assignment, complete mission/shutdown sequence, final spirit model, sound, owner acceptance and target-machine acceptance remain outstanding.
+The production build and current automated suite pass, covering 14 director/lifecycle, four rover movement/contact and five spirit controller checks. Native development-browser review passes the complete preserved repair/call sequence, alignment retry, installation, calibration, return to Mars and ten additional aborted visits. Each returned hub reports 134 geometries and 34 textures, restores the same horizontal position `(0, 2.33)` and retains exactly one prior prototype completion; browser errors are empty. These observed resource counts are not a memory-size or performance benchmark. Fault UI, mobile and production-browser checks are tracked separately. The Opportunity chapters and shutdown sequence, final spirit model, sound, owner acceptance and target-machine acceptance remain outstanding.
 
 ## Preserved rover v2 history
 

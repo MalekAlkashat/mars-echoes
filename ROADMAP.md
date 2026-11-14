@@ -16,16 +16,16 @@ The hackathon target is one complete equipment story in a compact Mars explorati
 - The spirit currently has a ghostly humanoid silhouette. Its appearance is tentative and may change; controller and rendering must remain separate.
 - Entering equipment replays its past, rather than repairing or possessing its present-day wreck.
 - Finishing a memory returns control to the spirit on Mars.
-- The first memory follows the rover's mission, abandonment and eventual shutdown. Playable moments are connected by cinematic time jumps.
-- The original assignment is deliberately undecided. Do not silently choose sample collection, relay repair or another objective.
+- The first memory follows the real Opportunity rover through evidence of ancient water, the Purgatory Dune entrapment and the final dust storm, with playable moments connected by cinematic time jumps. See [Opportunity story](outputs/planning/opportunity-story.md).
+- The team's design proposes skill links to other robots, a Mars map and a short learning check; their exact scope and mechanics remain to be reviewed.
 - Retain the selected orange terrain, pale distant light, heavy cold sky, grounded machinery and emotion expressed through motion/sound with little text.
-- The pale six-wheel rover and enlarged twin optics retain their existing design references. The spirit is a separate protagonist and must not replace that asset authority.
+- The existing expressive twin-eye rover remains the fictional prototype’s accepted design reference. The visual treatment of the real Opportunity rover needs a separate decision; do not present the existing model as historically accurate.
 
 ### Implemented foundation versus remaining story work
 
 The runtime has now been reorganized into the ownership boundaries below. `main.ts` bootstraps the app; shared application, input, asset and presentation services run scene factories. The preserved rover sequence lives in `scenes/episodes/rover/`, including local mission progression and HUD. A compact placeholder hub uses the shared Mars environment and a separate spirit controller/appearance/camera. It provides entry into that rover sequence and a return route to the hub.
 
-Git tag `rover-v2-baseline` preserves the original rover-only version. The new work implements the M1 runtime foundation and minimal M2/M3 integration, not the complete past mission, shutdown ending, final spirit model or audio pass. Existing repair and unanswered-call material can inform the first memory, but does not constitute the complete selected story. A memory may begin with a functional machine; stage-two deterioration describes the previous opening and present-day remains, not a required initial memory condition.
+Git tag `rover-v2-baseline` preserves the original rover-only version. The new work implements the M1 runtime foundation and minimal M2/M3 integration, not the complete past mission, shutdown ending, final spirit model or audio pass. The existing repair and unanswered-call material is fictional prototype content, not an event in Opportunity’s history. A memory may begin with a functional machine; stage-two deterioration describes the previous opening and present-day remains, not a required initial memory condition.
 
 The production build and 23 automated checks pass: 14 director/lifecycle checks, four rover motion/contact checks and five spirit controller checks. Native development-browser review also passes the complete preserved repair-to-relay sequence and return to Mars, including failed alignment and successful installation. After one completed prototype visit, ten additional aborted visits restore the same hub position, retain the one completion and return to stable renderer counts of 134 geometries and 34 textures, with no browser errors. These are observed development-browser results, not a GPU-memory benchmark or stage-machine certification. Fault UI, mobile and production-browser checks are tracked separately. Earlier v2 review remains historical evidence under `outputs/review/visual-pass-v2/REVIEW.md`.
 
@@ -33,7 +33,7 @@ The production build and 23 automated checks pass: 14 director/lifecycle checks,
 
 One renderer presents a spirit exploration scene and a machine episode with different controllers, cameras and local objectives. Application orchestration now supplies input ownership, scene lifecycle and transition handling around the existing rover, terrain and rendering code. Full story progression remains episode-author work. Three.js supplies rendering, not those game systems. See the [official game-development manual](https://threejs.org/manual/pages/game.html).
 
-This plan uses one compact hub, one episode and explicit scene registration. Open-space travel, a planet-scale map, procedural galaxies, multiplayer, a general-purpose editor and a new physics engine are outside the first build. These are scope recommendations for this iteration, not a permanent restriction on the concept.
+This plan uses one compact hub, one episode and explicit scene registration. Open-space travel, a freely traversable planet, procedural galaxies, multiplayer, a general-purpose editor and a new physics engine are outside the first build. These are scope recommendations for this iteration, not a permanent restriction on the concept.
 
 ## Implemented file structure and reserved extensions
 
@@ -132,7 +132,7 @@ Timeboxes below are planning estimates for the team, not measured implementation
 | M1 | Shared runtime/input lifecycle and unchanged rover scene extraction | Integrator | M0 | Existing repair-to-relay behavior still works; one loop/listener set; extracted scene enters, pauses, exits and disposes. |
 | M2 | Spirit movement and compact Mars hub | Hub owner | M1 contract freeze | WASD movement relative to camera, readable leap/landing, slopes, solid obstacles, camera clearance and reset work in the actual scene. |
 | M3 | One complete enter/return route using the preserved rover scene | Integrator + scene owners | M1; simple M2 | Enter a designated wreck, play the existing rover sequence, return beside it. Loading failure, abort and repeated interaction recover correctly. This proves infrastructure, not the completed story. |
-| M4 | Chosen original assignment and complete rover episode | Episode owner + user for assignment | Mission choice; M1, M3 | One meaningful playable assignment, completion, abandonment, authored time jumps and shutdown produce a clear emotional arc and a typed completion result. |
+| M4 | Opportunity’s three historical moments and return | Episode owner + integrator | M1, M3; verified historical beats | Player experiences the rock discovery, dune entrapment and storm through clear interactions or scoped cinematic transitions, followed by a typed completion and return. Label reconstructions and simplifications. |
 | M5 | Spirit/rover art, sound and cinematic continuity | Asset owner + scene owners | Placeholder loop first; M4 beats for final timing | Readable ghostly silhouette, coherent scale/lighting, approved rover identity, meaningful motion and audible story cues checked in runtime. |
 | M6 | Integration and stage rehearsal | Integrator + whole team | M2–M5 | Full loop works in production, repeated scene switching remains stable, assets work locally, target machine checked, fallback build saved and tagged. |
 
@@ -161,13 +161,12 @@ M1 implementation and the preserved rover development-browser regression are com
 
 ### M4: episode checklist
 
-- [ ] Choose the original assignment before authoring its dependent puzzle or mission props.
-- [ ] Write a short beat sheet: purposeful work, task completion, abandonment, continued effort, shutdown, return.
-- [ ] Choose which moments are playable and where cinematic time jumps communicate elapsed days/months.
-- [ ] Preserve machine control during playable beats; camera choreography must return control clearly.
-- [ ] Reuse the current optics/repair/call systems only where they serve the new chronology.
-- [ ] Keep robot deterioration separate from present-day hub dressing; reuse the approved damage references where appropriate.
-- [ ] Do not substitute the old unanswered-call ending for the selected eventual-shutdown ending.
+- [ ] Verify and source a concise beat sheet for the rock discovery, Purgatory Dune, storm and return.
+- [ ] Design the three interactions, transitions and scoped fallbacks for the available time; mark reconstructions and simplifications.
+- [ ] Preserve direct machine control during playable beats and return camera/control clearly after transitions.
+- [ ] Review the proposed skill links, map, learning check and credits against the one-day budget.
+- [ ] Decide how to depict the real Opportunity rover while respecting the previously selected expressive design.
+- [ ] Do not present the fictional repair, decommissioning or unanswered call as Opportunity’s history.
 
 ### M6: required verification
 
@@ -193,8 +192,8 @@ The shared contract now exists in `game/src/app/contracts.ts`, and scene owners 
 
 ## Open decisions
 
-1. Original rover assignment, its player action and success condition. This blocks dependent mission scripting, not runtime extraction or spirit movement.
-2. Exact playable beats and time-jump timing. The overall method and eventual shutdown are confirmed; duration is not.
+1. Specific player actions, success conditions and fallbacks for the three selected Opportunity moments.
+2. Exact time-jump timing and scope of skill links, map and learning check; duration is not fixed.
 3. Final spirit shape, body/rig route, palette and camera distance. A ghostly humanoid is the current tentative direction.
 4. What the spirit is, why it enters memories, and whether completion changes it. Keep those lore choices open rather than inventing abilities or moral choices.
 5. The visual response on returning to a completed wreck, and whether replay is freely available.
