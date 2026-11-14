@@ -53,7 +53,7 @@ function surfaceTexture(role: SurfaceRole, file: SurfaceFile): Texture {
   return texture;
 }
 
-export function surfaceMaterial(role: SurfaceRole): MeshStandardMaterial {
+export function surfaceMaterial(role: SurfaceRole, distant = false): MeshStandardMaterial {
   const material = new MeshStandardMaterial({
     name: `${role}-triplanar-pbr`,
     color: role === 'regolith' ? '#e98740' : '#b79073',
@@ -61,6 +61,8 @@ export function surfaceMaterial(role: SurfaceRole): MeshStandardMaterial {
     metalness: 0,
     vertexColors: true,
   });
+  // Distant terrain gets its scale from geometry and haze, not twelve triplanar texture reads.
+  if (distant) return material;
   const uniforms = {
     surfaceColor: { value: surfaceTexture(role, 'color') },
     surfaceNormal: { value: surfaceTexture(role, 'normal') },

@@ -6,8 +6,15 @@ import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { GTAOPass } from 'three/addons/postprocessing/GTAOPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
+const highQuality = new URLSearchParams(location.search).get('quality') === 'high';
+export const RENDER_FPS = highQuality ? 60 : 45;
+const pixelRatio = () => Math.min(devicePixelRatio, highQuality ? (innerWidth < 700 ? 1.2 : 1.5) : (innerWidth < 700 ? 1 : 1.25));
+
 class ContactAO extends GTAOPass {
-  override setSize(width:number,height:number):void {super.setSize(Math.max(1,Math.round(width*.55)),Math.max(1,Math.round(height*.55)));}
+  override setSize(width:number,height:number):void {
+    const scale = highQuality ? .55 : .45;
+    super.setSize(Math.max(1,Math.round(width*scale)),Math.max(1,Math.round(height*scale)));
+  }
   override render(renderer:THREE.WebGLRenderer,write:THREE.WebGLRenderTarget,read:THREE.WebGLRenderTarget):void {
     const hidden:THREE.Object3D[]=[];
     this.scene.traverseVisible(object=>{if(object.userData.excludeAO){hidden.push(object);object.visible=false;}});
@@ -16,14 +23,15 @@ class ContactAO extends GTAOPass {
 }
 
 export function createRenderer(canvas:HTMLCanvasElement):THREE.WebGLRenderer {
-  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'high-performance'});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,innerWidth<700?1.2:1.5));
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:false,powerPreference:highQuality ? 'high-performance' : 'default'});
+  renderer.setPixelRatio(pixelRatio());
   renderer.setSize(innerWidth,innerHeight);
   renderer.shadowMap.enabled=true;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure=1.05;
   renderer.outputColorSpace=THREE.SRGBColorSpace;
+  renderer.info.autoReset=false;
   return renderer;
 }
 
@@ -34,10 +42,11 @@ export function createPresentation(renderer:THREE.WebGLRenderer,scene:THREE.Scen
   composer.addPass(renderPass);
   const ao=new ContactAO(scene,camera);
   ao.blendIntensity=.52;
-  ao.updateGtaoMaterial({radius:.32,thickness:.18,distanceExponent:1.5,distanceFallOff:1.1,scale:1,samples:12,screenSpaceRadius:false});
-  ao.updatePdMaterial({radius:4,samples:8,rings:2,lumaPhi:8,depthPhi:4,normalPhi:3});
+  ao.updateGtaoMaterial({radius:.32,thickness:.18,distanceExponent:1.5,distanceFallOff:1.1,scale:1,samples:highQuality?12:8,screenSpaceRadius:false});
+  ao.updatePdMaterial({radius:4,samples:highQuality?8:6,rings:2,lumaPhi:8,depthPhi:4,normalPhi:3});
   composer.addPass(ao);
   const bloom=new UnrealBloomPass(new THREE.Vector2(innerWidth,innerHeight),.14,.4,1.35);
+  bloom.enabled=highQuality;
   composer.addPass(bloom);
   const film=new ShaderPass({
     uniforms:{tDiffuse:{value:null},time:{value:0},degraded:{value:0}},
@@ -61,7 +70,7 @@ export function createPresentation(renderer:THREE.WebGLRenderer,scene:THREE.Scen
       renderPass.scene=scene;renderPass.camera=camera;ao.scene=scene;ao.camera=camera;
       film.uniforms.degraded.value=0;
     },
-    resize(){composer.setSize(innerWidth,innerHeight);},
+    resize(){renderer.setPixelRatio(pixelRatio());composer.setPixelRatio(renderer.getPixelRatio());composer.setSize(innerWidth,innerHeight);},
     dispose(){composer.passes.forEach(pass=>pass.dispose());composer.dispose();},
   };
 }

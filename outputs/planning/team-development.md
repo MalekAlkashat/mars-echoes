@@ -1,5 +1,13 @@
 # Contributor handoffs
 
+## Current Opportunity model integration
+
+The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.
+
+## Current work split: hub plus independent mission maps
+
+The user has deferred final spirit design, while requiring the base hub first for roaming and discovering Opportunity. The hub owner uses the existing placeholder and owns `scenes/mars-hub/` plus `entities/spirit/`; terrain quality and parallel Opportunity mission development share that foundation. See `mission-foundation.md`. One integrator owns mission hosting/contracts; one terrain owner owns shared heightfields, bounds and base presentation; chapter authors will own separate `missions/blueberry-clue/`, `missions/purgatory/` and `missions/long-night/` directories. Each chapter owns its separately confirmed compact map configuration and objectives; terrain tools, rover, camera and lighting remain shared. Those mission folders/interface are not implemented yet. Freeze and verify them before parallel chapter integration. The prior single episode-owner/hub-owner split below describes existing source; do not assign three authors to the same `mission.ts`. Spirit design can continue separately without blocking this work.
+
 14 November 2026. Roles are proposed; actual colleague names and GitHub handles are not assigned. Root `ROADMAP.md` is the current vision. The runtime ownership folders below now exist and contain executable source. A placeholder hub and spirit controller connect to the isolated rover repair/call episode through shared app/core services. The original rover-only demo remains preserved at `rover-v2-baseline` (`179705b`). The complete past mission, shutdown and sound remain future work.
 
 ## Integrator: runtime and contracts

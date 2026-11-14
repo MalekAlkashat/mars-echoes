@@ -1,5 +1,7 @@
 # Mars Echoes (working name)
 
+Current development focus: build the present-day exploration map first, using the existing spirit placeholder while final art is prepared. Players roam to Opportunity, enter its story on three separate chapter maps, then return. Build shared terrain and mission systems so the chapters can develop in parallel. See [foundation audit and plan](outputs/planning/mission-foundation.md). The current executable still starts at the placeholder hub and uses the fictional repair episode; this planning update does not implement the new route.
+
 A Three.js narrative game in development: a spirit explores Mars, enters abandoned equipment and lives through its past mission, then returns to the present. The hackathon target is one complete story about the real Opportunity rover, with cinematic time jumps. The current playable rover sequence is a fictional prototype; Opportunity’s historical chapters are not built yet. The title and spirit appearance are provisional.
 
 Start with [ROADMAP.md](ROADMAP.md) for the current vision and development stages. Read [CONTRIBUTING.md](CONTRIBUTING.md) before parallel work. AI contributors also read [AGENTS.md](AGENTS.md).
@@ -53,3 +55,7 @@ Open [the production preview](http://127.0.0.1:5181/) while that server is runni
 - `.agents/`: retained project workflows and their source/license records. Read only the workflow relevant to a task.
 
 Kenney and Poly Haven assets are CC0; their exact origins are recorded beside the originals. Three.js and other installed packages retain their own licenses in the dependency distribution. The NASA model follows its recorded NASA usage terms rather than a blanket CC0 claim. Project Endurance and Fortnite inform selected references; their code, characters and artwork are not imported into the game. No project-wide open-source license has been selected.
+
+The present-day hub now has a NASA-reference-informed basin and crater vista with one rover entrance, no decorative rover graveyard and balanced rendering defaults. Final spirit art and historical chapters remain in development. [Hub review](outputs/review/mars-hub-v1/REVIEW.md) records the 26 passing checks and native observations; the game server is stopped after review.
+
+The supplied NASA Opportunity model now appears in the hub and default rover drive preview. Wheel pivots, steering, spin, contact, camera and dust use the imported model. Historical chapters remain unbuilt. The fictional repair baseline is available at `?scene=episode-rover-01&prototype=repair`. See [model review](outputs/review/opportunity-v1/REVIEW.md).

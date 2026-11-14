@@ -1,0 +1,25 @@
+{
+  "sourceRevision": "30c4783",
+  "scene": "mars-hub",
+  "units": "metres",
+  "up": "+Y",
+  "forward": "-Z",
+  "spawn": [
+    0,
+    8
+  ],
+  "wreck-rover-01": [
+    0,
+    1
+  ],
+  "playableRadius": 63.5,
+  "sourceHashes": {
+    "game/src/scenes/mars-hub/layout.ts": "02af7bd43d65b35eb757e756b492400040080c7db8c96570bd1c937189ff67e4",
+    "game/src/scenes/mars-hub/index.ts": "d4f0e46db3de312ba2cac7a41187f0ee1069acee1f7be7bc5d30c00ed3058b26",
+    "game/src/environments/mars/terrain.ts": "c5a3a7dfe22875bfde19d3860f3ab907d9d6241832a0f2641db66ec1eed5d0b8",
+    "game/src/environments/mars/dressing.ts": "7af7063a63195fe073ce0782e51c9477d2d3906af5f42125acc06ad138e16f17",
+    "game/src/core/presentation.ts": "f6a0b10861f9516f80785ae378a136f27bf24dbc6437e8cfb0e2197a02d81bcc",
+    "game/src/app/Game.ts": "26f89c015c827aea55e29846631951af0c7ee6ad0e14615ebf28cf262b4939df"
+  },
+  "note": "Read-only source snapshot before hub redesign; runtime not engine-exported."
+}

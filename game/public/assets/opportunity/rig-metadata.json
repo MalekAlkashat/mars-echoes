@@ -1,0 +1,130 @@
+{
+  "source": "24883_MER_static.usdz",
+  "sourceSha256": "ce21bd6ed7763e1e5cc893a60b53b99e3c3de77e989b75b0da1a18ad5652bcab",
+  "runtime": "opportunity-v1.glb",
+  "runtimeSha256": "b1ddfcd389a7b1b25750a22f3eb6e2ff73f51d44eec3d57e0d91d964b15461d6",
+  "sourceMetersPerUnit": 0.01,
+  "sourceUpAxis": "Y",
+  "normalization": "world transforms baked; centimetres to metres; rotate Y pi so source +Z front becomes -Z; ground bottom shifted to0",
+  "groundShift": 0.0026026966515928507,
+  "triangles": 31450,
+  "materials": 9,
+  "textures": 12,
+  "runtimeBytes": 3498588,
+  "wheels": [
+    {
+      "name": "wheel-left-front",
+      "center": [
+        -0.5305031388998032,
+        0.1307346821995452,
+        -0.6060332357883453
+      ],
+      "radius": 0.13080172246554866,
+      "triangles": 896,
+      "spinAxis": "+X",
+      "sourceTriangleComponent": 784
+    },
+    {
+      "name": "wheel-left-middle",
+      "center": [
+        -0.4750003069639206,
+        0.13083026418462396,
+        0.1053759278729558
+      ],
+      "radius": 0.13070939329918474,
+      "triangles": 896,
+      "spinAxis": "+X",
+      "sourceTriangleComponent": 784
+    },
+    {
+      "name": "wheel-left-rear",
+      "center": [
+        -0.5304795801639557,
+        0.1308321978431195,
+        0.6056124120950699
+      ],
+      "radius": 0.13076981040649116,
+      "triangles": 896,
+      "spinAxis": "+X",
+      "sourceTriangleComponent": 784
+    },
+    {
+      "name": "wheel-right-front",
+      "center": [
+        0.5304796546697617,
+        0.13073014665860683,
+        -0.6060505956411362
+      ],
+      "radius": 0.13053777354070917,
+      "triangles": 868,
+      "spinAxis": "+X",
+      "sourceTriangleComponent": 756
+    },
+    {
+      "name": "wheel-right-middle",
+      "center": [
+        0.47500021755695343,
+        0.1308302398538217,
+        0.10537387058138847
+      ],
+      "radius": 0.13070938357850537,
+      "triangles": 896,
+      "spinAxis": "+X",
+      "sourceTriangleComponent": 784
+    },
+    {
+      "name": "wheel-right-rear",
+      "center": [
+        0.5304814130067825,
+        0.13083119282964617,
+        0.6056147962808609
+      ],
+      "radius": 0.13072926021413878,
+      "triangles": 896,
+      "spinAxis": "+X",
+      "sourceTriangleComponent": 784
+    }
+  ],
+  "wheelOrder": [
+    "wheel-left-front",
+    "wheel-left-middle",
+    "wheel-left-rear",
+    "wheel-right-front",
+    "wheel-right-middle",
+    "wheel-right-rear"
+  ],
+  "staticParts": [
+    "tex_panels_n",
+    "tex_panels2_n",
+    "tex_instruments",
+    "tex_body_n",
+    "suspension-body",
+    "Silver",
+    "tex_mast",
+    "foil_silver",
+    "tex_arm"
+  ],
+  "notes": [
+    "All source triangles retained exactly; no decimation.",
+    "Wheels and outer axle caps split by welded connectivity without changing vertices/normals/UVs; steering/suspension arms remain body geometry.",
+    "Material UV V inverted for glTF top-left image convention.",
+    "No damage, anthropomorphic eyes, or invented parts added."
+  ],
+  "normalizedBounds": {
+    "min": [
+      -1.1395052671432495,
+      1.1641532182693481e-10,
+      -0.7369019985198975
+    ],
+    "max": [
+      1.1395169496536255,
+      1.5845496654510498,
+      0.9107088446617126
+    ]
+  },
+  "validation": {
+    "triangleCountPreserved": true,
+    "allImagesByteIdentical": true,
+    "meshes": 15
+  }
+}

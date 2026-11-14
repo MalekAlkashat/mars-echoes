@@ -11,6 +11,10 @@ import { RoverHUD } from './hud';
 export async function createRoverEpisode(
   context: SceneContext, entry: EpisodeEntry, signal: AbortSignal,
 ): Promise<GameScene> {
+  if (new URLSearchParams(location.search).get('prototype') !== 'repair') {
+    const {createOpportunityDrive} = await import('./opportunity-drive');
+    return createOpportunityDrive(context,entry,signal);
+  }
   const assets = await context.assets.load();
   signal.throwIfAborted();
   const world = createRoverWorld(assets, () => createRover(assets.rover, true).root);

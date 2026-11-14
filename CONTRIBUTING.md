@@ -1,5 +1,7 @@
 # Working together during the contest
 
+Current phase: final spirit art is deferred, but the base hub is required first and uses the existing placeholder for roaming and discovering Opportunity. Read `outputs/planning/mission-foundation.md` before new mission or terrain work. The current code has one fictional repair episode, not three isolated Opportunity chapters. The integrator must establish the shared mission host/interface and configurable terrain before parallel chapter integrations; authors can prepare puzzle logic, references and assets independently meanwhile. Use `codex/` for new branch names. The older hub/episode examples below describe the existing source.
+
 Read `ROADMAP.md`, `outputs/planning/architecture.md` and your role in `outputs/planning/team-development.md`. The source now implements the ownership directories below, shared runtime services, a placeholder Mars hub and an isolated rover repair/call episode. `game/src/app/contracts.ts` is the authoritative implemented scene/input/result interface. Coordinate changes through the integrator; do not independently replace shared services or copy the frame loop into a level.
 
 ## Ownership

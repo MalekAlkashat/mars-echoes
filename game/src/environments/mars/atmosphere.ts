@@ -12,7 +12,9 @@ export type Atmosphere = {
   dispose(): void;
 };
 
-export function addAtmosphere(scene: Scene): Atmosphere {
+export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadowSize?: number} = {}): Atmosphere {
+  const skyRadius = options.skyRadius ?? 280;
+  const shadowSize = options.shadowSize ?? 2048;
   const sunDirection = new Vector3(-0.18, 0.085, -1).normalize();
   const material = new ShaderMaterial({
     side: BackSide,
@@ -87,7 +89,7 @@ export function addAtmosphere(scene: Scene): Atmosphere {
       }
     `,
   });
-  const sky = new Mesh(new SphereGeometry(280, 48, 28), material);
+  const sky = new Mesh(new SphereGeometry(skyRadius, 48, 28), material);
   sky.name = 'coherent-storm-atmosphere';
   sky.renderOrder = -10;
   sky.frustumCulled = false;
@@ -98,7 +100,7 @@ export function addAtmosphere(scene: Scene): Atmosphere {
   const sun = new DirectionalLight('#f3e8d3', 3.0);
   sun.name = 'pale-low-sun';
   sun.castShadow = true;
-  sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.mapSize.set(shadowSize, shadowSize);
   Object.assign(sun.shadow.camera, {
     left: -22, right: 22, top: 27, bottom: -27, near: 1, far: 165,
   });
@@ -114,7 +116,7 @@ export function addAtmosphere(scene: Scene): Atmosphere {
   let environmentTarget: WebGLRenderTarget | undefined;
   let disposed = false;
   const follow = (position: Vector3) => {
-    const texel = 44 / 2048;
+    const texel = 44 / shadowSize;
     anchor.set(
       Math.round(position.x / texel) * texel,
       0,
@@ -139,7 +141,7 @@ export function addAtmosphere(scene: Scene): Atmosphere {
       const cubeTarget = new WebGLCubeRenderTarget(128, {
         type: HalfFloatType, generateMipmaps: true, minFilter: LinearMipmapLinearFilter,
       });
-      const cube = new CubeCamera(0.1, 320, cubeTarget);
+      const cube = new CubeCamera(0.1, skyRadius + 40, cubeTarget);
       const generator = new PMREMGenerator(renderer);
       try {
         cube.update(renderer, capture);

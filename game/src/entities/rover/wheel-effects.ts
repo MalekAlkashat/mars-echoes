@@ -21,7 +21,7 @@ export class WheelEffects {
   private matrix = new THREE.Matrix4();
   private transform = new THREE.Object3D();
 
-  constructor(scene: THREE.Scene, private height: (x:number,z:number)=>number) {
+  constructor(scene: THREE.Scene, private height: (x:number,z:number)=>number, private readonly trackWidth = .19) {
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.BufferAttribute(this.dustPositions,3));
     geometry.setAttribute('puffSize', new THREE.BufferAttribute(this.dustSizes,1));
@@ -146,7 +146,7 @@ export class WheelEffects {
       this.matrix.makeBasis(side,tangent,normal);
       this.transform.quaternion.setFromRotationMatrix(this.matrix);
       this.transform.position.copy(middle);this.transform.position.y=this.height(middle.x,middle.z)+.012;
-      this.transform.scale.set(.19,length*1.05,1);this.transform.updateMatrix();
+      this.transform.scale.set(this.trackWidth,length*1.05,1);this.transform.updateMatrix();
       const slot=this.markCursor++%MARKS;
       this.tracks.setMatrixAt(slot,this.transform.matrix);
       this.birth.setX(slot,time);

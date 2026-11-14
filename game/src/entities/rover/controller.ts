@@ -1,11 +1,9 @@
 import { MathUtils, Vector3 } from 'three';
-import { RoverGrounding } from './grounding.ts';
+import { DEFAULT_ROVER_CONTACT, RoverGrounding, type RoverContactConfig } from './grounding.ts';
 
 export type Obstacle = { x: number; z: number; radius: number };
 type DriveInput = { forward: number; turn: number };
 
-const PLAYER_RADIUS = 0.75;
-const WORLD_RADIUS = 64 - PLAYER_RADIUS;
 const CONTACT_GAP = 0.0004;
 
 function approach(value: number, target: number, amount: number): number {
@@ -21,11 +19,21 @@ export class Vehicle {
   acceleration = 0;
   impact = 0;
   private turnRate = 0;
-  private readonly grounding = new RoverGrounding();
-  readonly wheelOffsets = this.grounding.offsets;
-  readonly contactPositions = this.grounding.contacts;
-  readonly wheelTravel = this.grounding.travel;
-  readonly grounded = this.grounding.grounded;
+  private readonly grounding: RoverGrounding;
+  readonly config: RoverContactConfig;
+  readonly wheelOffsets: number[];
+  readonly contactPositions: Vector3[];
+  readonly wheelTravel: number[];
+  readonly grounded: boolean[];
+
+  constructor(config: RoverContactConfig = DEFAULT_ROVER_CONTACT) {
+    this.grounding = new RoverGrounding(config);
+    this.config = this.grounding.config;
+    this.wheelOffsets = this.grounding.offsets;
+    this.contactPositions = this.grounding.contacts;
+    this.wheelTravel = this.grounding.travel;
+    this.grounded = this.grounding.grounded;
+  }
 
   get pitch(): number { return this.grounding.pitch; }
   get roll(): number { return this.grounding.roll; }
@@ -65,6 +73,8 @@ export class Vehicle {
     const turn = MathUtils.clamp(Number.isFinite(input.turn) ? input.turn : 0, -1, 1);
     const targetSpeed = forward * (forward >= 0 ? 2.5 : 1.2);
     const previousSpeed = this.speed;
+    const playerRadius = this.config.collisionRadius;
+    const worldRadius = 64 - playerRadius;
     this.impact *= Math.exp(-elapsed * 7);
 
     for (let i = 0; i < steps; i++) {
@@ -87,7 +97,7 @@ export class Vehicle {
       for (let pass = 0; pass < 6; pass++) {
         let corrected = false;
         for (const obstacle of obstacles) {
-          const clearance = Math.max(0, obstacle.radius) + PLAYER_RADIUS;
+          const clearance = Math.max(0, obstacle.radius) + playerRadius;
           let dx = x - obstacle.x;
           let dz = z - obstacle.z;
           let distance = Math.hypot(dx, dz);
@@ -109,8 +119,8 @@ export class Vehicle {
           corrected = true;
         }
         const distanceFromOrigin = Math.hypot(x, z);
-        if (distanceFromOrigin > WORLD_RADIUS) {
-          const scale = WORLD_RADIUS / distanceFromOrigin;
+        if (distanceFromOrigin > worldRadius) {
+          const scale = worldRadius / distanceFromOrigin;
           x *= scale;
           z *= scale;
           collided = true;
@@ -120,7 +130,7 @@ export class Vehicle {
       }
 
       if (obstacles.some((obstacle) => Math.hypot(x - obstacle.x, z - obstacle.z)
-        < Math.max(0, obstacle.radius) + PLAYER_RADIUS - CONTACT_GAP)) {
+        < Math.max(0, obstacle.radius) + playerRadius - CONTACT_GAP)) {
         x = previousX;
         z = previousZ;
       }

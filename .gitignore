@@ -40,3 +40,19 @@ graphify-out/
 !/outputs/review/runtime-refactor/*.md
 !/outputs/review/runtime-refactor/*.json
 !/outputs/review/runtime-refactor/*.jpg
+
+# Mars hub reference notes and compact native review evidence.
+!/outputs/references/mars-hub/
+/outputs/references/mars-hub/*
+!/outputs/references/mars-hub/*.md
+!/outputs/review/mars-hub-v1/
+/outputs/review/mars-hub-v1/*
+!/outputs/review/mars-hub-v1/*.md
+!/outputs/review/mars-hub-v1/*.json
+!/outputs/review/mars-hub-v1/*.jpg
+
+!/outputs/review/opportunity-v1/
+/outputs/review/opportunity-v1/*
+!/outputs/review/opportunity-v1/*.md
+!/outputs/review/opportunity-v1/*.json
+!/outputs/review/opportunity-v1/*.jpg

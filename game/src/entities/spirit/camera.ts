@@ -2,7 +2,7 @@ import { MathUtils, PerspectiveCamera, Vector3 } from 'three';
 
 type Solid = { x: number; z: number; radius: number };
 export class SpiritCamera {
-  readonly camera = new PerspectiveCamera(48, innerWidth / innerHeight, .05, 360);
+  readonly camera = new PerspectiveCamera(48, innerWidth / innerHeight, .1, 1600);
   yaw = 0;
   pitch = .12;
   distance = 5.8;

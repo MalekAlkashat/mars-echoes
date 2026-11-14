@@ -1,12 +1,22 @@
 # Spirit and machine memories: development roadmap
 
+## Current Opportunity model integration
+
+The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.
+
+## Current development priority: base exploration map and mission foundation
+
+Build the present-day Mars base map first, using the existing spirit placeholder for roaming and discovering Opportunity while final spirit design is prepared. The hub remains the player-facing starting point. Finish shared terrain and the mission-host foundation, then develop Opportunity’s three chapters in independent directories in parallel. The user confirmed a separate compact map for each chapter, using shared terrain, rover, camera and lighting systems. See [mission foundation](outputs/planning/mission-foundation.md) for the source audit, proposed ownership, terrain targets and acceptance checks. The current code still opens the placeholder hub; direct mission hosting and per-mission maps are not implemented. The spirit-to-memory flow below remains the intended player journey; direct mission previews are a development shortcut, not a replacement for the hub. Earlier M1–M3 checks establish runtime readiness; they do not establish readiness for independent chapter development.
+
+The first Mars-reference hub redesign is now implemented and agent-checked. It removes all decorative rover copies, uses shallow troughs, low shelves and a distant crater vista, and places the single memory entrance at `(0,-25)` from spawn `(0,8)`. Shared presentation now has a balanced pixel/frame budget and stops composing paused views. Build and all 26 automated checks pass; native development-browser traversal, entry/return and repeated abort checks pass. See `outputs/review/mars-hub-v1/REVIEW.md` and `outputs/references/mars-hub/reference-direction.md`. This is not user visual acceptance, a final Opportunity asset, a thermal measurement or the completed mission-host foundation.
+
 Updated 14 November 2026. Working repository name: `mars-echoes`, not an approved game title.
 
 ## The game we are making
 
 Explore Mars as a spirit, enter the remains of abandoned equipment, experience that equipment's past mission through playable moments, and return to the spirit in the present.
 
-The hackathon target is one complete equipment story in a compact Mars exploration area. Other wrecks establish the larger world without promising unbuilt episodes. This remains a single-player stage demonstration, developed in roughly one day with AI and colleagues. The presentation length and target computer are still unknown; the earlier 3–5-minute suggestion is not a requirement.
+The hackathon target is one complete equipment story in a compact Mars exploration area. The present-day hub contains a single rover entrance in a broad Mars-informed landscape; the user removed the decorative rover graveyard. This remains a single-player stage demonstration, developed in roughly one day with AI and colleagues. The presentation length and target computer are still unknown; the earlier 3–5-minute suggestion is not a requirement.
 
 ### Confirmed decisions
 
@@ -19,7 +29,7 @@ The hackathon target is one complete equipment story in a compact Mars explorati
 - The first memory follows the real Opportunity rover through evidence of ancient water, the Purgatory Dune entrapment and the final dust storm, with playable moments connected by cinematic time jumps. See [Opportunity story](outputs/planning/opportunity-story.md).
 - The team's design proposes skill links to other robots, a Mars map and a short learning check; their exact scope and mechanics remain to be reviewed.
 - Retain the selected orange terrain, pale distant light, heavy cold sky, grounded machinery and emotion expressed through motion/sound with little text.
-- The existing expressive twin-eye rover remains the fictional prototype’s accepted design reference. The visual treatment of the real Opportunity rover needs a separate decision; do not present the existing model as historically accurate.
+- The existing expressive twin-eye rover remains the fictional prototype’s accepted design reference. The user selected the NASA MER static USDZ as Opportunity’s design authority; the original expressive concept remains historical prototype material.
 
 ### Implemented foundation versus remaining story work
 

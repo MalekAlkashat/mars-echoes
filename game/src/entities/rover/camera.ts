@@ -7,6 +7,7 @@ export type RoverCameraPhase = 'ready' | 'drive' | 'scan' | 'extract' | 'align'
 export type CameraMotion = { speed: number; acceleration: number; steer: number; impact: number };
 
 export class CameraRig {
+  constructor(private readonly opticalAnchor?: Object3D) {}
   readonly camera = new PerspectiveCamera(44, innerWidth / innerHeight, 0.05, 360);
   yaw = 0.33;
   pitch = 0.095;
@@ -106,9 +107,9 @@ export class CameraRig {
       this.desiredPosition.copy(point(new Vector3(-3.0, 1.55, -0.65)));
       this.desiredLook.copy(position).lerp(donor, 0.5).add(new Vector3(0, 0.95, 0));
     } else if (mode === 'optical') {
-      const head = socket.parent ?? rover;
-      this.desiredPosition.copy(head.localToWorld(new Vector3(-0.22, 0, -0.29)));
-      this.desiredLook.copy(head.localToWorld(new Vector3(-0.22, 0, -25)));
+      const head = this.opticalAnchor ?? socket.parent ?? rover;
+      this.desiredPosition.copy(head.localToWorld(this.opticalAnchor ? new Vector3() : new Vector3(-0.22, 0, -0.29)));
+      this.desiredLook.copy(head.localToWorld(this.opticalAnchor ? new Vector3(0,0,-25) : new Vector3(-0.22, 0, -25)));
     } else if (phase === 'transmit' || phase === 'end') {
       this.desiredPosition.copy(point(new Vector3(-3.2, 1.25, -4.2)));
       this.desiredLook.copy(position).add(new Vector3(0, 1.02, 0));

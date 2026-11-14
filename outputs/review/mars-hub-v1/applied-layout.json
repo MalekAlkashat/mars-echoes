@@ -1,0 +1,43 @@
+{
+  "scene": "mars-hub",
+  "sourceBase": "30c4783",
+  "units": "metres",
+  "up": "+Y",
+  "forward": "-Z",
+  "spawn": [
+    0,
+    8
+  ],
+  "wreck-rover-01": [
+    0,
+    -25
+  ],
+  "overlook": [
+    -10,
+    -14
+  ],
+  "basin": [
+    9,
+    -37
+  ],
+  "playableRadius": 63.5,
+  "nearGrid": {
+    "bounds": [
+      -80,
+      80,
+      -80,
+      80
+    ],
+    "cellSize": 1
+  },
+  "vistaSquareHalfSize": 1000,
+  "decorativeWrecks": 0,
+  "seed": 18427,
+  "sourceHashes": {
+    "game/src/environments/mars/hub-terrain.ts": "554c67c81945f9596b40da70073dfadc6f386c327883a60fc79d579c48452e2b",
+    "game/src/environments/mars/hub.ts": "1b4e52a8e9506323c59777f8318fa607701110721029dce2d31c86c8e9e777f0",
+    "game/src/environments/mars/static-model.ts": "7057d85e8656f427049207a98a356f6f573e95caf45ec9fa070344704191f5cd",
+    "game/src/scenes/mars-hub/layout.ts": "61226443758159e94f26b677606b610b11d4243a6d8c897c621a3f289431d879",
+    "game/src/content/equipment.ts": "17ea1ef408c15174641294842d64ebdacd944e4ab1ed41ffbce6cecb1c1170ee"
+  }
+}

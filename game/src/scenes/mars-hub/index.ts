@@ -37,7 +37,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       if (started) context.ui.playing();
       else context.ui.showIntro({
         eyebrow: 'Exploration · integration prototype', title: 'Explore Mars',
-        copy: 'Approach the abandoned rover to enter its memory.', button: 'Enter the graveyard',
+        copy: 'Cross the valley. Find the rover and enter its memory.', button: 'Explore the valley',
         controls: 'WASD to glide · Space to leap · E to enter',
         note: 'Placeholder spirit. The complete rover mission is still in development.',
       });
@@ -83,7 +83,8 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       restart() { effects.time = 0; restore(); started = true; paused = false; context.clearInput(); show(); },
       dispose() { if (disposed) return; disposed = true; active = false; world.dispose(); },
       debug() { return {phase: started ? 'hub' : 'ready', position: `${controller.position.x.toFixed(2)},${controller.position.z.toFixed(2)}`,
-        heading: controller.heading.toFixed(3), grounded: controller.grounded, repaired: false}; },
+        heading: controller.heading.toFixed(3), grounded: controller.grounded, repaired: false,
+        terrain:'hub-troughs-v1', decorativeWrecks:0, vistaRadius:1000}; },
     };
     return scene;
   } catch (error) {

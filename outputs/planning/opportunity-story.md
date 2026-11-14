@@ -1,5 +1,9 @@
 # Opportunity: current story direction
 
+## Current build order
+
+The user clarified that final spirit design is deferred, while the base exploration map is required first. Use the existing placeholder to roam Mars and discover Opportunity. Build the shared terrain and mission foundation described in `mission-foundation.md`, then implement three separate chapter maps in parallel. The spirit entry/return story below remains the player-facing structure; direct mission previews enable independent development. Runtime code has not yet been adapted for direct chapter hosting.
+
 Updated 14 November 2026. The user selected the new story direction from the team's Echoes of Mars design pack. This document records that direction alongside the existing project; detailed mechanics and presentation still need design and review.
 
 ## Player journey
@@ -27,3 +31,7 @@ The existing Three.js/TypeScript build has a placeholder spirit hub, transitions
 Spirit movement remains near-ground glide and bounded leap with solid obstacles. Its appearance remains tentative. The team's suggested glowing wisp is an option, not an approved change. Grounded cinematic orange terrain, a pale distant light and a heavy sky remain the art direction. The prior expressive twin-eye rover concept is an approved reference for the fictional prototype, not evidence of Opportunity's actual appearance; how to reconcile recognizable historical machinery with the user's expressive design needs an explicit visual decision. Do not silently replace the accepted reference or label the existing model historically accurate.
 
 Open decisions include exact chapter interactions and scope, how the spirit and rover look, how skill links and the check are presented, sound, duration, final title, team assignments, and the presentation computer. Maintain the existing scene ownership and stack unless the team explicitly agrees to change them; the downloaded pack's alternative framework and role assignments are proposals, not an instruction to rewrite the project.
+
+## Selected rover asset
+
+The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.

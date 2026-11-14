@@ -1,5 +1,5 @@
 // Development-only capture of the actual canvas, without a second scene or animation path.
-export function installRecorder(canvas: HTMLCanvasElement): void {
+export function installRecorder(canvas: HTMLCanvasElement, endpoint = '/__review_capture'): void {
   const record = document.createElement('button');
   record.textContent = 'Record motion check';
   Object.assign(record.style, {position:'fixed',top:'120px',right:'32px',zIndex:'20'});
@@ -12,7 +12,7 @@ export function installRecorder(canvas: HTMLCanvasElement): void {
     recorder.ondataavailable = event => { if (event.data.size) chunks.push(event.data); };
     recorder.onstop = async () => {
       const blob=new Blob(chunks,{type:recorder.mimeType});
-      const saved=await fetch('/__review_capture',{method:'POST',headers:{'Content-Type':recorder.mimeType},body:blob}).then(response=>response.ok).catch(()=>false);
+      const saved=await fetch(endpoint,{method:'POST',headers:{'Content-Type':recorder.mimeType},body:blob}).then(response=>response.ok).catch(()=>false);
       if(saved){record.textContent='Motion check saved';stream.getTracks().forEach(track=>track.stop());return;}
       const link = document.createElement('a');
       link.textContent = 'Save motion check';

@@ -1,5 +1,15 @@
 # Spirit and memory architecture
 
+## Current Opportunity model integration
+
+The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.
+
+## Latest phase: base hub and mission foundation
+
+Final spirit art is deferred; the present-day exploration hub is required first and uses the existing placeholder. See `mission-foundation.md` for the audit, configurable terrain, independent chapter maps and developer previews. Reuse the implemented hub/episode entry, bookmark and return contract for the outer journey; add chapter sequencing inside the rover host through the integrator. Keep one shared renderer/input lifecycle.
+
+The first Mars-reference hub redesign is now implemented and agent-checked. It removes all decorative rover copies, uses shallow troughs, low shelves and a distant crater vista, and places the single memory entrance at `(0,-25)` from spawn `(0,8)`. Shared presentation now has a balanced pixel/frame budget and stops composing paused views. Build and all 26 automated checks pass; native development-browser traversal, entry/return and repeated abort checks pass. See `outputs/review/mars-hub-v1/REVIEW.md` and `outputs/references/mars-hub/reference-direction.md`. This is not user visual acceptance, a final Opportunity asset, a thermal measurement or the completed mission-host foundation.
+
 14 November 2026. The runtime organization and contracts described here are implemented. Read the confirmed vision in root `ROADMAP.md` first. The earlier flat rover-only source is preserved at Git tag `rover-v2-baseline` (commit `179705b`). This is the shared runtime foundation plus a placeholder hub and preserved repair/call episode, not the complete past mission, shutdown ending or final spirit asset.
 
 ## Actual ownership boundaries
