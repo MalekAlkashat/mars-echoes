@@ -1,0 +1,90 @@
+{
+  "verifiedOn": "2026-11-14",
+  "status": "source-checked production register; not runtime integration",
+  "notes": "M1-C IDs extend local research without silently redefining team F IDs. Crosswalk covers only the supported subset of each broad team fact.",
+  "claims": [
+    {
+      "id": "M1-C01",
+      "factIds": [],
+      "claim": "Eagle Crater visual context uses PIA05755, sols 58 and 60.",
+      "sources": [
+        "https://science.nasa.gov/photojournal/opportunity-captures-lion-king-panorama/"
+      ],
+      "qualification": "Approximate true color; panorama, not surveyed game geometry."
+    },
+    {
+      "id": "M1-C02",
+      "factIds": [],
+      "claim": "McKittrick abrasion was 45.5 mm across and 4.4 mm deep.",
+      "sources": [
+        "https://science.nasa.gov/photojournal/circular-signs-of-the-rock-abrasion-tool/"
+      ],
+      "qualification": "Target-specific dimensions; 3-second interaction is fictional time compression."
+    },
+    {
+      "id": "M1-C03",
+      "factIds": [
+        "F-11"
+      ],
+      "claim": "Use about 4 mm as the spherule reference diameter.",
+      "sources": [
+        "https://apod.nasa.gov/apod/ap040405.html"
+      ],
+      "qualification": "Approximate average, not uniform measured size of all grains."
+    },
+    {
+      "id": "M1-C04",
+      "factIds": [
+        "F-07",
+        "F-11"
+      ],
+      "claim": "Berry Bowl comparison used brushing; no grinding was needed.",
+      "sources": [
+        "https://science.nasa.gov/resource/discovery-served-up-in-a-bowl/"
+      ],
+      "qualification": "Separate observation from abrasion. Compare cluster and clean substrate; no single-bead instant mineral scan."
+    },
+    {
+      "id": "M1-C05",
+      "factIds": [
+        "F-11"
+      ],
+      "claim": "Embedded concretions and rock textures contribute evidence for ancient wet conditions.",
+      "sources": [
+        "https://science.nasa.gov/resource/clues-to-wet-history-in-texture-of-a-martian-rock/",
+        "https://science.nasa.gov/resource/discovery-served-up-in-a-bowl/"
+      ],
+      "qualification": "Interpretation of evidence. Water sequence is reconstruction, not footage or eyewitness history."
+    },
+    {
+      "id": "M1-C06",
+      "factIds": [],
+      "claim": "Hard spherules could obstruct the RAT; Flatrock documents an interrupted sequence.",
+      "sources": [
+        "https://www.jpl.nasa.gov/images/pia05521-focus-on-flatrock/"
+      ],
+      "qualification": "Do not assert McKittrick had the same stall or add fictional permanent damage."
+    },
+    {
+      "id": "M1-C07",
+      "factIds": [
+        "F-34"
+      ],
+      "claim": "Both MER rovers carried RAT; Spirit used it on Adirondack for the first Mars grind.",
+      "sources": [
+        "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-instruments/",
+        "https://science.nasa.gov/mission/mer-spirit/"
+      ],
+      "qualification": "GRIND is an educational skill link, not a capability transferred between physical robots."
+    },
+    {
+      "id": "M1-C08",
+      "factIds": [],
+      "claim": "Dust coverage can decrease through cleaning.",
+      "sources": [
+        "https://science.nasa.gov/resource/cleaned-solar-arrays-gleam-in-mars-rovers-new-selfie/"
+      ],
+      "qualification": "2014 comparison supports separate dust/wear parameters, not early-2004 dust amount."
+    }
+  ]
+}

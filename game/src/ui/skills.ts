@@ -3,7 +3,7 @@ export class SkillTree {
   readonly root=document.createElement('section');
   private readonly events=new AbortController();
   private busy=false;
-  constructor(close:()=>void,private readonly capture?:()=>Promise<boolean>){
+  constructor(close:()=>void,private readonly capture?:()=>Promise<boolean>,private readonly grindUnlocked?:()=>boolean){
     this.root.className='mars-modal mars-skills';
     this.root.hidden=true;
     this.root.setAttribute('role','dialog');
@@ -18,7 +18,7 @@ export class SkillTree {
           <span class="mars-skill-node-label">Photograph Terrain</span>
           <span class="mars-skill-trunk" aria-hidden="true"></span><p class="mars-skill-future">More discoveries ahead</p>
         </div>
-        <section id="photograph-skill-details" class="mars-skill-details" aria-labelledby="photograph-skill-title"><p class="mars-skill-available">Available</p><h3 id="photograph-skill-title">Photograph<br> Terrain</h3><p>Keep a record of the landscape. Capture the terrain through your current view as you explore Mars.</p><p class="mars-skill-hint">Find your angle in the world, then open Skills to take a photograph.</p><button id="photograph-terrain-button" type="button">Take photograph</button><p id="photograph-status" role="status"></p></section>
+        <section id="photograph-skill-details" class="mars-skill-details" aria-labelledby="photograph-skill-title"><p class="mars-skill-available">Available</p><h3 id="photograph-skill-title">Photograph<br> Terrain</h3><p>Keep a record of the landscape. Capture the terrain through your current view as you explore Mars.</p><p id="grind-skill-status" class="mars-skill-hint"></p><p class="mars-skill-hint">Find your angle in the world, then open Skills to take a photograph.</p><button id="photograph-terrain-button" type="button">Take photograph</button><p id="photograph-status" role="status"></p></section>
       </div>
       <footer class="mars-settings-footer"><button id="skills-back-button" type="button"><span aria-hidden="true">‹</span> Back</button><span class="mars-settings-key"><kbd>Esc</kbd> Back to pause</span></footer>
     </div>`;
@@ -32,7 +32,7 @@ export class SkillTree {
     photo.addEventListener('click',()=>void this.takePhotograph(),{signal});
     document.body.append(this.root);
   }
-  show():void {this.root.hidden=false;this.root.querySelector<HTMLButtonElement>('#photograph-skill-node')!.focus({preventScroll:true});}
+  show():void {const unlocked=this.grindUnlocked?.()===true;this.root.querySelector('.mars-skill-count')!.textContent=unlocked?'2 abilities recorded':'1 available ability';this.root.querySelector('#grind-skill-status')!.textContent=unlocked?'GRIND unlocked · Blueberry Clue remembered. Use the Rock Abrasion Tool in rover memories.':'GRIND · Discover Opportunity’s Blueberry Clue to record this ability.';this.root.hidden=false;this.root.querySelector<HTMLButtonElement>('#photograph-skill-node')!.focus({preventScroll:true});}
   hide():void {this.root.hidden=true;}
   private async takePhotograph():Promise<void>{
     if(this.busy||!this.capture)return;

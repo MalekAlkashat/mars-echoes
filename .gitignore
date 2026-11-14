@@ -56,3 +56,10 @@ graphify-out/
 !/outputs/review/opportunity-v1/*.md
 !/outputs/review/opportunity-v1/*.json
 !/outputs/review/opportunity-v1/*.jpg
+
+# Mission 1 provenance and selected runtime evidence.
+!/outputs/review/mission-one-v1/
+/outputs/review/mission-one-v1/*
+!/outputs/review/mission-one-v1/*.md
+!/outputs/review/mission-one-v1/*.json
+!/outputs/review/mission-one-v1/*.png

@@ -111,3 +111,10 @@ The preserved episode retains spawn `(0, 8)`, donor `(0, -5)` and relay `(0, -24
 TypeScript, production build and targeted motion checks pass. Geometry checks confirm that the near-terrain mesh and wheel height sampling agree. Current captures and a normal-speed recording are under `outputs/review/visual-pass-v2/`. The final production desktop playthrough passes recovery, alignment retry, successful installation, calibration, the unanswered relay call, replay, pause/resume/restart, focus handling and optical views through both F and the button. All six mobile touch buttons and module pointer dragging pass, and browser error logs are empty. User visual/gameplay acceptance, sound integration, target-machine performance confirmation and the complete later story remain outstanding. The game is not complete.
 
 Ready-made assets include Kenney CC0 mission hardware and an unused NASA Perseverance GLB. Poly Haven CC0 `sandy_gravel_02` and `dry_riverbed_rock` supply local color, OpenGL normal, roughness and AO maps; originals, source URLs, licenses and hashes are retained under `assets/vendor/polyhaven/`. Nine project workflows and the approved-reference pack remain installed. Tripo CLI/MCP is researched but unauthenticated; the user has no account and no paid model job has been submitted. See `test-assets.md` and `3d-service-workflow.md`. The current prototype does not require live generation services.
+
+## Current Mission 1 direction
+
+See [Mission 1 production plan](mission-one.md), reviewed against `0becdac` on 14 November 2026. It records the supplied historical/visual brief, asset sourcing and wear requirements, Focus UI assessment, save compatibility, staged implementation and acceptance gates. This is planned work, not a completed chapter.
+
+
+Mission 1 runtime increment (14 November 2026): the isolated `codex/mission-one` branch now contains the playable Blueberry Clue loop with reference-backed authored assets, chapter checkpoints and GRIND reward. See [runtime review](../review/mission-one-v1/REVIEW.md) for exact verification, scientific boundaries and remaining art limits. Main and the terrain checkout are unchanged.

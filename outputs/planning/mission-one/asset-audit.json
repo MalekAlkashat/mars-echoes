@@ -1,0 +1,98 @@
+{
+  "source": {
+    "path": "assets/vendor/nasa/opportunity/24883_MER_static.usdz",
+    "bytes": 3154523,
+    "sha256": "ce21bd6ed7763e1e5cc893a60b53b99e3c3de77e989b75b0da1a18ad5652bcab",
+    "matchesRecordedHash": true
+  },
+  "runtime": {
+    "path": "game/public/assets/opportunity/opportunity-v1.glb",
+    "bytes": 3498588,
+    "sha256": "b1ddfcd389a7b1b25750a22f3eb6e2ff73f51d44eec3d57e0d91d964b15461d6",
+    "matchesRecordedHash": true
+  },
+  "glb": {
+    "version": "2.0",
+    "meshes": 15,
+    "materials": 9,
+    "images": 12,
+    "nodes": [
+      "Opportunity",
+      "tex_panels_n",
+      "tex_panels2_n",
+      "tex_instruments",
+      "tex_body_n",
+      "wheel-left-front",
+      "wheel-left-middle",
+      "wheel-left-rear",
+      "wheel-right-middle",
+      "wheel-right-rear",
+      "wheel-right-front",
+      "suspension-body",
+      "Silver",
+      "tex_mast",
+      "foil_silver",
+      "tex_arm"
+    ]
+  },
+  "uiCandidates": {
+    "reticles.focusIdle": {
+      "id": "focus-idle",
+      "category": "reticles",
+      "description": "Idle focus corners, with a precise central aiming point.",
+      "intendedUse": "targeting and optical scan feedback",
+      "placement": "screen",
+      "dimensions": {
+        "width": 512,
+        "height": 512,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0.5,
+        "y": 0.5,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/reticles/focus-idle.svg",
+        "png1x": "png/1x/reticles/focus-idle.png",
+        "png2x": "png/2x/reticles/focus-idle.png",
+        "editableSvg": "source/svg-editable/reticles/focus-idle.svg"
+      }
+    },
+    "panels.analysisCard": {
+      "id": "analysis-card",
+      "category": "panels",
+      "description": "Detailed analysis readout; the labels and data can be changed in source/.",
+      "intendedUse": "object details and analysis results",
+      "placement": "screen",
+      "dimensions": {
+        "width": 560,
+        "height": 360,
+        "unit": "px",
+        "referenceScale": 1
+      },
+      "pivot": {
+        "x": 0,
+        "y": 0,
+        "unit": "normalized",
+        "origin": "top-left"
+      },
+      "alphaMode": "straight",
+      "colorSpace": "srgb",
+      "textMode": "baked-in-export; editable-svg available",
+      "pointerEvents": "none",
+      "files": {
+        "svg": "svg/panels/analysis-card.svg",
+        "png1x": "png/1x/panels/analysis-card.png",
+        "png2x": "png/2x/panels/analysis-card.png",
+        "editableSvg": "source/svg-editable/panels/analysis-card.svg"
+      }
+    }
+  }
+}

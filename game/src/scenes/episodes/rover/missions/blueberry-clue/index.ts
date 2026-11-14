@@ -1,0 +1,133 @@
+import * as T from 'three';
+import type { EpisodeEntry, GameScene, SceneContext, MissionPhase } from '../../../../../app/contracts';
+import { Vehicle } from '../../../../../entities/rover/controller';
+import { createOpportunityRover } from '../../../../../entities/rover/opportunity';
+import { CameraRig } from '../../../../../entities/rover/camera';
+import { WheelEffects } from '../../../../../entities/rover/wheel-effects';
+import { element } from '../../../../../ui';
+import { blueberryText as copy } from '../../../../../content/blueberry-clue';
+import { createDiscoveryArt, sampleHeight, WORK, MACRO } from './art';
+import { Discovery } from './progress';
+import './style.css';
+
+export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntry,signal:AbortSignal):Promise<GameScene>{
+ const assets=await context.assets.load();signal.throwIfAborted();
+ const art=await createDiscoveryArt(signal);
+ try{
+  signal.throwIfAborted();art.setup(context.renderer);
+  const rover=createOpportunityRover(assets.opportunity);art.scene.add(rover.root);
+  const vehicle=new Vehicle(rover.contactConfig),rig=new CameraRig(rover.opticalAnchor);
+  const dust=new WheelEffects(art.scene,sampleHeight,.14);
+  const progress=new Discovery(),effects={time:0,degraded:0};
+  const contacts=Array.from({length:6},()=>new T.Vector3());
+  const camera=rig.camera;
+  const obstacles=[{x:-.9,z:-3.5,radius:.7},{x:0,z:-3.5,radius:.7},{x:.9,z:-3.5,radius:.7}];
+  rig.setObstacles(obstacles);
+  let active=false,paused=false,disposed=false,started=false,returning=false,lastPhase:MissionPhase='approach';
+  let macroLast=false,actionQueued=false,withdrawing=0;
+  const abort=new AbortController();
+  const panel=document.createElement('section');panel.className='discovery-panel';panel.hidden=true;
+  panel.setAttribute('aria-label','Mission 1 science and controls');
+  panel.innerHTML='<p class="discovery-kicker"></p><h2></h2><p class="discovery-copy"></p><progress max="3" value="0" aria-label="Grinding progress"></progress><button class="discovery-action"></button><p class="discovery-hint"></p><details><summary>Sources & reconstruction</summary><p></p></details>';
+  const label=panel.querySelector<HTMLElement>('.discovery-kicker')!,title=panel.querySelector('h2')!,body=panel.querySelector<HTMLElement>('.discovery-copy')!,meter=panel.querySelector('progress')!,button=panel.querySelector<HTMLButtonElement>('button')!,hint=panel.querySelector<HTMLElement>('.discovery-hint')!;
+  const sources=panel.querySelector('details p')!;sources.append(document.createTextNode(copy.disclaimer+' '));
+  for(const [name,url] of copy.sources){const a=document.createElement('a');a.textContent=name+' ';a.href=url;a.target='_blank';a.rel='noopener';sources.append(a);}
+  button.addEventListener('click',()=>{actionQueued=true;},{signal:abort.signal});
+  document.body.append(panel);
+  const reduced=()=>document.body.classList.contains('reduced-menu-motion')||matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const pose=()=>{rover.root.position.copy(vehicle.position);rover.root.rotation.set(vehicle.pitch,vehicle.heading,vehicle.roll);rover.setSuspension(vehicle.wheelOffsets,vehicle.steer*.38);rover.root.updateMatrixWorld(true);};
+  const near=()=>Math.hypot(vehicle.position.x-WORK.x,vehicle.position.z-WORK.z)<2.4;
+  const returnHub=(complete:boolean)=>{
+   if(returning)return;returning=true;progress.cancelHold();context.clearInput();
+   context.request({kind:'return-to-hub',result:{episodeId:'episode-rover-01',wreckId:entry.wreckId,chapter:'blueberry-clue',outcome:complete?'completed':'aborted'}});
+  };
+  const renderUI=()=>{
+   const text=copy.phases[progress.phase];label.textContent=text.label;title.textContent=text.title;body.textContent=text.body;if(progress.phase==='compare'&&progress.comparison===1){title.textContent='Near Empty: the brushed comparison';body.textContent='This relatively spherule-free surface provided a comparison for the cluster. The mineral result came from instrument measurements, not appearance alone.';}
+   button.textContent=progress.phase==='compare'&&progress.comparison===1?copy.comparison:text.action;
+   button.hidden=progress.phase==='brush'||progress.phase==='grind';button.disabled=progress.phase==='approach'&&!near()||withdrawing>0;
+   meter.hidden=progress.phase!=='grind';meter.value=progress.hold;
+   hint.textContent=progress.phase==='approach'?`${Math.max(0,Math.hypot(vehicle.position.x-WORK.x,vehicle.position.z-WORK.z)).toFixed(1)} m to working area · WASD drive · arrows/drag look`:progress.phase==='grind'?'Keyboard: hold E · touch: hold the E control':'E or the button to continue · Esc pauses';
+   if(progress.phase==='water')hint.textContent=progress.elapsed<4?'Interpretation: water moves through layered sediment':progress.elapsed<8?'Interpretation: dissolved minerals accumulate within the rock':'Interpretation: later erosion exposes resistant spherules';
+   element('objective').textContent=text.title;element('chapter').textContent=copy.location;
+   element('mission-hold').hidden=progress.phase!=='grind';
+   element('touch-controls').querySelector<HTMLElement>('.dpad')!.hidden=progress.phase!=='approach';
+  };
+  const show=()=>{
+   context.ui.resetView();context.ui.setScene('episode-rover-01');element('restart-button').hidden=false;
+   if(started){context.ui.playing();element('hud').hidden=true;element('touch-controls').hidden=false;element('touch-controls').style.visibility='visible';panel.hidden=false;}
+   else{panel.hidden=true;context.ui.showIntro({eyebrow:copy.location,title:copy.title,copy:copy.intro,button:'Begin the discovery',controls:'WASD drive · E interact · hold E to grind',note:copy.disclaimer});}
+   renderUI();
+  };
+  const reset=()=>{
+   progress.comparison=0;progress.enter('approach');lastPhase='approach';macroLast=false;withdrawing=0;effects.time=0;returning=false;actionQueued=false;
+   vehicle.reset(0,7,0);vehicle.settle(.25,sampleHeight);rover.reset();dust.reset();rig.reset();pose();
+   camera.clearViewOffset();art.showMacro(false);art.water.visible=false;rover.root.visible=true;camera.near=.05;camera.far=250;camera.updateProjectionMatrix();
+   rig.update(0,'drive',rover.root,rover.opticalAnchor,WORK,WORK,false,sampleHeight);
+   context.clearInput();if(active)show();
+  };
+  reset();
+  if(entry.resume?.kind==='blueberry-clue'){
+   const saved=entry.resume;started=saved.started;progress.restore(saved.phase);vehicle.reset(saved.position[0],saved.position[1],saved.heading);vehicle.settle(.25,sampleHeight);rig.yaw=saved.cameraYaw;rig.pitch=saved.cameraPitch;rig.distance=saved.cameraDistance;pose();effects.time=saved.time;
+  }
+  const draw=(dt:number)=>{
+   const macro=progress.phase!=='approach';art.showMacro(macro);rover.root.visible=!macro;
+   const target=new T.Vector3(-.045,.025,0);
+   if(progress.phase==='compare'&&progress.comparison===0)target.set(.055,.027,.025);
+   if(progress.phase==='water'||progress.phase==='evidence')target.set(0,.025,0);
+   if(macro){
+    const workingView=progress.phase==='brush'||progress.phase==='grind';if(workingView)target.y=.065;
+    target.add(MACRO);const wide=progress.phase!=='compare';
+    const offset=new T.Vector3(wide?.17:.075,wide?.17:.085,wide?.23:.105);if(innerWidth<=650&&wide)offset.multiplyScalar(1.35);const desired=target.clone().add(offset);
+    if(!macroLast||reduced())camera.position.copy(desired);else camera.position.lerp(desired,1-Math.exp(-dt*6));
+    camera.near=.001;camera.far=100;camera.fov=42;camera.lookAt(target);camera.updateProjectionMatrix();
+   }else{camera.near=.05;camera.far=250;camera.fov=44;rig.setMotion(vehicle);rig.update(dt,'drive',rover.root,rover.opticalAnchor,WORK,WORK,false,sampleHeight);}
+   macroLast=macro;camera.setViewOffset(innerWidth,innerHeight,innerWidth>650?innerWidth*.10:0,innerWidth<=650?innerHeight*.08:0,innerWidth,innerHeight);
+   const working=progress.phase==='brush'||progress.phase==='grind';
+   art.tool.visible=working||withdrawing>0;art.brush.visible=progress.phase==='brush';
+   const contact=progress.phase==='brush'?Math.min(progress.elapsed/.6,1):progress.hold>0?Math.min(progress.hold/.35,1):0;
+   art.tool.position.y=.026+(1-contact)*.04;
+   if(withdrawing>0)art.tool.position.y=.026+(1-withdrawing/.45)*.04;
+   art.tool.rotation.y=0;art.brush.rotation.y=progress.phase==='brush'?effects.time*7:0;
+   art.patch.visible=progress.phase!=='brush'||progress.elapsed>1;
+   art.cut.visible=progress.phase==='inspect';art.sample.visible=!art.cut.visible&&progress.phase!=='water';
+   art.patch.position.y=art.cut.visible?.0206:.0252;art.patch.scale.setScalar(progress.phase==='compare'||progress.phase==='evidence'?1.18:1);art.patch.visible=progress.phase!=='water'&&(progress.phase!=='brush'||progress.elapsed>1);
+   art.sediment.visible=progress.phase==='water';art.interpret(progress.elapsed,reduced());
+   art.water.visible=progress.phase==='water';
+   art.berries.visible=progress.phase==='compare'||progress.phase==='evidence';
+   art.tick(effects.time,progress.phase==='grind'&&progress.hold>.35||progress.phase==='brush',progress.phase==='grind'&&progress.hold>.35);
+  };
+  return {
+   id:'episode-rover-01',scene:art.scene,camera,effects,
+   activate(){active=true;show();draw(0);},
+   update(dt,input){
+    if(!active||paused||disposed)return;
+    if(input.returnPressed){returnHub(progress.phase==='evidence');return;}
+    if(input.startPressed&&!started){started=true;show();}
+    if(!started)return;
+    const step=Math.min(Math.max(dt,0),.05);effects.time+=step;withdrawing=Math.max(0,withdrawing-step);
+    if(input.replayPressed){reset();return;}
+    if(progress.phase==='approach'){
+     const oldHeading=vehicle.heading,oldDistance=vehicle.movedDistance;contacts.forEach((v,i)=>v.copy(vehicle.contactPositions[i]));
+     vehicle.update(step,{forward:input.moveY,turn:-input.moveX},obstacles,sampleHeight);
+     // Per-map boundary, without changing the shared controller's legacy limits.
+     if(Math.abs(vehicle.position.x)>11||Math.abs(vehicle.position.z)>11){vehicle.reset(T.MathUtils.clamp(vehicle.position.x,-11,11),T.MathUtils.clamp(vehicle.position.z,-11,11),vehicle.heading);vehicle.settle(.25,sampleHeight);}
+     pose();rover.roll(contacts,vehicle.contactPositions,vehicle.heading,Math.abs(vehicle.movedDistance-oldDistance)>.00001||Math.abs(vehicle.heading-oldHeading)>.00001);
+     dust.update(step,effects.time,vehicle.contactPositions,vehicle.speed,vehicle.heading,vehicle.grounded);
+     rig.orbit(input.dragX+input.lookX*step*100,input.dragY+input.lookY*step*100,input.zoom);
+    }else dust.update(step,effects.time,vehicle.contactPositions,0,vehicle.heading,vehicle.grounded);
+    const act=input.interactPressed||actionQueued;actionQueued=false;
+    if(act&&progress.phase==='evidence'){returnHub(true);return;}
+    if(act&&progress.phase!=='grind'&&withdrawing===0)progress.act(near());
+    progress.update(step,input.interactHeld,input.interactPressed);
+    if(progress.phase!==lastPhase){if(lastPhase==='grind'&&progress.phase==='inspect')withdrawing=.45;if(lastPhase==='approach')vehicle.speed=0;context.clearInput();actionQueued=false;lastPhase=progress.phase;}
+    draw(step);renderUI();
+   },
+   resize(w,h){camera.aspect=w/h;camera.updateProjectionMatrix();},
+   setPaused(value){paused=value;returning=false;actionQueued=false;progress.cancelHold();panel.hidden=value||!started;},
+   restart(){started=true;paused=false;reset();},
+   getSaveEntry(){return {scene:'episode-rover-01',wreckId:entry.wreckId,chapter:'blueberry-clue',resume:{kind:'blueberry-clue',phase:progress.phase,started,position:[vehicle.position.x,vehicle.position.z],heading:vehicle.heading,cameraYaw:rig.yaw,cameraPitch:rig.pitch,cameraDistance:rig.distance,time:effects.time}};},
+   dispose(){if(disposed)return;disposed=true;active=false;abort.abort();panel.remove();element('restart-button').hidden=true;element('mission-hold').hidden=true;element('touch-controls').querySelector<HTMLElement>('.dpad')!.hidden=false;art.dispose();},
+   debug(){return {phase:started?progress.phase:'ready',chapter:'blueberry-clue',hold:progress.hold.toFixed(3),comparison:progress.comparison,position:`${vehicle.position.x.toFixed(2)},${vehicle.position.z.toFixed(2)}`,near:near(),contacts:vehicle.grounded.map(v=>v?'1':'0').join(''),berries:art.berries.count,wet:art.water.visible,returning};},
+  };
+ }catch(error){art.dispose();throw error;}
+}

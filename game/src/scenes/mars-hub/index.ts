@@ -58,7 +58,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
           follow.orbit(input.dragX + input.lookX * dt * 200, input.dragY + input.lookY * dt * 200, input.zoom);
           controller.update(step, input, follow.yaw, world.obstacles, world.height);
           if (input.interactPressed && controller.position.distanceTo(world.wreck.position) < ROVER_MEMORY.entryDistance) {
-            context.request({ kind: 'enter-memory', entry: {scene: ROVER_MEMORY.episodeId, wreckId: ROVER_MEMORY.wreckId},
+            context.request({ kind: 'enter-memory', entry: {scene: ROVER_MEMORY.episodeId, wreckId: ROVER_MEMORY.wreckId, chapter:'blueberry-clue'},
               bookmark: {position: controller.position.toArray() as [number, number, number], heading: controller.heading,
                 cameraYaw: follow.yaw, cameraPitch: follow.pitch, cameraDistance: follow.distance} });
           }
@@ -71,7 +71,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
         if (!started) return;
         const distance = controller.position.distanceTo(world.wreck.position);
         element('interaction-text').textContent = distance < ROVER_MEMORY.entryDistance
-          ? context.session.completed.has(ROVER_MEMORY.wreckId) ? 'Rover sequence visited.' : 'A rover lies silent.'
+          ? context.session.chapters.has('blueberry-clue') ? 'Blueberry Clue remembered · GRIND unlocked.' : context.session.completed.has(ROVER_MEMORY.wreckId) ? 'Rover sequence visited.' : 'A rover lies silent.'
           : `Abandoned rover · ${Math.ceil(distance)} m`;
         element('interact-button').hidden = distance >= ROVER_MEMORY.entryDistance;
         element('interact-button').textContent = 'Enter memory  E';
