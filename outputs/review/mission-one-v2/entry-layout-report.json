@@ -1,0 +1,19 @@
+{
+  "errors": [],
+  "views": [
+    {
+      "name": "portrait",
+      "reducedMotion": true,
+      "touchHiddenDuringEntry": true,
+      "titleFits": true,
+      "naturalHandoff": true
+    },
+    {
+      "name": "landscape",
+      "reducedMotion": false,
+      "touchHiddenDuringEntry": true,
+      "titleFits": true,
+      "naturalHandoff": true
+    }
+  ]
+}

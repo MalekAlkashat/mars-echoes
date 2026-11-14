@@ -63,3 +63,10 @@ graphify-out/
 !/outputs/review/mission-one-v1/*.md
 !/outputs/review/mission-one-v1/*.json
 !/outputs/review/mission-one-v1/*.png
+
+# Mission 1 reference/cinematic increment; keep local video out of Git.
+!/outputs/review/mission-one-v2/
+/outputs/review/mission-one-v2/*
+!/outputs/review/mission-one-v2/*.md
+!/outputs/review/mission-one-v2/*.json
+!/outputs/review/mission-one-v2/*.png

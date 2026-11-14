@@ -1,0 +1,25 @@
+{
+  "errors": [],
+  "entrySavedForReplay": true,
+  "touchDrive": [
+    0,
+    0.759305354083333
+  ],
+  "releaseReset": true,
+  "touchCancel": true,
+  "noHorizontalOverflow": true,
+  "saved": {
+    "version": 2,
+    "savedAt": 1794680169839,
+    "entry": {
+      "scene": "mars-hub"
+    },
+    "chapters": [
+      "blueberry-clue"
+    ],
+    "skills": [
+      "grind"
+    ],
+    "completed": []
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "errors": [],
+  "checks": [
+    "entry freezes on pause",
+    "entry blocks driving and saves replay-safe checkpoint",
+    "full production mission and fade return awards GRIND once"
+  ],
+  "saved": {
+    "version": 2,
+    "savedAt": 1794679993033,
+    "entry": {
+      "scene": "mars-hub"
+    },
+    "chapters": [
+      "blueberry-clue"
+    ],
+    "skills": [
+      "grind"
+    ],
+    "completed": []
+  }
+}

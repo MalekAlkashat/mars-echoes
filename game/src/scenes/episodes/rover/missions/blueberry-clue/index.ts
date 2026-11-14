@@ -8,6 +8,7 @@ import { element } from '../../../../../ui';
 import { blueberryText as copy } from '../../../../../content/blueberry-clue';
 import { createDiscoveryArt, sampleHeight, WORK, MACRO } from './art';
 import { Discovery } from './progress';
+import { MemoryOpening } from './cinematic';
 import './style.css';
 
 export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntry,signal:AbortSignal):Promise<GameScene>{
@@ -24,8 +25,11 @@ export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntr
   const obstacles=[{x:-.9,z:-3.5,radius:.7},{x:0,z:-3.5,radius:.7},{x:.9,z:-3.5,radius:.7}];
   rig.setObstacles(obstacles);
   let active=false,paused=false,disposed=false,started=false,returning=false,lastPhase:MissionPhase='approach';
-  let macroLast=false,actionQueued=false,withdrawing=0;
+  let macroLast=false,actionQueued=false,withdrawing=0,skipOpening=false,exitTime=0,exitComplete=false;
+  const opening=new MemoryOpening();
   const abort=new AbortController();
+  opening.skip.addEventListener('click',()=>{skipOpening=true;},{signal:abort.signal});
+  opening.pause.addEventListener('click',()=>element('pause-button').click(),{signal:abort.signal});
   const panel=document.createElement('section');panel.className='discovery-panel';panel.hidden=true;
   panel.setAttribute('aria-label','Mission 1 science and controls');
   panel.innerHTML='<p class="discovery-kicker"></p><h2></h2><p class="discovery-copy"></p><progress max="3" value="0" aria-label="Grinding progress"></progress><button class="discovery-action"></button><p class="discovery-hint"></p><details><summary>Sources & reconstruction</summary><p></p></details>';
@@ -38,8 +42,7 @@ export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntr
   const pose=()=>{rover.root.position.copy(vehicle.position);rover.root.rotation.set(vehicle.pitch,vehicle.heading,vehicle.roll);rover.setSuspension(vehicle.wheelOffsets,vehicle.steer*.38);rover.root.updateMatrixWorld(true);};
   const near=()=>Math.hypot(vehicle.position.x-WORK.x,vehicle.position.z-WORK.z)<2.4;
   const returnHub=(complete:boolean)=>{
-   if(returning)return;returning=true;progress.cancelHold();context.clearInput();
-   context.request({kind:'return-to-hub',result:{episodeId:'episode-rover-01',wreckId:entry.wreckId,chapter:'blueberry-clue',outcome:complete?'completed':'aborted'}});
+   if(returning)return;returning=true;exitTime=0;exitComplete=complete;opening.cancel();panel.hidden=true;element('touch-controls').style.visibility='hidden';progress.cancelHold();context.clearInput();
   };
   const renderUI=()=>{
    const text=copy.phases[progress.phase];label.textContent=text.label;title.textContent=text.title;body.textContent=text.body;if(progress.phase==='compare'&&progress.comparison===1){title.textContent='Near Empty: the brushed comparison';body.textContent='This relatively spherule-free surface provided a comparison for the cluster. The mineral result came from instrument measurements, not appearance alone.';}
@@ -54,12 +57,12 @@ export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntr
   };
   const show=()=>{
    context.ui.resetView();context.ui.setScene('episode-rover-01');element('restart-button').hidden=false;
-   if(started){context.ui.playing();element('hud').hidden=true;element('touch-controls').hidden=false;element('touch-controls').style.visibility='visible';panel.hidden=false;}
+   if(started){context.ui.playing();element('hud').hidden=true;element('touch-controls').hidden=opening.playing;element('touch-controls').style.visibility=opening.playing?'hidden':'visible';panel.hidden=opening.playing;element('topbar').hidden=opening.playing;}
    else{panel.hidden=true;context.ui.showIntro({eyebrow:copy.location,title:copy.title,copy:copy.intro,button:'Begin the discovery',controls:'WASD drive · E interact · hold E to grind',note:copy.disclaimer});}
    renderUI();
   };
   const reset=()=>{
-   progress.comparison=0;progress.enter('approach');lastPhase='approach';macroLast=false;withdrawing=0;effects.time=0;returning=false;actionQueued=false;
+   opening.cancel();skipOpening=false;exitTime=0;progress.comparison=0;progress.enter('approach');lastPhase='approach';macroLast=false;withdrawing=0;effects.time=0;returning=false;actionQueued=false;
    vehicle.reset(0,7,0);vehicle.settle(.25,sampleHeight);rover.reset();dust.reset();rig.reset();pose();
    camera.clearViewOffset();art.showMacro(false);art.water.visible=false;rover.root.visible=true;camera.near=.05;camera.far=250;camera.updateProjectionMatrix();
    rig.update(0,'drive',rover.root,rover.opticalAnchor,WORK,WORK,false,sampleHeight);
@@ -67,7 +70,7 @@ export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntr
   };
   reset();
   if(entry.resume?.kind==='blueberry-clue'){
-   const saved=entry.resume;started=saved.started;progress.restore(saved.phase);vehicle.reset(saved.position[0],saved.position[1],saved.heading);vehicle.settle(.25,sampleHeight);rig.yaw=saved.cameraYaw;rig.pitch=saved.cameraPitch;rig.distance=saved.cameraDistance;pose();effects.time=saved.time;
+   const saved=entry.resume;started=saved.started;progress.restore(saved.phase);vehicle.reset(saved.position[0],saved.position[1],saved.heading);vehicle.settle(.25,sampleHeight);rig.reset();rig.yaw=saved.cameraYaw;rig.pitch=saved.cameraPitch;rig.distance=saved.cameraDistance;pose();effects.time=saved.time;
   }
   const draw=(dt:number)=>{
    const macro=progress.phase!=='approach';art.showMacro(macro);rover.root.visible=!macro;
@@ -83,28 +86,34 @@ export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntr
    }else{camera.near=.05;camera.far=250;camera.fov=44;rig.setMotion(vehicle);rig.update(dt,'drive',rover.root,rover.opticalAnchor,WORK,WORK,false,sampleHeight);}
    macroLast=macro;camera.setViewOffset(innerWidth,innerHeight,innerWidth>650?innerWidth*.10:0,innerWidth<=650?innerHeight*.08:0,innerWidth,innerHeight);
    const working=progress.phase==='brush'||progress.phase==='grind';
-   art.tool.visible=working||withdrawing>0;art.brush.visible=progress.phase==='brush';
+   art.tool.visible=working||withdrawing>0;art.brush.visible=working;
    const contact=progress.phase==='brush'?Math.min(progress.elapsed/.6,1):progress.hold>0?Math.min(progress.hold/.35,1):0;
-   art.tool.position.y=.026+(1-contact)*.04;
-   if(withdrawing>0)art.tool.position.y=.026+(1-withdrawing/.45)*.04;
-   art.tool.rotation.y=0;art.brush.rotation.y=progress.phase==='brush'?effects.time*7:0;
+   art.tool.position.y=.025+(1-contact)*.045;
+   if(withdrawing>0)art.tool.position.y=.025+(1-withdrawing/.45)*.045;
+   art.tool.rotation.y=2.35;
    art.patch.visible=progress.phase!=='brush'||progress.elapsed>1;
-   art.cut.visible=progress.phase==='inspect';art.sample.visible=!art.cut.visible&&progress.phase!=='water';
-   art.patch.position.y=art.cut.visible?.0206:.0252;art.patch.scale.setScalar(progress.phase==='compare'||progress.phase==='evidence'?1.18:1);art.patch.visible=progress.phase!=='water'&&(progress.phase!=='brush'||progress.elapsed>1);
+   const depth=progress.phase==='inspect'?1:Math.max(0,(progress.hold-.35)/2.65);
+   const cutting=progress.phase==='grind'&&progress.hold>.35;art.abrade(depth);
+   art.cut.visible=progress.phase==='inspect'||cutting;art.sample.visible=!art.cut.visible&&progress.phase!=='water';
+   art.patch.position.y=art.cut.visible?.02504-(progress.phase==='inspect'?1:Math.max(0,(progress.hold-.35)/2.65))*.0044:.02504;art.patch.scale.setScalar(progress.phase==='compare'||progress.phase==='evidence'?1.18:1);art.patch.visible=progress.phase!=='water'&&(progress.phase!=='brush'||progress.elapsed>1);
+   if(art.cut.visible)art.patch.visible=false;
    art.sediment.visible=progress.phase==='water';art.interpret(progress.elapsed,reduced());
    art.water.visible=progress.phase==='water';
    art.berries.visible=progress.phase==='compare'||progress.phase==='evidence';
-   art.tick(effects.time,progress.phase==='grind'&&progress.hold>.35||progress.phase==='brush',progress.phase==='grind'&&progress.hold>.35);
+   art.tick(effects.time,progress.phase==='grind'&&progress.hold>.35||progress.phase==='brush',progress.phase==='grind'&&progress.hold>.35,depth);
   };
   return {
    id:'episode-rover-01',scene:art.scene,camera,effects,
    activate(){active=true;show();draw(0);},
    update(dt,input){
     if(!active||paused||disposed)return;
+    const step=Math.min(Math.max(dt,0),.05);
+    if(returning){exitTime+=step;opening.fadeOut(exitTime/.55);if(exitTime>=.55){context.request({kind:'return-to-hub',result:{episodeId:'episode-rover-01',wreckId:entry.wreckId,chapter:'blueberry-clue',outcome:exitComplete?'completed':'aborted'}});}return;}
     if(input.returnPressed){returnHub(progress.phase==='evidence');return;}
-    if(input.startPressed&&!started){started=true;show();}
+    if(input.startPressed&&!started){started=true;draw(0);opening.start(camera,rover.root,reduced());show();context.clearInput();return;}
     if(!started)return;
-    const step=Math.min(Math.max(dt,0),.05);effects.time+=step;withdrawing=Math.max(0,withdrawing-step);
+    if(opening.playing){if(opening.update(step,camera,input.interactPressed||input.confirmPressed||input.startPressed||skipOpening)){skipOpening=false;show();context.clearInput();}return;}
+    effects.time+=step;withdrawing=Math.max(0,withdrawing-step);
     if(input.replayPressed){reset();return;}
     if(progress.phase==='approach'){
      const oldHeading=vehicle.heading,oldDistance=vehicle.movedDistance;contacts.forEach((v,i)=>v.copy(vehicle.contactPositions[i]));
@@ -123,11 +132,11 @@ export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntr
     draw(step);renderUI();
    },
    resize(w,h){camera.aspect=w/h;camera.updateProjectionMatrix();},
-   setPaused(value){paused=value;returning=false;actionQueued=false;progress.cancelHold();panel.hidden=value||!started;},
-   restart(){started=true;paused=false;reset();},
-   getSaveEntry(){return {scene:'episode-rover-01',wreckId:entry.wreckId,chapter:'blueberry-clue',resume:{kind:'blueberry-clue',phase:progress.phase,started,position:[vehicle.position.x,vehicle.position.z],heading:vehicle.heading,cameraYaw:rig.yaw,cameraPitch:rig.pitch,cameraDistance:rig.distance,time:effects.time}};},
-   dispose(){if(disposed)return;disposed=true;active=false;abort.abort();panel.remove();element('restart-button').hidden=true;element('mission-hold').hidden=true;element('touch-controls').querySelector<HTMLElement>('.dpad')!.hidden=false;art.dispose();},
-   debug(){return {phase:started?progress.phase:'ready',chapter:'blueberry-clue',hold:progress.hold.toFixed(3),comparison:progress.comparison,position:`${vehicle.position.x.toFixed(2)},${vehicle.position.z.toFixed(2)}`,near:near(),contacts:vehicle.grounded.map(v=>v?'1':'0').join(''),berries:art.berries.count,wet:art.water.visible,returning};},
+   setPaused(value){paused=value;if(returning){returning=false;opening.cancel();element('touch-controls').style.visibility='visible';}actionQueued=false;skipOpening=false;progress.cancelHold();panel.hidden=value||!started||opening.playing;opening.root.hidden=value||!opening.playing;},
+   restart(){started=true;paused=false;reset();draw(0);opening.start(camera,rover.root,reduced());show();},
+   getSaveEntry(){return {scene:'episode-rover-01',wreckId:entry.wreckId,chapter:'blueberry-clue',resume:{kind:'blueberry-clue',phase:progress.phase,started:started&&!opening.playing,position:[vehicle.position.x,vehicle.position.z],heading:vehicle.heading,cameraYaw:rig.yaw,cameraPitch:rig.pitch,cameraDistance:rig.distance,time:effects.time}};},
+   dispose(){if(disposed)return;disposed=true;active=false;abort.abort();panel.remove();opening.dispose();element('restart-button').hidden=true;element('mission-hold').hidden=true;element('touch-controls').style.visibility='';element('touch-controls').querySelector<HTMLElement>('.dpad')!.hidden=false;art.dispose();},
+   debug(){return {phase:opening.playing?'arrival':started?progress.phase:'ready',arrivalTime:opening.elapsed.toFixed(2),chapter:'blueberry-clue',hold:progress.hold.toFixed(3),comparison:progress.comparison,position:`${vehicle.position.x.toFixed(2)},${vehicle.position.z.toFixed(2)}`,near:near(),contacts:vehicle.grounded.map(v=>v?'1':'0').join(''),berries:art.berries.count,wet:art.water.visible,returning};},
   };
  }catch(error){art.dispose();throw error;}
 }

@@ -15,6 +15,27 @@
 .game-paused .discovery-panel{display:none}
 #mission-hold{touch-action:none;pointer-events:auto;background:#dfbc8e;color:#171b1b;min-width:90px;min-height:56px}
 .large-interface .discovery-panel{font-size:18px}
+@font-face{font-family:MissionRajdhani;src:url('/assets/ui/mission-one/Rajdhani-Medium.ttf') format('truetype');font-style:normal;font-weight:500;font-display:swap}
+.memory-opening{position:fixed;inset:0;z-index:22;pointer-events:none;color:#eee8da;--black:1;--titles:0;--bars:1}
+.memory-opening[hidden]{display:none}
+.memory-shade{position:absolute;inset:0;background:#0b0d0d;opacity:var(--black)}
+.memory-vignette{position:absolute;inset:0;background:linear-gradient(90deg,#0b1010b0,transparent 80%);opacity:var(--titles)}
+.memory-letterbox{position:absolute;left:0;right:0;height:9vh;background:#0b0d0d;opacity:var(--bars)}
+.memory-letterbox.top{top:0}.memory-letterbox.bottom{bottom:0}
+.memory-titles{position:absolute;left:9vw;top:24vh;width:min(640px,80vw);opacity:var(--titles);text-shadow:0 2px 20px #000}
+.memory-titles::before{content:'';display:block;width:44px;height:20px;border-top:1px solid #c3aa83;border-left:1px solid #c3aa83;margin:0 0 28px -18px}
+.memory-date{font:500 clamp(18px,2vw,25px)/1.2 MissionRajdhani,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#d7b88e;margin:0 0 12px}
+.memory-place{font:500 12px/1.6 system-ui;letter-spacing:.16em;text-transform:uppercase;margin:0 0 22px}
+.memory-titles h1{font:500 clamp(36px,5.4vw,76px)/1 MissionRajdhani,sans-serif;letter-spacing:.015em;max-width:620px;margin:0 0 20px}
+.memory-caption{font:500 13px/1.4 system-ui;letter-spacing:.12em;margin:0;color:#d4cbbb}
+.memory-opening button{position:absolute;pointer-events:auto;min-height:44px;background:#131919dd;border:1px solid #746d5e;color:#e9dfcf;padding:10px 18px;font:500 13px/1.4 system-ui;cursor:pointer}
+.memory-opening button:hover{background:#3a3b32}.memory-opening button:active{background:#565343}
+.memory-opening button:focus-visible{outline:2px solid #f4dfb5;outline-offset:4px}
+.memory-skip{bottom:max(20px,env(safe-area-inset-bottom));right:max(28px,env(safe-area-inset-right))}
+.memory-pause{top:max(20px,env(safe-area-inset-top));right:max(28px,env(safe-area-inset-right))}
+.memory-exit .memory-titles,.memory-exit button,.memory-exit .memory-letterbox,.memory-exit .memory-vignette{display:none}
+.game-paused .memory-opening{display:none}
+@media(max-width:650px){.memory-titles{left:10vw;top:22vh;width:80vw}.memory-place{font-size:11px;letter-spacing:.08em}.memory-titles h1{font-size:44px}.memory-date{font-size:20px;letter-spacing:.09em}.memory-caption{font-size:12px}.memory-letterbox{height:10vh}}
 @media(max-width:650px){.discovery-panel{right:16px;bottom:150px;padding:14px;max-height:43vh;overflow:auto}
 .discovery-panel h2{font-size:20px}
 .discovery-panel details{margin-top:8px}
