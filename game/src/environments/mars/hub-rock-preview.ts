@@ -4,7 +4,7 @@ import { hubHeight } from './hub-terrain';
 import { disposeSceneResources } from './resources';
 
 /** One scanned outcrop for visual approval; deliberately not distributed across the hub. */
-export async function addHubRockPreview(scene: Scene, obstacles: {x:number;z:number;radius:number}[], isDisposed:()=>boolean, height=hubHeight, sharedStone?: MeshStandardMaterial): Promise<void> {
+export async function addHubRockPreview(scene: Scene, obstacles: {x:number;z:number;radius:number;kind?:'rock'}[], isDisposed:()=>boolean, height=hubHeight, sharedStone?: MeshStandardMaterial): Promise<void> {
   const file = sharedStone ? 'boulder-01-shape.glb' : 'boulder-01.glb';
   const {scene:rock} = await new GLTFLoader().loadAsync(`${import.meta.env.BASE_URL}assets/rocks/boulder-01-preview/${file}`);
   if(isDisposed()){disposeSceneResources(rock);return;}
@@ -57,7 +57,7 @@ export async function addHubRockPreview(scene: Scene, obstacles: {x:number;z:num
   for(let x=placed.min.x+.18;x<placed.max.x;x+=.4)for(let z=placed.min.z+.18;z<placed.max.z;z+=.4){
     ray.ray.origin.set(x,placed.max.y+1,z);
     const hit=ray.intersectObject(rock,true)[0];
-    if(hit&&hit.point.y>height(x,z)+.22)obstacles.push({x,z,radius:.29});
+    if(hit&&hit.point.y>height(x,z)+.22)obstacles.push({x,z,radius:.29,kind:'rock'});
   }
   rock.userData.source='https://polyhaven.com/a/boulder_01';
   rock.userData.previewOnly=true;

@@ -1,5 +1,19 @@
 # Rover game plan
 
+## Reference terrain update, 15 November 2026
+
+The active branch is `fixing_terrain`. The default hub and Opportunity drive preview now use an authored 100 × 100 metre terrain: broad winding sandy floor, asymmetric low western shelf and higher eastern headland, restrained orange/peach haze, sparse scanned rock anchors and debris. The three new user-supplied images under `outputs/references/terrain-100/` are the primary direction for this pass, superseding the old gray-sky hub appearance. Spawn is now `(0,36)`; the single memory rover remains at `(0,-25)`. Legacy terrain is retained through `createHubEnvironment({legacyTerrain:true})`, and the fictional repair episode remains separate.
+
+Rendered ground and contact share the same 0.5 m triangle grid; both controllers respect explicit square bounds. The terrain world bakes the parallel physics owner's transformed rock surfaces before readiness and clears them on disposal. The measured rover supports bounded suspension, low-rock traversal, and tall-step/belly obstruction; this is geometric contact, not a full rigid-body/rollover solver. Main and side routes pass at 30/60 Hz. Current combined suite: 58 passing checks, successful isolated production build, native drive/turn/reverse plus hub entry/return checks. See `outputs/planning/terrain-100-plan.md` and `outputs/review/terrain-100/REVIEW.md`. Visual acceptance and thermal measurement remain outstanding; independent historical chapter hosting is still future work.
+
+## Stone traversal, 15 November 2026
+
+The user rejected the first climb as too abrupt. A soft-motion revision now progressively loads tyres with a cubic contact profile and slows the approach to raised rocks. It remains dynamic under driving input. The same-input before/after recording and measured reduction in frame jumps are in `outputs/review/soft-climb/REVIEW.md`; 59 tests and build pass. User acceptance remains open.
+
+Opportunity now rolls onto low stones using a wheel-radius contact envelope over the visible static rock geometry. Six-wheel support drives the existing bounded suspension and chassis springs. Oversized steps and central belly obstructions stop translation; pivoting checks tyre clearance too, and reversing/turning away remains possible. This extends the custom kinematic contact approximation, rather than adding a rigid-body or articulated rocker-bogie solver. Static rock tops are cached once in a 4 cm grid; driving performs height lookups, with no detailed rock-mesh raycasts per frame. Terrain and rock maps expose this through the optional `MarsEnvironment.roverSurface` interface.
+
+Production build/typecheck and all 58 automated checks pass, including six stone regressions. Native development-browser review covers a low-step ascent/descent, tall-step stop, reverse recovery, pause/resume and normal terrain driving without fixtures. See `outputs/review/stone-climbing/REVIEW.md`; final feel remains subject to user review.
+
 ## Main menu implementation, 14 November 2026
 
 The user replaced the Echoes of Mars title and introductory tagline with **Abandoned but not Forgotten**, using a condensed sans-serif heading over the supplied Mars landscape. The default entry has New Game, saved Continue and Settings; no Credits action. New Game starts the existing present-day hub directly and requires confirmation when a save exists. The satellite arrival cinematic remains future work.
@@ -111,3 +125,7 @@ The preserved episode retains spawn `(0, 8)`, donor `(0, -5)` and relay `(0, -24
 TypeScript, production build and targeted motion checks pass. Geometry checks confirm that the near-terrain mesh and wheel height sampling agree. Current captures and a normal-speed recording are under `outputs/review/visual-pass-v2/`. The final production desktop playthrough passes recovery, alignment retry, successful installation, calibration, the unanswered relay call, replay, pause/resume/restart, focus handling and optical views through both F and the button. All six mobile touch buttons and module pointer dragging pass, and browser error logs are empty. User visual/gameplay acceptance, sound integration, target-machine performance confirmation and the complete later story remain outstanding. The game is not complete.
 
 Ready-made assets include Kenney CC0 mission hardware and an unused NASA Perseverance GLB. Poly Haven CC0 `sandy_gravel_02` and `dry_riverbed_rock` supply local color, OpenGL normal, roughness and AO maps; originals, source URLs, licenses and hashes are retained under `assets/vendor/polyhaven/`. Nine project workflows and the approved-reference pack remain installed. Tripo CLI/MCP is researched but unauthenticated; the user has no account and no paid model job has been submitted. See `test-assets.md` and `3d-service-workflow.md`. The current prototype does not require live generation services.
+
+### Focused reference refinement, 15 November 2026
+
+Extended the existing100m terrain with broken outer shelf lips, connected buried bedrock sections and margin-weighted fragments. Geology attributes now couple sediment/exposure to color, roughness and normal strength; localized derivative-filtered sand ripples remain material-only. Warm forward-right sunlight and middle-distance forms improve separation without changing graphics budgets. Map dimensions, routes, spawn and entrance remain unchanged. Native comparisons, performance and explicit remaining discrepancies: `outputs/review/terrain-100/refinement/REVIEW.md`. Final artistic acceptance remains open.

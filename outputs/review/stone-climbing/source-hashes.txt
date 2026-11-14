@@ -1,0 +1,6 @@
+999d2f575b37192a3c44cadf68a3493218554792fbf35af03863349847f73347  game/src/core/rock-surface.ts
+510d6fc0a394a12d232865f09f8b9c1cba9b2ca735f92efa57e7ceac7915f998  game/src/entities/rover/stone-traversal.ts
+4983732f40e7db3d27f5149ab0ec484b0bebf6abd874ee892bf40dce01ee5418  game/src/entities/rover/controller.ts
+091444b228a06468b503d32b6a19bd1d2c432ca64995827c0e390e9997060c76  game/src/entities/rover/grounding.ts
+3c7c8c88960ec131f87e8aa31a6a660de9d90234b77c47b63bddf1520dcfeb5b  game/src/scenes/episodes/rover/opportunity-drive.ts
+dce7b7fa189a8a3372abebc9747690c889f3cfdcd7e2c85774beef9876a3d38a  outputs/review/stone-climbing/stone-motion.webm

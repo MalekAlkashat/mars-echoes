@@ -1,5 +1,15 @@
 # Spirit and memory architecture
 
+## Static stone contact, 15 November 2026
+
+Soft-motion revision: wheel loading now uses a dense cubic contact profile and look-ahead rock speed reduction, while retaining hard clearance constraints. See `outputs/review/soft-climb/REVIEW.md` for the same-input native comparison, quantified continuity audit and limits. Build and 59 tests pass; extreme terrain can still invoke the safety clamp.
+
+`core/rock-surface.ts` bakes transformed static rock triangles and instances into a 4 cm top-height cache. Worlds expose it through optional `MarsEnvironment.roverSurface`, resolve `ready` after baking, and clear it on disposal. Default terrain100 and the legacy hub both provide it. Mark navigation proxies `kind:'rock'`: the spirit/camera still use those circles, while a surface-enabled `Vehicle` uses the actual cached rock footprint. Other obstacles retain circular collision.
+
+`entities/rover/stone-traversal.ts` supplies wheel-radius support and checks leading tyre edges, rotation and belly clearance. `controller.ts` owns movement rejection; `grounding.ts` owns the bounded suspension/body response, unloading wheels when all six supports cannot fit the available travel. `opportunity-drive.ts` composes these modules and uses the same surface for dust and camera height. No extra renderer, event listeners, physics dependency or animation loop is introduced. The preserved repair prototype retains its existing controller configuration. Dynamic rocks, overhang traversal, tipping and a physical rocker-bogie mechanism remain unsupported. Re-bake static contacts if the map's rock transforms change.
+
+Build/typecheck and 58 tests pass. Native evidence and contact-cache measurements are in `outputs/review/stone-climbing/REVIEW.md`.
+
 ## Current Opportunity model integration
 
 The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.

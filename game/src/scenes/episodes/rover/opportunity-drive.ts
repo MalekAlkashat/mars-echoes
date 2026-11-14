@@ -6,24 +6,35 @@ import { Vehicle } from '../../../entities/rover/controller';
 import { CameraRig } from '../../../entities/rover/camera';
 import { WheelEffects } from '../../../entities/rover/wheel-effects';
 import { element } from '../../../ui';
+import { RockSurface } from '../../../core/rock-surface';
 
 /** Actual Opportunity driving systems; historical chapter logic is added separately. */
 export async function createOpportunityDrive(context: SceneContext, entry: EpisodeEntry, signal: AbortSignal): Promise<GameScene> {
   const assets = await context.assets.load();
   signal.throwIfAborted();
-  const world = createHubEnvironment();
+  const world = createHubEnvironment({variedOutcrops:true,quietGround:true});
   try {
-    const rover = createOpportunityRover(assets.opportunity);
-    world.scene.add(rover.root);
-    const vehicle = new Vehicle(rover.contactConfig);
-    const camera = new CameraRig(rover.opticalAnchor);
-    camera.setObstacles(world.obstacles);
-    const dust = new WheelEffects(world.scene,world.height,.14);
-    const previousContacts = Array.from({length:6},() => new Vector3());
-    const effects = {time:0,degraded:0};
-    let active = false, started = false, paused = false, disposed = false, optical = false, returning = false;
     await world.ready;
     signal.throwIfAborted();
+    const surface=world.roverSurface??new RockSurface(world.height);
+    let reviewStones=false;
+    if(import.meta.env.DEV&&new URLSearchParams(location.search).get('rocks')==='review'){
+      reviewStones=true;
+      const {addStoneReviewCourse}=await import('../../../entities/rover/stone-review-course');
+      addStoneReviewCourse(world);
+    }
+    if(!surface.cells||reviewStones)surface.bake(world.scene);
+    world.roverSurface=surface;
+    const rover = createOpportunityRover(assets.opportunity);
+    world.scene.add(rover.root);
+    const vehicle = new Vehicle(rover.contactConfig,world.bounds,world.roverSurface);
+    const camera = new CameraRig(rover.opticalAnchor);
+    camera.setObstacles(world.obstacles);
+    const dust = new WheelEffects(world.scene,world.roverSurface?.height??world.height,.14);
+    const previousContacts = Array.from({length:6},() => new Vector3());
+    const cameraHeight=world.roverSurface?.height??world.height;
+    const effects = {time:0,degraded:0};
+    let active = false, started = false, paused = false, disposed = false, optical = false, returning = false;
     world.setupEnvironment(context.renderer);
     const show = () => {
       context.ui.resetView();
@@ -53,7 +64,7 @@ export async function createOpportunityDrive(context: SceneContext, entry: Episo
       rover.reset(); dust.reset(); camera.reset();
       effects.time=0; optical=false; returning=false; paused=false;
       pose();
-      camera.update(0,started?'drive':'ready',rover.root,rover.opticalAnchor,world.spawn,world.spawn,false,world.height);
+      camera.update(0,started?'drive':'ready',rover.root,rover.opticalAnchor,world.spawn,world.spawn,false,cameraHeight);
       if(active){context.clearInput();show();}
     };
     reset();
@@ -65,7 +76,7 @@ export async function createOpportunityDrive(context: SceneContext, entry: Episo
       camera.reset();camera.yaw=saved.cameraYaw;camera.pitch=saved.cameraPitch;camera.distance=saved.cameraDistance;
       optical=saved.optical;effects.time=saved.time;
       pose();world.tick(effects.time,0);world.follow(vehicle.position);
-      camera.update(0,started?'drive':'ready',rover.root,rover.opticalAnchor,world.spawn,world.spawn,optical,world.height);
+      camera.update(0,started?'drive':'ready',rover.root,rover.opticalAnchor,world.spawn,world.spawn,optical,cameraHeight);
     }
     return {
       id:'episode-rover-01',scene:world.scene,camera:camera.camera,effects,
@@ -95,7 +106,7 @@ export async function createOpportunityDrive(context: SceneContext, entry: Episo
         dust.update(step,effects.time,vehicle.contactPositions,started?effectSpeed:0,vehicle.heading,vehicle.grounded);
         world.tick(effects.time,step);world.follow(vehicle.position);
         camera.setMotion({speed,acceleration:vehicle.acceleration,steer:vehicle.steer,impact:vehicle.impact});
-        camera.update(step,started?'drive':'ready',rover.root,rover.opticalAnchor,world.spawn,world.spawn,optical,world.height);
+        camera.update(step,started?'drive':'ready',rover.root,rover.opticalAnchor,world.spawn,world.spawn,optical,cameraHeight);
         dust.setView(camera.camera.fov,innerHeight*context.renderer.getPixelRatio());
         element('feed').hidden=!optical;
         element('feed-label').textContent='Opportunity · optical view';
@@ -106,11 +117,11 @@ export async function createOpportunityDrive(context: SceneContext, entry: Episo
         position:[vehicle.position.x,vehicle.position.z],heading:vehicle.heading,cameraYaw:camera.yaw,
         cameraPitch:camera.pitch,cameraDistance:camera.distance,time:effects.time,optical}};},
       restart(){started=true;reset();},
-      dispose(){if(disposed)return;disposed=true;active=false;world.dispose();},
+      dispose(){if(disposed)return;disposed=true;active=false;surface.clear();world.dispose();},
       debug(){return {phase:started?'drive':'ready',model:'opportunity-v1',position:`${vehicle.position.x.toFixed(2)},${vehicle.position.z.toFixed(2)}`,
         contacts:vehicle.grounded.map(value=>value?'1':'0').join(''),wheelAngles:rover.wheels.map(w=>w.rotation.x.toFixed(3)).join(','),
         wheelOffsets:vehicle.wheelOffsets.map(x=>x.toFixed(3)).join(','),heading:vehicle.heading.toFixed(3),speed:vehicle.speed.toFixed(3),
-        wheelRadius:rover.contactConfig.wheelRadius,optical};},
+        wheelRadius:rover.contactConfig.wheelRadius,rockCells:world.roverSurface?.cells??0,bodyHeight:vehicle.position.y.toFixed(3),optical};},
     };
   }catch(error){world.dispose();throw error;}
 }

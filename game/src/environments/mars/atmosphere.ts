@@ -12,17 +12,19 @@ export type Atmosphere = {
   dispose(): void;
 };
 
-export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadowSize?: number} = {}): Atmosphere {
+export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadowSize?: number;referenceSky?:boolean} = {}): Atmosphere {
   const skyRadius = options.skyRadius ?? 280;
   const shadowSize = options.shadowSize ?? 2048;
-  const sunDirection = new Vector3(-0.18, 0.085, -1).normalize();
+  const reference=Boolean(options.referenceSky);
+  const sunDirection = reference?new Vector3(.55,.32,-1).normalize():new Vector3(-0.18, 0.085, -1).normalize();
   const material = new ShaderMaterial({
     side: BackSide,
     depthWrite: false,
     uniforms: {
       time: { value: 0 },
-      horizon: { value: new Color('#adb1b1') },
-      ceiling: { value: new Color('#53606b') },
+      clearHaze:{value:reference?1:0},
+      horizon: { value: new Color(reference?'#edb28c':'#adb1b1') },
+      ceiling: { value: new Color(reference?'#b88379':'#53606b') },
       underside: { value: new Color('#303d4a') },
       groundBounce: { value: new Color('#5f5145') },
       sunColor: { value: new Color('#f3ead6') },
@@ -37,7 +39,7 @@ export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadow
     `,
     fragmentShader: `
       varying vec3 vSkyDirection;
-      uniform float time;
+      uniform float time,clearHaze;
       uniform vec3 horizon, ceiling, underside, groundBounce, sunColor, sunDirection;
       float skyHash(vec2 p) {
         return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453);
@@ -65,6 +67,14 @@ export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadow
         vec3 sky = mix(horizon, ceiling, smoothstep(0.0, 0.72, elevation));
         float sunHaze = pow(sunAngle, 19.0) * exp(-elevation * 4.0);
         sky += sunColor * sunHaze * 0.17;
+        if(clearHaze>.5){
+          sky+=sunColor*pow(sunAngle,32.0)*.22;
+          sky=mix(sky,sunColor*1.6,smoothstep(.99965,.99992,sunAngle));
+          gl_FragColor=vec4(sky,1.0);
+          #include <tonemapping_fragment>
+          #include <colorspace_fragment>
+          return;
+        }
 
         vec2 uv = direction.xz / (0.19 + elevation * 0.85);
         uv = uv * vec2(1.3, 2.2) + vec2(time * 0.0013, 0.0);
@@ -95,9 +105,9 @@ export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadow
   sky.frustumCulled = false;
   scene.add(sky);
 
-  const hemisphere = new HemisphereLight('#b1becc', '#836d56', 0.75);
+  const hemisphere = new HemisphereLight(reference?'#d8c0ad':'#b1becc', reference?'#936348':'#836d56', reference?.65:.75);
   scene.add(hemisphere);
-  const sun = new DirectionalLight('#f3e8d3', 3.0);
+  const sun = new DirectionalLight(reference?'#ffe4c3':'#f3e8d3', reference?2.6:3.0);
   sun.name = 'pale-low-sun';
   sun.castShadow = true;
   sun.shadow.mapSize.set(shadowSize, shadowSize);

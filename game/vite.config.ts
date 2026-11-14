@@ -19,10 +19,11 @@ export default defineConfig({
           }
           const hub = new URL(request.url ?? '/', 'http://localhost').searchParams.get('scene') === 'mars-hub';
           const opportunity = new URL(request.url ?? '/', 'http://localhost').searchParams.get('scene') === 'opportunity';
-          const directory=fileURLToPath(new URL(opportunity ? '../outputs/review/opportunity-v1/' : hub ? '../outputs/review/mars-hub-v1/' : '../outputs/review/visual-pass-v2/',import.meta.url));
+          const terrain = new URL(request.url ?? '/', 'http://localhost').searchParams.get('scene') === 'terrain-100';
+          const directory=fileURLToPath(new URL(terrain?'../outputs/review/terrain-100/':opportunity ? '../outputs/review/opportunity-v1/' : hub ? '../outputs/review/mars-hub-v1/' : '../outputs/review/visual-pass-v2/',import.meta.url));
           await mkdir(directory,{recursive:true});
           const extension=request.headers['content-type']?.includes('mp4')?'mp4':'webm';
-          await writeFile(join(directory,`${opportunity ? 'opportunity-motion' : hub ? 'hub-motion' : 'rover-motion-v2'}.${extension}`),Buffer.concat(chunks));
+          await writeFile(join(directory,`${terrain?'terrain-motion':opportunity ? 'opportunity-motion' : hub ? 'hub-motion' : 'rover-motion-v2'}.${extension}`),Buffer.concat(chunks));
           response.setHeader('Content-Type','application/json');response.end(JSON.stringify({saved:true}));
         }catch{response.statusCode=500;response.end(JSON.stringify({saved:false}));}
       });

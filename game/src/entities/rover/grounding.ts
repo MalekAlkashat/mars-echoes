@@ -142,6 +142,11 @@ export class RoverGrounding {
       const supported = MathUtils.clamp(this.heightSpring.value, minimum, maximum);
       if (supported !== this.heightSpring.value) this.heightSpring.velocity = 0;
       this.heightSpring.value = supported;
+    } else if (this.heightSpring.value < minimum) {
+      // When the six supports exceed suspension travel, lift unloaded tyres instead of
+      // letting a tyre pass through the high contact. Gravity is approximated by the spring.
+      this.heightSpring.value = minimum;
+      this.heightSpring.velocity = Math.max(0,this.heightSpring.velocity);
     }
     position.y = this.heightSpring.value;
 

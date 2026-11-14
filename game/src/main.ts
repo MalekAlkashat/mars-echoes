@@ -8,9 +8,9 @@ const entry: SceneEntry = scene === 'episode-rover-01'
   : {scene:'mars-hub'};
 const game = new Game(entry, !new URLSearchParams(location.search).has('scene'));
 const review = new URLSearchParams(location.search).get('review');
-if (import.meta.env.DEV && (review === 'hub' || review === 'opportunity')) {
+if (import.meta.env.DEV && (review === 'hub' || review === 'opportunity' || review === 'terrain')) {
   void import('./core/review').then(({installRecorder}) => {
-    installRecorder(document.querySelector<HTMLCanvasElement>('#scene')!, `/__review_capture?scene=${review === 'hub' ? 'mars-hub' : 'opportunity'}`);
+    installRecorder(document.querySelector<HTMLCanvasElement>('#scene')!, `/__review_capture?scene=${review === 'terrain'?'terrain-100':review === 'hub' ? 'mars-hub' : 'opportunity'}`);
   });
 }
 if (import.meta.hot) import.meta.hot.dispose(() => game.dispose());

@@ -14,15 +14,14 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
     await world.ready;
     assertActive(signal);
     world.setupEnvironment(context.renderer);
-    const controller = new SpiritController();
+    const controller = new SpiritController(world.bounds);
     const rig = createSpiritAppearance();
     world.scene.add(rig);
     const follow = new SpiritCamera();
     let started = Boolean(entry.bookmark), active = false, paused = false, disposed = false;
     const effects = { time: 0, degraded: 0 };
     const restore = (bookmark?: HubBookmark) => {
-      controller.reset(bookmark?.position[0] ?? 0, bookmark?.position[2] ?? 8, world.height, bookmark?.heading ?? 0);
-      if (bookmark) controller.position.y = bookmark.position[1];
+      controller.reset(bookmark?.position[0] ?? world.spawn.x, bookmark?.position[2] ?? world.spawn.z, world.height, bookmark?.heading ?? 0);
       follow.yaw = bookmark?.cameraYaw ?? 0;
       follow.pitch = bookmark?.cameraPitch ?? .12;
       follow.distance = bookmark?.cameraDistance ?? 5.8;
@@ -89,7 +88,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       dispose() { if (disposed) return; disposed = true; active = false; world.dispose(); },
       debug() { return {phase: started ? 'hub' : 'ready', position: `${controller.position.x.toFixed(2)},${controller.position.z.toFixed(2)}`,
         heading: controller.heading.toFixed(3), grounded: controller.grounded, repaired: false,
-        terrain:'hub-troughs-v1', decorativeWrecks:0, vistaRadius:1000}; },
+        terrain:'reference100-v1', decorativeWrecks:0, terrainWidth:100, terrainDepth:100}; },
     };
     return scene;
   } catch (error) {

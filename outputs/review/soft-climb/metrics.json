@@ -1,0 +1,12 @@
+{
+  "maxBodyStep": {
+    "before": 0.02835437201431075,
+    "after": 0.0015369267632448086,
+    "reductionPercent": 94.57957748995779
+  },
+  "maxWheelStep": {
+    "before": 0.04830539826942315,
+    "after": 0.007285458534618238,
+    "reductionPercent": 84.91792057280301
+  }
+}

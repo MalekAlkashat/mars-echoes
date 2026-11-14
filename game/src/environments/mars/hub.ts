@@ -8,9 +8,12 @@ import { hubHeight as sampleHubHeight, HUB_TERRAIN, makeHubTerrain } from './hub
 import { addHubRockPreview } from './hub-rock-preview';
 import { addHubOutcrops, HUB_FRAGMENT_COUNT, HUB_OUTCROPS } from './hub-outcrops';
 import { setRockGroundPlanes } from './hub-rock-dust';
+import { RockSurface } from '../../core/rock-surface';
+import { createTerrain100World } from './terrain-100-world';
 
 /** Present-day hub dressing; the fictional repair episode keeps its separate baseline. */
-export function createHubEnvironment(options: { scannedOutcropPreview?: boolean; variedOutcrops?: boolean; quietGround?: boolean } = {}): MarsEnvironment {
+export function createHubEnvironment(options: { scannedOutcropPreview?: boolean; variedOutcrops?: boolean; quietGround?: boolean; legacyTerrain?:boolean } = {}): MarsEnvironment {
+  if(!options.legacyTerrain)return createTerrain100World();
   const hubHeight = (x: number, z: number) => sampleHubHeight(x, z, options.quietGround);
   const scene = new Scene();
   scene.name = 'meridiani-trough-and-crater-hub';
@@ -19,6 +22,7 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
   scene.add(...makeHubTerrain(options.quietGround));
   const atmosphere = addAtmosphere(scene, {skyRadius: 1400, shadowSize: 1024});
   const obstacles: MarsEnvironment['obstacles'] = [];
+  const roverSurface = new RockSurface(hubHeight);
   const rock = fracturedRock(39, 1);
   const transform = new Object3D();
   const stone = surfaceMaterial('rock',false,{terrainDust:options.variedOutcrops});
@@ -45,7 +49,7 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
     shelf.castShadow = shelf.receiveShadow = true;
     scene.add(shelf);
     // Conservative proxies cover the full ledge, not just its centre.
-    for (const offset of [-.3, 0, .3]) obstacles.push({x: x + offset * width, z, radius: Math.min(width, depth) * .38});
+    for (const offset of [-.3, 0, .3]) obstacles.push({x: x + offset * width, z, radius: Math.min(width, depth) * .38,kind:'rock'});
   }
 
   let seed = 18427;
@@ -66,7 +70,7 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
     scatter = scatter.filter((_,index)=>!replaced.has(index));
   }
   for (const {x,z,size} of scatter) {
-    if (size > .65 && Math.hypot(x,z) < 62) obstacles.push({x,z,radius:size*.5});
+    if (size > .65 && Math.hypot(x,z) < 62) obstacles.push({x,z,radius:size*.5,kind:'rock'});
   }
   const gravelMaterial = options.quietGround ? stone
     : new MeshStandardMaterial({color:'#bca18a',roughness:1,vertexColors:true});
@@ -96,9 +100,9 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
     ? addHubRockPreview(scene,obstacles,()=>disposed,hubHeight,options.quietGround ? stone : undefined)
     : Promise.resolve();
   return {
-    scene, height:hubHeight, obstacles, spawn,
+    scene, height:hubHeight, obstacles, spawn, roverSurface,
     setupEnvironment:atmosphere.setupEnvironment, follow:atmosphere.follow,
-    ready:Promise.all([surfaceTexturesReady(),previewReady]).then(()=>undefined), tick(time) { atmosphere.tick(time); },
-    dispose() { if(disposed)return;disposed=true;atmosphere.dispose();disposeSceneResources(scene); },
+    ready:Promise.all([surfaceTexturesReady(),previewReady]).then(()=>{if(!disposed)roverSurface.bake(scene);}), tick(time) { atmosphere.tick(time); },
+    dispose() { if(disposed)return;disposed=true;roverSurface.clear();atmosphere.dispose();disposeSceneResources(scene); },
   };
 }

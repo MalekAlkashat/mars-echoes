@@ -8,7 +8,7 @@ import { bakeRockBaseDust, setRockGroundPlanes, type DustFootprint } from './hub
 
 type Shape = 'ridge' | 'slab' | 'block' | 'fragment';
 type Placement = { shape: Shape; x: number; z: number; scale: number; yaw: number; burial: number };
-type Solid = { x: number; z: number; radius: number };
+type Solid = { x: number; z: number; radius: number; kind?: 'rock' };
 export type RockKit = Record<Shape, BufferGeometry>;
 
 // Existing six landmark sites; sizes are uniform so scanned proportions survive.
@@ -74,7 +74,7 @@ export function populateHubOutcrops(scene: Scene, obstacles: Solid[], height: (x
         ray.ray.origin.set(x,bounds.max.y+1,z);
         const hit=ray.intersectObject(mesh,false)[0];
         if (hit && hit.point.y>height(x,z)-.06) footprint.points.push(new Vector2(x,z));
-        if (hit && hit.point.y>height(x,z)+.22) obstacles.push({x,z,radius:.29});
+        if (hit && hit.point.y>height(x,z)+.22) obstacles.push({x,z,radius:.29,kind:'rock'});
       }
     }
     mesh.userData = {shape:spec.shape, burial:spec.burial, firstObstacle, obstacleCount:obstacles.length-firstObstacle};

@@ -1,5 +1,11 @@
 # Spirit and equipment-memory game
 
+## Reference terrain update, 15 November 2026
+
+The active branch is `fixing_terrain`. The default hub and Opportunity drive preview now use an authored 100 × 100 metre terrain: broad winding sandy floor, asymmetric low western shelf and higher eastern headland, restrained orange/peach haze, sparse scanned rock anchors and debris. The three new user-supplied images under `outputs/references/terrain-100/` are the primary direction for this pass, superseding the old gray-sky hub appearance. Spawn is now `(0,36)`; the single memory rover remains at `(0,-25)`. Legacy terrain is retained through `createHubEnvironment({legacyTerrain:true})`, and the fictional repair episode remains separate.
+
+Rendered ground and contact share the same 0.5 m triangle grid; both controllers respect explicit square bounds. The terrain world bakes the parallel physics owner's transformed rock surfaces before readiness and clears them on disposal. The measured rover supports bounded suspension, low-rock traversal, and tall-step/belly obstruction; this is geometric contact, not a full rigid-body/rollover solver. Main and side routes pass at 30/60 Hz. Current combined suite: 58 passing checks, successful isolated production build, native drive/turn/reverse plus hub entry/return checks. See `outputs/planning/terrain-100-plan.md` and `outputs/review/terrain-100/REVIEW.md`. Visual acceptance and thermal measurement remain outstanding; independent historical chapter hosting is still future work.
+
 ## Current Opportunity model integration
 
 The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.

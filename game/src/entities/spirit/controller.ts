@@ -1,4 +1,5 @@
 import { MathUtils, Vector3 } from 'three';
+import { boundPosition, type WorldBounds } from '../../core/world-bounds.ts';
 
 type SpiritInput = { moveX: number; moveY: number; leapPressed: boolean };
 type Solid = { x: number; z: number; radius: number };
@@ -9,6 +10,8 @@ const SPEED = 4.2;
 
 /** Ground-following movement; its appearance and camera have no effect on collision. */
 export class SpiritController {
+  private readonly bounds?:WorldBounds;
+  constructor(bounds?:WorldBounds){this.bounds=bounds;}
   readonly position = new Vector3();
   readonly velocity = new Vector3();
   heading = 0;
@@ -17,7 +20,8 @@ export class SpiritController {
   private verticalVelocity = 0;
 
   reset(x: number, z: number, height: Height, heading = 0): void {
-    this.position.set(x, height(x, z) + HOVER, z);
+    const [bx,bz]=this.bounds?boundPosition(x,z,RADIUS,this.bounds):[x,z];
+    this.position.set(bx, height(bx, bz) + HOVER, bz);
     this.velocity.set(0, 0, 0);
     this.heading = heading;
     this.lift = 0;
@@ -58,7 +62,10 @@ export class SpiritController {
         }
       }
       const distance = Math.hypot(this.position.x, this.position.z);
-      if (distance > 63.5) {
+      if(this.bounds){
+        const [x,z]=boundPosition(this.position.x,this.position.z,RADIUS,this.bounds);
+        this.position.x=x;this.position.z=z;
+      } else if (distance > 63.5) {
         this.position.x *= 63.5 / distance;
         this.position.z *= 63.5 / distance;
       }

@@ -10,9 +10,11 @@ import { surfaceTexturesReady } from './materials';
 import { disposeSceneResources } from './resources';
 
 export interface MarsEnvironment {
+  roverSurface?: import('../../core/rock-surface').RockSurface;
+  bounds?: import('../../core/world-bounds').WorldBounds;
   scene: Scene;
   height(x: number, z: number): number;
-  obstacles: { x: number; z: number; radius: number }[];
+  obstacles: { x: number; z: number; radius: number; kind?: 'rock' }[];
   tick(time: number, dt: number): void;
   spawn: Vector3;
   setupEnvironment(renderer: WebGLRenderer): void;

@@ -1,7 +1,10 @@
 import { MathUtils, Vector3 } from 'three';
 import { DEFAULT_ROVER_CONTACT, RoverGrounding, type RoverContactConfig } from './grounding.ts';
+import { boundPosition, type WorldBounds } from '../../core/world-bounds.ts';
+import type { RockSurface } from '../../core/rock-surface.ts';
+import { StoneTraversal } from './stone-traversal.ts';
 
-export type Obstacle = { x: number; z: number; radius: number };
+export type Obstacle = { x: number; z: number; radius: number; kind?: 'rock' };
 type DriveInput = { forward: number; turn: number };
 
 const CONTACT_GAP = 0.0004;
@@ -25,10 +28,14 @@ export class Vehicle {
   readonly contactPositions: Vector3[];
   readonly wheelTravel: number[];
   readonly grounded: boolean[];
+  private readonly bounds?:WorldBounds;
+  private readonly stones?:StoneTraversal;
 
-  constructor(config: RoverContactConfig = DEFAULT_ROVER_CONTACT) {
+  constructor(config: RoverContactConfig = DEFAULT_ROVER_CONTACT, bounds?:WorldBounds, surface?:RockSurface) {
+    this.bounds=bounds;
     this.grounding = new RoverGrounding(config);
     this.config = this.grounding.config;
+    if(surface)this.stones=new StoneTraversal(surface,this.config);
     this.wheelOffsets = this.grounding.offsets;
     this.contactPositions = this.grounding.contacts;
     this.wheelTravel = this.grounding.travel;
@@ -39,7 +46,8 @@ export class Vehicle {
   get roll(): number { return this.grounding.roll; }
 
   reset(x: number, z: number, heading: number): void {
-    this.position.set(x, 0, z);
+    const point=this.bounds?boundPosition(x,z,this.config.collisionRadius,this.bounds):[x,z];
+    this.position.set(point[0], 0, point[1]);
     this.heading = heading;
     this.speed = 0;
     this.movedDistance = 0;
@@ -56,7 +64,8 @@ export class Vehicle {
     this.steer *= Math.exp(-step * 6);
     this.turnRate *= Math.exp(-step * 6);
     this.impact *= Math.exp(-step * 7);
-    this.grounding.update(step, this.position, this.heading, height,
+    if(this.stones)this.stones.heading=this.heading;
+    this.grounding.update(step, this.position, this.heading, this.stones?.wheelHeight??height,
       this.acceleration, this.steer, this.speed, this.impact);
   }
 
@@ -71,16 +80,18 @@ export class Vehicle {
     const step = elapsed / steps;
     const forward = MathUtils.clamp(Number.isFinite(input.forward) ? input.forward : 0, -1, 1);
     const turn = MathUtils.clamp(Number.isFinite(input.turn) ? input.turn : 0, -1, 1);
-    const targetSpeed = forward * (forward >= 0 ? 2.5 : 1.2);
+    const requestedSpeed = forward * (forward >= 0 ? 2.5 : 1.2);
     const previousSpeed = this.speed;
     const playerRadius = this.config.collisionRadius;
     const worldRadius = 64 - playerRadius;
     this.impact *= Math.exp(-elapsed * 7);
 
     for (let i = 0; i < steps; i++) {
+      const targetSpeed=requestedSpeed*(this.stones?.speedScale(this.position.x,this.position.z,this.heading,Math.sign(forward))??1);
       const braking = this.speed * targetSpeed < 0 || Math.abs(targetSpeed) < Math.abs(this.speed);
       this.speed = approach(this.speed, targetSpeed, (braking ? 2.8 : 1.25) * step);
       this.steer = MathUtils.damp(this.steer, turn, 5.5, step);
+      const previousHeading = this.heading;
       const turnAuthority = 0.42 + 0.56 * Math.min(Math.abs(this.speed) / 1.7, 1);
       this.turnRate = MathUtils.damp(this.turnRate, this.steer * turnAuthority, 6.5, step);
       this.heading += this.turnRate * step;
@@ -97,6 +108,7 @@ export class Vehicle {
       for (let pass = 0; pass < 6; pass++) {
         let corrected = false;
         for (const obstacle of obstacles) {
+          if(obstacle.kind==='rock'&&this.stones?.surface.cells)continue;
           const clearance = Math.max(0, obstacle.radius) + playerRadius;
           let dx = x - obstacle.x;
           let dz = z - obstacle.z;
@@ -119,7 +131,10 @@ export class Vehicle {
           corrected = true;
         }
         const distanceFromOrigin = Math.hypot(x, z);
-        if (distanceFromOrigin > worldRadius) {
+        if(this.bounds){
+          const [bx,bz]=boundPosition(x,z,playerRadius,this.bounds);
+          if(bx!==x||bz!==z){x=bx;z=bz;collided=true;corrected=true;}
+        } else if (distanceFromOrigin > worldRadius) {
           const scale = worldRadius / distanceFromOrigin;
           x *= scale;
           z *= scale;
@@ -129,10 +144,16 @@ export class Vehicle {
         if (!corrected) break;
       }
 
-      if (obstacles.some((obstacle) => Math.hypot(x - obstacle.x, z - obstacle.z)
+      if (obstacles.some((obstacle) => !(obstacle.kind==='rock'&&this.stones?.surface.cells)&&Math.hypot(x - obstacle.x, z - obstacle.z)
         < Math.max(0, obstacle.radius) + playerRadius - CONTACT_GAP)) {
         x = previousX;
         z = previousZ;
+      }
+      if(this.stones){
+        this.stones.heading=this.heading;
+        if(!this.stones.canMove(previousX,previousZ,x,z,this.heading,previousHeading)){
+          x=previousX;z=previousZ;this.heading=previousHeading;collided=true;
+        }
       }
 
       const actualX = x - previousX;
@@ -153,7 +174,8 @@ export class Vehicle {
       const measuredAcceleration = MathUtils.clamp((this.speed - previousSpeed) / elapsed, -5, 2.8);
       this.acceleration = MathUtils.damp(this.acceleration, measuredAcceleration, 7, elapsed);
     }
-    this.grounding.update(elapsed, this.position, this.heading, height,
+    if(this.stones)this.stones.heading=this.heading;
+    this.grounding.update(elapsed, this.position, this.heading, this.stones?.wheelHeight??height,
       this.acceleration, this.steer, this.speed, this.impact);
   }
 }

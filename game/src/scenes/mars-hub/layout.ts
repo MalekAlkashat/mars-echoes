@@ -11,7 +11,7 @@ export function createHubWorld(assets: Record<string, Object3D>) {
   const wreck = rover.root;
   const [x, z] = ROVER_MEMORY.position;
   wreck.name = ROVER_MEMORY.wreckId;
-  const contact = new Vehicle(rover.contactConfig);
+  const contact = new Vehicle(rover.contactConfig,world.bounds);
   contact.reset(x,z,0); contact.settle(.25,world.height);
   wreck.position.copy(contact.position);
   wreck.rotation.set(contact.pitch,0,contact.roll);
