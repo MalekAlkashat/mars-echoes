@@ -46,8 +46,14 @@
     <section id="pause" class="screen" hidden aria-labelledby="pause-title" role="dialog" aria-modal="true">
       <div class="pause-sidebar">
         <header><p class="pause-brand">ABANDONED<br><span>BUT NOT FORGOTTEN</span></p><h2 id="pause-title">Paused</h2></header>
-        <nav aria-label="Pause menu"><button id="resume-button" type="button">Resume</button><button id="save-game-button" type="button">Save Game</button><button id="skills-button" type="button">Skills</button><button id="settings-button" type="button">Settings</button><button id="leave-button" type="button" hidden>Leave memory</button><button id="main-menu-button" type="button">Main menu</button><button id="restart-button" type="button" hidden>Restart scene</button></nav>
+        <nav aria-label="Pause menu"><button id="resume-button" type="button">Resume</button><button id="save-game-button" type="button">Save Game</button><button id="skills-button" type="button">Skills</button><button id="controls-help-button" type="button">Controls</button><button id="settings-button" type="button">Settings</button><button id="leave-button" type="button" hidden>Leave memory</button><button id="main-menu-button" type="button">Main menu</button><button id="restart-button" type="button" hidden>Restart scene</button></nav>
         <footer><p id="save-status" role="status">Progress saves automatically.</p><span><kbd>Esc</kbd> Resume</span></footer>
+      </div>
+    </section>
+    <section id="controls-help" class="mars-modal" hidden role="dialog" aria-modal="true" aria-labelledby="controls-help-title">
+      <div class="controls-help-content"><header><p class="mars-menu-kicker">Abandoned but not Forgotten</p><h2 id="controls-help-title">Controls</h2></header>
+        <div class="controls-help-columns"><section aria-labelledby="controls-explore-title"><h3 id="controls-explore-title">Exploration</h3><dl><div><dt>Glide / drive</dt><dd>W A S D</dd></div><div><dt>Leap as spirit</dt><dd>Space</dd></div><div><dt>Look around</dt><dd>Drag / arrows</dd></div><div><dt>Zoom</dt><dd>Scroll</dd></div></dl></section><section aria-labelledby="controls-actions-title"><h3 id="controls-actions-title">Actions</h3><dl><div><dt>Enter memory / interact</dt><dd>E</dd></div><div><dt>Rover optical view</dt><dd>F</dd></div><div><dt>Pause / back</dt><dd>Esc</dd></div><div><dt>Photograph terrain</dt><dd>Pause → Skills</dd></div></dl></section></div>
+        <footer class="mars-settings-footer"><button id="controls-help-back" type="button">‹ Back</button><span class="mars-settings-key"><kbd>Esc</kbd> Back to pause</span></footer>
       </div>
     </section>
     <div id="transmission" hidden aria-live="polite"><p id="transmission-text">Calling mission control.</p><button id="replay-button" type="button" hidden>Replay opening</button><button id="return-button" hidden>Return to Mars</button></div>

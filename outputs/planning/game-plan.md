@@ -1,5 +1,11 @@
 # Rover game plan
 
+## Latest presentation direction: clear gameplay
+
+The user removed the persistent objective, rover-distance, keyboard legend and visible Pause button from gameplay. Escape still opens Pause; its new Controls action opens a simple guide and returns to Pause on Back/Escape. Only the nearby actionable Enter memory button is retained. This supersedes the earlier always-visible instruction HUD; a more authored control presentation remains deferred.
+
+The subsequent warm-sky experiment was reverted at the user's request because a teammate owns terrain/environment work. Environment source files match the existing branch commit; keep further terrain, sky, lighting and fog changes with that teammate. The clean gameplay view and Controls menu changes remain. Their browser checks pass at five viewport sizes; see `outputs/review/dust-sky-controls/REVIEW.md` for the historical review and rollback note.
+
 ## Main menu implementation, 14 November 2026
 
 The user replaced the Echoes of Mars title and introductory tagline with **Abandoned but not Forgotten**, using a condensed sans-serif heading over the supplied Mars landscape. The default entry has New Game, saved Continue and Settings; no Credits action. New Game starts the existing present-day hub directly and requires confirmation when a save exists. The satellite arrival cinematic remains future work.

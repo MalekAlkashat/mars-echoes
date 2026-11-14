@@ -11,6 +11,7 @@ export class MainMenu {
   private settingsPanel: HTMLElement;
   private confirmPanel: HTMLElement;
   private readonly skills: SkillTree;
+  private readonly controlsPanel = document.getElementById('controls-help')!;
   private ready = false;
   private hasSave = false;
   private returnFocus?: HTMLElement;
@@ -68,10 +69,15 @@ export class MainMenu {
     this.confirmPanel.innerHTML = `<div class="mars-modal-content mars-confirm"><p class="mars-menu-kicker">A new beginning</p><h2 id="new-game-title">Start again?</h2><p>New Game replaces your saved exploration and memory markers on this browser.</p><button id="menu-keep-save">Keep my journey</button><button id="menu-confirm-new" class="mars-secondary">Start New Game</button></div>`;
     document.body.append(this.settingsPanel,this.confirmPanel);
     this.skills=new SkillTree(()=>this.closeSkills(),actions.captureTerrain);
-    this.backgroundElements = [...document.body.children].filter((el): el is HTMLElement => el instanceof HTMLElement && ![this.root,this.settingsPanel,this.confirmPanel,this.skills.root].includes(el) && el.tagName !== 'SCRIPT');
+    this.backgroundElements = [...document.body.children].filter((el): el is HTMLElement => el instanceof HTMLElement && ![this.root,this.settingsPanel,this.confirmPanel,this.skills.root,this.controlsPanel].includes(el) && el.tagName !== 'SCRIPT');
     const signal=this.events.signal;
     this.button('settings').addEventListener('click',()=>this.openSettings(),{signal});
     this.get('skills-button').addEventListener('click',()=>this.openSkills(),{signal});
+    this.get('controls-help-button').addEventListener('click',()=>{
+      this.returnFocus=document.activeElement as HTMLElement;this.actions.pauseForSettings();
+      this.controlsPanel.hidden=false;this.updateInert();this.get('controls-help-back').focus({preventScroll:true});
+    },{signal});
+    this.get('controls-help-back').addEventListener('click',()=>this.closeControls(),{signal});
     this.button('continue').addEventListener('click',()=>this.actions.continueGame(),{signal});
     this.button('new').addEventListener('click',()=>{
       if(this.hasSave){this.confirmPanel.hidden=false;this.updateInert();this.get('menu-keep-save').focus();}
@@ -117,7 +123,8 @@ export class MainMenu {
   private get(id:string): HTMLElement { return document.getElementById(id)!; }
   private button(name:string): HTMLButtonElement { return this.root.querySelector(`[data-menu="${name}"]`)!; }
   get visible(): boolean { return !this.root.hidden; }
-  get modalOpen(): boolean { return !this.settingsPanel.hidden || !this.confirmPanel.hidden || !this.skills.root.hidden; }
+  get modalOpen(): boolean { return !this.settingsPanel.hidden || !this.confirmPanel.hidden || !this.skills.root.hidden || !this.controlsPanel.hidden; }
+  private closeControls():void {this.controlsPanel.hidden=true;this.updateInert();this.returnFocus?.focus({preventScroll:true});}
   setReady(ready:boolean):void {
     this.ready=ready;
     for(const name of ['continue','new'])this.button(name).disabled=!ready;
@@ -153,10 +160,10 @@ export class MainMenu {
   }
   /** Called by the single shared input listener, before gameplay shortcuts. */
   handleKey(event:KeyboardEvent):boolean {
-    const panel=!this.skills.root.hidden?this.skills.root:!this.settingsPanel.hidden?this.settingsPanel:!this.confirmPanel.hidden?this.confirmPanel:this.visible?this.root:undefined;
+    const panel=!this.controlsPanel.hidden?this.controlsPanel:!this.skills.root.hidden?this.skills.root:!this.settingsPanel.hidden?this.settingsPanel:!this.confirmPanel.hidden?this.confirmPanel:this.visible?this.root:undefined;
     if(!panel)return false;
     if(event.code==='Escape'){
-      event.preventDefault();if(!this.skills.root.hidden)this.closeSkills();else if(!this.settingsPanel.hidden)this.closeSettings();else if(!this.confirmPanel.hidden)this.closeConfirm();
+      event.preventDefault();if(!this.controlsPanel.hidden)this.closeControls();else if(!this.skills.root.hidden)this.closeSkills();else if(!this.settingsPanel.hidden)this.closeSettings();else if(!this.confirmPanel.hidden)this.closeConfirm();
     }
     if(event.code==='Tab'){
       const items=[...panel.querySelectorAll<HTMLElement>('button,input,select')].filter(el=>el.tabIndex>=0&&!el.closest('[hidden]')&&!(el as HTMLButtonElement).disabled);
@@ -200,5 +207,5 @@ export class MainMenu {
     } catch {this.get('fullscreen-status').textContent='Fullscreen is unavailable in this browser or window.';}
     this.updateFullscreen();
   }
-  dispose():void {this.events.abort();this.skills.dispose();for(const el of this.backgroundElements)el.inert=false;this.root.remove();this.settingsPanel.remove();this.confirmPanel.remove();}
+  dispose():void {this.events.abort();this.controlsPanel.hidden=true;this.skills.dispose();for(const el of this.backgroundElements)el.inert=false;this.root.remove();this.settingsPanel.remove();this.confirmPanel.remove();}
 }
