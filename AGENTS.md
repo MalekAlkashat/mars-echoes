@@ -51,3 +51,31 @@ Verify the actual Three.js scene with movement, camera, collision, interaction a
 ## Current quality priority
 
 The user found the first prototype visually too basic and authorized a substantial visual/gameplay rebuild, with UI secondary. Project Endurance is the quality reference for surfaces, light, camera and physical response. See `outputs/references/endurance-racing/technical-inspection.md` and `rover-visual-and-gameplay-plan.md` in that directory. Preserve the selected orange graveyard and pale damaged rover; wet roads and racing effects are not a new art direction. The v2 pass is implemented: scanned PBR surfaces, grounded fractured outcrops, a shared procedural sky/environment/fog, six-wheel terrain contact with spring visual suspension and chassis response, a weighted camera, wheel dust/tracks, and the arm/optical-module puzzle. This is a geometric contact approximation, not a full rigid-body vehicle solver. Build, targeted motion checks and the final production desktop opening loop pass: recovery, alignment retry, installation, calibration, unanswered relay call, replay, pause/resume/restart, focus handling and optical views via F/button. All six mobile touch buttons and module pointer dragging also pass; browser error logs are empty. Captures are under `outputs/review/visual-pass-v2/`. User visual/gameplay acceptance, sound integration and the full story remain outstanding. No Endurance code or artwork has been imported.
+
+## Third-party skills
+
+Read the relevant skill before using it. `AGENTS.md`, root `ROADMAP.md`, and `CONTRIBUTING.md` override skill defaults; follow `outputs/planning/architecture.md` for implemented ownership. Never scaffold a new project, add a physics engine or framework, change folder ownership, create another renderer, frame loop or input listener set, or call paid generation services. Keep originals and `SOURCE.md` for assets. Existing `plan`, `feature-handoff`, `gameplay-visual-review`, `materials-to-game`, and `game-level-design` workflows still apply; leave `fal-ai-generation` unused without a team decision.
+
+| Work | Skills |
+| --- | --- |
+| Rover memory chapters, time jumps, storm/shutdown (VS-03, CG-01–03) | `threejs-gameplay-systems`, `plan`, `feature-handoff` |
+| Skill tree, shrinking map, Memory Check, HUD (CG-04, CG-05, CG-08) | `threejs-game-ui-designer` |
+| Halo, ancient water, storm look, lighting (VS-04, CG-14, CG-15, PL-02) | `threejs-aaa-graphics-builder`, `threejs-procedural-materials`, `threejs-procedural-fields` |
+| Real terrain and chapter ground (CG-19, CG-20) | `threejs-procedural-materials`, `threejs-procedural-fields`, `materials-to-game` |
+| Camera handoffs, rover arm, spirit swirl (CG-02, VS-04, PL-03, PL-04) | `threejs-camera-direction`, `threejs-procedural-animation` |
+| Leaks and performance (PL-09, PL-10) | `threejs-debug-profiler` |
+| Running-game checks and PR screenshots | `playwright`, `playwright-interactive`, `screenshot`, `gameplay-visual-review` |
+| Test pass and release (QA-01, QA-03, G5) | `threejs-qa-release`, `playwright` |
+| Public URL and redeploys (K-04) | `vercel-deploy` when deployment is requested |
+
+Skill-specific overrides and limits:
+
+- `threejs-gameplay-systems` suggests a scaffold, Rapier, lil-gui, its own folders and scaffold RNG: use the existing game, collision, ownership and test hooks; do not run its scaffold or add packages without integrator coordination.
+- `threejs-aaa-graphics-builder` routes to paid asset generation and the excluded director: do not probe keys or generate paid assets; use authorized sources and documented provenance.
+- `threejs-qa-release` refers to excluded director evidence recipes and scaffold-only bot/test hooks: use the existing project review and test workflows; do not add a parallel harness or runtime ownership merely to satisfy those examples.
+- Procedural material examples include standalone simulations, render paths, dependencies and separately licensed assets: adapt only compatible techniques into the existing renderer and scene lifecycle, and check each asset license before reuse.
+- `playwright` assumes a user-level install path and may install a global CLI: resolve the wrapper from this repository and prefer `npx`; coordinate any dependency changes with the integrator.
+- `playwright-interactive` suggests disabling the sandbox and installing packages: retain the active sandbox and use available browser tools or an approved scoped alternative; do not change global security settings or dependencies by default.
+- `screenshot` writes to temp or a supplied path and platform helpers can request permissions: keep outputs in authorized locations and use existing review paths for evidence.
+- `vercel-deploy` uploads a project archive and writes temporary files; deploy only on an explicit request, check archive contents and hosting authorization first, and never upload secrets. Its fallback script uses an external deployment service.
+- Imported scripts can write to provided paths, install or fetch packages, or access network services: inspect each script and its arguments first, keep writes within authorized paths, and never expose credentials.
