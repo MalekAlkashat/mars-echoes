@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img"><title>Locked</title><defs>
+    <linearGradient id="fade"><stop stop-color="#319fff" stop-opacity="0"/><stop offset=".5" stop-color="#89deff" stop-opacity=".9"/><stop offset="1" stop-color="#319fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="down" x2="0" y2="1"><stop stop-color="#319fff" stop-opacity="0"/><stop offset="1" stop-color="#319fff" stop-opacity=".19"/></linearGradient>
+    <radialGradient id="veil"><stop offset=".26" stop-color="#1886ff" stop-opacity="0"/><stop offset="1" stop-color="#0865c1" stop-opacity=".26"/></radialGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8 8 0" stroke="#89deff" stroke-width="1" opacity=".13"/></pattern>
+    </defs><rect x="34" y="55" width="60" height="48" stroke="#8BA9BD" fill="none" stroke-width="2" opacity="1"/><path d="M45 55 V40 A19 19 0 0 1 83 40 V55" stroke="#8BA9BD" stroke-width="2" fill="none" opacity="1" stroke-linejoin="miter"/><circle cx="64" cy="78" r="4" stroke="#8BA9BD" stroke-width="1" fill="#8BA9BD" opacity="1"/></svg>

@@ -1,0 +1,12 @@
+Original FOCUS asset artwork, animation sequences and synthesized audio in this pack
+are dedicated to the public domain under CC0 1.0 Universal, to the extent permitted by law.
+You may use, modify and distribute these original assets in personal and commercial work
+without attribution. No warranty is provided.
+Full CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+The included Rajdhani font files are third-party software under the SIL Open Font License.
+Their original copyright and license are preserved in fonts/OFL.txt. This CC0 dedication
+does not replace their font license.
+
+Detroit: Become Human and its associated names remain the property of their respective
+owners. This original fan-inspired interface kit is unaffiliated with those owners.

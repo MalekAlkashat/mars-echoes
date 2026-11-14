@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="256" viewBox="0 0 256 256" role="img"><title>Target Diamond</title><defs>
+    <linearGradient id="fade"><stop stop-color="#319fff" stop-opacity="0"/><stop offset=".5" stop-color="#89deff" stop-opacity=".9"/><stop offset="1" stop-color="#319fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="down" x2="0" y2="1"><stop stop-color="#319fff" stop-opacity="0"/><stop offset="1" stop-color="#319fff" stop-opacity=".19"/></linearGradient>
+    <radialGradient id="veil"><stop offset=".26" stop-color="#1886ff" stop-opacity="0"/><stop offset="1" stop-color="#0865c1" stop-opacity=".26"/></radialGradient>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M0 8 8 0" stroke="#89deff" stroke-width="1" opacity=".13"/></pattern>
+    </defs><path d="M128 62 194 128 128 194 62 128Z" stroke="#319FFF" stroke-width="2" fill="none" opacity="1" stroke-linejoin="miter"/><path d="M128 80 176 128 128 176 80 128Z" stroke="#89DEFF" stroke-width="1" fill="none" opacity="0.55" stroke-linejoin="miter"/><circle cx="128" cy="128" r="3" stroke="#89DEFF" stroke-width="1" fill="#89DEFF" opacity="1"/></svg>

@@ -1,0 +1,2165 @@
+{
+  "name": "detroiet focus",
+  "version": "1.0.0",
+  "style": "Original cinematic blue forensic HUD and crime-scene reconstruction graphics",
+  "staticAssetCount": 59,
+  "animationCount": 6,
+  "soundCount": 6,
+  "colors": {
+    "primary": "#319FFF",
+    "highlight": "#89DEFF",
+    "text": "#F0F8FF",
+    "muted": "#8BA9BD",
+    "evidence": "#FFD16B",
+    "complete": "#89E7C1",
+    "warning": "#FF788A",
+    "panel": "#071522"
+  },
+  "alpha": "Straight / unpremultiplied RGBA. Do not chroma-key the artwork.",
+  "assets": [
+    {
+      "id": "focus-idle",
+      "category": "reticles",
+      "width": 512,
+      "height": 512,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Idle focus corners, with a precise central aiming point.",
+      "svg": "svg/reticles/focus-idle.svg",
+      "png": "png/1x/reticles/focus-idle.png",
+      "png2x": "png/2x/reticles/focus-idle.png"
+    },
+    {
+      "id": "focus-locked",
+      "category": "reticles",
+      "width": 512,
+      "height": 512,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Focused target brackets with a compact lock marker.",
+      "svg": "svg/reticles/focus-locked.svg",
+      "png": "png/1x/reticles/focus-locked.png",
+      "png2x": "png/2x/reticles/focus-locked.png"
+    },
+    {
+      "id": "focus-evidence",
+      "category": "reticles",
+      "width": 512,
+      "height": 512,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Amber evidence state for an object that can be inspected.",
+      "svg": "svg/reticles/focus-evidence.svg",
+      "png": "png/1x/reticles/focus-evidence.png",
+      "png2x": "png/2x/reticles/focus-evidence.png"
+    },
+    {
+      "id": "focus-scanning",
+      "category": "reticles",
+      "width": 512,
+      "height": 512,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Static scanning state with a horizontal sweep.",
+      "svg": "svg/reticles/focus-scanning.svg",
+      "png": "png/1x/reticles/focus-scanning.png",
+      "png2x": "png/2x/reticles/focus-scanning.png"
+    },
+    {
+      "id": "analysis-ring",
+      "category": "reticles",
+      "width": 512,
+      "height": 512,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Analysis progress ring, with 60 calibrated tick marks.",
+      "svg": "svg/reticles/analysis-ring.svg",
+      "png": "png/1x/reticles/analysis-ring.png",
+      "png2x": "png/2x/reticles/analysis-ring.png"
+    },
+    {
+      "id": "object-boundary",
+      "category": "reticles",
+      "width": 768,
+      "height": 512,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Wide object bounding frame for evidence or subjects.",
+      "svg": "svg/reticles/object-boundary.svg",
+      "png": "png/1x/reticles/object-boundary.png",
+      "png2x": "png/2x/reticles/object-boundary.png"
+    },
+    {
+      "id": "focus-point",
+      "category": "reticles",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Minimal central aiming point.",
+      "svg": "svg/reticles/focus-point.svg",
+      "png": "png/1x/reticles/focus-point.png",
+      "png2x": "png/2x/reticles/focus-point.png"
+    },
+    {
+      "id": "target-diamond",
+      "category": "reticles",
+      "width": 256,
+      "height": 256,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Scalable diamond for a selected scene object.",
+      "svg": "svg/reticles/target-diamond.svg",
+      "png": "png/1x/reticles/target-diamond.png",
+      "png2x": "png/2x/reticles/target-diamond.png"
+    },
+    {
+      "id": "evidence-idle",
+      "category": "markers",
+      "width": 192,
+      "height": 192,
+      "pivot": [
+        0.5,
+        0.9
+      ],
+      "description": "Unexamined evidence marker.",
+      "svg": "svg/markers/evidence-idle.svg",
+      "png": "png/1x/markers/evidence-idle.png",
+      "png2x": "png/2x/markers/evidence-idle.png"
+    },
+    {
+      "id": "evidence-selected",
+      "category": "markers",
+      "width": 192,
+      "height": 192,
+      "pivot": [
+        0.5,
+        0.9
+      ],
+      "description": "Selected evidence marker.",
+      "svg": "svg/markers/evidence-selected.svg",
+      "png": "png/1x/markers/evidence-selected.png",
+      "png2x": "png/2x/markers/evidence-selected.png"
+    },
+    {
+      "id": "evidence-complete",
+      "category": "markers",
+      "width": 192,
+      "height": 192,
+      "pivot": [
+        0.5,
+        0.9
+      ],
+      "description": "Analyzed evidence marker.",
+      "svg": "svg/markers/evidence-complete.svg",
+      "png": "png/1x/markers/evidence-complete.png",
+      "png2x": "png/2x/markers/evidence-complete.png"
+    },
+    {
+      "id": "evidence-locked",
+      "category": "markers",
+      "width": 192,
+      "height": 192,
+      "pivot": [
+        0.5,
+        0.9
+      ],
+      "description": "Unavailable evidence marker.",
+      "svg": "svg/markers/evidence-locked.svg",
+      "png": "png/1x/markers/evidence-locked.png",
+      "png2x": "png/2x/markers/evidence-locked.png"
+    },
+    {
+      "id": "point-of-interest",
+      "category": "markers",
+      "width": 192,
+      "height": 192,
+      "pivot": [
+        0.5,
+        0.90625
+      ],
+      "description": "Pin an object in world space.",
+      "svg": "svg/markers/point-of-interest.svg",
+      "png": "png/1x/markers/point-of-interest.png",
+      "png2x": "png/2x/markers/point-of-interest.png"
+    },
+    {
+      "id": "direction-chevron",
+      "category": "markers",
+      "width": 192,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Directional arrow for offscreen clues.",
+      "svg": "svg/markers/direction-chevron.svg",
+      "png": "png/1x/markers/direction-chevron.png",
+      "png2x": "png/2x/markers/direction-chevron.png"
+    },
+    {
+      "id": "path-node",
+      "category": "markers",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Trajectory control point or navigation waypoint.",
+      "svg": "svg/markers/path-node.svg",
+      "png": "png/1x/markers/path-node.png",
+      "png2x": "png/2x/markers/path-node.png"
+    },
+    {
+      "id": "evidence-counter",
+      "category": "markers",
+      "width": 360,
+      "height": 96,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Evidence collection counter with six progress segments.",
+      "svg": "svg/markers/evidence-counter.svg",
+      "png": "png/1x/markers/evidence-counter.png",
+      "png2x": "png/2x/markers/evidence-counter.png"
+    },
+    {
+      "id": "object-label",
+      "category": "panels",
+      "width": 560,
+      "height": 120,
+      "pivot": [
+        0,
+        0.5
+      ],
+      "description": "Compact object identification card. All values are sample UI text.",
+      "svg": "svg/panels/object-label.svg",
+      "png": "png/1x/panels/object-label.png",
+      "png2x": "png/2x/panels/object-label.png"
+    },
+    {
+      "id": "analysis-card",
+      "category": "panels",
+      "width": 560,
+      "height": 360,
+      "pivot": [
+        0,
+        0
+      ],
+      "description": "Detailed analysis readout; the labels and data can be changed in source/.",
+      "svg": "svg/panels/analysis-card.svg",
+      "png": "png/1x/panels/analysis-card.png",
+      "png2x": "png/2x/panels/analysis-card.png"
+    },
+    {
+      "id": "analysis-complete",
+      "category": "panels",
+      "width": 560,
+      "height": 360,
+      "pivot": [
+        0,
+        0
+      ],
+      "description": "Completed readout with a mint confirmation accent.",
+      "svg": "svg/panels/analysis-complete.svg",
+      "png": "png/1x/panels/analysis-complete.png",
+      "png2x": "png/2x/panels/analysis-complete.png"
+    },
+    {
+      "id": "incomplete-data",
+      "category": "panels",
+      "width": 560,
+      "height": 200,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Incomplete analysis message with evidence slots.",
+      "svg": "svg/panels/incomplete-data.svg",
+      "png": "png/1x/panels/incomplete-data.png",
+      "png2x": "png/2x/panels/incomplete-data.png"
+    },
+    {
+      "id": "objective-banner",
+      "category": "panels",
+      "width": 640,
+      "height": 150,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Primary focus-mode objective.",
+      "svg": "svg/panels/objective-banner.svg",
+      "png": "png/1x/panels/objective-banner.png",
+      "png2x": "png/2x/panels/objective-banner.png"
+    },
+    {
+      "id": "warning-banner",
+      "category": "panels",
+      "width": 560,
+      "height": 180,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Obstruction or visibility warning.",
+      "svg": "svg/panels/warning-banner.svg",
+      "png": "png/1x/panels/warning-banner.png",
+      "png2x": "png/2x/panels/warning-banner.png"
+    },
+    {
+      "id": "subject-record",
+      "category": "panels",
+      "width": 560,
+      "height": 360,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Subject information card for a reconstruction scene.",
+      "svg": "svg/panels/subject-record.svg",
+      "png": "png/1x/panels/subject-record.png",
+      "png2x": "png/2x/panels/subject-record.png"
+    },
+    {
+      "id": "connection-label",
+      "category": "panels",
+      "width": 480,
+      "height": 130,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Label for a confirmed link between scene clues.",
+      "svg": "svg/panels/connection-label.svg",
+      "png": "png/1x/panels/connection-label.png",
+      "png2x": "png/2x/panels/connection-label.png"
+    },
+    {
+      "id": "analysis-progress",
+      "category": "controls",
+      "width": 640,
+      "height": 112,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Horizontal progress meter at 63 percent.",
+      "svg": "svg/controls/analysis-progress.svg",
+      "png": "png/1x/controls/analysis-progress.png",
+      "png2x": "png/2x/controls/analysis-progress.png"
+    },
+    {
+      "id": "confidence-meter",
+      "category": "controls",
+      "width": 560,
+      "height": 140,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Segmented confidence meter.",
+      "svg": "svg/controls/confidence-meter.svg",
+      "png": "png/1x/controls/confidence-meter.png",
+      "png2x": "png/2x/controls/confidence-meter.png"
+    },
+    {
+      "id": "hold-to-analyze",
+      "category": "controls",
+      "width": 400,
+      "height": 112,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Keyboard interaction prompt with a hold line.",
+      "svg": "svg/controls/hold-to-analyze.svg",
+      "png": "png/1x/controls/hold-to-analyze.png",
+      "png2x": "png/2x/controls/hold-to-analyze.png"
+    },
+    {
+      "id": "key-prompt",
+      "category": "controls",
+      "width": 160,
+      "height": 96,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Editable keyboard keycap.",
+      "svg": "svg/controls/key-prompt.svg",
+      "png": "png/1x/controls/key-prompt.png",
+      "png2x": "png/2x/controls/key-prompt.png"
+    },
+    {
+      "id": "navigation-hint",
+      "category": "controls",
+      "width": 500,
+      "height": 96,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Focus-mode control legend.",
+      "svg": "svg/controls/navigation-hint.svg",
+      "png": "png/1x/controls/navigation-hint.png",
+      "png2x": "png/2x/controls/navigation-hint.png"
+    },
+    {
+      "id": "reconstruction-timeline",
+      "category": "controls",
+      "width": 960,
+      "height": 160,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Replay scrubber with event markers and keyboard controls.",
+      "svg": "svg/controls/reconstruction-timeline.svg",
+      "png": "png/1x/controls/reconstruction-timeline.png",
+      "png2x": "png/2x/controls/reconstruction-timeline.png"
+    },
+    {
+      "id": "replay-controls",
+      "category": "controls",
+      "width": 360,
+      "height": 144,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Rewind, play and fast-forward controls.",
+      "svg": "svg/controls/replay-controls.svg",
+      "png": "png/1x/controls/replay-controls.png",
+      "png2x": "png/2x/controls/replay-controls.png"
+    },
+    {
+      "id": "reconstruction-status",
+      "category": "controls",
+      "width": 560,
+      "height": 170,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Crime-scene reconstruction mode status.",
+      "svg": "svg/controls/reconstruction-status.svg",
+      "png": "png/1x/controls/reconstruction-status.png",
+      "png2x": "png/2x/controls/reconstruction-status.png"
+    },
+    {
+      "id": "focus-screen-frame",
+      "category": "overlays",
+      "width": 1920,
+      "height": 1080,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Full HD screen frame; scale proportionally with the viewport.",
+      "svg": "svg/overlays/focus-screen-frame.svg",
+      "png": "png/1x/overlays/focus-screen-frame.png",
+      "png2x": "png/2x/overlays/focus-screen-frame.png"
+    },
+    {
+      "id": "focus-blue-veil",
+      "category": "overlays",
+      "width": 1920,
+      "height": 1080,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Subtle translucent focus tint, clear in the center.",
+      "svg": "svg/overlays/focus-blue-veil.svg",
+      "png": "png/1x/overlays/focus-blue-veil.png",
+      "png2x": "png/2x/overlays/focus-blue-veil.png"
+    },
+    {
+      "id": "focus-grid",
+      "category": "overlays",
+      "width": 1920,
+      "height": 1080,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Fine transparent square grid for focus mode.",
+      "svg": "svg/overlays/focus-grid.svg",
+      "png": "png/1x/overlays/focus-grid.png",
+      "png2x": "png/2x/overlays/focus-grid.png"
+    },
+    {
+      "id": "focus-scanlines",
+      "category": "overlays",
+      "width": 1920,
+      "height": 1080,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Very subtle horizontal scanning lines.",
+      "svg": "svg/overlays/focus-scanlines.svg",
+      "png": "png/1x/overlays/focus-scanlines.png",
+      "png2x": "png/2x/overlays/focus-scanlines.png"
+    },
+    {
+      "id": "ghost-standing",
+      "category": "reconstruction",
+      "width": 360,
+      "height": 440,
+      "pivot": [
+        0.5,
+        0.92
+      ],
+      "description": "Faceted standing subject silhouette. Original transparent 2D reconstruction sprite.",
+      "svg": "svg/reconstruction/ghost-standing.svg",
+      "png": "png/1x/reconstruction/ghost-standing.png",
+      "png2x": "png/2x/reconstruction/ghost-standing.png"
+    },
+    {
+      "id": "ghost-walking",
+      "category": "reconstruction",
+      "width": 360,
+      "height": 440,
+      "pivot": [
+        0.5,
+        0.92
+      ],
+      "description": "Faceted walking subject silhouette. Original transparent 2D reconstruction sprite.",
+      "svg": "svg/reconstruction/ghost-walking.svg",
+      "png": "png/1x/reconstruction/ghost-walking.png",
+      "png2x": "png/2x/reconstruction/ghost-walking.png"
+    },
+    {
+      "id": "ghost-crouching",
+      "category": "reconstruction",
+      "width": 360,
+      "height": 440,
+      "pivot": [
+        0.5,
+        0.92
+      ],
+      "description": "Faceted crouching subject silhouette. Original transparent 2D reconstruction sprite.",
+      "svg": "svg/reconstruction/ghost-crouching.svg",
+      "png": "png/1x/reconstruction/ghost-crouching.png",
+      "png2x": "png/2x/reconstruction/ghost-crouching.png"
+    },
+    {
+      "id": "ghost-reaching",
+      "category": "reconstruction",
+      "width": 360,
+      "height": 440,
+      "pivot": [
+        0.5,
+        0.92
+      ],
+      "description": "Faceted reaching subject silhouette. Original transparent 2D reconstruction sprite.",
+      "svg": "svg/reconstruction/ghost-reaching.svg",
+      "png": "png/1x/reconstruction/ghost-reaching.png",
+      "png2x": "png/2x/reconstruction/ghost-reaching.png"
+    },
+    {
+      "id": "subject-motion-trail",
+      "category": "reconstruction",
+      "width": 960,
+      "height": 440,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Four progressively visible subject positions for a movement reconstruction.",
+      "svg": "svg/reconstruction/subject-motion-trail.svg",
+      "png": "png/1x/reconstruction/subject-motion-trail.png",
+      "png2x": "png/2x/reconstruction/subject-motion-trail.png"
+    },
+    {
+      "id": "motion-trajectory",
+      "category": "reconstruction",
+      "width": 960,
+      "height": 440,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Dashed subject movement path with four event nodes.",
+      "svg": "svg/reconstruction/motion-trajectory.svg",
+      "png": "png/1x/reconstruction/motion-trajectory.png",
+      "png2x": "png/2x/reconstruction/motion-trajectory.png"
+    },
+    {
+      "id": "footprint-trail",
+      "category": "reconstruction",
+      "width": 860,
+      "height": 320,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Alternating translucent footprints following an event path.",
+      "svg": "svg/reconstruction/footprint-trail.svg",
+      "png": "png/1x/reconstruction/footprint-trail.png",
+      "png2x": "png/2x/reconstruction/footprint-trail.png"
+    },
+    {
+      "id": "evidence-connections",
+      "category": "reconstruction",
+      "width": 840,
+      "height": 380,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Connection graph linking four evidence points.",
+      "svg": "svg/reconstruction/evidence-connections.svg",
+      "png": "png/1x/reconstruction/evidence-connections.png",
+      "png2x": "png/2x/reconstruction/evidence-connections.png"
+    },
+    {
+      "id": "reconstruction-floor-grid",
+      "category": "reconstruction",
+      "width": 1600,
+      "height": 900,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Perspective floor grid for a reconstruction composition.",
+      "svg": "svg/reconstruction/reconstruction-floor-grid.svg",
+      "png": "png/1x/reconstruction/reconstruction-floor-grid.png",
+      "png2x": "png/2x/reconstruction/reconstruction-floor-grid.png"
+    },
+    {
+      "id": "event-marker",
+      "category": "reconstruction",
+      "width": 320,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Timestamped event marker.",
+      "svg": "svg/reconstruction/event-marker.svg",
+      "png": "png/1x/reconstruction/event-marker.png",
+      "png2x": "png/2x/reconstruction/event-marker.png"
+    },
+    {
+      "id": "reconstruction-heading",
+      "category": "reconstruction",
+      "width": 820,
+      "height": 150,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Reconstruction title and playback state.",
+      "svg": "svg/reconstruction/reconstruction-heading.svg",
+      "png": "png/1x/reconstruction/reconstruction-heading.png",
+      "png2x": "png/2x/reconstruction/reconstruction-heading.png"
+    },
+    {
+      "id": "scan",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Scan line icon.",
+      "svg": "svg/icons/scan.svg",
+      "png": "png/1x/icons/scan.png",
+      "png2x": "png/2x/icons/scan.png"
+    },
+    {
+      "id": "evidence",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Evidence line icon.",
+      "svg": "svg/icons/evidence.svg",
+      "png": "png/1x/icons/evidence.png",
+      "png2x": "png/2x/icons/evidence.png"
+    },
+    {
+      "id": "complete",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Complete line icon.",
+      "svg": "svg/icons/complete.svg",
+      "png": "png/1x/icons/complete.png",
+      "png2x": "png/2x/icons/complete.png"
+    },
+    {
+      "id": "locked",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Locked line icon.",
+      "svg": "svg/icons/locked.svg",
+      "png": "png/1x/icons/locked.png",
+      "png2x": "png/2x/icons/locked.png"
+    },
+    {
+      "id": "warning",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Warning line icon.",
+      "svg": "svg/icons/warning.svg",
+      "png": "png/1x/icons/warning.png",
+      "png2x": "png/2x/icons/warning.png"
+    },
+    {
+      "id": "target",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Target line icon.",
+      "svg": "svg/icons/target.svg",
+      "png": "png/1x/icons/target.png",
+      "png2x": "png/2x/icons/target.png"
+    },
+    {
+      "id": "play",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Play line icon.",
+      "svg": "svg/icons/play.svg",
+      "png": "png/1x/icons/play.png",
+      "png2x": "png/2x/icons/play.png"
+    },
+    {
+      "id": "pause",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Pause line icon.",
+      "svg": "svg/icons/pause.svg",
+      "png": "png/1x/icons/pause.png",
+      "png2x": "png/2x/icons/pause.png"
+    },
+    {
+      "id": "rewind",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Rewind line icon.",
+      "svg": "svg/icons/rewind.svg",
+      "png": "png/1x/icons/rewind.png",
+      "png2x": "png/2x/icons/rewind.png"
+    },
+    {
+      "id": "reconstruct",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Reconstruct line icon.",
+      "svg": "svg/icons/reconstruct.svg",
+      "png": "png/1x/icons/reconstruct.png",
+      "png2x": "png/2x/icons/reconstruct.png"
+    },
+    {
+      "id": "link",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Link line icon.",
+      "svg": "svg/icons/link.svg",
+      "png": "png/1x/icons/link.png",
+      "png2x": "png/2x/icons/link.png"
+    },
+    {
+      "id": "fingerprint",
+      "category": "icons",
+      "width": 128,
+      "height": 128,
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "description": "Fingerprint line icon.",
+      "svg": "svg/icons/fingerprint.svg",
+      "png": "png/1x/icons/fingerprint.png",
+      "png2x": "png/2x/icons/fingerprint.png"
+    }
+  ],
+  "animations": [
+    {
+      "id": "target-scan",
+      "width": 512,
+      "height": 512,
+      "frames": 36,
+      "fps": 12,
+      "durationSeconds": 3.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 6,
+      "description": "A three-second target scan sweep.",
+      "svg": "animations/svg/target-scan.svg",
+      "apng": "animations/apng/target-scan.png",
+      "atlas": "animations/sprite-sheets/target-scan.png",
+      "framesDirectory": "animations/frames/target-scan",
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        }
+      ]
+    },
+    {
+      "id": "analysis-spinner",
+      "width": 512,
+      "height": 512,
+      "frames": 36,
+      "fps": 12,
+      "durationSeconds": 3.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 6,
+      "description": "A continuous analyzing indicator.",
+      "svg": "animations/svg/analysis-spinner.svg",
+      "apng": "animations/apng/analysis-spinner.png",
+      "atlas": "animations/sprite-sheets/analysis-spinner.png",
+      "framesDirectory": "animations/frames/analysis-spinner",
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 0,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 512,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 1024,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 1536,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 2048,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 0,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 512,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1024,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 1536,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2048,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        },
+        {
+          "x": 2560,
+          "y": 2560,
+          "w": 512,
+          "h": 512
+        }
+      ]
+    },
+    {
+      "id": "evidence-pulse",
+      "width": 192,
+      "height": 192,
+      "frames": 24,
+      "fps": 12,
+      "durationSeconds": 2.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 4,
+      "description": "Pulsing selected-evidence marker.",
+      "svg": "animations/svg/evidence-pulse.svg",
+      "apng": "animations/apng/evidence-pulse.png",
+      "atlas": "animations/sprite-sheets/evidence-pulse.png",
+      "framesDirectory": "animations/frames/evidence-pulse",
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 192,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 384,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 576,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 768,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 960,
+          "y": 0,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 0,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 192,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 384,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 576,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 768,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 960,
+          "y": 192,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 0,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 192,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 384,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 576,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 768,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 960,
+          "y": 384,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 0,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 192,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 384,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 576,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 768,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        },
+        {
+          "x": 960,
+          "y": 576,
+          "w": 192,
+          "h": 192
+        }
+      ]
+    },
+    {
+      "id": "analysis-progress",
+      "width": 640,
+      "height": 112,
+      "frames": 36,
+      "fps": 12,
+      "durationSeconds": 3.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 6,
+      "description": "Horizontal progress filling from zero to complete.",
+      "svg": "animations/svg/analysis-progress.svg",
+      "apng": "animations/apng/analysis-progress.png",
+      "atlas": "animations/sprite-sheets/analysis-progress.png",
+      "framesDirectory": "animations/frames/analysis-progress",
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 0,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 112,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 224,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 336,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 448,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 0,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 640,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1280,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 1920,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 2560,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        },
+        {
+          "x": 3200,
+          "y": 560,
+          "w": 640,
+          "h": 112
+        }
+      ]
+    },
+    {
+      "id": "screen-sweep",
+      "width": 960,
+      "height": 540,
+      "frames": 24,
+      "fps": 12,
+      "durationSeconds": 2.0,
+      "loop": true,
+      "columns": 6,
+      "rows": 4,
+      "description": "Full-screen transparent scan sweep, half-HD; scale to your viewport.",
+      "svg": "animations/svg/screen-sweep.svg",
+      "apng": "animations/apng/screen-sweep.png",
+      "atlas": "animations/sprite-sheets/screen-sweep.png",
+      "framesDirectory": "animations/frames/screen-sweep",
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 960,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 1920,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 2880,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 3840,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 4800,
+          "y": 0,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 0,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 960,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 1920,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 2880,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 3840,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 4800,
+          "y": 540,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 0,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 960,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 1920,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 2880,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 3840,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 4800,
+          "y": 1080,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 0,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 960,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 1920,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 2880,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 3840,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        },
+        {
+          "x": 4800,
+          "y": 1620,
+          "w": 960,
+          "h": 540
+        }
+      ]
+    },
+    {
+      "id": "reconstruction-reveal",
+      "width": 360,
+      "height": 440,
+      "frames": 30,
+      "fps": 12,
+      "durationSeconds": 2.5,
+      "loop": true,
+      "columns": 6,
+      "rows": 5,
+      "description": "A ghost subject appearing through a scan pass.",
+      "svg": "animations/svg/reconstruction-reveal.svg",
+      "apng": "animations/apng/reconstruction-reveal.png",
+      "atlas": "animations/sprite-sheets/reconstruction-reveal.png",
+      "framesDirectory": "animations/frames/reconstruction-reveal",
+      "frameRects": [
+        {
+          "x": 0,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 0,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 0,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 440,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 0,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 880,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 0,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 1320,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 0,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 360,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 720,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1080,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1440,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        },
+        {
+          "x": 1800,
+          "y": 1760,
+          "w": 360,
+          "h": 440
+        }
+      ]
+    }
+  ],
+  "audio": [
+    {
+      "id": "focus-enter",
+      "path": "audio/focus-enter.wav",
+      "seconds": 0.55,
+      "sampleRate": 44100
+    },
+    {
+      "id": "focus-exit",
+      "path": "audio/focus-exit.wav",
+      "seconds": 0.45,
+      "sampleRate": 44100
+    },
+    {
+      "id": "target-lock",
+      "path": "audio/target-lock.wav",
+      "seconds": 0.28,
+      "sampleRate": 44100
+    },
+    {
+      "id": "scan-complete",
+      "path": "audio/scan-complete.wav",
+      "seconds": 0.64,
+      "sampleRate": 44100
+    },
+    {
+      "id": "evidence-warning",
+      "path": "audio/evidence-warning.wav",
+      "seconds": 0.55,
+      "sampleRate": 44100
+    },
+    {
+      "id": "timeline-tick",
+      "path": "audio/timeline-tick.wav",
+      "seconds": 0.09,
+      "sampleRate": 44100
+    }
+  ],
+  "font": "Rajdhani, Indian Type Foundry / SIL Open Font License. See fonts/OFL.txt.",
+  "license": "CC0 dedication for original artwork, animations and audio. Fonts retain their own OFL license.",
+  "notes": [
+    "All numeric readings and records are illustrative sample UI data.",
+    "The 2D reconstruction images are silhouette sprites. Additional GLB pose proxies, if present, have no skeleton or character animation.",
+    "No extracted game assets, logos, screenshots or sound recordings are included."
+  ],
+  "models": [
+    {
+      "id": "ghost-standing",
+      "path": "3d-ghost-models/ghost-standing.glb",
+      "pose": "standing",
+      "units": "meters",
+      "rigged": false,
+      "animated": false,
+      "materials": "transparent cyan unlit hologram",
+      "triangles": 21908,
+      "bytes": 360904
+    },
+    {
+      "id": "ghost-walking",
+      "path": "3d-ghost-models/ghost-walking.glb",
+      "pose": "walking",
+      "units": "meters",
+      "rigged": false,
+      "animated": false,
+      "materials": "transparent cyan unlit hologram",
+      "triangles": 21908,
+      "bytes": 360784
+    },
+    {
+      "id": "ghost-crouching",
+      "path": "3d-ghost-models/ghost-crouching.glb",
+      "pose": "crouching",
+      "units": "meters",
+      "rigged": false,
+      "animated": false,
+      "materials": "transparent cyan unlit hologram",
+      "triangles": 21908,
+      "bytes": 360596
+    },
+    {
+      "id": "ghost-reaching",
+      "path": "3d-ghost-models/ghost-reaching.glb",
+      "pose": "reaching",
+      "units": "meters",
+      "rigged": false,
+      "animated": false,
+      "materials": "transparent cyan unlit hologram",
+      "triangles": 21908,
+      "bytes": 360756
+    }
+  ],
+  "modelCount": 4
+}
