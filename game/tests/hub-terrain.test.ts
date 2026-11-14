@@ -5,8 +5,12 @@ import { HUB_TERRAIN, hubHeight, makeHubTerrain } from '../src/environments/mars
 import { disposeSurfaceTextureCache } from '../src/environments/mars/materials.ts';
 import { SpiritController } from '../src/entities/spirit/controller.ts';
 
-test('hub collision samples agree with the rendered terrain triangles across the playable area', () => {
-  const meshes = makeHubTerrain();
+for (const quiet of [false, true]) {
+const mode = quiet ? 'deposited dust' : 'legacy episode';
+const height = (x: number, z: number) => hubHeight(x, z, quiet);
+
+test(`${mode}: hub collision samples agree with the rendered terrain triangles across the playable area`, () => {
+  const meshes = makeHubTerrain(quiet);
   try {
     const ground = meshes[0];
     ground.updateMatrixWorld(true);
@@ -19,7 +23,7 @@ test('hub collision samples agree with the rendered terrain triangles across the
       ray.ray.origin.set(x, 2000, z);
       const hit = ray.intersectObject(ground, false)[0];
       assert.ok(hit, `no visible ground at ${x},${z}`);
-      const error = Math.abs(hit.point.y - hubHeight(x, z));
+      const error = Math.abs(hit.point.y - height(x, z));
       maximumError = Math.max(maximumError, error);
       assert.ok(error < 2e-6, `contact/mesh mismatch ${error} at ${x},${z}`);
     }
@@ -30,8 +34,8 @@ test('hub collision samples agree with the rendered terrain triangles across the
   }
 });
 
-test('hub vista is stitched, upward facing and stays within the base terrain triangle budget', () => {
-  const meshes = makeHubTerrain();
+test(`${mode}: hub vista is stitched, upward facing and stays within the base terrain triangle budget`, () => {
+  const meshes = makeHubTerrain(quiet);
   try {
     const [near, far] = meshes.map(mesh => mesh.geometry);
     const nearPositions = near.getAttribute('position');
@@ -63,7 +67,7 @@ test('hub vista is stitched, upward facing and stays within the base terrain tri
       assert.ok(normal.y > 0, `reversed or degenerate vista triangle ${i / 3}`);
     }
     const triangles = meshes.reduce((sum, mesh) => sum + mesh.geometry.getIndex()!.count / 3, 0);
-    assert.ok(triangles < 65_000, `base terrain has ${triangles} triangles`);
+    assert.equal(triangles, 58_880, 'base terrain retains its triangle budget');
     assert.ok(positions.count < 5_000, 'the distant vista remains coarse');
     console.info(`Hub base terrain: ${triangles} triangles, ${matches} stitched border vertices`);
   } finally {
@@ -72,9 +76,9 @@ test('hub vista is stitched, upward facing and stays within the base terrain tri
   }
 });
 
-test('spirit crosses hub troughs and a side loop with grounded movement and a bounded leap', () => {
+test(`${mode}: spirit crosses hub troughs and a side loop with grounded movement and a bounded leap`, () => {
   const spirit = new SpiritController();
-  spirit.reset(0, 8, hubHeight);
+  spirit.reset(0, 8, height);
   const waypoints = [[-10, 8], [-10, -14], [8, -28], [12, -10], [0, 2.5]];
   let maximumLift = 0, stepCount = 0;
   for (const [x, z] of waypoints) {
@@ -84,9 +88,9 @@ test('spirit crosses hub troughs and a side loop with grounded movement and a bo
       const distance = Math.hypot(dx, dz);
       if (distance < .3) { arrived = true; break; }
       spirit.update(1 / 60, {moveX: dx / distance, moveY: -dz / distance, leapPressed: stepCount === 250}, 0,
-        [{x: 0, z: 1, radius: 1.05}], hubHeight);
+        [{x: 0, z: 1, radius: 1.05}], height);
       stepCount++;
-      const lift = spirit.position.y - hubHeight(spirit.position.x, spirit.position.z) - .28;
+      const lift = spirit.position.y - height(spirit.position.x, spirit.position.z) - .28;
       assert.ok(lift >= -1e-8, 'spirit penetrates visible ground');
       assert.ok(lift < .95, 'leap exceeds its established bounded height');
       if (spirit.grounded) assert.ok(Math.abs(lift) < 1e-8);
@@ -95,7 +99,9 @@ test('spirit crosses hub troughs and a side loop with grounded movement and a bo
     }
     assert.ok(arrived, `terrain route did not reach ${x},${z}`);
   }
-  for (let i = 0; i < 120; i++) spirit.update(1 / 60, {moveX:0,moveY:0,leapPressed:false}, 0, [], hubHeight);
+  for (let i = 0; i < 120; i++) spirit.update(1 / 60, {moveX:0,moveY:0,leapPressed:false}, 0, [], height);
   assert.ok(maximumLift > .7, 'test exercises the leap');
   assert.equal(spirit.grounded, true);
 });
+
+}

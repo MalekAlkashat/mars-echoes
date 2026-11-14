@@ -8,13 +8,14 @@ function mound(x: number, z: number, cx: number, cz: number, sx: number, sz: num
   return Math.exp(-(((x - cx) / sx) ** 2) - (((z - cz) / sz) ** 2));
 }
 
-function landform(x: number, z: number): number {
+function landform(x: number, z: number, quiet = false): number {
   const radius = Math.hypot(x, z);
   const shoulder = 5.6 * mound(x, z, -32, -6, 17, 38)
     + 3.8 * mound(x, z, 42, -32, 26, 35)
     + 10 * mound(x, z, -74, 34, 44, 56);
   const basin = -3.2 * mound(x, z, 9, -37, 38, 35);
-  const ripple = Math.sin(z * .88 + x * .19) * .035
+  // Remove valley-wide corrugation only in the hub; preserve the legacy episode profile.
+  const ripple = quiet ? 0 : Math.sin(z * .88 + x * .19) * .035
     * MathUtils.smoothstep(Math.abs(x), 5, 19);
   const saddle = 1.1 * mound(x, z, 0, -7, 13, 7);
   const near = .012 * z + shoulder + basin + saddle + ripple
@@ -28,24 +29,24 @@ function landform(x: number, z: number): number {
 }
 
 /** The same triangles supply visible ground and collision/contact heights. */
-export function hubHeight(x: number, z: number): number {
-  if (Math.abs(x) > HUB_TERRAIN.halfSize || Math.abs(z) > HUB_TERRAIN.halfSize) return landform(x, z);
+export function hubHeight(x: number, z: number, quiet = false): number {
+  if (Math.abs(x) > HUB_TERRAIN.halfSize || Math.abs(z) > HUB_TERRAIN.halfSize) return landform(x, z, quiet);
   const x0 = Math.floor(x), z0 = Math.floor(z);
   const tx = x - x0, tz = z - z0;
-  const a = landform(x0, z0), b = landform(x0 + 1, z0);
-  const c = landform(x0, z0 + 1), d = landform(x0 + 1, z0 + 1);
+  const a = landform(x0, z0, quiet), b = landform(x0 + 1, z0, quiet);
+  const c = landform(x0, z0 + 1, quiet), d = landform(x0 + 1, z0 + 1, quiet);
   return tx + tz <= 1 ? a + tx * (b - a) + tz * (c - a)
     : d + (1 - tx) * (c - d) + (1 - tz) * (b - d);
 }
 
-function shade(geometry: BufferGeometry): void {
+function shade(geometry: BufferGeometry, quiet: boolean): void {
   const positions = geometry.getAttribute('position');
   const colors = new Float32Array(positions.count * 3);
   const sand = new Color('#e7c3a1'), bedrock = new Color('#f4e4ce');
   const color = new Color();
   for (let i = 0; i < positions.count; i++) {
     const x = positions.getX(i), z = positions.getZ(i);
-    positions.setY(i, hubHeight(x, z));
+    positions.setY(i, hubHeight(x, z, quiet));
     const exposure = MathUtils.smoothstep(noise(x * .06 + 3, z * .06), .4, .78);
     color.copy(sand).lerp(bedrock, exposure * .7).multiplyScalar(.9 + noise(x * .018, z * .018) * .18);
     color.toArray(colors, i * 3);
@@ -55,11 +56,12 @@ function shade(geometry: BufferGeometry): void {
   geometry.computeBoundingSphere();
 }
 
-export function makeHubTerrain(): Mesh[] {
+export function makeHubTerrain(quiet = false): Mesh[] {
   const near = new PlaneGeometry(160, 160, 160, 160);
   near.rotateX(-Math.PI / 2);
-  shade(near);
-  const ground = new Mesh(near, surfaceMaterial('regolith'));
+  shade(near, quiet);
+  if (quiet) near.setAttribute('baseDustCoverage',new BufferAttribute(new Float32Array(near.getAttribute('position').count),1));
+  const ground = new Mesh(near, surfaceMaterial(quiet ? 'dust' : 'regolith',false,{terrainDust:quiet}));
   ground.name = 'hub-traversable-troughs';
   ground.receiveShadow = true;
 
@@ -84,7 +86,7 @@ export function makeHubTerrain(): Mesh[] {
   const far = new BufferGeometry();
   far.setAttribute('position', new BufferAttribute(new Float32Array(vertices), 3));
   far.setIndex(indices);
-  shade(far);
+  shade(far, quiet);
   const vista = new Mesh(far, surfaceMaterial('regolith', true));
   vista.name = 'hub-coarse-crater-vista';
   return [ground, vista];

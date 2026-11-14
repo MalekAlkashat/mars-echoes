@@ -6,7 +6,7 @@ import { createHubEnvironment } from '../../environments/mars/hub';
 import { batchStaticModel } from '../../environments/mars/static-model';
 
 export function createHubWorld(assets: Record<string, Object3D>) {
-  const world = createHubEnvironment();
+  const world = createHubEnvironment({variedOutcrops:true,quietGround:true});
   const rover = createOpportunityRover(assets.opportunity);
   const wreck = rover.root;
   const [x, z] = ROVER_MEMORY.position;

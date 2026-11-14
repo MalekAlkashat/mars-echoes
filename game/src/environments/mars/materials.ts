@@ -3,7 +3,7 @@ import {
   RGBAFormat, SRGBColorSpace, Texture, TextureLoader,
 } from 'three';
 
-type SurfaceRole = 'regolith' | 'rock';
+type SurfaceRole = 'regolith' | 'rock' | 'dust';
 type SurfaceFile = 'color' | 'normal' | 'roughness' | 'ao';
 const textures = new Map<string, { texture: Texture; ready: Promise<void> }>();
 
@@ -53,11 +53,14 @@ function surfaceTexture(role: SurfaceRole, file: SurfaceFile): Texture {
   return texture;
 }
 
-export function surfaceMaterial(role: SurfaceRole, distant = false): MeshStandardMaterial {
+export function surfaceMaterial(role: SurfaceRole, distant = false, options: {terrainDust?: boolean} = {}): MeshStandardMaterial {
+  const ground = role !== 'rock';
+  const rockDust = role === 'rock' && options.terrainDust;
+  const groundDust = role === 'dust' && options.terrainDust;
   const material = new MeshStandardMaterial({
     name: `${role}-triplanar-pbr`,
-    color: role === 'regolith' ? '#e98740' : '#b79073',
-    roughness: role === 'regolith' ? 0.95 : 0.89,
+    color: ground ? '#e98740' : '#b79073',
+    roughness: ground ? 0.95 : 0.89,
     metalness: 0,
     vertexColors: true,
   });
@@ -68,15 +71,18 @@ export function surfaceMaterial(role: SurfaceRole, distant = false): MeshStandar
     surfaceNormal: { value: surfaceTexture(role, 'normal') },
     surfaceRoughness: { value: surfaceTexture(role, 'roughness') },
     surfaceAO: { value: surfaceTexture(role, 'ao') },
-    surfaceScale: { value: role === 'regolith' ? 0.68 : 0.39 },
-    surfaceNormalStrength: { value: role === 'regolith' ? 0.88 : 1.15 },
-    surfaceDust: { value: role === 'regolith' ? 0.08 : 0.2 },
-    surfaceAlbedoReference: { value: role === 'regolith' ? 0.3 : 0.4 },
+    surfaceScale: { value: role === 'dust' ? 0.45 : role === 'regolith' ? 0.68 : 0.39 },
+    surfaceNormalStrength: { value: role === 'dust' ? 0.65 : role === 'regolith' ? 0.88 : 1.15 },
+    surfaceDust: { value: ground ? 0.08 : 0.2 },
+    surfaceAlbedoReference: { value: ground ? 0.3 : 0.4 },
+    surfaceGroundTint: { value: new Color('#e98740').multiply(new Color('#e7c3a1')).multiplyScalar(.78) },
   };
 
   material.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, uniforms);
     shader.vertexShader = `varying vec3 vSurfacePosition;
+      ${rockDust ? 'attribute vec3 rockGroundPlane; varying float vRockGround;' : ''}
+      ${groundDust ? 'attribute float baseDustCoverage; varying float vBaseDustCoverage;' : ''}
       varying vec3 vSurfaceNormal;\n${shader.vertexShader}`;
     shader.vertexShader = shader.vertexShader.replace(
       '#include <defaultnormal_vertex>',
@@ -90,11 +96,16 @@ export function surfaceMaterial(role: SurfaceRole, distant = false): MeshStandar
        #ifdef USE_INSTANCING
          surfaceWorld = instanceMatrix * surfaceWorld;
        #endif
-       vSurfacePosition = (modelMatrix * surfaceWorld).xyz;`,
+       vSurfacePosition = (modelMatrix * surfaceWorld).xyz;
+       ${rockDust ? 'vRockGround = rockGroundPlane.x + dot(rockGroundPlane.yz, vSurfacePosition.xz);' : ''}
+       ${groundDust ? 'vBaseDustCoverage = baseDustCoverage;' : ''}`,
     );
     shader.fragmentShader = `
       varying vec3 vSurfacePosition;
       varying vec3 vSurfaceNormal;
+      ${rockDust ? 'varying float vRockGround;' : ''}
+      ${groundDust ? 'varying float vBaseDustCoverage;' : ''}
+      uniform vec3 surfaceGroundTint;
       uniform sampler2D surfaceColor, surfaceNormal, surfaceRoughness, surfaceAO;
       uniform float surfaceScale, surfaceNormalStrength, surfaceDust, surfaceAlbedoReference;
       float surfaceHash(vec2 p) {
@@ -121,30 +132,41 @@ export function surfaceMaterial(role: SurfaceRole, distant = false): MeshStandar
       '#include <aomap_fragment>',
       `#include <aomap_fragment>
        float mineralAO = surfaceSample(surfaceAO, surfaceP, surfaceBlend).r;
-       reflectedLight.indirectDiffuse *= mix(0.65, 1.0, mineralAO);
+       reflectedLight.indirectDiffuse *= mix(${role === 'dust' ? '0.9' : '0.65'}, 1.0, mineralAO);
        reflectedLight.indirectSpecular *= mix(0.75, 1.0, mineralAO);`,
     );
     shader.fragmentShader = shader.fragmentShader.replace(
       '#include <color_fragment>',
       `#include <color_fragment>
        vec3 surfaceP = vSurfacePosition * surfaceScale;
+       ${role === 'dust' ? `// All maps share a continuous warp; texture-read count stays unchanged.
+       surfaceP.xz += vec2(surfaceNoise(vSurfacePosition.xz * .16),
+         surfaceNoise(vSurfacePosition.xz * .16 + 37.0)) * .65;` : ''}
        vec3 surfaceBlend = surfaceWeights();
        vec3 mineral = surfaceSample(surfaceColor, surfaceP, surfaceBlend);
        float mineralLuma = dot(mineral, vec3(0.2126, 0.7152, 0.0722));
        float mineralDetail = clamp(mineralLuma / surfaceAlbedoReference, 0.55, 1.55);
        float macroVariation = surfaceNoise(vSurfacePosition.xz * 0.11)
          * 0.7 + surfaceNoise(vSurfacePosition.xz * 0.037 + 18.0) * 0.3;
-       diffuseColor.rgb *= mix(1.0, mineralDetail, 0.7)
-         * (0.88 + macroVariation * 0.24);
+       diffuseColor.rgb *= mix(1.0, mineralDetail, ${role === 'dust' ? '0.65' : '0.7'})
+         * (${role === 'dust' ? '0.94 + macroVariation * 0.12' : '0.88 + macroVariation * 0.24'});
        float depositedDust = smoothstep(0.45, 0.95, normalize(vSurfaceNormal).y)
          * surfaceDust * surfaceNoise(vSurfacePosition.xz * 0.72);
-       diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * vec3(1.25, 1.12, 0.91), depositedDust);`,
+       diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * vec3(1.25, 1.12, 0.91), depositedDust);
+       float surfaceDustCoverage = 0.0;
+       ${rockDust ? `float contactHeight = max(0.0, vSurfacePosition.y - vRockGround);
+       float contactDust = 1.0 - smoothstep(.03, .45, contactHeight + (macroVariation-.5)*.16);
+       surfaceDustCoverage = max(contactDust*.62, depositedDust*.65);
+       diffuseColor.rgb = mix(diffuseColor.rgb, surfaceGroundTint * (.94 + macroVariation*.12), surfaceDustCoverage);` : ''}
+       ${groundDust ? `surfaceDustCoverage = clamp(vBaseDustCoverage,0.0,1.0);
+       diffuseColor.rgb *= mix(1.0,1.05,surfaceDustCoverage);` : ''}`,
     );
     shader.fragmentShader = shader.fragmentShader.replace(
       '#include <roughnessmap_fragment>',
       `#include <roughnessmap_fragment>
        float mineralRoughness = surfaceSample(surfaceRoughness, surfaceP, surfaceBlend).g;
-       roughnessFactor = clamp(roughness * (0.58 + mineralRoughness * 0.51), 0.53, 1.0);`,
+       roughnessFactor = clamp(roughness * (0.58 + mineralRoughness * 0.51), 0.53, 1.0);
+       ${options.terrainDust ? 'roughnessFactor = mix(roughnessFactor,.98,surfaceDustCoverage);' : ''}`,
     );
     shader.fragmentShader = shader.fragmentShader.replace(
       '#include <normal_fragment_maps>',
@@ -155,13 +177,17 @@ export function surfaceMaterial(role: SurfaceRole, distant = false): MeshStandar
        vec3 worldDetail = vec3(0.0, rockNX.y, rockNX.x) * surfaceBlend.x
          + vec3(rockNY.x, 0.0, rockNY.y) * surfaceBlend.y
          + vec3(rockNZ.x, rockNZ.y, 0.0) * surfaceBlend.z;
-       float detailFade = 1.0 - smoothstep(32.0, 110.0, length(vViewPosition));
+       ${role === 'dust' ? `float footprint = max(length(dFdx(surfaceP)), length(dFdy(surfaceP)));
+       float detailFade = (1.0 - smoothstep(18.0, 65.0, length(vViewPosition)))
+         * (1.0 - smoothstep(.03, .2, footprint));`
+         : 'float detailFade = 1.0 - smoothstep(32.0, 110.0, length(vViewPosition));'}
        vec3 worldSurfaceNormal = normalize(vSurfaceNormal + worldDetail
-         * surfaceNormalStrength * mix(0.3, 1.0, detailFade));
+         * surfaceNormalStrength * ${role === 'dust' ? 'detailFade' : 'mix(0.3, 1.0, detailFade)'}
+         ${options.terrainDust ? `* mix(1.0,${rockDust ? '.45' : '.75'},surfaceDustCoverage)` : ''});
        normal = normalize(mat3(viewMatrix) * worldSurfaceNormal);`,
     );
   };
-  material.customProgramCacheKey = () => `triplanar-mineral-${role}-v3`;
+  material.customProgramCacheKey = () => `triplanar-mineral-${role}-${Boolean(options.terrainDust)}-v5`;
   material.userData.surfaceRole = role;
   return material;
 }
