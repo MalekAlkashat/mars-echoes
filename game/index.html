@@ -4,11 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1c2021" />
-    <meta name="description" content="A playable opening scene about a discarded rover, an optical repair, and a call home." />
-    <title>After the mission · Rover opening</title>
+    <meta name="description" content="A development preview of Mars exploration and an isolated rover memory." />
+    <title>Machine memories · Development preview</title>
   </head>
   <body>
-    <canvas id="scene" aria-label="Three-dimensional rover game. WASD to drive, arrow keys to look, E to interact." tabindex="0"></canvas>
+    <canvas id="scene" aria-label="Three-dimensional Mars exploration and rover memory. WASD to move, arrow keys to look, E to interact." tabindex="0"></canvas>
     <div id="vignette" aria-hidden="true"></div>
     <header id="topbar" hidden>
       <div class="objective"><span id="chapter">Optical recovery</span><p id="objective">Find a compatible optical module.</p></div>
@@ -25,26 +25,29 @@
     <footer id="hud" hidden>
       <div id="interaction" role="status"><span id="interaction-text">Drive between the wrecks.</span><button id="interact-button" hidden type="button">Inspect <kbd>E</kbd></button></div>
       <div id="controls"><span><kbd>W A S D</kbd> drive</span><span>Drag to look · scroll to zoom</span><span><kbd>↑ ↓ ← →</kbd> look</span><button id="feed-button" type="button">Optical view <kbd>F</kbd></button></div>
+      <div id="hub-controls" hidden><span><kbd>W A S D</kbd> glide · <kbd>Space</kbd> leap</span><span>Drag or arrows to look · scroll to zoom</span></div>
     </footer>
     <div id="touch-controls" aria-label="Movement controls" hidden>
       <div class="dpad"><button data-key="KeyW" aria-label="Drive forward">W</button><button data-key="KeyA" aria-label="Turn left">A</button><button data-key="KeyS" aria-label="Drive backward">S</button><button data-key="KeyD" aria-label="Turn right">D</button></div>
       <div id="touch-rotate" hidden><button data-key="KeyQ" aria-label="Rotate module left">Q</button><button data-key="KeyE" aria-label="Rotate module right">E</button></div>
+      <button id="touch-leap" data-key="Space" hidden>Leap</button>
     </div>
     <section id="intro" class="screen" aria-labelledby="intro-title">
       <div class="screen-content">
-        <p class="eyebrow">Opening scene · playable prototype</p>
+        <p class="eyebrow" id="intro-eyebrow">Opening scene · playable prototype</p>
         <h1 id="intro-title">After the mission</h1>
-        <p class="intro-copy">The assignment is over.<br>Something is still moving.</p>
+        <p class="intro-copy" id="intro-copy">The assignment is over.<br>Something is still moving.</p>
         <p id="load-status" role="status">Preparing the graveyard…</p>
         <button id="start-button" type="button" disabled>Wake the rover</button>
-        <p class="small-copy">WASD to drive · drag to look · E to interact</p>
-        <p class="prototype-note">Test models. Custom rover and sound pass to follow.</p>
+        <p class="small-copy" id="intro-controls">WASD to drive · drag to look · E to interact</p>
+        <p class="prototype-note" id="prototype-note">Test models. Custom rover and sound pass to follow.</p>
       </div>
     </section>
     <section id="pause" class="screen" hidden aria-labelledby="pause-title" role="dialog" aria-modal="true">
-      <div class="pause-content"><p class="eyebrow">Rover standing by</p><h2 id="pause-title">Paused</h2><button id="resume-button" type="button">Resume driving</button><button id="restart-button" class="secondary" type="button">Restart scene</button></div>
+      <div class="pause-content"><p class="eyebrow">Standing by</p><h2 id="pause-title">Paused</h2><button id="resume-button" type="button">Resume</button><button id="restart-button" class="secondary" type="button">Restart scene</button><button id="leave-button" hidden>Leave memory</button></div>
     </section>
-    <div id="transmission" hidden aria-live="polite"><p id="transmission-text">Calling mission control.</p><button id="replay-button" type="button" hidden>Replay opening</button></div>
+    <div id="transmission" hidden aria-live="polite"><p id="transmission-text">Calling mission control.</p><button id="replay-button" type="button" hidden>Replay opening</button><button id="return-button" hidden>Return to Mars</button></div>
+    <section id="transition" class="screen" hidden role="dialog" aria-modal="true" aria-label="Scene loading"><div class="pause-content"><p id="transition-text" role="status">Preparing the scene…</p><button id="retry-button" hidden>Retry loading</button><button id="cancel-button">Cancel</button></div></section>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

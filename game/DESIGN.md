@@ -35,3 +35,7 @@ Visual checks apply during the build, as chosen by the user on 11 November 2026.
 - Project Endurance informs coordinated materials, lighting, camera and vehicle response. The orange valley, quiet pacing and damaged rover retain this game's chosen direction.
 
 The second pass is implemented and agent-checked. Owner acceptance of its appearance is pending. Sound, a final custom rover asset and the later story are still outside this opening prototype.
+
+## Runtime organization preview
+
+The integration hub uses a visibly provisional humanoid silhouette to test control ownership, solid collision and return bookmarks before final spirit art. The existing landscape remains the visual baseline. Loading, Retry, Cancel and Return to Mars controls expose real transition states; the opaque shared backing keeps them legible over either scene. A separate hub instruction strip distinguishes glide/leap from rover driving, and the small-screen leap button sits above the D-pad to leave interaction space clear. Scene switches use the same rendering pipeline and deliberately avoid a new decorative transition style. These are integration choices, not approval of final spirit appearance or story pacing.

@@ -6,20 +6,19 @@ import {
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
 import { addAtmosphere } from './atmosphere';
 import { fracturedRock, makeRockMaterials, makeTerrain, terrainHeight } from './terrain';
-import { surfaceTexturesReady } from './worldMaterials';
+import { surfaceTexturesReady } from './materials';
+import { disposeSceneResources } from './resources';
 
-export interface World {
+export interface MarsEnvironment {
   scene: Scene;
   height(x: number, z: number): number;
   obstacles: { x: number; z: number; radius: number }[];
-  donor: Group;
-  donorPosition: Vector3;
-  relayPosition: Vector3;
   tick(time: number, dt: number): void;
   spawn: Vector3;
   setupEnvironment(renderer: WebGLRenderer): void;
   follow(position: Vector3): void;
   ready: Promise<void>;
+  dispose(): void;
 }
 
 function seededRandom(seed: number): () => number {
@@ -32,7 +31,7 @@ function seededRandom(seed: number): () => number {
   };
 }
 
-function prepareMesh(root: Object3D, tint?: Color): void {
+export function prepareDressingMesh(root: Object3D, tint?: Color): void {
   root.traverse((object) => {
     if (!(object instanceof Mesh)) return;
     object.castShadow = true;
@@ -52,20 +51,6 @@ function prepareMesh(root: Object3D, tint?: Color): void {
     });
     object.material = Array.isArray(object.material) ? materials : materials[0];
   });
-}
-
-function fittedModel(source: Object3D, length: number, tint?: Color): Group {
-  const group = new Group();
-  const clone = source.clone(true);
-  const box = new Box3().setFromObject(clone);
-  const size = box.getSize(new Vector3());
-  const factor = length / Math.max(size.x, size.y, size.z, 0.001);
-  const center = box.getCenter(new Vector3());
-  clone.position.sub(new Vector3(center.x, box.min.y, center.z));
-  group.add(clone);
-  group.scale.setScalar(factor);
-  prepareMesh(group, tint);
-  return group;
 }
 
 function collapseStaticMeshes(root: Group): void {
@@ -158,7 +143,7 @@ function retireWreck(wreck: Group, variant: number): void {
   if(wheels.length){wheels[variant%wheels.length].visible=false;if(variant%4===0)wheels[(variant+3)%wheels.length].visible=false;}
 }
 
-export function createWorld(assets: Record<string, Object3D>, makeWreck: () => Group): World {
+export function createMarsEnvironment(_assets: Record<string, Object3D>, makeWreck: () => Group): MarsEnvironment {
   const random = seededRandom(18427);
   const scene = new Scene();
   scene.name = 'fractured-orange-discard-valley';
@@ -166,7 +151,7 @@ export function createWorld(assets: Record<string, Object3D>, makeWreck: () => G
   scene.fog = new FogExp2('#adb1b1', 0.0047);
   scene.add(...makeTerrain());
   const atmosphere = addAtmosphere(scene);
-  const obstacles: World['obstacles'] = [];
+  const obstacles: MarsEnvironment['obstacles'] = [];
   const materials = makeRockMaterials();
   const rockShapes = [4, 17, 39, 73, 121].map((seed) => fracturedRock(seed));
   const rockSizes = rockShapes.map((geometry) => geometry.boundingBox!.getSize(new Vector3()));
@@ -252,7 +237,7 @@ export function createWorld(assets: Record<string, Object3D>, makeWreck: () => G
     const [x, z] = wreckPositions[i];
     const wreck = makeWreck();
     retireWreck(wreck,i);
-    prepareMesh(wreck, tints[i % tints.length]);
+    prepareDressingMesh(wreck, tints[i % tints.length]);
     wreck.scale.multiplyScalar(0.9 + random() * 0.17);
     wreck.rotation.x = (random() - 0.5) * 0.45;
     wreck.rotation.z = i % 4 === 0 ? 1.08 : (random() - 0.5) * 0.38;
@@ -262,7 +247,7 @@ export function createWorld(assets: Record<string, Object3D>, makeWreck: () => G
   }
   const distantWreck = makeWreck();
   retireWreck(distantWreck,3);
-  prepareMesh(distantWreck, new Color('#696e70'));
+  prepareDressingMesh(distantWreck, new Color('#696e70'));
   for (let i = 0; i < 26; i++) {
     const x = (9 + random() * 45) * (i % 2 ? -1 : 1);
     const z = -25 - random() * 70;
@@ -276,47 +261,26 @@ export function createWorld(assets: Record<string, Object3D>, makeWreck: () => G
   }
   collapseStaticMeshes(staticWrecks);
 
-  const donorPosition = new Vector3(0, terrainHeight(0, -5), -5);
-  const donor = makeWreck();
-  donor.name = 'inactive-optical-module-donor';
-  prepareMesh(donor);
-  place(donor, 0, -5, Math.PI);
-  obstacles.push({ x: 0, z: -5, radius: 1.05 });
-
-  const relayPosition = new Vector3(0, terrainHeight(0, -24), -24);
-  if (assets.satellitedish) {
-    const relay = fittedModel(assets.satellitedish, 2.6, new Color('#8b8e89'));
-    relay.name = 'silent-mission-relay';
-    place(relay, 0, -24, Math.PI * 0.15);
-    obstacles.push({ x: 0, z: -24, radius: 1.1 });
-  }
-  if (assets['machine-generator']) {
-    const generator = fittedModel(assets['machine-generator'], 1.7, new Color('#6e726e'));
-    generator.name = 'disconnected-relay-generator';
-    place(generator, 7.6, -26.5, -0.3, 0.25);
-    addObstacle(generator);
-  }
-  if (assets.structure) {
-    const frame = fittedModel(assets.structure, 2.4, new Color('#73736b'));
-    frame.name = 'partly-buried-broken-service-frame';
-    frame.rotation.z = -0.48;
-    place(frame, -12.5, -29, 0.6, 0.7);
-    addObstacle(frame);
-  }
   addGroundGrit(scene, random, materials.grit);
 
   const spawn = new Vector3(0, terrainHeight(0, 8), 8);
   scene.userData.layout = {
     units: 'meters', up: '+Y', forward: '-Z', playableRadius: 64,
-    routeWidth: 6, spawn: spawn.toArray(), donor: donorPosition.toArray(),
-    relay: relayPosition.toArray(), prototypeLayout: true,
+    routeWidth: 6, spawn: spawn.toArray(), prototypeLayout: true,
     contactRidges: [2.8, -12.5, -18.4],
   };
+  let disposed = false;
   return {
-    scene, height: terrainHeight, obstacles, donor, donorPosition, relayPosition, spawn,
+    scene, height: terrainHeight, obstacles, spawn,
     setupEnvironment: atmosphere.setupEnvironment,
     follow: atmosphere.follow,
     ready: surfaceTexturesReady(),
     tick(time, _dt) { atmosphere.tick(time); },
+    dispose() {
+      if (disposed) return;
+      disposed = true;
+      atmosphere.dispose();
+      disposeSceneResources(scene);
+    },
   };
 }

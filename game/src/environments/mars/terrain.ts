@@ -3,7 +3,7 @@ import {
   Mesh, MeshStandardMaterial, PlaneGeometry, Vector3,
 } from 'three';
 import { mergeVertices } from 'three/addons/utils/BufferGeometryUtils.js';
-import { rockVertexColor, surfaceMaterial } from './worldMaterials';
+import { rockVertexColor, surfaceMaterial } from './materials';
 
 export function noise(x: number, z: number): number {
   const ix = Math.floor(x), iz = Math.floor(z);

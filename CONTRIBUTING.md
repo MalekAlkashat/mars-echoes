@@ -1,23 +1,23 @@
 # Working together during the contest
 
-Read `ROADMAP.md`, `outputs/planning/architecture.md` and your role in `outputs/planning/team-development.md`. The source is currently a rover-only prototype; the modular architecture is a migration target. Do not independently move shared runtime files while another contributor is extracting them.
+Read `ROADMAP.md`, `outputs/planning/architecture.md` and your role in `outputs/planning/team-development.md`. The source now implements the ownership directories below, shared runtime services, a placeholder Mars hub and an isolated rover repair/call episode. `game/src/app/contracts.ts` is the authoritative implemented scene/input/result interface. Coordinate changes through the integrator; do not independently replace shared services or copy the frame loop into a level.
 
 ## Ownership
 
-| Role | Owns after M1 extraction | Shared changes to coordinate |
+| Role | Existing owned source under `game/src/` | Shared changes to coordinate |
 | --- | --- | --- |
 | Integrator (normally user + AI) | `app/`, `core/`, `main.ts`, registry, contracts, shared UI, dependencies, build workflow | Final contract changes, merges and release tags |
 | Hub owner (can be the integrator) | `entities/spirit/`, `scenes/mars-hub/` | Mars environment interfaces and hub return bookmarks |
 | Episode owner (colleague + AI) | `scenes/episodes/rover/`, episode progression and authored timeline | Shared rover rig/controller, environment and result types |
 | Asset owner (optional third person or shared role) | Assigned versioned asset directories and provenance | Loader registrations, materials, pivots and budgets |
 
-Before M1, those destination folders do not exist. The integrator owns current `main.ts`, `progress.ts`, `world.ts` and shared camera/input extraction. Other workers can prepare asset imports, a proposed hub layout and a story beat sheet without touching those files.
+These directories contain executable source, not empty scaffolding. The former global `progress.ts` is now the episode's `mission.ts`, and the former world setup is divided between reusable `environments/mars/` and scene-owned layouts. The integrator owns contract/registry changes and shared dependencies. An episode-specific HUD stays beside its mission; it does not belong in global UI state. Audio service and authored time-jump timeline modules are future work, not part of the current contract.
 
 ## Isolated work
 
 Different computers each use a clone and their own branch. Several simultaneous sessions on one computer each need their own worktree; changing branches in a shared folder does not isolate their file edits. Worktrees isolate files, not global Git configuration, remote services or external asset folders. Do not use one shared absolute export directory for multiple workers.
 
-Examples from the repository root, after the contract milestone has merged:
+Examples from the repository root, after the integrator commits and pushes the verified refactor and everyone has fetched that agreed base:
 
 ```sh
 git worktree add ../mars-echoes-spirit -b feat/spirit-hub main
@@ -25,15 +25,15 @@ git worktree add ../mars-echoes-rover -b feat/rover-memory main
 git worktree add ../mars-echoes-assets -b art/rover-assets main
 ```
 
-These are commands for future contributors; no worktrees or teammate branches are created by this planning delivery. Give each AI task the exact worktree path, branch, owned files, shared contract version and acceptance checks. An agent must not edit the integration checkout or another contributor's worktree.
+These are commands for contributors; this refactor does not create teammate branches or worktrees. Give each AI task the exact worktree path, branch, owned files, shared contract revision and acceptance checks. An agent must not edit the integration checkout or another contributor's worktree. Actual colleague names, handles and access are not assigned by this documentation.
 
-Install dependencies in each worktree with `npm --prefix game ci`. Use ports such as 5176, 5177 and 5178 for parallel previews. Do not change the shared lockfile just to get a different port. Coordinate any new package with the integrator before installing it.
+Install dependencies in each worktree with `npm --prefix game ci`. The integrator's previews use 5180 for development and 5181 for production; use different ports such as 5182, 5183 and 5184 for parallel previews. `?scene=mars-hub` and `?scene=episode-rover-01` select actual production factories for independent scene work. Do not change the shared lockfile just to get a different port. Coordinate any new package with the integrator before installing it.
 
 ## Small merge cycle
 
 1. Pull/fetch the current integration baseline before starting a small task. Commit your own work before incorporating changes from `main`.
 2. Keep one behavior or asset change per small commit. Commit source, runtime assets and provenance; leave builds, node_modules, scratch jobs and credentials ignored.
-3. Run `npm --prefix game run build` and the checks relevant to your change. Capture actual gameplay for visual or motion work.
+3. Run `npm --prefix game test`, `npm --prefix game run build` and any checks relevant to your change. Capture actual gameplay for visual or motion work.
 4. Open a pull request with what changed, owned paths, test results, visual evidence and any shared contract implications. A branch can be a draft while work continues.
 5. The integrator merges one branch at a time, runs the build, then checks the changed scene and its transitions. Merge regular playable increments, roughly every 30–60 minutes, rather than waiting for the end of the day.
 6. If a merged change breaks the demonstration, revert that merge/commit or restore a known-good release checkout. Do not force-push teammates' branches or use a destructive reset on shared work.
@@ -50,6 +50,6 @@ Keep vendor originals intact under `assets/`; place reviewed runtime exports und
 
 ## Completion handoff
 
-Record the branch/base commit, files changed, current run command, local preview port, checks actually performed and remaining limits. Separate implemented behavior from proposals and owner acceptance. Never mark a memory complete just because it loads; never call the preserved rover demo proof that the new spirit loop works.
+Record the branch/base commit, files changed, current run command, local preview port, checks actually performed and remaining limits. Separate implemented behavior from proposals and owner acceptance. Never mark a memory complete just because it loads. The current completion marker means the preserved prototype repair/call sequence was completed, not that the full mission-to-shutdown story has been built. Aborted visits and failed loads must not add completion.
 
 Workflow reference: [Git worktrees](https://git-scm.com/docs/git-worktree).

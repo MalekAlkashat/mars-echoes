@@ -21,21 +21,23 @@ The hackathon target is one complete equipment story in a compact Mars explorati
 - Retain the selected orange terrain, pale distant light, heavy cold sky, grounded machinery and emotion expressed through motion/sound with little text.
 - The pale six-wheel rover and enlarged twin optics retain their existing design references. The spirit is a separate protagonist and must not replace that asset authority.
 
-### Existing implementation versus new work
+### Implemented foundation versus remaining story work
 
-The existing `game/` is a rover-only v2 prototype: driving, an inactive donor, optical repair, calibration and an unanswered relay call. Its production build passes. Earlier runtime review is recorded in `outputs/review/visual-pass-v2/REVIEW.md`; that review is historical evidence, not proof of the new spirit loop.
+The runtime has now been reorganized into the ownership boundaries below. `main.ts` bootstraps the app; shared application, input, asset and presentation services run scene factories. The preserved rover sequence lives in `scenes/episodes/rover/`, including local mission progression and HUD. A compact placeholder hub uses the shared Mars environment and a separate spirit controller/appearance/camera. It provides entry into that rover sequence and a return route to the hub.
 
-Git tag `rover-v2-baseline` preserves this version. There is no implemented spirit controller, hub/episode transition, full past mission, shutdown ending or audio pass yet. Existing repair and unanswered-call material can inform the first memory, but does not constitute the complete selected story. A memory may begin with a functional machine; stage-two deterioration describes the previous opening and present-day remains, not a required initial memory condition.
+Git tag `rover-v2-baseline` preserves the original rover-only version. The new work implements the M1 runtime foundation and minimal M2/M3 integration, not the complete past mission, shutdown ending, final spirit model or audio pass. Existing repair and unanswered-call material can inform the first memory, but does not constitute the complete selected story. A memory may begin with a functional machine; stage-two deterioration describes the previous opening and present-day remains, not a required initial memory condition.
+
+The production build and 23 automated checks pass: 14 director/lifecycle checks, four rover motion/contact checks and five spirit controller checks. Native development-browser review also passes the complete preserved repair-to-relay sequence and return to Mars, including failed alignment and successful installation. After one completed prototype visit, ten additional aborted visits restore the same hub position, retain the one completion and return to stable renderer counts of 134 geometries and 34 textures, with no browser errors. These are observed development-browser results, not a GPU-memory benchmark or stage-machine certification. Fault UI, mobile and production-browser checks are tracked separately. Earlier v2 review remains historical evidence under `outputs/review/visual-pass-v2/REVIEW.md`.
 
 ## Why Three.js is feasible
 
-One renderer can present a spirit exploration scene and a machine episode with different controllers, cameras and local objectives. The existing rover, terrain and rendering code already supply useful pieces. We need to add game orchestration: input ownership, scene lifecycle, transition handling and story progression. Three.js supplies rendering, not those game systems. See the [official game-development manual](https://threejs.org/manual/pages/game.html).
+One renderer presents a spirit exploration scene and a machine episode with different controllers, cameras and local objectives. Application orchestration now supplies input ownership, scene lifecycle and transition handling around the existing rover, terrain and rendering code. Full story progression remains episode-author work. Three.js supplies rendering, not those game systems. See the [official game-development manual](https://threejs.org/manual/pages/game.html).
 
 This plan uses one compact hub, one episode and explicit scene registration. Open-space travel, a planet-scale map, procedural galaxies, multiplayer, a general-purpose editor and a new physics engine are outside the first build. These are scope recommendations for this iteration, not a permanent restriction on the concept.
 
-## Target file structure
+## Implemented file structure and reserved extensions
 
-This is the proposed destination. The current flat runtime files stay in place until each extraction is built and checked. Do not create empty layers or move every file in one change.
+The ownership directories below now exist and contain executable source. Items explicitly marked as future remain unimplemented; do not create empty layers to imply completion. Runtime asset URLs remain at their existing locations.
 
 ```text
 /
@@ -48,7 +50,7 @@ This is the proposed destination. The current flat runtime files stay in place u
     package.json
     package-lock.json
     src/
-      main.ts                        # bootstrap only after extraction
+      main.ts                        # bootstrap and preview entry selection only
       app/
         Game.ts                      # one renderer and one frame loop
         SceneDirector.ts             # guarded enter/return/loading transitions
@@ -59,7 +61,7 @@ This is the proposed destination. The current flat runtime files stay in place u
         input.ts                     # one set of listeners, normalized actions
         presentation.ts              # renderer/composer configuration and resizing
         assets.ts                    # load/cache, shared resource ownership
-        audio.ts                     # playback ownership and pause/cleanup
+        # future audio service       # not implemented; prototype remains silent
       entities/
         spirit/
           controller.ts              # glide, leap, solid collision
@@ -71,11 +73,13 @@ This is the proposed destination. The current flat runtime files stay in place u
           controller.ts
           grounding.ts
           wheel-effects.ts
+          camera.ts
       environments/mars/
         terrain.ts
         atmosphere.ts
         materials.ts
         dressing.ts
+        resources.ts                 # scene resource disposal
       scenes/
         mars-hub/
           index.ts                   # hub factory and lifecycle
@@ -83,15 +87,17 @@ This is the proposed destination. The current flat runtime files stay in place u
         episodes/rover/
           index.ts                   # rover episode factory and lifecycle
           mission.ts                 # rover-only progression, never global state
+          hud.ts                     # rover-specific instructions and feedback
           layout.ts
-          timeline.ts                # authored time jumps and damage beats
+          # future timeline.ts       # authored time jumps and shutdown not built
       content/equipment.ts           # stable wreck ID -> episode ID and assets
-      ui/                            # shared loading, pause and objective views
+      ui/                            # shared loading/pause primitives and styles
+      review.ts                      # development capture helper
+      env.d.ts
     public/assets/
-      spirit/<version>/
-      equipment/<equipment-id>/<version>/
-      environments/mars/<version>/
-      audio/<version>/
+      kenney/                        # current local runtime GLBs
+      surfaces/                      # current local scanned maps
+      # future versioned spirit/equipment/environment/audio exports
     tests/                           # lifecycle, transitions and controller checks
   assets/                            # authoring sources and vendor originals
   outputs/planning/
@@ -114,7 +120,7 @@ Every scene has the same lifecycle: prepare assets, enter, update, resize, pause
 
 The transition director records the spirit's position, heading and camera bookmark before entering a wreck. It locks repeat entry requests, loads the destination before retiring the working source scene, and restores the source if loading fails. Successful completion records an episode result and returns to a safe point beside the same wreck. Aborting or failing to load does not mark a memory complete. Present-day wrecks remain abandoned; a memory does not silently repair the present world.
 
-Detailed proposed contracts and current-file migration map: [architecture](outputs/planning/architecture.md). Task boundaries and contributor instructions: [team development](outputs/planning/team-development.md).
+Implemented contracts and ownership map: [architecture](outputs/planning/architecture.md). Task boundaries and contributor instructions: [team development](outputs/planning/team-development.md). Preview the hub with `?scene=mars-hub` (also the default) and the preserved episode directly with `?scene=episode-rover-01`; both use the production factories.
 
 ## Milestones and acceptance
 
@@ -134,22 +140,24 @@ Suggested first-day allocation: initial 1–2 hours for M0/M1; then 2–3 hours 
 
 ### M1: integrator checklist
 
-- [ ] Extract the single frame loop, input listeners and shared renderer lifetime from current `main.ts`.
-- [ ] Freeze small scene, input, result and resource-ownership contracts with working stub scenes.
-- [ ] Make old `Progress` episode-local; do not add spirit/hub branches to that rover state machine.
-- [ ] Separate generic Mars terrain/environment services from donor/relay placements in `world.ts`.
-- [ ] Preserve the old rover loop through the extraction before changing its story.
-- [ ] Provide independent hub and episode preview entry points using the same production scene factories.
+- [x] Extract the single frame loop, input listeners and shared renderer lifetime into `app/` and `core/`.
+- [x] Implement small scene, input, result and resource-ownership contracts with registered hub and rover scene factories. Treat these as the coordination boundary for contributor branches; changes still require the integrator.
+- [x] Make old `Progress` episode-local in `scenes/episodes/rover/mission.ts`; the shared runtime has no rover progression phases.
+- [x] Separate generic Mars terrain/environment services from donor/relay placements in the rover episode's `layout.ts`.
+- [x] Preserve and play through the old rover loop after extraction, including alignment retry, installation, calibration, relay call and return to Mars.
+- [x] Provide independent hub and episode preview entry points using the same production scene factories.
+
+M1 implementation and the preserved rover development-browser regression are complete. The contracts in `game/src/app/contracts.ts` are now the authoritative boundary for parallel scene work. Owner visual acceptance, production/mobile review, fault UI checks and stage-hardware rehearsal remain distinct checks.
 
 ### M2/M3: hub and transition checklist
 
-- [ ] Build the tentative humanoid spirit using a clear placeholder before final rig or shader work.
-- [ ] Keep movement in the controller and shape/effects in appearance, so changing the silhouette does not require rewriting gameplay.
+- [x] Build the tentative humanoid spirit using a clear placeholder before final rig or shader work.
+- [x] Keep movement in the controller and shape/effects in appearance, so changing the silhouette does not require rewriting gameplay.
 - [ ] Tune near-ground glide, bounded leap, landing and collision at normal playback speed.
-- [ ] Use a stable `wreck-rover-01` -> `episode-rover-01` mapping and one readable entry cue.
-- [ ] Other visible wrecks have no misleading play prompt until their episodes exist.
+- [x] Use a stable `wreck-rover-01` -> `episode-rover-01` mapping and one entry cue. Runtime readability still needs the browser review below.
+- [x] Limit entry prompts to the one registered wreck; other visible wrecks have no unimplemented episode prompt.
 - [ ] Save/restore the hub bookmark, clear held inputs, lock repeated transitions and recover from loading failure.
-- [ ] Distinguish completed from aborted memories. A subtle completion indication is proposed; its final appearance remains open.
+- [x] Distinguish completed from aborted prototype visits. One completed repair/call sequence followed by ten aborted visits retains exactly one completion. The hub's simple visited label is provisional, not final story progression.
 
 ### M4: episode checklist
 
@@ -177,9 +185,11 @@ Suggested first-day allocation: initial 1–2 hours for M0/M1; then 2–3 hours 
 
 ## Team workflow
 
+The contributor base for this extraction is Git tag `runtime-foundation`. Both the compiled production repair-to-return playthrough and the 390 by 844 hub/repair controls pass, including retry, replay, reset, pause focus and leap. Development failure injection verifies initial Reload/Retry and failed-entry Retry/Cancel, with gameplay blocked behind the recovery dialog. Evidence and remaining limits are recorded in `outputs/review/runtime-refactor/REVIEW.md`.
+
 Use feature branches and a separate clone per computer or worktree per simultaneous local agent. Run previews on different ports. Shared contracts and dependencies have one owner. Merge small playable increments every 30–60 minutes; a clean text merge still needs a scene and transition playthrough. Binary models/textures have one owner per asset version and are never resolved by combining bytes. Instructions and example commands are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Do not open branches for a second episode until the shared contract exists. An additional colleague can prepare assets, layouts and beat sheets while M1 is underway. Actual colleague names, GitHub handles and availability are not yet recorded; the role assignment is proposed.
+The shared contract now exists in `game/src/app/contracts.ts`, and scene owners can work in their separate directories against it. A second episode still requires an explicit scope decision; first finish and review the selected rover story. An additional colleague can prepare assets, layouts and beat sheets independently. Actual colleague names, GitHub handles and availability are not yet recorded; the role assignment is proposed.
 
 ## Open decisions
 
@@ -190,10 +200,10 @@ Do not open branches for a second episode until the shared contract exists. An a
 5. The visual response on returning to a completed wreck, and whether replay is freely available.
 6. Presentation slot, target machine, exact team assignments and final game title.
 
-## Status of this planning delivery
+## Current refactor status
 
-The repository setup and documentation are the implementation in this delivery. The target folders, scene contracts, spirit and complete memory loop are proposed work, not already migrated or playable. The preserved rover build remains the runnable prototype. GitHub, commit and handoff status is recorded in `outputs/planning/repository-status.md`.
+The actual owner-responsibility structure is implemented, with shared app/core services, separate entities and environment code, an isolated rover episode/HUD and a placeholder hub entry/return route. The production build and 23 automated checks pass. Native development-browser review passes the preserved repair/call sequence, return to the hub and ten additional aborted visits with stable returned resource counts. Owner acceptance, fault UI, mobile/production-browser checks and stage rehearsal are tracked separately. The complete past mission, cinematic time jumps, shutdown, final spirit appearance and sound remain roadmap work. GitHub, commit and handoff status is recorded in `outputs/planning/repository-status.md`.
 
-The GitHub account can publish code but its current login lacks workflow-publication scope. Build automation is therefore supplied as `outputs/planning/build-workflow.yml`, not an active workflow. Local build/typecheck passes; use it before merging until the template is enabled by an authorized account.
+The GitHub account can publish code but its current login lacks workflow-publication scope. Build automation is therefore supplied as `outputs/planning/build-workflow.yml`, not an active workflow. The refactor's local production build/typecheck passes; continue running it and the automated tests before merging until the template is enabled by an authorized account.
 
 Reference boundaries: [Fortnite's original Shadow Stone notes](https://www.fortnite.com/patch-notes/v6-00) describe increased movement, jumping and phasing. Our selected adaptation explicitly omits phasing, combat and the original consumable timer. Project Endurance remains a visual/vehicle-response quality reference, not the spirit controller specification.

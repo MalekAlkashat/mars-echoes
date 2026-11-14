@@ -35,3 +35,8 @@ graphify-out/
 /outputs/review/visual-pass-v2/*
 !/outputs/review/visual-pass-v2/*.md
 !/outputs/review/visual-pass-v2/*.json
+!/outputs/review/runtime-refactor/
+/outputs/review/runtime-refactor/*
+!/outputs/review/runtime-refactor/*.md
+!/outputs/review/runtime-refactor/*.json
+!/outputs/review/runtime-refactor/*.jpg

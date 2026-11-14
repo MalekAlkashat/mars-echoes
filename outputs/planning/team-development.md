@@ -1,24 +1,24 @@
 # Contributor handoffs
 
-14 November 2026. Roles are proposed; actual colleague names and GitHub handles are not assigned. Root `ROADMAP.md` is the current vision. The code still runs the preserved rover-only demo at `rover-v2-baseline` (`179705b`). New runtime folders below are migration destinations.
+14 November 2026. Roles are proposed; actual colleague names and GitHub handles are not assigned. Root `ROADMAP.md` is the current vision. The runtime ownership folders below now exist and contain executable source. A placeholder hub and spirit controller connect to the isolated rover repair/call episode through shared app/core services. The original rover-only demo remains preserved at `rover-v2-baseline` (`179705b`). The complete past mission, shutdown and sound remain future work.
 
 ## Integrator: runtime and contracts
 
 Outcome: other contributors can build a hub or episode without editing the frame loop, global input or each other's files.
 
-Own current `game/src/main.ts`, scene-related extraction from `world.ts`/`progress.ts`, shared camera/rendering changes, and future `app/`, `core/`, registry, UI and dependencies. Start from `outputs/planning/architecture.md`. First extract an unchanged rover episode, then prove stub hub entry and return. Preserve original source at the baseline tag rather than duplicating the whole game tree.
+Own `game/src/main.ts`, `app/`, `core/`, registry, shared UI and dependencies. The former `world.ts` and `progress.ts` responsibilities have been separated into generic Mars environment services and episode-local layout/mission modules. Start from `outputs/planning/architecture.md` and the actual shared contract in `game/src/app/contracts.ts`. Preserve original source at the baseline tag rather than duplicating the whole game tree.
 
-Deliver a small frozen scene/input/result contract, working production factories, independent preview entries, lifecycle cleanup and transition tests. Default controls remain WASD; the spirit glides and leaps with solid collision, without phasing. Only one active controller receives actions. Do not introduce a second renderer or general-purpose game framework.
+Maintain the implemented scene/input/result contract in `game/src/app/contracts.ts`, registered production factories, independent preview entries, lifecycle cleanup and transition tests. Treat that source file as authoritative and coordinate any contract change through the integrator. Default controls remain WASD; the spirit glides and leaps with solid collision, without phasing. Only one active controller receives actions. Do not introduce a second renderer or general-purpose game framework. The production build and 23 automated checks pass; native development-browser review also passes the preserved rover sequence and return to Mars.
 
-Acceptance: old rover repair-to-relay sequence remains playable after extraction; repeated and failed/cancelled transitions recover; pause/reset disposes old state; ten switches do not multiply input handlers or loops. Assign each scene author a branch based on the merged contract milestone, not the pre-extraction layout.
+Recorded native development-browser evidence: the old rover repair-to-relay sequence remains playable after extraction, including bad-alignment retry and successful installation, and returns to Mars. Ten additional aborted visits retain one prior prototype completion, restore the same hub position and return to identical renderer resource counts; browser errors are empty. Automated director tests cover failure/cancellation and session logic, while native fault UI, mobile/production-browser checks and stage rehearsal are tracked separately. Assign each scene author a branch based on the agreed merged refactor commit, not the pre-extraction layout.
 
 ## Hub author: spirit and Mars exploration
 
 Outcome: a readable spirit glides and leaps through a compact Mars area and can enter one designated wreck.
 
-Own future `entities/spirit/` and `scenes/mars-hub/`; coordinate `environments/mars/` changes with the integrator. Reuse the selected orange terrain and cold sky. Keep the tentative ghostly humanoid appearance separate from its controller. The reference is movement feel, not phasing, a consumable timer or imported Fortnite art.
+Own `game/src/entities/spirit/` and `game/src/scenes/mars-hub/`; coordinate `environments/mars/` changes with the integrator. Reuse the selected orange terrain and cold sky. Keep the tentative ghostly humanoid appearance separate from its controller. The reference is movement feel, not phasing, a consumable timer or imported Fortnite art.
 
-Before M1: prepare a proposed layout, scale study and placeholder silhouette in your own files, without rewriting current `main.ts`. After M1: build through the frozen factory and services, using the same entry route as production.
+The implemented hub/controller/appearance/camera are a simple integration starting point, not final spirit art or a finished level. Build through its factory and shared services without editing the global game loop. The default entry and `?scene=mars-hub` use that same production factory.
 
 Acceptance: camera-relative WASD glide, bounded leap/landing, slopes, obstacles, no tunnelling or noclip, clean pause/reset and readable follow camera. Save a safe bookmark near `wreck-rover-01` before entering. Other wrecks have no false interact prompts. Return restores control beside the same wreck.
 
@@ -26,9 +26,9 @@ Acceptance: camera-relative WASD glide, bounded leap/landing, slopes, obstacles,
 
 Outcome: the player experiences purposeful machine work, mission completion, abandonment, continued effort and eventual shutdown before returning to the spirit.
 
-Own future `scenes/episodes/rover/`, local mission progression, layout and time-jump timeline. Use shared `entities/rover/`; request rig/controller interface changes rather than rewriting shared runtime. Preserve the accepted pale six-wheel design and twin optics. A functional earlier machine and deteriorated later machine are temporal states, not separate identities.
+Own `game/src/scenes/episodes/rover/`, including local `mission.ts`, `hud.ts`, layout and a future time-jump timeline. Use shared `entities/rover/`; request rig/controller interface changes rather than rewriting shared runtime. The current episode preserves the old repair/call sequence, not the complete memory story. Preserve the accepted pale six-wheel design and twin optics. A functional earlier machine and deteriorated later machine are temporal states, not separate identities.
 
-The original assignment is deliberately undecided. Prepare a beat sheet and technical episode extraction while waiting; mission-specific puzzles, success conditions and props depend on that choice. The existing optical-repair and unanswered-call sequence is reusable material, not the complete mission/shutdown story. Cinematic jumps connect playable moments; game/presentation duration is not fixed.
+The original assignment is deliberately undecided. Prepare a beat sheet while waiting; mission-specific puzzles, success conditions and props depend on that choice. Technical episode extraction now exists, and `?scene=episode-rover-01` previews it through the production factory. The existing optical-repair and unanswered-call sequence is reusable material, not the complete mission/shutdown story. Cinematic jumps will connect playable moments; game/presentation duration is not fixed.
 
 Acceptance: clear playable action and success condition after mission selection; time jumps communicate elapsed time; pause does not advance a cinematic timer; input/camera return predictably after a cut; completion returns the agreed typed result once. A present-day wreck is not physically revived or repaired by playing its memory.
 
@@ -73,4 +73,4 @@ Do not fill unknown colleague names, mission choices or performance targets with
 - `.agents/skills/materials-to-game/SKILL.md`: surface/import/material verification.
 - `.agents/skills/fal-ai-generation/SKILL.md`: only when that provider/workflow is selected.
 
-No runtime refactor, teammate worktrees or new episodes are implemented by this handoff. Begin with the integrator's M1 task; parallel art and layout proposals can start before that contract is ready.
+The runtime refactor and placeholder hub entry/return route are implemented. Native development-browser rover/return and repeated-visit checks pass alongside the 23 automated tests and production build; other native/platform checks and owner acceptance remain separately tracked. Teammate worktrees are not created by this handoff, and no additional episode or complete new story is claimed. Branch from the agreed merged refactor commit and use the existing contracts; art and scene owners can now work in their actual separated directories.

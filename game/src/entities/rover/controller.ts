@@ -1,5 +1,5 @@
 import { MathUtils, Vector3 } from 'three';
-import { RoverGrounding } from './grounding';
+import { RoverGrounding } from './grounding.ts';
 
 export type Obstacle = { x: number; z: number; radius: number };
 type DriveInput = { forward: number; turn: number };

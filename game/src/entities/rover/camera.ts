@@ -1,6 +1,8 @@
 import { MathUtils, PerspectiveCamera, Vector3, type Object3D } from 'three';
-import type { Phase } from './progress';
-import type { Obstacle } from './vehicle';
+import type { Obstacle } from './controller';
+
+export type RoverCameraPhase = 'ready' | 'drive' | 'scan' | 'extract' | 'align'
+  | 'insert' | 'calibrate' | 'relay' | 'transmit' | 'end';
 
 export type CameraMotion = { speed: number; acceleration: number; steer: number; impact: number };
 
@@ -13,33 +15,16 @@ export class CameraRig {
   private initialized = false;
   private lastMode = '';
   private followHeading = 0;
-  private drag: { x: number; y: number; id: number } | null = null;
   private desiredPosition = new Vector3();
   private desiredLook = new Vector3();
   private readonly anchor = new Vector3();
   private obstacles: readonly Obstacle[] = [];
   private motion: CameraMotion = { speed: 0, acceleration: 0, steer: 0, impact: 0 };
 
-  constructor(canvas: HTMLCanvasElement, private canOrbit: () => boolean) {
-    canvas.addEventListener('pointerdown', (event) => {
-      if (!canOrbit()) return;
-      this.drag = { x: event.clientX, y: event.clientY, id: event.pointerId };
-      canvas.setPointerCapture(event.pointerId);
-    });
-    canvas.addEventListener('pointermove', (event) => {
-      if (!this.drag || !canOrbit()) return;
-      this.yaw -= (event.clientX - this.drag.x) * 0.005;
-      this.pitch = MathUtils.clamp(this.pitch + (event.clientY - this.drag.y) * 0.003, 0.035, 0.72);
-      this.drag.x = event.clientX;
-      this.drag.y = event.clientY;
-    });
-    const release = () => { this.drag = null; };
-    canvas.addEventListener('pointerup', release);
-    canvas.addEventListener('pointercancel', release);
-    canvas.addEventListener('wheel', (event) => {
-      event.preventDefault();
-      if (canOrbit()) this.distance = MathUtils.clamp(this.distance + event.deltaY * 0.0035, 3.5, 9);
-    }, { passive: false });
+  orbit(dragX: number, dragY: number, zoom: number): void {
+    this.yaw -= dragX * 0.005;
+    this.pitch = MathUtils.clamp(this.pitch + dragY * 0.003, 0.035, 0.72);
+    this.distance = MathUtils.clamp(this.distance + zoom * 0.0035, 3.5, 9);
   }
 
   setMotion(motion: CameraMotion): void {
@@ -61,7 +46,6 @@ export class CameraRig {
     this.distance = 5.8;
     this.initialized = false;
     this.lastMode = '';
-    this.drag = null;
     this.followHeading = 0;
     this.motion = { speed: 0, acceleration: 0, steer: 0, impact: 0 };
   }
@@ -87,7 +71,7 @@ export class CameraRig {
     if (fraction < 1) this.desiredPosition.lerpVectors(this.anchor, this.desiredPosition, fraction);
   }
 
-  update(dt: number, phase: Phase, rover: Object3D, socket: Object3D, donor: Vector3, relay: Vector3, optical: boolean, height: (x: number, z: number) => number): void {
+  update(dt: number, phase: RoverCameraPhase, rover: Object3D, socket: Object3D, donor: Vector3, relay: Vector3, optical: boolean, height: (x: number, z: number) => number): void {
     const step = Number.isFinite(dt) ? MathUtils.clamp(dt, 0, 0.1) : 0;
     const position = rover.position;
     const point = (local: Vector3) => rover.localToWorld(local);

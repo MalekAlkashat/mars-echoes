@@ -13,6 +13,7 @@ function texture(data: Uint8Array, size: number, color = false): THREE.DataTextu
     map.colorSpace = color ? THREE.SRGBColorSpace : THREE.NoColorSpace;
     map.anisotropy = 4;
     map.needsUpdate = true;
+    map.userData.sharedAsset = true;
     return map;
 }
 let finishMaps: {
@@ -21,6 +22,12 @@ let finishMaps: {
     normal: THREE.DataTexture;
     rubber: THREE.DataTexture;
 } | undefined;
+
+export function disposeRoverMaterialCache(): void {
+    if (!finishMaps) return;
+    Object.values(finishMaps).forEach(map => map.dispose());
+    finishMaps = undefined;
+}
 function maps(): NonNullable<typeof finishMaps> {
     if (finishMaps)
         return finishMaps;

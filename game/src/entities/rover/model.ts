@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { mergeGeometries } from 'three/addons/utils/BufferGeometryUtils.js';
-import { createRoverMaterials } from './roverMaterials';
+import { createRoverMaterials } from './materials';
 export type RoverRig = {
     root: THREE.Group;
     head: THREE.Group;

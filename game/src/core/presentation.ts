@@ -30,7 +30,8 @@ export function createRenderer(canvas:HTMLCanvasElement):THREE.WebGLRenderer {
 export function createPresentation(renderer:THREE.WebGLRenderer,scene:THREE.Scene,camera:THREE.PerspectiveCamera) {
   const buffer=new THREE.WebGLRenderTarget(innerWidth,innerHeight,{type:THREE.HalfFloatType,samples:2});
   const composer=new EffectComposer(renderer,buffer);
-  composer.addPass(new RenderPass(scene,camera));
+  const renderPass = new RenderPass(scene,camera);
+  composer.addPass(renderPass);
   const ao=new ContactAO(scene,camera);
   ao.blendIntensity=.52;
   ao.updateGtaoMaterial({radius:.32,thickness:.18,distanceExponent:1.5,distanceFallOff:1.1,scale:1,samples:12,screenSpaceRadius:false});
@@ -55,5 +56,12 @@ export function createPresentation(renderer:THREE.WebGLRenderer,scene:THREE.Scen
   });
   composer.addPass(film);
   composer.addPass(new OutputPass());
-  return {composer,film,ao,resize(){composer.setSize(innerWidth,innerHeight);}};
+  return {composer,film,ao,
+    bind(scene:THREE.Scene,camera:THREE.PerspectiveCamera){
+      renderPass.scene=scene;renderPass.camera=camera;ao.scene=scene;ao.camera=camera;
+      film.uniforms.degraded.value=0;
+    },
+    resize(){composer.setSize(innerWidth,innerHeight);},
+    dispose(){composer.passes.forEach(pass=>pass.dispose());composer.dispose();},
+  };
 }

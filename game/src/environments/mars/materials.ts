@@ -4,15 +4,52 @@ import {
 } from 'three';
 
 type SurfaceRole = 'regolith' | 'rock';
-const textureLoads: Promise<void>[] = [];
+type SurfaceFile = 'color' | 'normal' | 'roughness' | 'ao';
+const textures = new Map<string, { texture: Texture; ready: Promise<void> }>();
 
 export function surfaceTexturesReady(): Promise<void> {
-  return Promise.all(textureLoads.splice(0)).then(() => undefined);
+  return Promise.all([...textures.values()].map(entry => entry.ready)).then(() => undefined);
+}
+
+export function disposeSurfaceTextureCache(): void {
+  textures.forEach(entry => entry.texture.dispose());
+  textures.clear();
 }
 
 function solidTexture(r: number, g: number, b: number): DataTexture {
   const texture = new DataTexture(new Uint8Array([r, g, b, 255]), 1, 1, RGBAFormat);
   texture.needsUpdate = true;
+  return texture;
+}
+
+function surfaceTexture(role: SurfaceRole, file: SurfaceFile): Texture {
+  const key = `${role}/${file}`;
+  const cached = textures.get(key);
+  if (cached) return cached.texture;
+  const fallback = file === 'normal' ? [128, 128, 255] : file === 'ao' ? [255, 255, 255]
+    : file === 'roughness' ? [215, 215, 215] : [178, 167, 149];
+  if (typeof document === 'undefined') {
+    const texture = solidTexture(...fallback as [number, number, number]);
+    texture.colorSpace = file === 'color' ? SRGBColorSpace : NoColorSpace;
+    texture.wrapS = texture.wrapT = RepeatWrapping;
+    texture.userData.sharedAsset = true;
+    textures.set(key, { texture, ready: Promise.resolve() });
+    return texture;
+  }
+  let resolve!: () => void;
+  let reject!: (error: Error) => void;
+  const ready = new Promise<void>((success, failure) => { resolve = success; reject = failure; });
+  const texture = new TextureLoader().load(`${import.meta.env.BASE_URL}assets/surfaces/${key}.jpg`,
+    () => resolve(), undefined, () => {
+      if (textures.get(key)?.texture === texture) textures.delete(key);
+      texture.dispose();
+      reject(new Error(`Could not load ${key}.jpg`));
+    });
+  texture.colorSpace = file === 'color' ? SRGBColorSpace : NoColorSpace;
+  texture.wrapS = texture.wrapT = RepeatWrapping;
+  texture.anisotropy = 4;
+  texture.userData.sharedAsset = true;
+  textures.set(key, { texture, ready });
   return texture;
 }
 
@@ -25,37 +62,15 @@ export function surfaceMaterial(role: SurfaceRole): MeshStandardMaterial {
     vertexColors: true,
   });
   const uniforms = {
-    surfaceColor: { value: solidTexture(178, 167, 149) as Texture },
-    surfaceNormal: { value: solidTexture(128, 128, 255) as Texture },
-    surfaceRoughness: { value: solidTexture(215, 215, 215) as Texture },
-    surfaceAO: { value: solidTexture(255, 255, 255) as Texture },
+    surfaceColor: { value: surfaceTexture(role, 'color') },
+    surfaceNormal: { value: surfaceTexture(role, 'normal') },
+    surfaceRoughness: { value: surfaceTexture(role, 'roughness') },
+    surfaceAO: { value: surfaceTexture(role, 'ao') },
     surfaceScale: { value: role === 'regolith' ? 0.68 : 0.39 },
     surfaceNormalStrength: { value: role === 'regolith' ? 0.88 : 1.15 },
     surfaceDust: { value: role === 'regolith' ? 0.08 : 0.2 },
     surfaceAlbedoReference: { value: role === 'regolith' ? 0.3 : 0.4 },
   };
-
-  // Solid samples keep geometry readable while the local texture files finish loading.
-  if (typeof document !== 'undefined') {
-    const loader = new TextureLoader();
-    for (const [file, uniform, colorSpace] of [
-      ['color', uniforms.surfaceColor, SRGBColorSpace],
-      ['normal', uniforms.surfaceNormal, NoColorSpace],
-      ['roughness', uniforms.surfaceRoughness, NoColorSpace],
-      ['ao', uniforms.surfaceAO, NoColorSpace],
-    ] as const) {
-      textureLoads.push(new Promise<void>((resolve, reject) => {
-        loader.load(`/assets/surfaces/${role}/${file}.jpg`, (texture) => {
-          texture.colorSpace = colorSpace;
-          texture.wrapS = texture.wrapT = RepeatWrapping;
-          texture.anisotropy = 4;
-          uniform.value.dispose();
-          uniform.value = texture;
-          resolve();
-        }, undefined, () => reject(new Error(`Could not load ${role}/${file}.jpg`)));
-      }));
-    }
-  }
 
   material.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, uniforms);

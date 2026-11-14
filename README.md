@@ -8,29 +8,44 @@ The local build command below is verified. A GitHub Actions build template is pr
 
 ## What runs now
 
-`game/` contains the preserved rover-only v2 prototype, not the spirit/memory game yet. It includes driving, optical repair, a relay call and reset. The baseline is tagged `rover-v2-baseline`; current source and baseline have the same gameplay until migration begins.
+`game/` now has the actual owner-responsibility structure: shared application/input/assets/rendering services, a placeholder Mars hub and spirit controller, and an isolated rover episode. The default opens the hub. Approach its registered abandoned rover to enter the preserved repair/call sequence, then return to Mars. The earlier rover-only source is tagged `rover-v2-baseline`.
+
+This proves the shared runtime and entry/return foundation, not the complete selected past mission. The original assignment, cinematic time jumps, eventual shutdown, final spirit art and sound remain unfinished. The spirit's procedural humanoid silhouette is a tentative placeholder.
 
 Use Node.js 22.12 or newer, then from the repository root:
 
 ```sh
 npm --prefix game ci
-npm --prefix game run dev -- --port 5173
+npm --prefix game run dev -- --port 5180 --strictPort
 ```
 
-Open the address printed by Vite. WASD drives; drag or arrow keys look; scroll changes camera distance; E interacts; F briefly shows the optical feed. Repair uses WASD position, Q/E rotation and Enter insertion. Escape pauses; R restarts.
+Open [the development preview](http://127.0.0.1:5180/) while that server is running. The default and `?scene=mars-hub` use the hub factory. `?scene=episode-rover-01` previews the rover episode directly through the same production factory.
+
+- In the hub, click **Enter the graveyard**, use WASD to glide, Space to leap and E near the rover to enter. Obstacles remain solid; there is no phasing.
+- In the rover episode, click **Wake the rover**. WASD drives; E interacts; F briefly shows the optical feed. Repair uses WASD positioning, Q/E rotation and Enter insertion.
+- Drag or arrow keys look; scroll changes camera distance. Escape pauses; R restarts the active scene. The episode pause menu allows leaving early, and **Return to Mars** is available after its unanswered call. An early exit does not complete the sequence.
+
+Run the automated checks:
+
+```sh
+npm --prefix game test
+```
 
 Build and serve the production version:
 
 ```sh
 npm --prefix game run build
-npm --prefix game run preview -- --port 5174
+npm --prefix game run preview -- --port 5181 --strictPort
 ```
 
-Runtime assets are local. No generation account or paid service is needed to run the prototype. The current build is silent; sound and the new story/movement are planned work. Historical visual and behavior evidence is in `outputs/review/visual-pass-v2/REVIEW.md`; larger captures and packaged ZIPs remain local and are intentionally excluded from Git.
+Open [the production preview](http://127.0.0.1:5181/) while that server is running. Runtime assets are local, and no generation account or paid service is needed to run the prototype. The build is still silent. Production build/typecheck and 23 automated tests pass. Native development-browser review passes the preserved rover sequence, return to Mars and ten additional aborted visits with stable returned resource counts; mobile, fault UI, production-browser review and stage-machine acceptance are tracked separately. Historical v2 evidence remains in `outputs/review/visual-pass-v2/REVIEW.md` and does not replace current review. Larger captures and packaged ZIPs remain local and are intentionally excluded from Git.
 
 ## Sources and repository contents
 
-- `game/src/`: current executable source. The modular destination is documented in the roadmap; it has not been applied yet.
+- `game/src/app/` and `core/`: the shared runtime, contracts, director, input, asset cache and presentation, owned by the integrator.
+- `game/src/entities/spirit/` and `scenes/mars-hub/`: the hub author's actual source boundaries.
+- `game/src/scenes/episodes/rover/`: episode-local factory, mission, HUD and layout. `entities/rover/` contains reusable machinery/control code; `environments/mars/` contains shared terrain and dressing.
+- `game/src/content/equipment.ts`: stable wreck-to-episode registration; shared `ui/` contains presentation primitives/styles. `main.ts` is bootstrap only. `app/contracts.ts` is the authoritative contract for contributor work.
 - `game/public/assets/`: runtime GLBs and surface maps.
 - `assets/vendor/`: original Kenney, Poly Haven and unused NASA material, with source and rights records. NASA's rover is not used in the game.
 - `outputs/assets/`: selected design references; acceptance of an image does not imply approval of its procedural model.

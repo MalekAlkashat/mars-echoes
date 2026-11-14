@@ -1,69 +1,31 @@
 # Spirit and memory architecture
 
-14 November 2026. This is a proposed implementation contract and migration plan, not a description of an already refactored runtime. Read the confirmed vision in root `ROADMAP.md` first. Existing source is preserved at Git tag `rover-v2-baseline` (commit `179705b`).
+14 November 2026. The runtime organization and contracts described here are implemented. Read the confirmed vision in root `ROADMAP.md` first. The earlier flat rover-only source is preserved at Git tag `rover-v2-baseline` (commit `179705b`). This is the shared runtime foundation plus a placeholder hub and preserved repair/call episode, not the complete past mission, shutdown ending or final spirit asset.
 
-## Current code findings
+## Actual ownership boundaries
 
-`game/src/main.ts` currently creates the renderer, frame loop, input listeners, rover story, camera and world inside one initialization closure. It has no reusable scene teardown. `world.ts` exposes a donor and relay as if every world needs them. `progress.ts` is specifically the optical-repair state machine. Extending those three with more spirit/equipment conditions would concentrate every author's work in the same files.
+`game/src/main.ts` now selects the initial scene and bootstraps `app/Game.ts`. `app/` owns the director, contracts, registry and session. `core/` owns one input listener set, shared assets and presentation. The hub lives in `scenes/mars-hub/`, with separate controller/appearance/camera under `entities/spirit/`. The rover episode owns its factory, `mission.ts`, `hud.ts` and donor/relay layout. Reusable rover parts live under `entities/rover/`; generic Mars terrain, materials, atmosphere, dressing and resource disposal live under `environments/mars/`. Shared UI primitives/styles live under `ui/`, and stable wreck mapping lives in `content/equipment.ts`.
 
-Reuse the existing rig, terrain, materials, camera techniques and contact code. First extract runtime ownership, then package the existing rover sequence as one episode. Do not rewrite the vehicle physics, add an ECS, build a generic plugin system or introduce another framework for this scope.
+The existing rig, terrain, materials, camera techniques and contact code are retained in those modules. Keep story conditions inside the episode and shared ownership in the application. Do not rewrite vehicle physics, add an ECS, build a generic plugin system or introduce another framework merely to add the next scene.
 
-## Proposed scene interface
+## Authoritative implemented contract
 
-The integrator finalizes these small types during M1 and validates them with a hub stub and rover stub before other authors depend on them. The sketch below illustrates the boundary; it is not an implemented API.
+`game/src/app/contracts.ts` is the source of truth. Contributor branches use that revision rather than maintaining a separate interface sketch. The integrator owns contract changes.
 
-```ts
-type SceneId = 'mars-hub' | 'episode-rover-01';
-type Vec3 = readonly [number, number, number];
-type HubBookmark = {
-  position: Vec3;
-  heading: number;
-  cameraYaw: number;
-  cameraPitch: number;
-  cameraDistance: number;
-};
-type Entry =
-  | { scene: 'mars-hub'; bookmark?: HubBookmark }
-  | { scene: 'episode-rover-01'; wreckId: string };
-type EpisodeResult = {
-  episodeId: 'episode-rover-01';
-  wreckId: string;
-  outcome: 'completed' | 'aborted';
-};
-type SceneRequest =
-  | { kind: 'enter-memory'; entry: Extract<Entry, {scene: 'episode-rover-01'}>;
-      bookmark: HubBookmark }
-  | { kind: 'return-to-hub'; result: EpisodeResult };
+| Actual export | Meaning |
+| --- | --- |
+| `SceneId` | The registered IDs `mars-hub` and `episode-rover-01`. |
+| `HubBookmark` | Spirit position/heading and camera yaw/pitch/distance for return. |
+| `SceneEntry`, `EpisodeEntry` | Discriminated hub/episode entry payloads; the episode carries its wreck ID. |
+| `EpisodeResult` | Episode ID, wreck ID and `completed` or `aborted` outcome. Completion currently describes the preserved prototype sequence, not the complete planned story. |
+| `SceneRequest` | `enter-memory` with entry/bookmark, or `return-to-hub` with result. |
+| `InputFrame`, `emptyInput()` | Normalized motion/look/rotation axes, drag/zoom deltas and one-frame start/interact/confirm/optical/replay/return/leap actions. |
+| `GameScene` | Scene ID, Three.js scene/camera, film-effect state, and `activate`, `update`, `resize`, `setPaused`, `restart`, `dispose`, `debug` methods. |
+| `SceneContext` | Shared assets, renderer, UI and session, plus the guarded request callback and input clearing. It does not create or own an episode-local renderer. |
+| `SceneFactory` | Async context/entry/abort-signal preparation returning a `GameScene`. |
+| `assertActive()` | Abort-signal guard for preparation. |
 
-interface InputFrame {
-  moveX: number;
-  moveY: number;
-  lookX: number;
-  lookY: number;
-  zoom: number;
-  leapPressed: boolean;
-  interactPressed: boolean;
-  confirmPressed: boolean;
-  rotate: number;
-  opticalPressed: boolean;
-}
-interface GameScene {
-  readonly scene: THREE.Scene;
-  readonly camera: THREE.PerspectiveCamera;
-  activate(): void;
-  update(dt: number, input: Readonly<InputFrame>): void;
-  resize(width: number, height: number): void;
-  setPaused(paused: boolean): void;
-  dispose(): void;
-}
-// SceneContext supplies assets, shared UI/audio and a typed request callback.
-// A factory constructs a prepared scene without activating global side effects.
-type SceneFactory = (
-  context: SceneContext, entry: Entry, signal: AbortSignal
-) => Promise<GameScene>;
-```
-
-Use scene-ID-specific entry types in the actual registry so a factory cannot accidentally accept another scene's payload. Add only actions demanded by a working scene. Shared pause and restart are handled by the application, not routed to both controllers. The input service emits one-frame actions for interact/leap/confirm and held axes for motion; consume one-frame actions once.
+`app/registry.ts` dispatches to the concrete typed hub or rover factory. Shared pause and restart are handled by the application, not routed to both controllers. The input service emits one-frame actions for interaction and held axes for movement; consume one-frame actions once. Camera and entity classes do not install their own DOM listeners.
 
 The present rover's Q/E alignment action must remain compatible with interact E in driving: map inputs by active mode. Spirit movement is camera-relative; rover movement stays vehicle-relative. This distinction belongs in controllers, not key listeners. The spirit obeys solid obstacles and terrain and cannot phase. Begin with the existing terrain sampler plus a simple solid collision representation; use swept movement or bounded substeps to avoid tunnelling during fast glide/leap. Tune speeds and leap parameters in a small controller config, not in scene dressing.
 
@@ -75,7 +37,7 @@ Scenes own their mutable objects, mission progression, local material instances,
 
 Preparation is inert: the factory must not replace the source scene's objectives, activate sounds or take input while loading. The director calls `activate()` only when the prepared destination is ready to enter. Activation presents local UI and permits local playback through app services; it does not create global listeners or restart a mission. Make activation idempotent so restoring the source UI after a failed switch does not duplicate state.
 
-One application audio service owns the audio context. Scene-owned playback is stopped on exit, pause and reset as appropriate. Browser audio starts from a user gesture. Existing runtime is silent, so this remains implementation work; sound quality must be reviewed by listening.
+Audio service and playback are not implemented; the runtime is silent. When audio is added, one application service should own the context, while scene-owned playback stops on exit/pause/reset as appropriate and starts from a user gesture. This is a future extension, not an existing class or tested sound path. Sound quality must be reviewed by listening.
 
 ## Transition sequence
 
@@ -87,13 +49,13 @@ One application audio service owns the audio context. Scene-owned playback is st
 6. A memory finishes with a typed completed result, or leaves with an aborted result. The director reconstructs/restores the hub using the saved bookmark and a safe nearby return point.
 7. Record completion exactly once only after successful return preparation. An aborted memory or failed load is not completed. Present-day wrecks remain dead unless a future explicit design decision changes this.
 
-Keep one transition request active and use an abort/token guard to reject stale asynchronous completions. Reset clears input and transient transitions, local mission state and active playback through the same lifecycle. Pause freezes gameplay/time-jump timers; app loading recovery remains usable. Retain at most one working scene plus one preparing destination, not every episode ever visited. Measure peak memory on the target machine.
+`SceneDirector` allows one pending transition and uses its transaction/abort guard to reject stale asynchronous completions. Its `retry()` preserves the failed transition intent, including the entry bookmark or pending completion result. `cancel()` discards that intent and retires late results. Restart clears input/transient loading and restarts the active scene through its lifecycle. Pause freezes current gameplay timers. Audio playback and authored time-jump timelines do not exist yet. At most one source and one preparing destination are retained, rather than every scene ever visited. Peak memory still needs measurement on the target machine.
 
-For this build, session state can remain in memory. Disk persistence, save migrations and world streaming are optional future work. Completion indication and replay policy remain design decisions; do not invent a collection economy or permanent upgrades.
+`app/session.ts` implements an in-memory bookmark and a set of completed wreck IDs. The current hub uses a simple prototype visited label; final completion presentation and replay policy remain design decisions. Disk persistence, save migrations and world streaming are optional future work. Do not invent a collection economy or permanent upgrades.
 
-## Migration map
+## Completed source migration
 
-| Current file | Destination/responsibility | Migration guard |
+| Baseline flat file | Current location/responsibility | Guard for future changes |
 | --- | --- | --- |
 | `main.ts` | Tiny bootstrap plus `app/Game.ts` and `SceneDirector.ts` | Preserve one loop; migrate listeners before scene authors start. |
 | `progress.ts` | `scenes/episodes/rover/mission.ts` | Retain old repair phases as local behavior before revising chronology. |
@@ -107,23 +69,18 @@ For this build, session state can remain in memory. Disk persistence, save migra
 | `ui.ts`, `style.css`, HTML | `ui/` and shared UI service | Only active scene presents objectives; clean old listeners/state. |
 | `review.ts` | Development-only review hook | Must not become a second production loop or an independent scene implementation. |
 
-Small optional preview routes, for example `?scene=mars-hub` and `?scene=episode-rover-01`, should use the same registered scene factory as production. No separate showcase implementation. Preview routing is not present yet and must not be advertised as working before M1.
+The default and `?scene=mars-hub` open the hub factory. `?scene=episode-rover-01` opens the rover factory directly. Both use the real registry and production scene implementation; neither is a separate showcase. Development and production previews use ports 5180 and 5181 respectively in the current handoff.
 
 ## Asset agreement
 
-Current runtime imports remain unchanged during this planning delivery. New equipment uses versioned manifests, metres, +Y up and -Z local forward, stable moving-part names, known origin/pivots and simple collision proxies. The environment supplies terrain height and solids; the spirit and rover use different controllers against them. A proposed contract change to collision representation must go through the integrator.
+Runtime source imports now follow the ownership directories. Runtime asset URLs remain at `game/public/assets/kenney` and `surfaces`; no versioned asset-directory migration was performed. New equipment should use versioned manifests, metres, +Y up and -Z local forward, stable moving-part names, known origin/pivots and simple collision proxies. The environment supplies terrain height and solids; the spirit and rover use different controllers against them. A contract change to collision representation goes through the integrator.
 
-Humanoid spirit presentation is replaceable. First prove a readable silhouette and movement with a placeholder, then decide whether an animated rig is needed. The movement reference does not authorize Fortnite models, animations or textures. Accepted rover images remain comparison references after a model is built.
+Humanoid spirit presentation is replaceable and currently procedural placeholder geometry in `entities/spirit/appearance.ts`, separate from its controller/camera. A final character model, palette or animated rig has not been approved or produced. The movement reference does not authorize Fortnite models, animations or textures. Accepted rover images remain comparison references after a model is built.
 
-## Acceptance before parallel scene authors merge
+## Verification and remaining checks
 
-- Build/typecheck and enter/exit both stub scenes through the real director.
-- Preserve the existing rover sequence, including failed and successful insertion.
-- Verify only one loop and one input listener set after repeated switching.
-- Inject a failed and a cancelled destination load; verify the hub stays controllable.
-- Repeat ten complete/aborted visits; inspect input, UI, playback and renderer resources.
-- Restore the hub bookmark safely, without placing the spirit inside the wreck.
-- Confirm held input cannot move both spirit and rover during a transition.
-- Check the rebuilt production asset URLs and scene-dependent render passes.
+The production build/typecheck and 23 automated checks pass: 14 director/lifecycle tests, four rover motion/contact tests and five spirit controller tests. Director tests cover guarded entry, abort/completion, factory/activation failures, cancellation, late results, stale callbacks, restart/disposal and failed-intent retry. Controller tests cover frame-step agreement, solid collision, bounded leaps and deterministic reset. These tests do not prove visuals or every browser path.
 
-These are proposed checks for the new architecture. They have not been run because that architecture is not implemented yet.
+Native development-browser review separately passes the preserved rover sequence: approach, scan/extract, failed alignment, successful alignment/insertion, calibration, relay NoResponse and Return to Mars. After one completed prototype sequence, ten additional aborted visits return to the same hub position `(x,z)=(0,2.33)`, with one completion and 134 geometries/34 textures on every returned hub frame sampled. Browser error logs are empty. These observations support stable returned scene resources in that run, not a GPU-memory benchmark or final-art acceptance.
+
+Fault UI, mobile and production-browser checks are tracked separately by the integrator's review report. Stage-machine performance, final spirit art, sound, the original assignment, full mission, time jumps and shutdown remain open. Before future scene merges, repeat the relevant lifecycle/controller checks, the native enter/return/pause/reset path, and the actual visual check for both modes; do not substitute these historical results for a changed implementation's review.

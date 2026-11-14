@@ -9,6 +9,7 @@ export type Atmosphere = {
   tick(time: number): void;
   follow(position: Vector3): void;
   setupEnvironment(renderer: WebGLRenderer): void;
+  dispose(): void;
 };
 
 export function addAtmosphere(scene: Scene): Atmosphere {
@@ -111,6 +112,7 @@ export function addAtmosphere(scene: Scene): Atmosphere {
 
   const anchor = new Vector3();
   let environmentTarget: WebGLRenderTarget | undefined;
+  let disposed = false;
   const follow = (position: Vector3) => {
     const texel = 44 / 2048;
     anchor.set(
@@ -129,6 +131,7 @@ export function addAtmosphere(scene: Scene): Atmosphere {
     follow,
     tick(time) { material.uniforms.time.value = time; },
     setupEnvironment(renderer) {
+      if (disposed) return;
       const capture = new Scene();
       const captureSky = new Mesh(sky.geometry, material.clone());
       (captureSky.material as ShaderMaterial).uniforms.time.value = 0;
@@ -137,16 +140,26 @@ export function addAtmosphere(scene: Scene): Atmosphere {
         type: HalfFloatType, generateMipmaps: true, minFilter: LinearMipmapLinearFilter,
       });
       const cube = new CubeCamera(0.1, 320, cubeTarget);
-      cube.update(renderer, capture);
       const generator = new PMREMGenerator(renderer);
-      const next = generator.fromCubemap(cubeTarget.texture);
+      try {
+        cube.update(renderer, capture);
+        const next = generator.fromCubemap(cubeTarget.texture);
+        environmentTarget?.dispose();
+        environmentTarget = next;
+        scene.environment = next.texture;
+        scene.environmentIntensity = 0.82;
+      } finally {
+        generator.dispose();
+        cubeTarget.dispose();
+        captureSky.material.dispose();
+      }
+    },
+    dispose() {
+      if (disposed) return;
+      disposed = true;
+      scene.environment = null;
       environmentTarget?.dispose();
-      environmentTarget = next;
-      scene.environment = next.texture;
-      scene.environmentIntensity = 0.82;
-      generator.dispose();
-      cubeTarget.dispose();
-      captureSky.material.dispose();
+      environmentTarget = undefined;
     },
   };
 }
