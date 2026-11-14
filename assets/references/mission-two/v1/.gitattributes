@@ -1,2 +1,8 @@
-# Preserve original bytes and hash-tracked derivatives across Windows/Linux checkouts.
-* -text
+# Normalize authored text; preserve source bytes and hash-tracked image derivatives.
+* text eol=lf
+images/** -text
+motion/** -text
+material-candidates/** -text
+previews/** -text
+sources/*.txt -text
+sources/*.json -text
