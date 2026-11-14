@@ -1,4 +1,5 @@
 import * as T from 'three';
+import {concretionGeometry,concretionMaterial} from '../../../../../environments/mars/concretions.ts';
 
 // Metres. One stable relief field drives the specimen, seated grains and abrasion.
 export const CUT_X=-.045, CUT_RADIUS=.02275, CUT_DEPTH=.0044, SURFACE=.025;
@@ -93,9 +94,7 @@ export function stoneMaterial(interior=false,maps?:T.Texture[]){
 }
 
 export function addConcretions(parent:T.Group){
- const material=new T.MeshStandardMaterial({color:'#66625c',roughness:.67,metalness:0});
- const geometry=new T.SphereGeometry(1,20,12),p=geometry.getAttribute('position');
- for(let i=0;i<p.count;i++){const x=p.getX(i),y=p.getY(i),z=p.getZ(i),r=1+.045*Math.sin(x*9+y*5)*Math.sin(z*8+y*7);p.setXYZ(i,x*r,y*r,z*r);}geometry.computeVertexNormals();
+ const material=concretionMaterial(),geometry=concretionGeometry(true);
  const berries=new T.InstancedMesh(geometry,material,150),matrix=new T.Object3D();
  const placed:{x:number;z:number;r:number}[]=[];let seed=82;
  const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/4294967296;};
@@ -107,5 +106,5 @@ export function addConcretions(parent:T.Group){
   }
   placed.push({x,z,r});matrix.position.set(x,rockHeight(x,z)+r*(i%6===0?.10:.65),z);matrix.scale.set(r,r*(.8+random()*.2),r);matrix.rotation.set(random()*3,random()*3,random()*3);matrix.updateMatrix();berries.setMatrixAt(i,matrix.matrix);
   berries.setColorAt(i,new T.Color().setScalar(.72+random()*.45));
- }berries.castShadow=berries.receiveShadow=true;parent.add(berries);return berries;
+ }berries.name='eagle-specimen-concretions';berries.userData.specimenId='eagle-investigation-v1';berries.castShadow=berries.receiveShadow=true;parent.add(berries);return berries;
 }

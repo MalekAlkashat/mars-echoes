@@ -36,18 +36,14 @@ export function createReconstruction(parent:T.Group,rock:T.MeshStandardMaterial,
   };
   material.customProgramCacheKey=()=>key()+'|anchored-wetness-v3';
  }
- const mineral=new T.MeshStandardMaterial({color:'#625d53',roughness:.88,transparent:true,opacity:0,depthWrite:false});
- const embedded=new T.InstancedMesh(berries.geometry,mineral,36),matrix=new T.Matrix4();
- for(let i=0;i<embedded.count;i++){berries.getMatrixAt(i*4,matrix);matrix.elements[13]-=.0016;embedded.setMatrixAt(i,matrix);}
- embedded.name='inferred-embedded-concretions';embedded.receiveShadow=true;embedded.visible=false;parent.add(embedded);
- const grainMaterial=berries.material as T.MeshStandardMaterial;grainMaterial.transparent=true;
+ // Interpret conditions around the existing grains; do not cross-fade duplicate stones.
+ const grainMaterial=berries.material as T.MeshStandardMaterial,grainColor=grainMaterial.color.clone(),grainRoughness=grainMaterial.roughness;
  let state=reconstructionFrame(false,0);
  return {
-  embedded,
   update(active:boolean,elapsed:number,reduced:boolean){
    state=reconstructionFrame(active,elapsed,reduced);amount.value=state.wetness;front.value=state.front;
-   embedded.visible=active&&state.embedded>.001;mineral.opacity=state.embedded;
-   grainMaterial.opacity=state.exposed;berries.castShadow=state.exposed>.95;
+   grainMaterial.color.copy(grainColor).multiplyScalar(1-state.wetness*.12);
+   grainMaterial.roughness=T.MathUtils.lerp(grainRoughness,.5,state.wetness);
    return state;
   },
   debug(){return {...state};},

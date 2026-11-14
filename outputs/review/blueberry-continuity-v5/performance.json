@@ -1,0 +1,257 @@
+{
+  "settings": "1440x900 balanced DPR1; existing 45 FPS cap; Chromium D3D11. Snapshots include shadow/render passes, not a GPU benchmark.",
+  "views": {
+    "01-fresh-navigation": {
+      "before": {
+        "calls": 94,
+        "triangles": 288506,
+        "fps": 44.3,
+        "cpuSubmissionMs": 0.7,
+        "geometries": 30,
+        "textures": 31
+      },
+      "after": {
+        "calls": 96,
+        "triangles": 390906,
+        "fps": 44.3,
+        "cpuSubmissionMs": 0.8,
+        "geometries": 31,
+        "textures": 31
+      }
+    },
+    "02-exploration": {
+      "before": {
+        "calls": 94,
+        "triangles": 288506,
+        "fps": 45.2,
+        "cpuSubmissionMs": 0.5,
+        "geometries": 30,
+        "textures": 31
+      },
+      "after": {
+        "calls": 96,
+        "triangles": 390906,
+        "fps": 45.3,
+        "cpuSubmissionMs": 0.6,
+        "geometries": 31,
+        "textures": 31
+      }
+    },
+    "03-before-memory": {
+      "before": {
+        "calls": 92,
+        "triangles": 285706,
+        "fps": 45.2,
+        "cpuSubmissionMs": 0.5,
+        "geometries": 30,
+        "textures": 31
+      },
+      "after": {
+        "calls": 94,
+        "triangles": 388106,
+        "fps": 45,
+        "cpuSubmissionMs": 0.5,
+        "geometries": 31,
+        "textures": 31
+      }
+    },
+    "04-entry": {
+      "before": {
+        "calls": 100,
+        "triangles": 394154,
+        "fps": 45,
+        "cpuSubmissionMs": 0.7,
+        "geometries": 28,
+        "textures": 33
+      },
+      "after": {
+        "calls": 110,
+        "triangles": 527658,
+        "fps": 45,
+        "cpuSubmissionMs": 0.7,
+        "geometries": 31,
+        "textures": 37
+      }
+    },
+    "05-approach": {
+      "before": {
+        "calls": 100,
+        "triangles": 394154,
+        "fps": 45,
+        "cpuSubmissionMs": 1.4,
+        "geometries": 28,
+        "textures": 33
+      },
+      "after": {
+        "calls": 112,
+        "triangles": 527850,
+        "fps": 45,
+        "cpuSubmissionMs": 0.9,
+        "geometries": 31,
+        "textures": 37
+      }
+    },
+    "06-at-specimen": {
+      "before": {
+        "calls": 100,
+        "triangles": 394154,
+        "fps": 45.2,
+        "cpuSubmissionMs": 0.8,
+        "geometries": 28,
+        "textures": 33
+      },
+      "after": {
+        "calls": 112,
+        "triangles": 527850,
+        "fps": 45.3,
+        "cpuSubmissionMs": 0.7,
+        "geometries": 31,
+        "textures": 37
+      }
+    },
+    "07-brush": {
+      "before": {
+        "calls": 391,
+        "triangles": 203482,
+        "fps": 40,
+        "cpuSubmissionMs": 1.1,
+        "geometries": 128,
+        "textures": 41
+      },
+      "after": {
+        "calls": 395,
+        "triangles": 467482,
+        "fps": 40.6,
+        "cpuSubmissionMs": 0.9,
+        "geometries": 130,
+        "textures": 41
+      }
+    },
+    "08-grind": {
+      "before": {
+        "calls": 427,
+        "triangles": 224218,
+        "fps": 44.3,
+        "cpuSubmissionMs": 1.1,
+        "geometries": 148,
+        "textures": 41
+      },
+      "after": {
+        "calls": 431,
+        "triangles": 488218,
+        "fps": 44.3,
+        "cpuSubmissionMs": 1.8,
+        "geometries": 150,
+        "textures": 41
+      }
+    },
+    "09-inspect": {
+      "before": {
+        "calls": 90,
+        "triangles": 125514,
+        "fps": 45.3,
+        "cpuSubmissionMs": 0.4,
+        "geometries": 148,
+        "textures": 41
+      },
+      "after": {
+        "calls": 94,
+        "triangles": 389514,
+        "fps": 45.2,
+        "cpuSubmissionMs": 0.7,
+        "geometries": 150,
+        "textures": 41
+      }
+    },
+    "10-cluster": {
+      "before": {
+        "calls": 54,
+        "triangles": 362890,
+        "fps": 41,
+        "cpuSubmissionMs": 0.5,
+        "geometries": 149,
+        "textures": 41
+      },
+      "after": {
+        "calls": 54,
+        "triangles": 362890,
+        "fps": 45.2,
+        "cpuSubmissionMs": 0.9,
+        "geometries": 150,
+        "textures": 41
+      }
+    },
+    "11-control": {
+      "before": {
+        "calls": 52,
+        "triangles": 359946,
+        "fps": 45.2,
+        "cpuSubmissionMs": 0.5,
+        "geometries": 149,
+        "textures": 41
+      },
+      "after": {
+        "calls": 52,
+        "triangles": 359946,
+        "fps": 45,
+        "cpuSubmissionMs": 0.5,
+        "geometries": 150,
+        "textures": 41
+      }
+    },
+    "12-water": {
+      "before": {
+        "calls": 54,
+        "triangles": 136266,
+        "fps": 45.2,
+        "cpuSubmissionMs": 0.5,
+        "geometries": 149,
+        "textures": 41
+      },
+      "after": {
+        "calls": 56,
+        "triangles": 368586,
+        "fps": 44.5,
+        "cpuSubmissionMs": 0.5,
+        "geometries": 150,
+        "textures": 41
+      }
+    },
+    "13-evidence": {
+      "before": {
+        "calls": 58,
+        "triangles": 368778,
+        "fps": 45,
+        "cpuSubmissionMs": 0.8,
+        "geometries": 149,
+        "textures": 41
+      },
+      "after": {
+        "calls": 58,
+        "triangles": 368778,
+        "fps": 44.5,
+        "cpuSubmissionMs": 0.9,
+        "geometries": 150,
+        "textures": 41
+      }
+    },
+    "14-return": {
+      "before": {
+        "calls": 92,
+        "triangles": 285706,
+        "fps": 44.3,
+        "cpuSubmissionMs": 0.6,
+        "geometries": 30,
+        "textures": 31
+      },
+      "after": {
+        "calls": 94,
+        "triangles": 388106,
+        "fps": 44.5,
+        "cpuSubmissionMs": 0.6,
+        "geometries": 31,
+        "textures": 31
+      }
+    }
+  }
+}

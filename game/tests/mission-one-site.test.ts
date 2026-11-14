@@ -52,19 +52,18 @@ test('actual rover contact configuration drives both starts, stops at solid rock
 test('water timeline dries before the evidence transition and every interrupt clears its state',()=>{
  assert.equal(reconstructionFrame(true,0).wetness,0);
  assert.ok(reconstructionFrame(true,5).wetness>.9);
- assert.ok(reconstructionFrame(true,7).embedded>.9);
  assert.equal(reconstructionFrame(true,11.6).wetness,0);
- assert.equal(reconstructionFrame(true,11.6).embedded,0);
- assert.equal(reconstructionFrame(true,11.6).exposed,1);
- for(let t=0;t<=12;t+=.1){const s=reconstructionFrame(false,t);assert.equal(s.wetness,0);assert.equal(s.embedded,0);assert.equal(s.exposed,1);}
+ assert.equal(reconstructionFrame(true,11.6).stage,'exposure');
+ for(let t=0;t<=12;t+=.1){const s=reconstructionFrame(false,t);assert.equal(s.wetness,0);assert.equal(s.stage,'dry');}
  assert.deepEqual(reconstructionFrame(true,1,true),reconstructionFrame(true,9,true),'reduced-motion tableau is stationary');
 });
-test('reconstruction never shifts geometry and removes its transient grains on exit',()=>{
+test('reconstruction retains opaque original grains without extra stones, and resets wet material',()=>{
  const parent=new Group(),rock=new MeshStandardMaterial(),sand=new MeshStandardMaterial(),material=new MeshStandardMaterial();
  const grains=new InstancedMesh(new SphereGeometry(1,8,6),material,150);for(let i=0;i<150;i++)grains.setMatrixAt(i,new Matrix4().makeTranslation(i*.001,.026,0));
- const r=createReconstruction(parent,rock,sand,grains),before=Float32Array.from(r.embedded.instanceMatrix.array);
- for(const t of [0,2,4,6,8,10,11.6])r.update(true,t,false);
- assert.deepEqual(r.embedded.instanceMatrix.array,before);
- r.update(false,5,false);assert.equal(r.embedded.visible,false);assert.equal(material.opacity,1);assert.equal(grains.castShadow,true);
- r.embedded.dispose();grains.dispose();grains.geometry.dispose();material.dispose();rock.dispose();sand.dispose();(r.embedded.material as MeshStandardMaterial).dispose();
+ parent.add(grains);const r=createReconstruction(parent,rock,sand,grains),before=Float32Array.from(grains.instanceMatrix.array),color=material.color.clone(),roughness=material.roughness;
+ for(const reduced of [false,true])for(const t of [0,2,4,6,8,10,11.6]){
+  r.update(true,t,reduced);assert.deepEqual(grains.instanceMatrix.array,before);assert.equal(grains.visible,true);assert.equal(material.opacity,1);assert.equal(material.transparent,false);assert.equal(parent.children.length,1);
+ }
+ r.update(false,5,false);assert.deepEqual(material.color,color);assert.equal(material.roughness,roughness);
+ grains.dispose();grains.geometry.dispose();material.dispose();rock.dispose();sand.dispose();
 });

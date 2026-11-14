@@ -84,3 +84,10 @@ graphify-out/
 !/outputs/review/mission-one-world-v4/*.md
 !/outputs/review/mission-one-world-v4/*.json
 !/outputs/review/mission-one-world-v4/*.png
+
+# Navigation-first blueberry continuity evidence; local videos stay out of Git.
+!/outputs/review/blueberry-continuity-v5/
+/outputs/review/blueberry-continuity-v5/*
+!/outputs/review/blueberry-continuity-v5/*.md
+!/outputs/review/blueberry-continuity-v5/*.json
+!/outputs/review/blueberry-continuity-v5/*.png

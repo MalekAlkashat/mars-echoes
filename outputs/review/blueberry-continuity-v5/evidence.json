@@ -1,0 +1,131 @@
+{
+  "base": "47bc2172e65146e0b2a8a36b3118e61a5196b17c",
+  "captures": "Native game, unretouched, normal speed. Desktop 1440x900 balanced; mobile 390x844 low/large text/reduced motion.",
+  "files": {
+    "before-navigation.png": {
+      "original": "work/continuity/before/01-fresh-navigation.png",
+      "sha256": "2cf1972dfd20ed54623195c52daab374a8387b9caa150ff7ba3169753868159f"
+    },
+    "after-navigation.png": {
+      "original": "work/continuity/after/01-fresh-navigation.png",
+      "sha256": "4bba4da1fc4e1080b6d93a49c7e46dca8a703d23024d7008d9f75768278edff5"
+    },
+    "before-approach.png": {
+      "original": "work/continuity/before/05-approach.png",
+      "sha256": "8aba3ff35290e605ce996e1839739f6e660dc1cbafff2389bb26788addd9d4d4"
+    },
+    "after-approach.png": {
+      "original": "work/continuity/after/05-approach.png",
+      "sha256": "1b1abc51255267d8915e58e8036c3974b29057a4c2b3200d9fedac19d4f02f27"
+    },
+    "before-grind.png": {
+      "original": "work/continuity/before/08-grind.png",
+      "sha256": "9c3a7736a82f1ef9f7b4a687f75cc02694c116aed22ec2108b876f0027b3b05d"
+    },
+    "after-grind.png": {
+      "original": "work/continuity/after/08-grind.png",
+      "sha256": "c824799c3b9d4f88e4c29c25070ece815906bbabe952872145ed7e3a6978a1e2"
+    },
+    "before-water.png": {
+      "original": "work/continuity/before/12-water.png",
+      "sha256": "51cc255a8f6ac86afce181950641290838d8e15ad582198ca996150d4dd47010"
+    },
+    "after-water.png": {
+      "original": "work/continuity/after/12-water.png",
+      "sha256": "686da5c955f3ccb65dca201348c40a1f6034ddac4630de1cd9c52d43a8281008"
+    },
+    "after-entry.png": {
+      "original": "work/continuity/after/04-entry.png",
+      "sha256": "e3c4ef0b04f82fb399fc2a32e39e9e6d6edc12c4b0e08b72bacc8014dd59b07a"
+    },
+    "after-inspect.png": {
+      "original": "work/continuity/after/09-inspect.png",
+      "sha256": "dbb0024903307d2a677f3e0362661902514bc34b7d2a251750c2b074f07a3bb1"
+    },
+    "after-cluster.png": {
+      "original": "work/continuity/after/10-cluster.png",
+      "sha256": "8c9ea1d4ef4cc22f0e823ac0b7506d153f23d7f5ffd95a3dc67faf726fafd333"
+    },
+    "after-control.png": {
+      "original": "work/continuity/after/11-control.png",
+      "sha256": "bcf914741e6ec1439dc0ed1154d57eb02f6e596412cf7d103ec8930d8d8a5011"
+    },
+    "after-evidence.png": {
+      "original": "work/continuity/after/13-evidence.png",
+      "sha256": "f84468b818aac1dd319488781db62be7fe87a966d2142e7a4ccc1b9ab57519ca"
+    },
+    "after-return.png": {
+      "original": "work/continuity/after/14-return.png",
+      "sha256": "fba66fa4cbfcae52dca592543d2d1e392d62fa16b9ad5a45a3353ae13d86f12d"
+    },
+    "mobile-navigation.png": {
+      "original": "work/continuity/mobile-fresh-navigation.png",
+      "sha256": "528d5e1fa68a1c89a5bc3946175e0c3a9ce8c0b702fad22bbbfa14f43b5b4ff0"
+    },
+    "journey-audit.json": {
+      "original": "work/continuity/journey-audit.json",
+      "sha256": "c4dd3f332b2a21a862cc49f90fe7cbbbc2dfb7eacd1846c2c5c89b5aecad669d"
+    },
+    "lifecycle.json": {
+      "original": "work/continuity/lifecycle-report.json",
+      "sha256": "6b111e35a4d2c826c0c7fcac446161634bed5a4a84c3048790f5564a4641ad13"
+    },
+    "production.json": {
+      "original": "work/continuity/production-report.json",
+      "sha256": "d302aaa8bac2bb32b1f30113a7a641a4ea5a4fccfa890c00dec690e69989a051"
+    },
+    "mobile.json": {
+      "original": "work/continuity/mobile-report.json",
+      "sha256": "7d61ba18406c7ca4baf678201dfb40866bd7db77345d98f7d31a600049466df1"
+    },
+    "mobile-start.json": {
+      "original": "work/continuity/mobile-start-report.json",
+      "sha256": "ed36f77508cfc8f6835ab4535e83c985b4219458da2e6e36be847ca3afd2097a"
+    },
+    "preservation.json": {
+      "original": "work/continuity/preservation.json",
+      "sha256": "031622b045b5f658923f216ff51491ddfcb00f0451c9c98338e26deb01b6319f"
+    }
+  },
+  "videos": {
+    "before-journey.webm": {
+      "original": "work/continuity/before/video/page@3e0fa4d597fd8d2a6ead8af93162a46c.webm",
+      "sha256": "6c0ff62c82c5a134e6fc252818f6cb2dc96afa4ea7a58b47f21758c2e8a290a4",
+      "bytes": 22508298,
+      "duration": "00:00:51.48",
+      "speed": "normal playback, no retiming"
+    },
+    "after-journey.webm": {
+      "original": "work/continuity/after/video/page@7b1b47380c1f73f38119c1dc6a90b34a.webm",
+      "sha256": "ac0a1b847ac9db8c2f06589fec60a985ddaf683c3788a14b8791a8a04a620333",
+      "bytes": 22404013,
+      "duration": "00:00:51.40",
+      "speed": "normal playback, no retiming"
+    }
+  },
+  "source": {
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/art.ts": "856c11e3b4ccacc4e04c160aff5d0d89ac55ca39d933f8e48fa38fac93647a43",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/geology.ts": "2e7992ea1882567e9ef4ed66e7d6f593fc96bc33f6bad659617a0aa1929b3407",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/index.ts": "8db280a2df278d94b66f9a77d13c1404bced8385b907d122cda3ae420fa60da6",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/landscape.ts": "2b5aae3f740e9efe9e348b97dfbd3a3c405232b8eb3890efc2ca104595079dbb",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/reconstruction.ts": "1378210b9eaefe95a23a5e4873e9518fc8a2b4c84ff8e11bb5bb99d74c292a19",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/water-state.ts": "f0ada5e3ec41f5fc176b6d8d18107ad7017383a80bca3802e33fb0aaf03e3220",
+    "game/src/scenes/mars-hub/layout.ts": "8e218980c7ce46548a026fdc895c74dab5517698303ae277206987d262054f51",
+    "game/tests/mission-one-site.test.ts": "bfe0def52a0d830588233d1966b59a2d1c24ea3f92a1cb388b792333f5f9e38b",
+    "game/src/environments/mars/concretions.ts": "696a9e31b6aa54094c930899cb25687c959834db3a61d70631494389db7c8ef2",
+    "game/src/scenes/mars-hub/concretions.ts": "8b7e9ec109307adeeb1f9ed92bf0a4959e4f164460a23f7f736609f85ca7365c",
+    "game/tests/concretion-continuity.test.ts": "e3cdcf2952ebf32ff99dc1fa1973ffd68dbdf10daa29e1083e72db33aa4b0af0"
+  },
+  "checks": {
+    "node": "22.23.5",
+    "typecheck": "tsc --noEmit passed",
+    "tests": [
+      "# tests 64",
+      "# pass 64",
+      "# fail 0",
+      "# cancelled 0",
+      "# skipped 0"
+    ],
+    "build": "✓ built in 1.87s"
+  }
+}

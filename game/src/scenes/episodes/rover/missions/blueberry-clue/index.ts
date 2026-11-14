@@ -103,8 +103,7 @@ export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntr
    (art.patch.material as T.MeshStandardMaterial).opacity=.72*observed;art.patch.castShadow=false;
    art.patch.visible=observed>.001&&(progress.phase!=='brush'||progress.elapsed>1);
    if(art.cut.visible)art.patch.visible=false;
-   const reconstruction=art.interpret(progress.phase==='water',progress.elapsed,reduced());
-   art.berries.visible=progress.phase==='compare'||progress.phase==='evidence'||progress.phase==='water'&&reconstruction.exposed>.001;
+   art.interpret(progress.phase==='water',progress.elapsed,reduced());
    art.tick(effects.time,progress.phase==='grind'&&progress.hold>.35||progress.phase==='brush',progress.phase==='grind'&&progress.hold>.35,depth);
   };
   return {

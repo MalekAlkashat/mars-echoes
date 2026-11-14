@@ -5,6 +5,7 @@ import {bakeRockBaseDust,setRockGroundPlanes,type DustFootprint} from '../../../
 import {SLABS} from './site';
 import {createGroundGeometry,createVistaGeometry,sampleHeight} from './surface';
 import {fieldRockGeometry,placeFieldRock} from './field-rocks';
+import {concretionPlacements,createConcretionField} from '../../../../../environments/mars/concretions';
 
 /** Scene-local assembly of existing approved material/atmosphere helpers. */
 export function createLandscape(){
@@ -38,6 +39,13 @@ export function createLandscape(){
  }
  setRockGroundPlanes(chipsGeometry,locations,sampleHeight);chips.receiveShadow=true;chips.name='eagle-fracture-flakes';chips.computeBoundingSphere();group.add(chips);
  bakeRockBaseDust(ground,footprints);
+ const concretions=createConcretionField('eagle-ground-concretions',concretionPlacements([
+  {id:'eagle-arrival',x:3.3,z:6.1,spreadX:.8,spreadZ:.65,count:48},
+  {id:'eagle-apron',x:1.7,z:3.2,spreadX:1,spreadZ:.6,count:48},
+  {id:'eagle-west-pocket',x:-1.4,z:1.9,spreadX:.7,spreadZ:.5,count:48},
+  {id:'eagle-work-east',x:1.6,z:-.6,spreadX:.7,spreadZ:.55,count:48},
+  {id:'eagle-bed-edge',x:-2.7,z:-2.6,spreadX:.8,spreadZ:.5,count:48},
+ ],sampleHeight,7283,.007,.012));group.add(concretions);
  // Keep the established macro probe and lighting separate from the driving atmosphere.
  const lighting=new T.Scene(),atmosphere=addAtmosphere(lighting,{skyRadius:220,shadowSize:1024});
  // Scene-owned sky direction is shared by its disk/probe and the factory's sun placement.
@@ -47,7 +55,7 @@ export function createLandscape(){
  atmosphere.follow(new T.Vector3(0,0,3));
  atmosphere.sun.shadow.camera.left=-16;atmosphere.sun.shadow.camera.right=16;atmosphere.sun.shadow.camera.top=18;atmosphere.sun.shadow.camera.bottom=-18;
  group.add(...[...lighting.children]);
- return {group,sun:atmosphere.sun,ground,ready:surfaceTexturesReady(),
+ return {group,sun:atmosphere.sun,ground,concretions,ready:surfaceTexturesReady(),
   setup(renderer:T.WebGLRenderer){atmosphere.setupEnvironment(renderer);},
   environment(){return lighting.environment;},
   dispose(){atmosphere.dispose();},
