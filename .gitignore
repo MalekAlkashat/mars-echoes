@@ -70,3 +70,10 @@ graphify-out/
 !/outputs/review/mission-one-v2/*.md
 !/outputs/review/mission-one-v2/*.json
 !/outputs/review/mission-one-v2/*.png
+
+# Mission 1 site/reconstruction review; full-resolution video remains local.
+!/outputs/review/mission-one-site-v3/
+/outputs/review/mission-one-site-v3/*
+!/outputs/review/mission-one-site-v3/*.md
+!/outputs/review/mission-one-site-v3/*.json
+!/outputs/review/mission-one-site-v3/*.png
