@@ -1,0 +1,134 @@
+[
+  {
+    "file": "previews/PIA07216.jpg",
+    "source": "images/PIA07216-rub-al-khali.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 1800,
+    "height": 474,
+    "bytes": 77527,
+    "sha256": "3e13db003c9b3f579f8802e822216b2517492ce745b7da13a7ac7d4af19ef8da"
+  },
+  {
+    "file": "previews/PIA07999.jpg",
+    "source": "images/PIA07999-looking-back.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 440,
+    "height": 440,
+    "bytes": 43524,
+    "sha256": "b4be646738d0cefd77df20aca9e94143469003ade0029e9896ae58475e36bbcf"
+  },
+  {
+    "file": "previews/PIA07922.jpg",
+    "source": "images/PIA07922-overhead-mosaic.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 440,
+    "height": 440,
+    "bytes": 43001,
+    "sha256": "1840345c51e6a85c98115e4d091c599a95db31e14b73fb78e00f5234315d24bb"
+  },
+  {
+    "file": "previews/PIA07922-figure1.jpg",
+    "source": "images/PIA07922-relative-heights-figure1.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 440,
+    "height": 440,
+    "bytes": 74643,
+    "sha256": "3241cc3ec45f2d0041ad118b4ece81d3ecfa24661626e1bb5aaed3f982047a58"
+  },
+  {
+    "file": "previews/PIA07895.jpg",
+    "source": "images/PIA07895-earth-recovery-tests.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 640,
+    "height": 426,
+    "bytes": 114628,
+    "sha256": "905fc14496408794031edbca9dd23bf85abb39ddcaa82ea6dc5ed1e91a1f4bab"
+  },
+  {
+    "file": "previews/PIA07983-still.jpg",
+    "source": "images/PIA07983-left-front-wheel.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 256,
+    "height": 256,
+    "bytes": 14270,
+    "sha256": "0776a2d5cb6f133e05524f1fed9e66a1670e7554f8bd7b2d56a563a0a1d2492a"
+  },
+  {
+    "file": "previews/PIA07983-motion.jpg",
+    "source": "motion/PIA07983-left-front-wheel.gif",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 256,
+    "height": 256,
+    "bytes": 16402,
+    "sha256": "787054265361f2015b43537af6df371aaf66b5dca0ed95a768326d573c7e1636"
+  },
+  {
+    "file": "previews/PIA07984.jpg",
+    "source": "images/PIA07984-right-front-wheel.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 256,
+    "height": 256,
+    "bytes": 11294,
+    "sha256": "8583c27d8e2807fa863dbff3808fc7086e6cd73d8670e26408eefa9197f8103b"
+  },
+  {
+    "file": "previews/PIA07985.jpg",
+    "source": "images/PIA07985-right-rear-wheel.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 256,
+    "height": 256,
+    "bytes": 12411,
+    "sha256": "fa687d04cdad4164bc8c14ebe6cf59814d803a1ff9f0580558272f4cdbc1853b"
+  },
+  {
+    "file": "previews/PIA07986.jpg",
+    "source": "images/PIA07986-left-rear-wheel.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 256,
+    "height": 256,
+    "bytes": 12814,
+    "sha256": "df313bce575bb35781ab70399072d1a4ffb43a2553114d0e537616a3dbd592a6"
+  },
+  {
+    "file": "previews/dense-sand-diff.jpg",
+    "source": "material-candidates/dense-sand/dense_sand_diff_2k.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 440,
+    "height": 440,
+    "bytes": 41634,
+    "sha256": "b51f4d94fa1e612122d0f741a34fefe5f4855d2a930a11138430c6e00fbc033b"
+  },
+  {
+    "file": "previews/dense-sand-nor_gl.jpg",
+    "source": "material-candidates/dense-sand/dense_sand_nor_gl_2k.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 440,
+    "height": 440,
+    "bytes": 58433,
+    "sha256": "6f5eeed3274de6f1b688f3710e2e1ac5d34d7a2835178db1ec18f1b94ad40445"
+  },
+  {
+    "file": "previews/dense-sand-rough.jpg",
+    "source": "material-candidates/dense-sand/dense_sand_rough_2k.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 440,
+    "height": 440,
+    "bytes": 28078,
+    "sha256": "c894218c442c4e88bc1427530df1950ab924bd2dcd325c80152c2737d37053bf"
+  },
+  {
+    "file": "previews/dense-sand-ao.jpg",
+    "source": "material-candidates/dense-sand/dense_sand_ao_2k.jpg",
+    "transform": "RGB static first frame; aspect-preserving downsample; JPEG q90",
+    "width": 440,
+    "height": 440,
+    "bytes": 49791,
+    "sha256": "0735697a017e57752ad9fad9bfdf1399bf26a700cf40f57027ebde367ddd1210"
+  },
+  {
+    "file": "previews/contact-sheet.jpg",
+    "transform": "Labeled review montage of the static previews",
+    "bytes": 382771,
+    "sha256": "db6897c2adc63cd3c05436f2b3434adaf5c117e8a6a857b44a6ad600955e497e"
+  }
+]

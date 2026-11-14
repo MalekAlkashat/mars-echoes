@@ -1,0 +1,67 @@
+{
+  "baseCommit": "0becdac",
+  "pathBase": "repository root",
+  "status": "Existing local dependencies; not copies and not proof of Mission 2 integration",
+  "assets": [
+    {
+      "title": "NASA MER source",
+      "path": "assets/vendor/nasa/opportunity/24883_MER_static.usdz",
+      "bytes": 3154523,
+      "sha256": "ce21bd6ed7763e1e5cc893a60b53b99e3c3de77e989b75b0da1a18ad5652bcab"
+    },
+    {
+      "title": "Selected runtime rover",
+      "path": "game/public/assets/opportunity/opportunity-v1.glb",
+      "bytes": 3498588,
+      "sha256": "b1ddfcd389a7b1b25750a22f3eb6e2ff73f51d44eec3d57e0d91d964b15461d6"
+    },
+    {
+      "title": "Wheel pivots",
+      "path": "game/public/assets/opportunity/rig-metadata.json",
+      "bytes": 3329,
+      "sha256": "65562e2601b305392fbb05d5b812b9ec83fb7c14943a7b1e34642403562d4fae"
+    },
+    {
+      "title": "Suspension component metadata",
+      "path": "game/public/assets/opportunity/suspension-metadata.json",
+      "bytes": 105135,
+      "sha256": "38d2fbbe766e047653551d72a20ef0496cbd7cb7ec89dd442a87f5ca235d58c9"
+    },
+    {
+      "title": "Rover source record",
+      "path": "assets/vendor/nasa/opportunity/SOURCE.md",
+      "bytes": 3720,
+      "sha256": "3ebfe76e64a19097c80738202e998b33523b983af111656a653ba226b489c76d"
+    },
+    {
+      "title": "Sandy Gravel source record",
+      "path": "assets/vendor/polyhaven/SOURCE.md",
+      "bytes": 534,
+      "sha256": "09fe18843d211684040c2ea6b48b32bf55fbc2b84ff9a20e626b310f8c922d4e"
+    },
+    {
+      "title": "Sandy Gravel color",
+      "path": "game/public/assets/surfaces/regolith/color.jpg",
+      "bytes": 947222,
+      "sha256": "c9d143db07db9a6be2eba285fae961d868520422ee5fa4d38d55da24f9968d51"
+    },
+    {
+      "title": "Sandy Gravel OpenGL normal",
+      "path": "game/public/assets/surfaces/regolith/normal.jpg",
+      "bytes": 1185078,
+      "sha256": "36db1d118fb74885991ada4a3028f4fe346c65a8e3c75edea123c08856068e41"
+    },
+    {
+      "title": "Sandy Gravel roughness",
+      "path": "game/public/assets/surfaces/regolith/roughness.jpg",
+      "bytes": 382424,
+      "sha256": "a215a6cee823f170a5b2e51f8a30ff8ca49e00c72f73d9dbee1a9c0ec2d56ed1"
+    },
+    {
+      "title": "Sandy Gravel AO",
+      "path": "game/public/assets/surfaces/regolith/ao.jpg",
+      "bytes": 880161,
+      "sha256": "668c6e02f0f45dc9aebe4a4355d08a36c5e600a7c86d8eb23b0686bcd6163363"
+    }
+  ]
+}
