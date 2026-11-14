@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1c2021" />
     <meta name="description" content="A development preview of Mars exploration and an isolated rover memory." />
-    <title>Machine memories · Development preview</title>
+    <title>Abandoned but not Forgotten</title>
   </head>
   <body>
     <canvas id="scene" aria-label="Three-dimensional Mars exploration and rover memory. WASD to move, arrow keys to look, E to interact." tabindex="0"></canvas>
@@ -44,7 +44,11 @@
       </div>
     </section>
     <section id="pause" class="screen" hidden aria-labelledby="pause-title" role="dialog" aria-modal="true">
-      <div class="pause-content"><p class="eyebrow">Standing by</p><h2 id="pause-title">Paused</h2><button id="resume-button" type="button">Resume</button><button id="restart-button" class="secondary" type="button">Restart scene</button><button id="leave-button" hidden>Leave memory</button></div>
+      <div class="pause-sidebar">
+        <header><p class="pause-brand">ABANDONED<br><span>BUT NOT FORGOTTEN</span></p><h2 id="pause-title">Paused</h2></header>
+        <nav aria-label="Pause menu"><button id="resume-button" type="button">Resume</button><button id="save-game-button" type="button">Save Game</button><button id="skills-button" type="button">Skills</button><button id="settings-button" type="button">Settings</button><button id="leave-button" type="button" hidden>Leave memory</button><button id="main-menu-button" type="button">Main menu</button><button id="restart-button" type="button" hidden>Restart scene</button></nav>
+        <footer><p id="save-status" role="status">Progress saves automatically.</p><span><kbd>Esc</kbd> Resume</span></footer>
+      </div>
     </section>
     <div id="transmission" hidden aria-live="polite"><p id="transmission-text">Calling mission control.</p><button id="replay-button" type="button" hidden>Replay opening</button><button id="return-button" hidden>Return to Mars</button></div>
     <section id="transition" class="screen" hidden role="dialog" aria-modal="true" aria-label="Scene loading"><div class="pause-content"><p id="transition-text" role="status">Preparing the scene…</p><button id="retry-button" hidden>Retry loading</button><button id="cancel-button">Cancel</button></div></section>

@@ -1,5 +1,15 @@
 # Rover game plan
 
+## Main menu implementation, 14 November 2026
+
+The user replaced the Echoes of Mars title and introductory tagline with **Abandoned but not Forgotten**, using a condensed sans-serif heading over the supplied Mars landscape. The default entry has New Game, saved Continue and Settings; no Credits action. New Game starts the existing present-day hub directly and requires confirmation when a save exists. The satellite arrival cinematic remains future work.
+
+The main menu stays fixed to the viewport with centered, left-aligned content and no scrolling or positional hover motion. Settings uses Display, Sound and Accessibility category tabs. Escape now opens a side pause menu with Resume, Save Game, Skills, Settings and Main menu, plus Leave memory during a rover visit. The accidental R restart shortcut and visible Restart scene option were removed. The paused world remains visible with its HUD concealed.
+
+Version 2 local saves keep the active scene, hub bookmark, completion markers, and rover pose/camera/optical or preserved repair-phase progress. They autosave about once per second during gameplay, at successful transitions and on pause/page hiding. Save Game gives visible timestamp/error feedback. Validation, a recovery backup and migration of existing v1 exploration saves are implemented. Explicit New Game replaces backup history too. Resumed vehicles are stopped; dust, tracks and wheel rotation are transient. Browser storage is local to the same browser profile and site address, not cloud storage.
+
+The first Skills branch has one available **Photograph Terrain** node near its head, with details and a working current-view PNG capture. No additional skills, XP economy or historical chapter completion was invented. Seven viewport sizes including larger text, manual/autosaving, actual hub/rover reload/return, backup recovery, storage-failure feedback, input isolation and photography have been browser-checked. Sound preferences are saved, but the runtime remains silent. Build/typecheck and all 43 automated tests pass. See `outputs/review/m3-memory-ui/REVIEW.md` for evidence and limits; visual acceptance remains with the user.
+
 ## Current Opportunity model integration
 
 The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.

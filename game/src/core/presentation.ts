@@ -5,10 +5,12 @@ import { ShaderPass } from 'three/addons/postprocessing/ShaderPass.js';
 import { OutputPass } from 'three/addons/postprocessing/OutputPass.js';
 import { GTAOPass } from 'three/addons/postprocessing/GTAOPass.js';
 import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+import { readPreferences, type GraphicsQuality } from '../app/preferences';
 
-const highQuality = new URLSearchParams(location.search).get('quality') === 'high';
-export const RENDER_FPS = highQuality ? 60 : 45;
-const pixelRatio = () => Math.min(devicePixelRatio, highQuality ? (innerWidth < 700 ? 1.2 : 1.5) : (innerWidth < 700 ? 1 : 1.25));
+let quality: GraphicsQuality = new URLSearchParams(location.search).get('quality') === 'high' ? 'high' : readPreferences().graphics;
+let highQuality = quality === 'high';
+export let RENDER_FPS = highQuality ? 60 : quality === 'low' ? 30 : 45;
+const pixelRatio = () => Math.min(devicePixelRatio, quality === 'low' ? .8 : highQuality ? (innerWidth < 700 ? 1.2 : 1.5) : (innerWidth < 700 ? 1 : 1.25));
 
 class ContactAO extends GTAOPass {
   override setSize(width:number,height:number):void {
@@ -41,6 +43,7 @@ export function createPresentation(renderer:THREE.WebGLRenderer,scene:THREE.Scen
   const renderPass = new RenderPass(scene,camera);
   composer.addPass(renderPass);
   const ao=new ContactAO(scene,camera);
+  ao.enabled=quality!=='low';
   ao.blendIntensity=.52;
   ao.updateGtaoMaterial({radius:.32,thickness:.18,distanceExponent:1.5,distanceFallOff:1.1,scale:1,samples:highQuality?12:8,screenSpaceRadius:false});
   ao.updatePdMaterial({radius:4,samples:highQuality?8:6,rings:2,lumaPhi:8,depthPhi:4,normalPhi:3});
@@ -66,6 +69,12 @@ export function createPresentation(renderer:THREE.WebGLRenderer,scene:THREE.Scen
   composer.addPass(film);
   composer.addPass(new OutputPass());
   return {composer,film,ao,
+    setQuality(value:GraphicsQuality){
+      quality=value;highQuality=value==='high';RENDER_FPS=highQuality?60:value==='low'?30:45;
+      ao.enabled=value!=='low';bloom.enabled=highQuality;
+      ao.updateGtaoMaterial({samples:highQuality?12:8});
+      renderer.setPixelRatio(pixelRatio());composer.setPixelRatio(renderer.getPixelRatio());composer.setSize(innerWidth,innerHeight);
+    },
     bind(scene:THREE.Scene,camera:THREE.PerspectiveCamera){
       renderPass.scene=scene;renderPass.camera=camera;ao.scene=scene;ao.camera=camera;
       film.uniforms.degraded.value=0;

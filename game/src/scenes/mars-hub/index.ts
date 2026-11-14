@@ -79,6 +79,11 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
         element('touch-controls').style.visibility = 'visible';
       },
       resize(width, height) { follow.camera.aspect = width / height; follow.camera.updateProjectionMatrix(); },
+      getBookmark() {
+        if (!started || !controller.grounded) return;
+        return {position:controller.position.toArray() as [number,number,number],heading:controller.heading,
+          cameraYaw:follow.yaw,cameraPitch:follow.pitch,cameraDistance:follow.distance};
+      },
       setPaused(value) { paused = value; },
       restart() { effects.time = 0; restore(); started = true; paused = false; context.clearInput(); show(); },
       dispose() { if (disposed) return; disposed = true; active = false; world.dispose(); },

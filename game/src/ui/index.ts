@@ -12,6 +12,7 @@ export class UI {
     element('interact-button').hidden=true;
     element('interaction').hidden=false;
     document.body.classList.remove('playing');
+    document.body.classList.remove('game-paused');
   }
   showIntro(copy:{eyebrow:string;title:string;copy:string;button:string;controls:string;note:string}):void {
     element('intro').hidden=false;
@@ -25,11 +26,13 @@ export class UI {
     element<HTMLButtonElement>('start-button').disabled=false;
   }
   playing():void {
+    document.body.classList.remove('game-paused');
     element('intro').hidden=true;element('pause').hidden=true;
     element('topbar').hidden=false;element('hud').hidden=false;
     document.body.classList.add('playing');this.canvas.focus();
   }
   pause(value:boolean):void {
+    document.body.classList.toggle('game-paused',value);
     element('pause').hidden=!value;
     if(value)element('resume-button').focus();else this.canvas.focus();
   }

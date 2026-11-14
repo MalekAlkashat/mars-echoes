@@ -57,6 +57,16 @@ export async function createOpportunityDrive(context: SceneContext, entry: Episo
       if(active){context.clearInput();show();}
     };
     reset();
+    if(entry.resume?.kind==='opportunity'){
+      const saved=entry.resume;
+      started=saved.started;
+      vehicle.reset(saved.position[0],saved.position[1],saved.heading);
+      vehicle.settle(.25,world.height);
+      camera.reset();camera.yaw=saved.cameraYaw;camera.pitch=saved.cameraPitch;camera.distance=saved.cameraDistance;
+      optical=saved.optical;effects.time=saved.time;
+      pose();world.tick(effects.time,0);world.follow(vehicle.position);
+      camera.update(0,started?'drive':'ready',rover.root,rover.opticalAnchor,world.spawn,world.spawn,optical,world.height);
+    }
     return {
       id:'episode-rover-01',scene:world.scene,camera:camera.camera,effects,
       activate(){active=true;show();},
@@ -92,6 +102,9 @@ export async function createOpportunityDrive(context: SceneContext, entry: Episo
       },
       resize(width,height){camera.camera.aspect=width/height;camera.camera.updateProjectionMatrix();},
       setPaused(value){paused=value;returning=false;},
+      getSaveEntry(){return {scene:'episode-rover-01',wreckId:entry.wreckId,resume:{kind:'opportunity',started,
+        position:[vehicle.position.x,vehicle.position.z],heading:vehicle.heading,cameraYaw:camera.yaw,
+        cameraPitch:camera.pitch,cameraDistance:camera.distance,time:effects.time,optical}};},
       restart(){started=true;reset();},
       dispose(){if(disposed)return;disposed=true;active=false;world.dispose();},
       debug(){return {phase:started?'drive':'ready',model:'opportunity-v1',position:`${vehicle.position.x.toFixed(2)},${vehicle.position.z.toFixed(2)}`,

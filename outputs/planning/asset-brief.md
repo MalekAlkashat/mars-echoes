@@ -1,5 +1,9 @@
 # Rover and opening scene asset brief
 
+## Main menu reference
+
+The menu displays the landscape region of the user's supplied 505×445 concept screenshot, preserved unchanged in `assets/ui/main-menu-reference.png`, with an identical runtime copy under `game/public/assets/ui/`. See `assets/ui/SOURCE.md` for provenance and hash. This is a user-supplied preview background, not an approved higher-resolution export or a NASA photograph. The fixed menu and tabbed settings retain the Mars amber/brown palette; subsequent Ghost of Tsushima and Cyberpunk screenshots are layout references only.
+
 ## Current Opportunity model integration
 
 The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.

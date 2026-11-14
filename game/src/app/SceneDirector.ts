@@ -9,6 +9,8 @@ export interface DirectorOptions {
     loading(loading: boolean): void;
     error(message: string): void;
     clearInput(): void;
+    /** Successful route and associated session mutations have committed. */
+    settled?(): void;
   };
 }
 
@@ -29,8 +31,10 @@ export class SceneDirector {
 
   constructor(options: DirectorOptions) { this.options = options; }
 
-  open(entry: SceneEntry): Promise<boolean> {
-    return this.transition(entry,{kind:'open',entry});
+  async open(entry: SceneEntry): Promise<boolean> {
+    const succeeded=await this.transition(entry,{kind:'open',entry});
+    if(succeeded)this.options.hooks.settled?.();
+    return succeeded;
   }
 
   private async transition(entry: SceneEntry, intent: TransitionIntent): Promise<boolean> {
@@ -94,12 +98,14 @@ export class SceneDirector {
       if (this.active?.id !== 'mars-hub') return false;
       const succeeded = await this.transition(request.entry,{kind:'request',request});
       if (succeeded) session.bookmark = {...request.bookmark, position: [...request.bookmark.position]};
+      if (succeeded) this.options.hooks.settled?.();
       return succeeded;
     }
     if (this.active?.id !== 'episode-rover-01' || this.entry?.scene !== 'episode-rover-01') return false;
     if (request.result.episodeId !== this.active.id || request.result.wreckId !== this.entry.wreckId) return false;
     const succeeded = await this.transition({scene:'mars-hub', bookmark: session.bookmark},{kind:'request',request});
     if (succeeded) session.record(request.result);
+    if (succeeded) this.options.hooks.settled?.();
     return succeeded;
   }
 

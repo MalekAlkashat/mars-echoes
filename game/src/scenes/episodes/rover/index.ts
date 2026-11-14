@@ -11,7 +11,7 @@ import { RoverHUD } from './hud';
 export async function createRoverEpisode(
   context: SceneContext, entry: EpisodeEntry, signal: AbortSignal,
 ): Promise<GameScene> {
-  if (new URLSearchParams(location.search).get('prototype') !== 'repair') {
+  if (entry.resume?.kind === 'opportunity' || (!entry.resume && new URLSearchParams(location.search).get('prototype') !== 'repair')) {
     const {createOpportunityDrive} = await import('./opportunity-drive');
     return createOpportunityDrive(context,entry,signal);
   }
@@ -262,6 +262,24 @@ export async function createRoverEpisode(
     }
 
     reset();
+    if(entry.resume?.kind==='repair'){
+      const saved=entry.resume;
+      hasStarted=saved.started;
+      vehicle.reset(saved.position[0],saved.position[1],saved.heading);vehicle.settle(.25,world.height);
+      progress.phase=saved.phase;progress.elapsed=saved.elapsed;progress.offset={...saved.offset};
+      progress.failedAttempts=saved.failedAttempts;progress.repaired=saved.repaired;
+      serviceHeading=saved.serviceHeading;time=saved.time;effects.time=time;opticalUntil=time+saved.opticalRemaining;
+      camera.reset();camera.yaw=saved.cameraYaw;camera.pitch=saved.cameraPitch;camera.distance=saved.cameraDistance;
+      rover.root.position.copy(vehicle.position);rover.root.rotation.set(vehicle.pitch,vehicle.heading,vehicle.roll);
+      rover.update(time,0,progress.repaired);rover.root.updateMatrixWorld(true);
+      rover.socket.getWorldPosition(socketPosition);rover.socket.getWorldQuaternion(socketRotation);
+      donorModule.getWorldPosition(extractionStart);donorModule.getWorldQuaternion(extractionRotation);
+      rover.arm.claw.getWorldPosition(approachStart);
+      donorModule.visible=['ready','drive','scan'].includes(progress.phase);
+      rover.module.visible=['extract','align','insert'].includes(progress.phase);
+      updateServicePose();world.tick(time,0);world.follow(vehicle.position);
+      camera.update(0,progress.phase,rover.root,rover.socket,world.donorPosition,world.relayPosition,opticalUntil>time,world.height);
+    }
     return {
       id: 'episode-rover-01', scene: world.scene, camera: camera.camera, effects,
       activate() {
@@ -275,6 +293,10 @@ export async function createRoverEpisode(
         camera.camera.updateProjectionMatrix();
       },
       setPaused(value) { paused = value; returning = false; },
+      getSaveEntry(){return {scene:'episode-rover-01',wreckId:entry.wreckId,resume:{kind:'repair',started:hasStarted,
+        position:[vehicle.position.x,vehicle.position.z],heading:vehicle.heading,cameraYaw:camera.yaw,cameraPitch:camera.pitch,
+        cameraDistance:camera.distance,time,phase:progress.phase,elapsed:progress.elapsed,offset:{...progress.offset},
+        failedAttempts:progress.failedAttempts,repaired:progress.repaired,serviceHeading,opticalRemaining:Math.max(0,opticalUntil-time)}};},
       restart: reset,
       dispose() {
         if (disposed) return;

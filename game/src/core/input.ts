@@ -7,7 +7,7 @@ export class Input {
   private frame = emptyInput();
   private pointer?: {id:number; x:number; y:number};
   private timers = new Set<ReturnType<typeof setTimeout>>();
-  constructor(canvas: HTMLCanvasElement, hotkey: (key:string,event:KeyboardEvent) => void) {
+  constructor(canvas: HTMLCanvasElement, hotkey: (key:string,event:KeyboardEvent) => boolean | void) {
     const signal = this.events.signal;
     const press = (code:string) => {
       if (this.keys.has(code)) return;
@@ -17,7 +17,8 @@ export class Input {
       if (action) this.trigger(action);
     };
     window.addEventListener('keydown', event => {
-      if (['Escape','KeyR','Tab'].includes(event.code)) { if(!event.repeat||event.code==='Tab')hotkey(event.code,event); if(event.code==='Escape')event.preventDefault(); return; }
+      if (hotkey(event.code,event) === true) return;
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLSelectElement || event.target instanceof HTMLTextAreaElement) return;
       if (event.target instanceof HTMLButtonElement && ['Enter','Space'].includes(event.code)) return;
       if (/^(Key[WASDQEF]|Arrow(Left|Right|Up|Down)|Enter|Space)$/.test(event.code)) {
         event.preventDefault(); if (!event.repeat) press(event.code);

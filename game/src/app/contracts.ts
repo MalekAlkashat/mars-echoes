@@ -11,9 +11,19 @@ export type HubBookmark = {
   cameraPitch: number;
   cameraDistance: number;
 };
+/** Serializable gameplay checkpoint. Transient vehicle velocity is deliberately not restored. */
+export type RoverCheckpoint = {
+  position: readonly [number, number]; heading: number;
+  cameraYaw: number; cameraPitch: number; cameraDistance: number;
+  started: boolean; time: number;
+} & ({kind:'opportunity'; optical:boolean} | {
+  kind:'repair'; phase:'ready'|'drive'|'scan'|'extract'|'align'|'insert'|'calibrate'|'relay'|'transmit'|'end';
+  elapsed:number; offset:{x:number;y:number;angle:number}; failedAttempts:number; repaired:boolean;
+  serviceHeading:number; opticalRemaining:number;
+});
 export type SceneEntry =
   | { scene: 'mars-hub'; bookmark?: HubBookmark }
-  | { scene: 'episode-rover-01'; wreckId: string };
+  | { scene: 'episode-rover-01'; wreckId: string; resume?: RoverCheckpoint };
 export type EpisodeEntry = Extract<SceneEntry, {scene: 'episode-rover-01'}>;
 export type EpisodeResult = {
   episodeId: 'episode-rover-01'; wreckId: string; outcome: 'completed' | 'aborted';
@@ -44,6 +54,10 @@ export interface GameScene {
   restart(): void;
   dispose(): void;
   debug(): Record<string, string | number | boolean>;
+  /** Optional safe exploration checkpoint; airborne spirits keep their last grounded save. */
+  getBookmark?(): HubBookmark | undefined;
+  /** Current scene-local progress, supplied by the scene rather than inferred from debug labels. */
+  getSaveEntry?(): SceneEntry;
 }
 export interface SceneContext {
   assets: AssetCache;

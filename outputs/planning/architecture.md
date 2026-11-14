@@ -14,6 +14,12 @@ The first Mars-reference hub redesign is now implemented and agent-checked. It r
 
 ## Actual ownership boundaries
 
+### M3 save and interface addition, 14 November 2026
+
+`app/save.ts` now validates and migrates versioned browser saves, including the active `SceneEntry`, original hub bookmark, completed wreck IDs and timestamp, with a last-valid backup. `RoverCheckpoint` in `app/contracts.ts` is the serialized boundary for the current Opportunity drive preview and preserved repair prototype; optional `GameScene.getSaveEntry()` lets the scene report that data. `SceneDirector` calls its optional `settled` hook only after successful scene switching and related session mutations commit. `Game` owns periodic/lifecycle/manual saves and resume entry selection; scenes still own local progression. Existing v1 exploration saves migrate; no full historical-mission campaign or general skill-economy state is implied.
+
+`ui/main-menu.ts` owns title/settings/confirmation focus, and `ui/skills.ts` adds the first Photograph Terrain node. `Game` renders and captures the existing scene for its PNG action. The side pause menu provides Save Game and Skills without adding another renderer, global input listener or animation loop. Runtime branding is Abandoned but not Forgotten at the user's request. Save tests and native browser evidence are documented under `outputs/review/m3-memory-ui/`.
+
 `game/src/main.ts` now selects the initial scene and bootstraps `app/Game.ts`. `app/` owns the director, contracts, registry and session. `core/` owns one input listener set, shared assets and presentation. The hub lives in `scenes/mars-hub/`, with separate controller/appearance/camera under `entities/spirit/`. The rover episode owns its factory, `mission.ts`, `hud.ts` and donor/relay layout. Reusable rover parts live under `entities/rover/`; generic Mars terrain, materials, atmosphere, dressing and resource disposal live under `environments/mars/`. Shared UI primitives/styles live under `ui/`, and stable wreck mapping lives in `content/equipment.ts`.
 
 The existing rig, terrain, materials, camera techniques and contact code are retained in those modules. Keep story conditions inside the episode and shared ownership in the application. Do not rewrite vehicle physics, add an ECS, build a generic plugin system or introduce another framework merely to add the next scene.
@@ -61,7 +67,7 @@ Audio service and playback are not implemented; the runtime is silent. When audi
 
 `SceneDirector` allows one pending transition and uses its transaction/abort guard to reject stale asynchronous completions. Its `retry()` preserves the failed transition intent, including the entry bookmark or pending completion result. `cancel()` discards that intent and retires late results. Restart clears input/transient loading and restarts the active scene through its lifecycle. Pause freezes current gameplay timers. Audio playback and authored time-jump timelines do not exist yet. At most one source and one preparing destination are retained, rather than every scene ever visited. Peak memory still needs measurement on the target machine.
 
-`app/session.ts` implements an in-memory bookmark and a set of completed wreck IDs. The current hub uses a simple prototype visited label; final completion presentation and replay policy remain design decisions. Disk persistence, save migrations and world streaming are optional future work. Do not invent a collection economy or permanent upgrades.
+`app/session.ts` implements the runtime bookmark and set of completed wreck IDs; `app/save.ts` persists them with the active scene checkpoint as described above. The current hub uses a simple prototype visited label; final mission completion presentation and replay policy remain design decisions. World streaming remains future work. The single Photograph Terrain ability is available by default; there is no collection economy or permanent-upgrade system.
 
 ## Completed source migration
 
