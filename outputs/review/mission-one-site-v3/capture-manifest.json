@@ -1,0 +1,58 @@
+{
+  "after-dry-before-evidence.png": {
+    "bytes": 1573108,
+    "sha256": "fe27d0620851123ad4648d82cd4f93843b3121da11a61a8c8cd8962aa733a9e2"
+  },
+  "after-entry.png": {
+    "bytes": 934848,
+    "sha256": "e3c3d0ecb50a4b1fe57097dbcac6a28cc31d32b5b768e9127668ff2415a97fc1"
+  },
+  "after-evidence.png": {
+    "bytes": 1562370,
+    "sha256": "36b4332b282ae72a45c9357617e475221c86ec322165333a0fd4bf02319ad60d"
+  },
+  "after-legacy-gameplay.png": {
+    "bytes": 1003976,
+    "sha256": "ae0f285cd7f8ace0e47be8d6b1b2b8ffa6cc1fe23e5bf6c37837c7f508804f3a"
+  },
+  "after-new-spawn.png": {
+    "bytes": 985029,
+    "sha256": "f153bda6a3edcd0b7f4c5a0faba5c83d702ff71d312e828185be6b80269f067d"
+  },
+  "after-normal-speed.webm": {
+    "bytes": 15455614,
+    "sha256": "25e12d8af288838d4fd625eb367f52c1d8bcffd47dec28a921c5ab74c9949eba"
+  },
+  "after-overview.png": {
+    "bytes": 1113889,
+    "sha256": "4e42000ec33b6593d3ab5b1b353b4e8e6db86fbdeba3b1092f5c2812bb417471"
+  },
+  "after-water.png": {
+    "bytes": 1579650,
+    "sha256": "6c5fa983e42fc3c46a79b9563a77d2a72d4c5a5ba18f1ad988c35e761d2c9ebd"
+  },
+  "after-work-zone.png": {
+    "bytes": 982773,
+    "sha256": "11d6e2cd20214e6f12bae6d309eba401ab31dcba1a81fb281efccb1ee78a5428"
+  },
+  "before-gameplay.png": {
+    "bytes": 1011177,
+    "sha256": "1312944bebf0e76b22532ab17116a0eaeeec1cc5dab8f2ddd2bdba0b3fb1ba1e"
+  },
+  "before-normal-speed.webm": {
+    "bytes": 15740989,
+    "sha256": "b1d60f951c90b48a63f9cede925dd3012ba9e32ac8e620de0a109d1cc4a513ed"
+  },
+  "before-overview.png": {
+    "bytes": 1106255,
+    "sha256": "eabbcbbff65c4cb1cdf6d7ccd2fd6300083c34981edb4b5942ade0b6e0e97a81"
+  },
+  "before-water.png": {
+    "bytes": 1424757,
+    "sha256": "55fa35b4b9d7f29af28de88cf5e89ef380487e27f933d0095936ea44da271316"
+  },
+  "mobile-reduced-motion.png": {
+    "bytes": 272539,
+    "sha256": "59daef0d58bc6f285270bc87b3272347e1737d3237e3034bedc1f00d69608f70"
+  }
+}
