@@ -8,7 +8,7 @@
     <title>Abandoned but not Forgotten</title>
   </head>
   <body>
-    <canvas id="scene" aria-label="Three-dimensional Mars exploration and rover memory. WASD to move, arrow keys to look, E to interact." tabindex="0"></canvas>
+    <canvas id="scene" aria-label="Three-dimensional Mars exploration and rover memory. WASD to move, arrow keys to look, E to interact, F to change view." tabindex="0"></canvas>
     <div id="vignette" aria-hidden="true"></div>
     <header id="topbar" hidden>
       <div class="objective"><span id="chapter">Optical recovery</span><p id="objective">Find a compatible optical module.</p></div>
@@ -32,7 +32,7 @@
       <div id="touch-rotate" hidden><button data-key="KeyQ" aria-label="Rotate module left">Q</button><button data-key="KeyE" aria-label="Rotate module right">E</button></div>
       <button id="touch-leap" data-key="Space" hidden>Leap</button>
     </div>
-    <section id="intro" class="screen" aria-labelledby="intro-title">
+    <section id="intro" class="screen" aria-labelledby="intro-title" data-menu-sound>
       <div class="screen-content">
         <p class="eyebrow" id="intro-eyebrow">Opening scene · playable prototype</p>
         <h1 id="intro-title">After the mission</h1>
@@ -43,15 +43,15 @@
         <p class="prototype-note" id="prototype-note">Test models. Custom rover and sound pass to follow.</p>
       </div>
     </section>
-    <section id="pause" class="screen" hidden aria-labelledby="pause-title" role="dialog" aria-modal="true">
+    <section id="pause" class="screen" hidden aria-labelledby="pause-title" role="dialog" aria-modal="true" data-menu-sound>
       <div class="pause-sidebar">
         <header><p class="pause-brand">ABANDONED<br><span>BUT NOT FORGOTTEN</span></p><h2 id="pause-title">Paused</h2></header>
-        <nav aria-label="Pause menu"><button id="resume-button" type="button">Resume</button><button id="save-game-button" type="button">Save Game</button><button id="skills-button" type="button">Skills</button><button id="settings-button" type="button">Settings</button><button id="leave-button" type="button" hidden>Leave memory</button><button id="main-menu-button" type="button">Main menu</button><button id="restart-button" type="button" hidden>Restart scene</button></nav>
+        <nav aria-label="Pause menu"><button id="resume-button" type="button">Resume</button><button id="save-game-button" type="button">Save Game</button><button id="map-button" type="button">Map</button><button id="skills-button" type="button">Skills</button><button id="settings-button" type="button">Settings</button><button id="leave-button" type="button" hidden>Leave memory</button><button id="main-menu-button" type="button">Main menu</button><button id="restart-button" type="button" hidden>Restart scene</button></nav>
         <footer><p id="save-status" role="status">Progress saves automatically.</p><span><kbd>Esc</kbd> Resume</span></footer>
       </div>
     </section>
     <div id="transmission" hidden aria-live="polite"><p id="transmission-text">Calling mission control.</p><button id="replay-button" type="button" hidden>Replay opening</button><button id="return-button" hidden>Return to Mars</button></div>
-    <section id="transition" class="screen" hidden role="dialog" aria-modal="true" aria-label="Scene loading"><div class="pause-content"><p id="transition-text" role="status">Preparing the scene…</p><button id="retry-button" hidden>Retry loading</button><button id="cancel-button">Cancel</button></div></section>
+    <section id="transition" class="screen" hidden role="dialog" aria-modal="true" aria-label="Scene loading" data-menu-sound><div class="pause-content"><p id="transition-text" role="status">Preparing the scene…</p><button id="retry-button" hidden>Retry loading</button><button id="cancel-button">Cancel</button></div></section>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

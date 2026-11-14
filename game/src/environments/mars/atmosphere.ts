@@ -12,31 +12,43 @@ export type Atmosphere = {
   dispose(): void;
 };
 
-export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadowSize?: number} = {}): Atmosphere {
+/** Shared sky, fog and lighting palette for the present-day dusty Mars view. */
+export const DUST_ATMOSPHERE = {
+  horizon:'#a56f3c',ceiling:'#75431f',veil:'#9e652f',groundBounce:'#684a34',
+  sun:'#efd0a0',hemisphere:'#c1a78b',groundLight:'#79583e',fill:'#b6a38b',
+  fogDensity:.0017,
+} as const;
+
+export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadowSize?: number; dust?:boolean} = {}): Atmosphere {
   const skyRadius = options.skyRadius ?? 280;
   const shadowSize = options.shadowSize ?? 2048;
+  const dust=options.dust===true;
   const sunDirection = new Vector3(-0.18, 0.085, -1).normalize();
   const material = new ShaderMaterial({
     side: BackSide,
     depthWrite: false,
     uniforms: {
       time: { value: 0 },
-      horizon: { value: new Color('#adb1b1') },
-      ceiling: { value: new Color('#53606b') },
-      underside: { value: new Color('#303d4a') },
-      groundBounce: { value: new Color('#5f5145') },
-      sunColor: { value: new Color('#f3ead6') },
+      horizon: { value: new Color(dust?DUST_ATMOSPHERE.horizon:'#adb1b1') },
+      ceiling: { value: new Color(dust?DUST_ATMOSPHERE.ceiling:'#53606b') },
+      underside: { value: new Color(dust?DUST_ATMOSPHERE.veil:'#303d4a') },
+      groundBounce: { value: new Color(dust?DUST_ATMOSPHERE.groundBounce:'#5f5145') },
+      sunColor: { value: new Color(dust?DUST_ATMOSPHERE.sun:'#f3ead6') },
       sunDirection: { value: sunDirection },
+      dustFieldDebug:{value:0},
     },
     vertexShader: `
       varying vec3 vSkyDirection;
+      ${dust?'varying vec3 vSkyWorldPosition;':''}
       void main() {
         vSkyDirection = position;
+        ${dust?'vSkyWorldPosition=(modelMatrix*vec4(position,1.0)).xyz;':''}
         gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       }
     `,
     fragmentShader: `
       varying vec3 vSkyDirection;
+      ${dust?'varying vec3 vSkyWorldPosition; uniform float dustFieldDebug;':''}
       uniform float time;
       uniform vec3 horizon, ceiling, underside, groundBounce, sunColor, sunDirection;
       float skyHash(vec2 p) {
@@ -58,8 +70,41 @@ export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadow
         }
         return sum;
       }
+      ${dust?`
+      // World viewing ray -> broad dust veil -> soft billows -> color and sun veiling.
+      // Three-dimensional direction coordinates have no pole, azimuth seam or projected UV stretch.
+      float dustHash(vec3 p){return fract(sin(dot(p,vec3(127.1,311.7,74.7)))*43758.5453);}
+      float dustNoise(vec3 p){
+        vec3 i=floor(p),f=fract(p);
+        f=f*f*f*(f*(f*6.0-15.0)+10.0);
+        return mix(mix(mix(dustHash(i),dustHash(i+vec3(1,0,0)),f.x),
+          mix(dustHash(i+vec3(0,1,0)),dustHash(i+vec3(1,1,0)),f.x),f.y),
+          mix(mix(dustHash(i+vec3(0,0,1)),dustHash(i+vec3(1,0,1)),f.x),
+          mix(dustHash(i+vec3(0,1,1)),dustHash(i+vec3(1,1,1)),f.x),f.y),f.z);
+      }
+      `:''}
       void main() {
-        vec3 direction = normalize(vSkyDirection);
+        ${dust?`
+        // Reconstruct the real fragment ray instead of shading interpolated sphere-local UVs.
+        vec3 direction=normalize(vSkyWorldPosition-cameraPosition);
+        float elevation=max(direction.y,0.0);
+        float sunAngle=max(dot(direction,sunDirection),0.0);
+        vec3 dustCoordinate=direction*vec3(3.0,2.1,3.0)+vec3(time*.0008,0.0,time*.0003);
+        float broadVeil=dustNoise(dustCoordinate);
+        float billows=broadVeil*.72+dustNoise(dustCoordinate*2.03+11.7)*.28;
+        float dustVeiling=smoothstep(.28,.76,billows)*smoothstep(.015,.22,elevation);
+        vec3 sky=mix(horizon,ceiling,pow(smoothstep(0.0,.86,elevation),.75));
+        sky=mix(sky,underside,dustVeiling*.15);
+        sky*=.98+billows*.04;
+        // Airborne dust spreads the low sun into a restrained ochre aureole.
+        float aureole=pow(sunAngle,22.0)*.075+pow(sunAngle,180.0)*.08;
+        sky+=sunColor*aureole*(1.0-dustVeiling*.35);
+        float disk=smoothstep(.9992,.9998,sunAngle);
+        sky=mix(sky,sunColor*1.06,disk*.55*(1.0-dustVeiling*.35));
+        sky=mix(sky,groundBounce,1.0-smoothstep(-.32,.01,direction.y));
+        // Optional source-level field inspection: 1=macro veil, 2=billows, 3=veiling.
+        if(dustFieldDebug>.5)sky=vec3(dustFieldDebug<1.5?broadVeil:dustFieldDebug<2.5?billows:dustVeiling);
+        `:`vec3 direction = normalize(vSkyDirection);
         float elevation = max(direction.y, 0.0);
         float sunAngle = max(dot(direction, sunDirection), 0.0);
         vec3 sky = mix(horizon, ceiling, smoothstep(0.0, 0.72, elevation));
@@ -83,6 +128,7 @@ export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadow
         float disk = smoothstep(0.9997, 0.99994, sunAngle);
         sky = mix(sky, sunColor * 1.45, disk * (1.0 - cover * 0.5));
         sky = mix(sky, groundBounce, 1.0 - smoothstep(-0.35, 0.0, direction.y));
+        `}
         gl_FragColor = vec4(sky, 1.0);
         #include <tonemapping_fragment>
         #include <colorspace_fragment>
@@ -90,14 +136,14 @@ export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadow
     `,
   });
   const sky = new Mesh(new SphereGeometry(skyRadius, 48, 28), material);
-  sky.name = 'coherent-storm-atmosphere';
+  sky.name = dust?'dust-laden-mars-atmosphere':'coherent-storm-atmosphere';
   sky.renderOrder = -10;
   sky.frustumCulled = false;
   scene.add(sky);
 
-  const hemisphere = new HemisphereLight('#b1becc', '#836d56', 0.75);
+  const hemisphere = new HemisphereLight(dust?DUST_ATMOSPHERE.hemisphere:'#b1becc',dust?DUST_ATMOSPHERE.groundLight:'#836d56',dust ? .68 : .75);
   scene.add(hemisphere);
-  const sun = new DirectionalLight('#f3e8d3', 3.0);
+  const sun = new DirectionalLight(dust?DUST_ATMOSPHERE.sun:'#f3e8d3',dust?2.35:3.0);
   sun.name = 'pale-low-sun';
   sun.castShadow = true;
   sun.shadow.mapSize.set(shadowSize, shadowSize);
@@ -108,9 +154,10 @@ export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadow
   sun.shadow.normalBias = 0.028;
   sun.shadow.radius = 2.4;
   scene.add(sun, sun.target);
-  const fill = new DirectionalLight('#a2b5c9', 0.34);
+  const fill = new DirectionalLight(dust?DUST_ATMOSPHERE.fill:'#a2b5c9',dust ? .24 : .34);
   fill.position.set(26, 32, 22);
   scene.add(fill);
+  scene.userData.atmosphere={mode:dust?'dust':'storm',skyRadius,shadowSize};
 
   const anchor = new Vector3();
   let environmentTarget: WebGLRenderTarget | undefined;
@@ -149,7 +196,7 @@ export function addAtmosphere(scene: Scene, options: {skyRadius?: number; shadow
         environmentTarget?.dispose();
         environmentTarget = next;
         scene.environment = next.texture;
-        scene.environmentIntensity = 0.82;
+        scene.environmentIntensity = dust ? .68 : .82;
       } finally {
         generator.dispose();
         cubeTarget.dispose();

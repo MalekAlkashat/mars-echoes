@@ -1,6 +1,6 @@
 import { MathUtils, Vector3 } from 'three';
 
-type SpiritInput = { moveX: number; moveY: number; leapPressed: boolean };
+type SpiritInput = { moveX: number; moveY: number; leapPressed: boolean; boost?:boolean };
 type Solid = { x: number; z: number; radius: number };
 type Height = (x: number, z: number) => number;
 const RADIUS = 0.28;
@@ -33,8 +33,9 @@ export class SpiritController {
       this.grounded = false;
     }
     const magnitude = Math.max(1, Math.hypot(input.moveX, input.moveY));
-    const targetX = (input.moveX * Math.cos(cameraYaw) - input.moveY * Math.sin(cameraYaw)) / magnitude * SPEED;
-    const targetZ = (-input.moveX * Math.sin(cameraYaw) - input.moveY * Math.cos(cameraYaw)) / magnitude * SPEED;
+    const speed=SPEED*(input.boost?1.65:1);
+    const targetX = (input.moveX * Math.cos(cameraYaw) - input.moveY * Math.sin(cameraYaw)) / magnitude * speed;
+    const targetZ = (-input.moveX * Math.sin(cameraYaw) - input.moveY * Math.cos(cameraYaw)) / magnitude * speed;
     const steps = Math.max(1, Math.ceil(duration * 120));
     const step = duration / steps;
     for (let i = 0; i < steps; i++) {

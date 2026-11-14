@@ -59,7 +59,7 @@ export function surfaceMaterial(role: SurfaceRole, distant = false, options: {te
   const groundDust = role === 'dust' && options.terrainDust;
   const material = new MeshStandardMaterial({
     name: `${role}-triplanar-pbr`,
-    color: ground ? '#e98740' : '#b79073',
+    color: groundDust ? '#c28352' : ground ? '#e98740' : '#b79073',
     roughness: ground ? 0.95 : 0.89,
     metalness: 0,
     vertexColors: true,
@@ -72,7 +72,7 @@ export function surfaceMaterial(role: SurfaceRole, distant = false, options: {te
     surfaceRoughness: { value: surfaceTexture(role, 'roughness') },
     surfaceAO: { value: surfaceTexture(role, 'ao') },
     surfaceScale: { value: role === 'dust' ? 0.45 : role === 'regolith' ? 0.68 : 0.39 },
-    surfaceNormalStrength: { value: role === 'dust' ? 0.65 : role === 'regolith' ? 0.88 : 1.15 },
+    surfaceNormalStrength: { value: groundDust ? 0.38 : role === 'dust' ? 0.65 : role === 'regolith' ? 0.88 : 1.15 },
     surfaceDust: { value: ground ? 0.08 : 0.2 },
     surfaceAlbedoReference: { value: ground ? 0.3 : 0.4 },
     surfaceGroundTint: { value: new Color('#e98740').multiply(new Color('#e7c3a1')).multiplyScalar(.78) },
@@ -122,9 +122,23 @@ export function surfaceMaterial(role: SurfaceRole, distant = false, options: {te
         return weights / max(dot(weights, vec3(1.0)), 0.0001);
       }
       vec3 surfaceSample(sampler2D image, vec3 p, vec3 weights) {
+        ${groundDust ? `// Shared stochastic offsets for albedo, normals, roughness and AO.
+        if(distance(vSurfacePosition,cameraPosition)>180.0)return vec3(.5);
+        // Three triangle-corner samples replace the three old triplanar reads.
+        vec2 grid=p.xz*.28;
+        vec2 cell=floor(grid), f=fract(grid);
+        float upper=step(1.0,f.x+f.y);
+        vec2 a=cell+vec2(upper), b=cell+vec2(1.0,0.0), c=cell+vec2(0.0,1.0);
+        vec3 blend=upper<.5?vec3(1.0-f.x-f.y,f.x,f.y):vec3(f.x+f.y-1.0,1.0-f.y,1.0-f.x);
+        blend=blend*blend*(3.0-2.0*blend);blend/=max(dot(blend,vec3(1.0)),.0001);
+        vec2 oa=vec2(surfaceHash(a),surfaceHash(a+71.0))*19.0;
+        vec2 ob=vec2(surfaceHash(b),surfaceHash(b+71.0))*19.0;
+        vec2 oc=vec2(surfaceHash(c),surfaceHash(c+71.0))*19.0;
+        return texture2D(image,p.xz+oa).rgb*blend.x+texture2D(image,p.xz+ob).rgb*blend.y+texture2D(image,p.xz+oc).rgb*blend.z;` : ''}
+        ${groundDust ? '' : `
         return texture2D(image, p.zy).rgb * weights.x
           + texture2D(image, p.xz).rgb * weights.y
-          + texture2D(image, p.xy).rgb * weights.z;
+          + texture2D(image, p.xy).rgb * weights.z;`}
       }
       ${shader.fragmentShader}
     `;
@@ -132,8 +146,8 @@ export function surfaceMaterial(role: SurfaceRole, distant = false, options: {te
       '#include <aomap_fragment>',
       `#include <aomap_fragment>
        float mineralAO = surfaceSample(surfaceAO, surfaceP, surfaceBlend).r;
-       reflectedLight.indirectDiffuse *= mix(${role === 'dust' ? '0.9' : '0.65'}, 1.0, mineralAO);
-       reflectedLight.indirectSpecular *= mix(0.75, 1.0, mineralAO);`,
+       reflectedLight.indirectDiffuse *= mix(1.0,mix(${role === 'dust' ? '0.9' : '0.65'},1.0,mineralAO),${groundDust ? 'terrainDetailRange' : '1.0'});
+       reflectedLight.indirectSpecular *= mix(1.0,mix(0.75,1.0,mineralAO),${groundDust ? 'terrainDetailRange' : '1.0'});`,
     );
     shader.fragmentShader = shader.fragmentShader.replace(
       '#include <color_fragment>',
@@ -143,13 +157,37 @@ export function surfaceMaterial(role: SurfaceRole, distant = false, options: {te
        surfaceP.xz += vec2(surfaceNoise(vSurfacePosition.xz * .16),
          surfaceNoise(vSurfacePosition.xz * .16 + 37.0)) * .65;` : ''}
        vec3 surfaceBlend = surfaceWeights();
+       ${groundDust ? 'float terrainDetailRange=1.0-smoothstep(55.0,180.0,length(vViewPosition));' : ''}
        vec3 mineral = surfaceSample(surfaceColor, surfaceP, surfaceBlend);
        float mineralLuma = dot(mineral, vec3(0.2126, 0.7152, 0.0722));
        float mineralDetail = clamp(mineralLuma / surfaceAlbedoReference, 0.55, 1.55);
        float macroVariation = surfaceNoise(vSurfacePosition.xz * 0.11)
          * 0.7 + surfaceNoise(vSurfacePosition.xz * 0.037 + 18.0) * 0.3;
-       diffuseColor.rgb *= mix(1.0, mineralDetail, ${role === 'dust' ? '0.65' : '0.7'})
-         * (${role === 'dust' ? '0.94 + macroVariation * 0.12' : '0.88 + macroVariation * 0.24'});
+       ${groundDust ? `macroVariation=mix(.2+surfaceNoise(vSurfacePosition.xz*.012+31.0)*.6,
+         macroVariation,terrainDetailRange);` : ''}
+       diffuseColor.rgb *= mix(1.0, mineralDetail, ${groundDust ? '.65*terrainDetailRange' : role === 'dust' ? '0.65' : '0.7'})
+         * (${groundDust ? '0.85 + macroVariation * 0.28' : role === 'dust' ? '0.94 + macroVariation * 0.12' : '0.88 + macroVariation * 0.24'});
+       ${groundDust ? `float hardpan=smoothstep(.38,.73,macroVariation);
+       diffuseColor.rgb*=mix(vec3(.82,.79,.75),vec3(1.07,1.02,.94),hardpan);
+       // Resolvable centimetre aggregate between the larger instanced gravel chips.
+       vec2 aggregateUV=vSurfacePosition.xz*8.0;
+       vec2 aggregateCell=floor(aggregateUV),aggregateLocal=fract(aggregateUV);
+       vec2 aggregateCenter=.22+vec2(surfaceHash(aggregateCell+19.0),surfaceHash(aggregateCell+53.0))*.56;
+       vec2 aggregateDelta=aggregateLocal-aggregateCenter;
+       float aggregateAngle=surfaceHash(aggregateCell+113.0)*6.283185;
+       mat2 aggregateRotation=mat2(cos(aggregateAngle),-sin(aggregateAngle),sin(aggregateAngle),cos(aggregateAngle));
+       vec2 aggregateShape=aggregateRotation*aggregateDelta;
+       aggregateShape.y*=.7+surfaceHash(aggregateCell+147.0)*1.3;
+       float aggregateRadius=.07+pow(surfaceHash(aggregateCell+91.0),1.6)*.24;
+       float aggregateR=length(aggregateShape)/aggregateRadius;
+       float aggregateResolve=1.0-smoothstep(.30,.85,max(length(dFdx(aggregateUV)),length(dFdy(aggregateUV))));
+       float aggregateDensity=.12+surfaceNoise(vSurfacePosition.xz*.24+83.0)*.72;
+       float aggregatePresent=step(1.0-aggregateDensity,surfaceHash(aggregateCell+7.0));
+       float aggregateMask=(1.0-smoothstep(.72,1.0,aggregateR))*aggregateResolve*aggregatePresent;
+       float aggregateCore=1.0-smoothstep(.12,.85,aggregateR);
+       vec3 aggregateTint=mix(vec3(.44,.43,.41),vec3(.92,.86,.75),aggregateCore);
+       diffuseColor.rgb=mix(diffuseColor.rgb,diffuseColor.rgb*aggregateTint,aggregateMask*.78);
+       vec2 aggregateSlope=aggregateDelta/aggregateRadius*(1.0-smoothstep(.3,1.0,aggregateR))*aggregateMask*.8;` : ''}
        float depositedDust = smoothstep(0.45, 0.95, normalize(vSurfaceNormal).y)
          * surfaceDust * surfaceNoise(vSurfacePosition.xz * 0.72);
        diffuseColor.rgb = mix(diffuseColor.rgb, diffuseColor.rgb * vec3(1.25, 1.12, 0.91), depositedDust);
@@ -166,14 +204,16 @@ export function surfaceMaterial(role: SurfaceRole, distant = false, options: {te
       `#include <roughnessmap_fragment>
        float mineralRoughness = surfaceSample(surfaceRoughness, surfaceP, surfaceBlend).g;
        roughnessFactor = clamp(roughness * (0.58 + mineralRoughness * 0.51), 0.53, 1.0);
+       ${groundDust ? 'roughnessFactor=mix(roughness,roughnessFactor,terrainDetailRange);' : ''}
        ${options.terrainDust ? 'roughnessFactor = mix(roughnessFactor,.98,surfaceDustCoverage);' : ''}`,
     );
     shader.fragmentShader = shader.fragmentShader.replace(
       '#include <normal_fragment_maps>',
       `#include <normal_fragment_maps>
-       vec3 rockNX = texture2D(surfaceNormal, surfaceP.zy).xyz * 2.0 - 1.0;
+       ${groundDust ? `vec3 rockNX=vec3(0.0), rockNZ=vec3(0.0);
+       vec3 rockNY=surfaceSample(surfaceNormal,surfaceP,surfaceBlend)*2.0-1.0;` : `vec3 rockNX = texture2D(surfaceNormal, surfaceP.zy).xyz * 2.0 - 1.0;
        vec3 rockNY = texture2D(surfaceNormal, surfaceP.xz).xyz * 2.0 - 1.0;
-       vec3 rockNZ = texture2D(surfaceNormal, surfaceP.xy).xyz * 2.0 - 1.0;
+       vec3 rockNZ = texture2D(surfaceNormal, surfaceP.xy).xyz * 2.0 - 1.0;`}
        vec3 worldDetail = vec3(0.0, rockNX.y, rockNX.x) * surfaceBlend.x
          + vec3(rockNY.x, 0.0, rockNY.y) * surfaceBlend.y
          + vec3(rockNZ.x, rockNZ.y, 0.0) * surfaceBlend.z;
@@ -183,11 +223,12 @@ export function surfaceMaterial(role: SurfaceRole, distant = false, options: {te
          : 'float detailFade = 1.0 - smoothstep(32.0, 110.0, length(vViewPosition));'}
        vec3 worldSurfaceNormal = normalize(vSurfaceNormal + worldDetail
          * surfaceNormalStrength * ${role === 'dust' ? 'detailFade' : 'mix(0.3, 1.0, detailFade)'}
-         ${options.terrainDust ? `* mix(1.0,${rockDust ? '.45' : '.75'},surfaceDustCoverage)` : ''});
+         ${options.terrainDust ? `* mix(1.0,${rockDust ? '.45' : '.75'},surfaceDustCoverage)` : ''}
+         ${groundDust ? '+vec3(aggregateSlope.x,0.0,aggregateSlope.y)' : ''});
        normal = normalize(mat3(viewMatrix) * worldSurfaceNormal);`,
     );
   };
-  material.customProgramCacheKey = () => `triplanar-mineral-${role}-${Boolean(options.terrainDust)}-v5`;
+  material.customProgramCacheKey = () => `triplanar-mineral-${role}-${Boolean(options.terrainDust)}-v8`;
   material.userData.surfaceRole = role;
   return material;
 }

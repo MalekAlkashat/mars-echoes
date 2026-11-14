@@ -1,5 +1,9 @@
 # Repository setup record
 
+## Current working status, 14 November 2026
+
+Delivery branch is `terrain_fix/hazem`, based on `0becdac`, targeting `origin/terrain_fix/hazem`. It includes the UI/save/map/audio/terrain/sky implementation, source/runtime assets, scripts and updated M3 tracker. Use this branch on the other PC after verifying publication; it is not a merge into main. Latest recorded build and 64 tests pass. Runtime title is **Abandoned but not Forgotten**. [Hazem's current M3 tracker](hazem-m3-progress.md) distinguishes implemented features from remaining original objectives. The older delivery record below is historical.
+
 Updated 14 November 2026 for the runtime-organization delivery. The earlier planning-only snapshot is retained in Git history.
 
 - Repository: https://github.com/MalekAlkashat/mars-echoes

@@ -6,6 +6,7 @@ import { Vehicle } from '../../../entities/rover/controller';
 import { CameraRig } from '../../../entities/rover/camera';
 import { WheelEffects } from '../../../entities/rover/wheel-effects';
 import { element } from '../../../ui';
+import { HUB_TERRAIN } from '../../../environments/mars/hub-terrain';
 
 /** Actual Opportunity driving systems; historical chapter logic is added separately. */
 export async function createOpportunityDrive(context: SceneContext, entry: EpisodeEntry, signal: AbortSignal): Promise<GameScene> {
@@ -105,9 +106,17 @@ export async function createOpportunityDrive(context: SceneContext, entry: Episo
       getSaveEntry(){return {scene:'episode-rover-01',wreckId:entry.wreckId,resume:{kind:'opportunity',started,
         position:[vehicle.position.x,vehicle.position.z],heading:vehicle.heading,cameraYaw:camera.yaw,
         cameraPitch:camera.pitch,cameraDistance:camera.distance,time:effects.time,optical}};},
+      getMapSnapshot(){
+        if(!started)return;
+        return {terrainId:'meridiani-near-hills-v1',title:'Opportunity · Basin',bounds:{minX:-HUB_TERRAIN.halfSize,maxX:HUB_TERRAIN.halfSize,minZ:-HUB_TERRAIN.halfSize,maxZ:HUB_TERRAIN.halfSize},playableRadius:HUB_TERRAIN.playableRadius,
+          heightAt:world.height,player:{position:[vehicle.position.x,vehicle.position.z] as const,heading:vehicle.heading},
+          objective:{position:[9,-37] as const,label:'Explore the basin'}};
+      },
       restart(){started=true;reset();},
       dispose(){if(disposed)return;disposed=true;active=false;world.dispose();},
       debug(){return {phase:started?'drive':'ready',model:'opportunity-v1',position:`${vehicle.position.x.toFixed(2)},${vehicle.position.z.toFixed(2)}`,
+        rockSource:world.scene.userData.suppliedRocks?.source??'legacy',rockScatter:world.scene.userData.suppliedRocks?.scatter??0,
+        gravel:world.scene.userData.suppliedRocks?.gravel.count??0,boulders:world.scene.userData.suppliedRocks?.sizes.boulders??0,
         contacts:vehicle.grounded.map(value=>value?'1':'0').join(''),wheelAngles:rover.wheels.map(w=>w.rotation.x.toFixed(3)).join(','),
         wheelOffsets:vehicle.wheelOffsets.map(x=>x.toFixed(3)).join(','),heading:vehicle.heading.toFixed(3),speed:vehicle.speed.toFixed(3),
         wheelRadius:rover.contactConfig.wheelRadius,optical};},

@@ -10,6 +10,7 @@ export type HubBookmark = {
   cameraYaw: number;
   cameraPitch: number;
   cameraDistance: number;
+  firstPerson?: boolean;
 };
 /** Serializable gameplay checkpoint. Transient vehicle velocity is deliberately not restored. */
 export type RoverCheckpoint = {
@@ -31,14 +32,23 @@ export type EpisodeResult = {
 export type SceneRequest =
   | { kind: 'enter-memory'; entry: Extract<SceneEntry, {scene: 'episode-rover-01'}>; bookmark: HubBookmark }
   | { kind: 'return-to-hub'; result: EpisodeResult };
+/** Live scene read model for the local terrain map; never serialized into a save. */
+export type MapSnapshot = {
+  terrainId:string; title:string;
+  bounds:{minX:number;maxX:number;minZ:number;maxZ:number};
+  playableRadius:number;
+  heightAt(x:number,z:number):number;
+  player:{position:readonly [number,number];heading:number};
+  objective?:{position:readonly [number,number];label:string};
+};
 export interface InputFrame {
   moveX: number; moveY: number; rotate: number; lookX: number; lookY: number;
-  dragX: number; dragY: number; zoom: number;
+  dragX: number; dragY: number; zoom: number; boost:boolean;
   startPressed: boolean; interactPressed: boolean; confirmPressed: boolean;
   opticalPressed: boolean; replayPressed: boolean; returnPressed: boolean; leapPressed: boolean;
 }
 export function emptyInput(): InputFrame {
-  return {moveX:0,moveY:0,rotate:0,lookX:0,lookY:0,dragX:0,dragY:0,zoom:0,
+  return {moveX:0,moveY:0,rotate:0,lookX:0,lookY:0,dragX:0,dragY:0,zoom:0,boost:false,
     startPressed:false,interactPressed:false,confirmPressed:false,opticalPressed:false,
     replayPressed:false,returnPressed:false,leapPressed:false};
 }
@@ -58,6 +68,7 @@ export interface GameScene {
   getBookmark?(): HubBookmark | undefined;
   /** Current scene-local progress, supplied by the scene rather than inferred from debug labels. */
   getSaveEntry?(): SceneEntry;
+  getMapSnapshot?():MapSnapshot|undefined;
 }
 export interface SceneContext {
   assets: AssetCache;

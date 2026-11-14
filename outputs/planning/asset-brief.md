@@ -1,5 +1,19 @@
 # Rover and opening scene asset brief
 
+## Steady title music and immediate click, 14 November 2026
+
+The supplied `Music intro.wav` is preserved under `assets/audio/menu-music-v1/`; a levelled, stretched middle-section loop is exported under the corresponding runtime folder. `scripts/prepare-menu-audio.py` reproduces it and the shorter first-transient click under `game/public/assets/audio/ui-v2/`. Original click/runtime v1 are retained. Processing, measured envelope and hashes are documented beside the music. Latest sky references guide a procedural dusty ochre atmosphere; they are not imported sky textures. Full native evidence lives in `outputs/review/map-boost-music-sky/`.
+
+## Menu click, 14 November 2026
+
+The user supplied `clicking.wav` for menu activation. The unchanged original is retained in `assets/audio/ui-v1/` and the byte-identical runtime copy is under `game/public/assets/audio/ui-v1/`. It is a 0.465-second stereo PCM WAV; hash/source metadata is in `assets/audio/ui-v1/SOURCE.md`. The shared menu audio service applies Master, Effects and Mute preferences. No music or external sound was added.
+
+## Supplied Mars rock kit, 14 November 2026
+
+The user requested replacing visible Earth-derived rocks with the supplied `assets/mars-rocks.zip` pack. Four of its 15 FBX meshes are now converted into the versioned runtime `game/public/assets/rocks/user-mars-v1/` kit, preserving source UVs and color/DirectX-normal maps. The normal Y sign is corrected at runtime. Authored sizes, hashes, extracted originals and conversion instructions are in `assets/vendor/user-mars-rocks/SOURCE.md`, `conversion.json` and `manifest.json`. The original ZIP remains unchanged. These user-supplied assets have no license/attribution document in their archive; provenance is recorded without inventing NASA/CC0 attribution. The other supplied `mars.zip` is retained and unused.
+
+The terrain direction favors broken hardpan, shallow local relief, broad dust patches and varied angular rocks, following the user's references. The followup adds dense, uneven gravel deposits, small soil relief and a mixture of roughly half-metre stones and occasional two-metre boulders. Gravel chips are simplified from support points of the supplied fragment mesh and retain its UV samples; they do not introduce a new downloaded rock asset. Filtered procedural aggregate fills the finer scale. Existing broad hills, navigable approach and authored landmark coordinates remain. Near/far shading and finer outer terrain rings address visible distant panels. The reference images are not game textures and have not been downloaded from their stock-photo sources. The renderer's sky/lighting direction is unchanged.
+
 ## Main menu reference
 
 The menu displays the landscape region of the user's supplied 505×445 concept screenshot, preserved unchanged in `assets/ui/main-menu-reference.png`, with an identical runtime copy under `game/public/assets/ui/`. See `assets/ui/SOURCE.md` for provenance and hash. This is a user-supplied preview background, not an approved higher-resolution export or a NASA photograph. The fixed menu and tabbed settings retain the Mars amber/brown palette; subsequent Ghost of Tsushima and Cyberpunk screenshots are layout references only.

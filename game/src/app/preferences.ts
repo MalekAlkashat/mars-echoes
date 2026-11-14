@@ -1,7 +1,7 @@
 export type GraphicsQuality = 'low' | 'balanced' | 'high';
-export type Preferences = { graphics: GraphicsQuality; volume: number; muted: boolean; reducedMotion: boolean; largeText: boolean };
+export type Preferences = { graphics: GraphicsQuality; volume: number; effectsVolume:number; musicVolume:number; muted: boolean; reducedMotion: boolean; largeText: boolean };
 export const PREFERENCES_KEY = 'mars-echoes.settings.v1';
-export const defaultPreferences: Preferences = { graphics: 'balanced', volume: .8, muted: false, reducedMotion: false, largeText: false };
+export const defaultPreferences: Preferences = { graphics: 'balanced', volume: .8, effectsVolume:1, musicVolume:.45, muted: false, reducedMotion: false, largeText: false };
 
 export function readPreferences(): Preferences {
   try {
@@ -10,6 +10,8 @@ export function readPreferences(): Preferences {
     return {
       graphics: ['low','balanced','high'].includes(value.graphics) ? value.graphics : 'balanced',
       volume: typeof value.volume === 'number' && Number.isFinite(value.volume) ? Math.max(0,Math.min(1,value.volume)) : .8,
+      effectsVolume:typeof value.effectsVolume==='number'&&Number.isFinite(value.effectsVolume)?Math.max(0,Math.min(1,value.effectsVolume)):1,
+      musicVolume:typeof value.musicVolume==='number'&&Number.isFinite(value.musicVolume)?Math.max(0,Math.min(1,value.musicVolume)):.45,
       muted: value.muted === true, reducedMotion: value.reducedMotion === true, largeText: value.largeText === true,
     };
   } catch { return {...defaultPreferences}; }

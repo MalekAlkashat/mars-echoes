@@ -14,9 +14,11 @@ const record=(n:unknown):n is Record<string,unknown>=>Boolean(n)&&typeof n==='ob
 function bookmark(value:unknown):HubBookmark|undefined {
   if(!record(value)||!Array.isArray(value.position)||value.position.length!==3||!value.position.every(finite)||
     Math.hypot(value.position[0],value.position[2])>64||Math.abs(value.position[1])>100||
-    !finite(value.heading)||!finite(value.cameraYaw)||!inRange(value.cameraPitch,-Math.PI,Math.PI)||!inRange(value.cameraDistance,1,30))return;
+    !finite(value.heading)||!finite(value.cameraYaw)||!inRange(value.cameraPitch,-Math.PI,Math.PI)||!inRange(value.cameraDistance,1,30)||
+    (value.firstPerson!==undefined&&typeof value.firstPerson!=='boolean'))return;
   return {position:[...value.position] as [number,number,number],heading:value.heading,
-    cameraYaw:value.cameraYaw,cameraPitch:value.cameraPitch,cameraDistance:value.cameraDistance};
+    cameraYaw:value.cameraYaw,cameraPitch:value.cameraPitch,cameraDistance:value.cameraDistance,
+    ...(value.firstPerson===undefined?{}:{firstPerson:value.firstPerson})};
 }
 function checkpoint(value:unknown):RoverCheckpoint|undefined {
   if(!record(value)||!Array.isArray(value.position)||value.position.length!==2||!value.position.every(finite)||

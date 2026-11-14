@@ -1,5 +1,9 @@
 # Spirit and machine memories: development roadmap
 
+## Current Hazem/M3 progress, 14 November 2026
+
+The current role checklist is [Hazem's M3 journey and objectives](outputs/planning/hazem-m3-progress.md), audited against the original handoff and actual files. Menus, saves, local map, Photograph Terrain, camera switching, held boost, menu audio and the latest terrain/dusty-sky pass are implemented in the `terrain_fix/hazem` branch delivery. Original story-linked skills, storm power logic, finale, final spirit/halo and complete mission UI remain unfinished. Hazem's M3 team role is broader than the separate enter/return milestone named M3 below. Latest recorded build and 64 tests pass; this branch has not been merged into main. Older milestone/checklist text below is historical context; use the linked tracker for the current role status.
+
 ## Current Opportunity model integration
 
 The user selected `24883_MER_static.usdz` as Opportunity’s model. It is now converted locally to `game/public/assets/opportunity/opportunity-v1.glb` and replaces the visible hub and default playable rover. Six measured wheel pivots, steering/spin, model-specific terrain contact, bounded suspension approximation, camera and wheel effects are wired to it. Final arm/mast articulation remains unimplemented; the source is static. The normal rover episode is now a drive preview; the old fictional repair sequence is retained at `?scene=episode-rover-01&prototype=repair`. Build and all 33 automated checks pass, with native production/development motion review recorded in `outputs/review/opportunity-v1/REVIEW.md`. Historical missions and owner visual acceptance remain outstanding.
@@ -71,7 +75,7 @@ The ownership directories below now exist and contain executable source. Items e
         input.ts                     # one set of listeners, normalized actions
         presentation.ts              # renderer/composer configuration and resizing
         assets.ts                    # load/cache, shared resource ownership
-        # future audio service       # not implemented; prototype remains silent
+        menu-audio.ts                # app-owned clicks and title music; story audio pending
       entities/
         spirit/
           controller.ts              # glide, leap, solid collision

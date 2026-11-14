@@ -53,7 +53,9 @@ Scenes own their mutable objects, mission progression, local material instances,
 
 Preparation is inert: the factory must not replace the source scene's objectives, activate sounds or take input while loading. The director calls `activate()` only when the prepared destination is ready to enter. Activation presents local UI and permits local playback through app services; it does not create global listeners or restart a mission. Make activation idempotent so restoring the source UI after a failed switch does not duplicate state.
 
-Audio service and playback are not implemented; the runtime is silent. When audio is added, one application service should own the context, while scene-owned playback stops on exit/pause/reset as appropriate and starts from a user gesture. This is a future extension, not an existing class or tested sound path. Sound quality must be reviewed by listening.
+`core/menu-audio.ts` provides one application-owned context for warmed menu clicks and the supplied title-only music loop. `Game` routes marked menu controls, gestures, foreground and title state through its existing lifetime. Master/Effects/Music/Mute control gain; one cached music buffer and at most four click voices are retained. Title music fades out for gameplay/background and resumes its offset on return. Audio starts from a user gesture and disposes with the app. Scene/story audio remains future work; listening acceptance remains separate.
+
+Optional `GameScene.getMapSnapshot()` supplies actual current player/heading, terrain identity/sampler/bounds and objective to `ui/world-map.ts`; it does not infer gameplay state from saves or debug fields. MainMenu owns its modal/focus/inert lifetime. Game owns pause restoration and the existing shared M hotkey. `InputFrame.boost` carries held Shift to the spirit controller; no separate keyboard loop is created.
 
 ## Transition sequence
 

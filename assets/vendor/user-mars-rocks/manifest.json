@@ -1,0 +1,40 @@
+{
+  "source": "User-supplied mars-rocks.zip",
+  "files": [
+    {
+      "path": "assets/mars-rocks.zip",
+      "bytes": 8435780,
+      "sha256": "98cd5271c80eb24002f293b175082bfff5e30a808324c9fc88ffef17dc047ba2"
+    },
+    {
+      "path": "assets/vendor/user-mars-rocks/source/MarsRocks.fbx",
+      "bytes": 4049260,
+      "sha256": "082ef95c485a62f6d8071956def4963295fd76e4b223d7f15418843a92e62757"
+    },
+    {
+      "path": "assets/vendor/user-mars-rocks/textures/Rock029_1K_Color.jpeg",
+      "bytes": 1654225,
+      "sha256": "a3ff2a3416c6713feb5086f65f54295233b107f81bbc34a24b17c104c7cde15e"
+    },
+    {
+      "path": "assets/vendor/user-mars-rocks/textures/Rock029_1K_NormalDX.jpeg",
+      "bytes": 2731879,
+      "sha256": "8a299a0ac2cf5282e907e2d50bd626d73e7a0580459dbeb680a76f57f35d373e"
+    },
+    {
+      "path": "game/public/assets/rocks/user-mars-v1/color.jpeg",
+      "bytes": 1654225,
+      "sha256": "a3ff2a3416c6713feb5086f65f54295233b107f81bbc34a24b17c104c7cde15e"
+    },
+    {
+      "path": "game/public/assets/rocks/user-mars-v1/mars-rocks.glb",
+      "bytes": 106672,
+      "sha256": "ad9341aeb24865bb7ab630824b05df82033f98dd815becbc7cc73104a5a52549"
+    },
+    {
+      "path": "game/public/assets/rocks/user-mars-v1/normal-dx.jpeg",
+      "bytes": 2731879,
+      "sha256": "8a299a0ac2cf5282e907e2d50bd626d73e7a0580459dbeb680a76f57f35d373e"
+    }
+  ]
+}

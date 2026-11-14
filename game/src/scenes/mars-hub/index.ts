@@ -5,6 +5,7 @@ import { createSpiritAppearance } from '../../entities/spirit/appearance';
 import { SpiritCamera } from '../../entities/spirit/camera';
 import { element } from '../../ui';
 import { createHubWorld } from './layout';
+import { HUB_TERRAIN } from '../../environments/mars/hub-terrain';
 
 export async function createMarsHub(context: SceneContext, entry: Extract<SceneEntry, {scene: 'mars-hub'}>, signal: AbortSignal): Promise<GameScene> {
   const assets = await context.assets.load();
@@ -26,6 +27,9 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       follow.yaw = bookmark?.cameraYaw ?? 0;
       follow.pitch = bookmark?.cameraPitch ?? .12;
       follow.distance = bookmark?.cameraDistance ?? 5.8;
+      follow.setFirstPerson(bookmark?.firstPerson??false);
+      follow.reset();
+      rig.visible=!follow.firstPerson;
       rig.position.copy(controller.position);
       rig.rotation.y = controller.heading;
       follow.update(0, controller.position, world.height, world.obstacles);
@@ -55,16 +59,18 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
         const step = paused ? 0 : dt;
         effects.time += step;
         if (started && !paused) {
+          if(input.opticalPressed)follow.setFirstPerson(!follow.firstPerson);
           follow.orbit(input.dragX + input.lookX * dt * 200, input.dragY + input.lookY * dt * 200, input.zoom);
           controller.update(step, input, follow.yaw, world.obstacles, world.height);
           if (input.interactPressed && controller.position.distanceTo(world.wreck.position) < ROVER_MEMORY.entryDistance) {
             context.request({ kind: 'enter-memory', entry: {scene: ROVER_MEMORY.episodeId, wreckId: ROVER_MEMORY.wreckId},
               bookmark: {position: controller.position.toArray() as [number, number, number], heading: controller.heading,
-                cameraYaw: follow.yaw, cameraPitch: follow.pitch, cameraDistance: follow.distance} });
+                cameraYaw: follow.yaw, cameraPitch: follow.pitch, cameraDistance: follow.distance,firstPerson:follow.firstPerson} });
           }
         }
         rig.position.copy(controller.position);
         rig.rotation.y = controller.heading;
+        rig.visible=!follow.firstPerson;
         world.tick(effects.time, step);
         world.follow(controller.position);
         follow.update(step, controller.position, world.height, world.obstacles);
@@ -82,14 +88,24 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       getBookmark() {
         if (!started || !controller.grounded) return;
         return {position:controller.position.toArray() as [number,number,number],heading:controller.heading,
-          cameraYaw:follow.yaw,cameraPitch:follow.pitch,cameraDistance:follow.distance};
+          cameraYaw:follow.yaw,cameraPitch:follow.pitch,cameraDistance:follow.distance,firstPerson:follow.firstPerson};
+      },
+      getMapSnapshot(){
+        if(!started)return;
+        return {terrainId:'meridiani-near-hills-v1',title:'Meridiani valley',bounds:{minX:-HUB_TERRAIN.halfSize,maxX:HUB_TERRAIN.halfSize,minZ:-HUB_TERRAIN.halfSize,maxZ:HUB_TERRAIN.halfSize},playableRadius:HUB_TERRAIN.playableRadius,
+          heightAt:world.height,player:{position:[controller.position.x,controller.position.z] as const,heading:controller.heading},
+          objective:{position:[world.wreck.position.x,world.wreck.position.z] as const,label:'Opportunity · Enter memory'}};
       },
       setPaused(value) { paused = value; },
       restart() { effects.time = 0; restore(); started = true; paused = false; context.clearInput(); show(); },
       dispose() { if (disposed) return; disposed = true; active = false; world.dispose(); },
       debug() { return {phase: started ? 'hub' : 'ready', position: `${controller.position.x.toFixed(2)},${controller.position.z.toFixed(2)}`,
         heading: controller.heading.toFixed(3), grounded: controller.grounded, repaired: false,
-        terrain:'hub-troughs-v1', decorativeWrecks:0, vistaRadius:1000}; },
+        speed:Math.hypot(controller.velocity.x,controller.velocity.z).toFixed(2),
+        view:follow.firstPerson?'first-person':'third-person',avatarVisible:rig.visible,cameraFov:follow.camera.fov,
+        terrain:'hub-troughs-v1', decorativeWrecks:0, vistaRadius:1000,
+        rockSource:world.scene.userData.suppliedRocks?.source??'legacy',rockScatter:world.scene.userData.suppliedRocks?.scatter??0,
+        gravel:world.scene.userData.suppliedRocks?.gravel.count??0,boulders:world.scene.userData.suppliedRocks?.sizes.boulders??0}; },
     };
     return scene;
   } catch (error) {

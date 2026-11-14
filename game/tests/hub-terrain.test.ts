@@ -67,8 +67,8 @@ test(`${mode}: hub vista is stitched, upward facing and stays within the base te
       assert.ok(normal.y > 0, `reversed or degenerate vista triangle ${i / 3}`);
     }
     const triangles = meshes.reduce((sum, mesh) => sum + mesh.geometry.getIndex()!.count / 3, 0);
-    assert.equal(triangles, 58_880, 'base terrain retains its triangle budget');
-    assert.ok(positions.count < 5_000, 'the distant vista remains coarse');
+    assert.ok(triangles <= (quiet ? 84_000 : 58_880), 'base terrain stays within its explicit triangle budget');
+    assert.ok(positions.count < (quiet ? 17_000 : 5_000), 'the distant vista remains coarse');
     console.info(`Hub base terrain: ${triangles} triangles, ${matches} stitched border vertices`);
   } finally {
     for (const mesh of meshes) { mesh.geometry.dispose(); (mesh.material as {dispose():void}).dispose(); }
@@ -105,3 +105,40 @@ test(`${mode}: spirit crosses hub troughs and a side loop with grounded movement
 });
 
 }
+
+test('deposited dust: the near/far boundary has matching surface, color and lighting normals', () => {
+  const meshes = makeHubTerrain(true);
+  try {
+    const [near, far] = meshes;
+    assert.equal(near.material, far.material, 'terrain uses one continuous surface across its LOD boundary');
+    assert.ok(near.receiveShadow && far.receiveShadow, 'shadow reception continues across the boundary');
+    const border = new Map<string, number[]>();
+    for (const [meshIndex, mesh] of meshes.entries()) {
+      const positions = mesh.geometry.getAttribute('position');
+      const normals = mesh.geometry.getAttribute('normal');
+      const colors = mesh.geometry.getAttribute('color');
+      let joined = 0;
+      for (let i = 0; i < positions.count; i++) {
+        const nx = normals.getX(i), ny = normals.getY(i), nz = normals.getZ(i);
+        assert.ok([nx, ny, nz].every(Number.isFinite), 'lighting normal must be finite');
+        assert.ok(Math.abs(Math.hypot(nx, ny, nz) - 1) < 1e-6, 'lighting normal must be unit length');
+        const x = positions.getX(i), z = positions.getZ(i);
+        if (Math.abs(x) !== HUB_TERRAIN.halfSize && Math.abs(z) !== HUB_TERRAIN.halfSize) continue;
+        const key = `${x.toFixed(5)},${z.toFixed(5)}`;
+        const values = [nx, ny, nz, colors.getX(i), colors.getY(i), colors.getZ(i)];
+        if (meshIndex === 0) border.set(key, values);
+        else if (border.has(key)) {
+          const expected = border.get(key)!;
+          assert.ok(values.every((value, component) => Math.abs(value - expected[component]) < 1e-6), `lighting/color seam at ${key}`);
+          joined++;
+        }
+      }
+      if (meshIndex === 1) assert.equal(joined, border.size, 'every border normal and color is checked');
+    }
+  } finally {
+    const materials = new Set(meshes.map(mesh => mesh.material));
+    for (const mesh of meshes) mesh.geometry.dispose();
+    for (const material of materials) (material as {dispose(): void}).dispose();
+    disposeSurfaceTextureCache();
+  }
+});

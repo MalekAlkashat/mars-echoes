@@ -1,5 +1,5 @@
 import { Color, FogExp2, InstancedMesh, Mesh, MeshStandardMaterial, Object3D, Scene, Vector3 } from 'three';
-import { addAtmosphere } from './atmosphere';
+import { addAtmosphere, DUST_ATMOSPHERE } from './atmosphere';
 import type { MarsEnvironment } from './dressing';
 import { surfaceTexturesReady, surfaceMaterial } from './materials';
 import { disposeSceneResources } from './resources';
@@ -8,20 +8,23 @@ import { hubHeight as sampleHubHeight, HUB_TERRAIN, makeHubTerrain } from './hub
 import { addHubRockPreview } from './hub-rock-preview';
 import { addHubOutcrops, HUB_FRAGMENT_COUNT, HUB_OUTCROPS } from './hub-outcrops';
 import { setRockGroundPlanes } from './hub-rock-dust';
+import { addSuppliedMarsRocks } from './supplied-rocks';
 
 /** Present-day hub dressing; the fictional repair episode keeps its separate baseline. */
-export function createHubEnvironment(options: { scannedOutcropPreview?: boolean; variedOutcrops?: boolean; quietGround?: boolean } = {}): MarsEnvironment {
-  const hubHeight = (x: number, z: number) => sampleHubHeight(x, z, options.quietGround);
+export function createHubEnvironment(options: { scannedOutcropPreview?: boolean; variedOutcrops?: boolean; quietGround?: boolean; suppliedRocks?:boolean } = {}): MarsEnvironment {
+  const suppliedRocks=options.suppliedRocks!==false&&!options.scannedOutcropPreview;
+  const quietGround=options.quietGround??suppliedRocks;
+  const hubHeight = (x: number, z: number) => sampleHubHeight(x, z, quietGround);
   const scene = new Scene();
   scene.name = 'meridiani-trough-and-crater-hub';
-  scene.background = new Color('#adb1b1');
-  scene.fog = new FogExp2('#adb1b1', .0013);
-  scene.add(...makeHubTerrain(options.quietGround));
-  const atmosphere = addAtmosphere(scene, {skyRadius: 1400, shadowSize: 1024});
+  scene.background = new Color(DUST_ATMOSPHERE.horizon);
+  scene.fog = new FogExp2(DUST_ATMOSPHERE.horizon,DUST_ATMOSPHERE.fogDensity);
+  scene.add(...makeHubTerrain(quietGround));
+  const atmosphere = addAtmosphere(scene, {skyRadius: 1400, shadowSize: 1024,dust:true});
   const obstacles: MarsEnvironment['obstacles'] = [];
   const rock = fracturedRock(39, 1);
   const transform = new Object3D();
-  const stone = surfaceMaterial('rock',false,{terrainDust:options.variedOutcrops});
+  const stone = suppliedRocks ? new MeshStandardMaterial() : surfaceMaterial('rock',false,{terrainDust:options.variedOutcrops});
   stone.color.set(options.variedOutcrops ? '#b27c55' : '#cfb395');
   const shelves = [
     [-18, 1, 7, 1.2, 12], [-23, -12, 9, 1.8, 11],
@@ -30,7 +33,7 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
   ];
   const rockSize = rock.boundingBox!.getSize(new Vector3());
   for (let i = 0; i < shelves.length; i++) {
-    if (options.variedOutcrops) continue;
+    if (options.variedOutcrops||suppliedRocks) continue;
     if(i===0&&options.scannedOutcropPreview)continue; // Only this placement is under visual review.
     const [x, z, width, height, depth] = shelves[i];
     const shelf = new Mesh(rock, stone);
@@ -65,10 +68,10 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
     const replaced = new Set(nearest.map(piece=>piece.index));
     scatter = scatter.filter((_,index)=>!replaced.has(index));
   }
-  for (const {x,z,size} of scatter) {
+  for (const {x,z,size} of suppliedRocks?[]:scatter) {
     if (size > .65 && Math.hypot(x,z) < 62) obstacles.push({x,z,radius:size*.5});
   }
-  const gravelMaterial = options.quietGround ? stone
+  const gravelMaterial = quietGround ? stone
     : new MeshStandardMaterial({color:'#bca18a',roughness:1,vertexColors:true});
   const scatterMesh = new InstancedMesh(rock, gravelMaterial, scatter.length);
   if (options.variedOutcrops) setRockGroundPlanes(rock,scatter,hubHeight);
@@ -81,7 +84,8 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
   });
   scatterMesh.receiveShadow = true;
   scatterMesh.computeBoundingSphere();
-  scene.add(scatterMesh);
+  if(suppliedRocks){scatterMesh.dispose();rock.dispose();stone.dispose();if(gravelMaterial!==stone)gravelMaterial.dispose();}
+  else scene.add(scatterMesh);
   const spawn = new Vector3(0,hubHeight(0,8),8);
   scene.userData.layout = {
     units:'metres',up:'+Y',forward:'-Z',spawn:spawn.toArray(),
@@ -90,7 +94,9 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
     landmarks:{overlook:[-10,-14],basin:[9,-37],rim:[60,-850]},
   };
   let disposed = false;
-  const previewReady=options.variedOutcrops
+  const previewReady=suppliedRocks
+    ? addSuppliedMarsRocks(scene,obstacles,hubHeight,scatter,()=>disposed)
+    : options.variedOutcrops
     ? addHubOutcrops(scene,obstacles,hubHeight,stone,()=>disposed)
     : options.scannedOutcropPreview
     ? addHubRockPreview(scene,obstacles,()=>disposed,hubHeight,options.quietGround ? stone : undefined)

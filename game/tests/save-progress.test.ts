@@ -27,6 +27,14 @@ test('current Opportunity rover pose and optical/camera state round-trip in the 
     position:[5,-24],heading:1.2,cameraYaw:.3,cameraPitch:.25,cameraDistance:6,started:true,time:52,optical:true}}};
   assert.deepEqual(parseSave(JSON.stringify(save)),save);
 });
+
+test('first-person hub bookmarks persist while older saves remain valid and malformed modes are rejected',()=>{
+  const firstPerson={...bookmark,firstPerson:true,cameraPitch:-.4};
+  const save:ExplorationSave={...hub(),bookmark:firstPerson,entry:{scene:'mars-hub',bookmark:firstPerson}};
+  assert.deepEqual(parseSave(JSON.stringify(save)),save);
+  assert.deepEqual(parseSave(JSON.stringify(hub())),hub());
+  assert.equal(parseSave(JSON.stringify({...save,entry:{scene:'mars-hub',bookmark:{...firstPerson,firstPerson:'yes'}}})),undefined);
+});
 test('legacy repair alignment, timer and partial progress round-trip without marking completion',()=>{
   const save:ExplorationSave={...hub(),entry:{scene:'episode-rover-01',wreckId:'wreck-rover-01',resume:{kind:'repair',
     position:[8,-4],heading:.6,cameraYaw:.3,cameraPitch:.1,cameraDistance:5.8,started:true,time:63,phase:'align',

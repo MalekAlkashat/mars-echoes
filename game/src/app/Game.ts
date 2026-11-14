@@ -11,6 +11,7 @@ import { createScene } from './registry';
 import type { SceneEntry } from './contracts';
 import { MainMenu } from '../ui/main-menu';
 import { readSaveRecord, writeSave } from './save';
+import { MenuAudio } from '../core/menu-audio';
 
 export class Game {
   private readonly ui = new UI();
@@ -19,10 +20,12 @@ export class Game {
   private readonly assets = new AssetCache();
   private readonly session = new GameSession();
   private readonly events = new AbortController();
+  private readonly menuAudio=new MenuAudio(`${import.meta.env.BASE_URL}assets/audio/ui-v2/clicking.wav`,`${import.meta.env.BASE_URL}assets/audio/menu-music-v1/intro-loop.wav`);
   private readonly input: Input;
   private readonly director: SceneDirector;
   private menu?: MainMenu;
   private hasStarted = false;
+  private mapWasPaused=false;
   private readonly saveEnabled: boolean;
   private titlePending = false;
   private lastSaveAt = 0;
@@ -42,6 +45,7 @@ export class Game {
 
   constructor(entry:SceneEntry, showMenu = true) {
     this.saveEnabled=showMenu;
+    this.menuAudio.setForeground(!document.hidden&&document.hasFocus());
     const saveRead=showMenu?readSaveRecord():{source:'empty' as const,save:undefined};
     const saved=saveRead.save;
     if(saved){
@@ -50,9 +54,11 @@ export class Game {
       entry=saved.entry;
     }
     this.input=new Input(this.ui.canvas,(key,event)=>{
+      this.menuAudio.unlock();
       if(this.menu?.handleKey(event))return true;
       if(event.target instanceof HTMLInputElement || event.target instanceof HTMLSelectElement)return;
       if(key==='Tab'){this.ui.trapFocus(event);return true;}
+      if(key==='KeyM'){event.preventDefault();if(!event.repeat)this.toggleMap();return true;}
       if(key==='Escape'){
         event.preventDefault();if(event.repeat)return true;
         if(!element('transition').hidden)this.cancelLoading();
@@ -95,6 +101,14 @@ export class Game {
       },
     });
     const signal=this.events.signal;
+    document.addEventListener('pointerdown',()=>this.menuAudio.unlock(),{signal,capture:true});
+    document.addEventListener('click',event=>{
+      const button=event.target instanceof Element?event.target.closest<HTMLButtonElement>('button'):null;
+      if(button&&!button.disabled&&button.closest('[data-menu-sound]'))this.menuAudio.playClick();
+    },{signal,capture:true});
+    document.addEventListener('change',event=>{
+      if(event.target instanceof HTMLInputElement&&event.target.type==='range'&&event.target.closest('[data-menu-sound]'))this.menuAudio.playClick();
+    },{signal});
     const bind=(id:string,action:()=>void)=>element(id).addEventListener('click',action,{signal});
     bind('start-button',()=>this.input.trigger('start'));
     bind('interact-button',()=>this.input.trigger('interact'));
@@ -105,6 +119,7 @@ export class Game {
     bind('return-button',leave);bind('leave-button',leave);
     bind('pause-button',()=>this.pause(true));bind('resume-button',()=>this.pause(false));
     bind('settings-button',()=>this.menu?.openSettings());
+    bind('map-button',()=>this.toggleMap());
     bind('save-game-button',()=>this.saveProgress(true));
     bind('main-menu-button',()=>{
       this.saveProgress();this.pause(true);this.ui.resetView();this.menu?.setSaveAvailable(this.hasStarted);this.menu?.show();
@@ -112,8 +127,10 @@ export class Game {
     bind('restart-button',()=>{this.director.restart();this.ui.pause(false);});
     bind('cancel-button',()=>this.cancelLoading());
     bind('retry-button',()=>void this.director.retry());
-    window.addEventListener('blur',()=>this.pause(true),{signal});
+    window.addEventListener('blur',()=>{this.menuAudio.setForeground(false);this.pause(true);},{signal});
+    window.addEventListener('focus',()=>this.menuAudio.setForeground(!document.hidden&&document.hasFocus()),{signal});
     document.addEventListener('visibilitychange',()=>{
+      this.menuAudio.setForeground(!document.hidden&&document.hasFocus());
       if(document.hidden){
         this.saveProgress();
         this.pause(true);
@@ -149,9 +166,11 @@ export class Game {
         // A valid save may precede the first checkpoint; start the existing hub without a second intro.
         this.input.trigger('start');this.needsRender=true;
       },
-      settings:value=>{this.presentation.setQuality(value.graphics);this.needsRender=true;},
+      settings:value=>{this.presentation.setQuality(value.graphics);this.menuAudio.setPreferences(value);this.needsRender=true;},
       pauseForSettings:()=>this.pause(true),
       captureTerrain:()=>this.captureTerrain(),
+      titleVisibility:value=>this.menuAudio.setTitleActive(value),
+      mapClosed:()=>{this.pause(this.mapWasPaused);},
     },showMenu);
     this.menu.setSaveAvailable(Boolean(saved));
     const recoveryMessage=saveRead.source==='backup'?'A saved backup was recovered. Your journey can continue.':
@@ -172,6 +191,14 @@ export class Game {
     this.director.cancel();
     if(this.director.active)this.ui.dismiss();
     else location.reload();
+  }
+  private toggleMap():void {
+    if(this.menu?.mapOpen){this.menu.closeMap();return;}
+    if(!this.menu||this.menu.visible||this.menu.modalOpen||this.director.transitioning||!element('transition').hidden)return;
+    const snapshot=this.director.active?.getMapSnapshot?.();
+    if(!snapshot)return;
+    this.mapWasPaused=this.director.paused;
+    this.pause(true);this.input.clear();this.menu.openMap(snapshot);this.needsRender=true;
   }
   private pause(value:boolean):void {
     if(this.menu?.visible||this.menu?.modalOpen)return;
@@ -238,6 +265,7 @@ export class Game {
     const input=this.input.take();
     const active=this.director.active;
     if(active){
+      element<HTMLButtonElement>('map-button').disabled=!active.getMapSnapshot?.();
       if(!blocked)active.update(dt,input);
       if(!blocked&&time-this.lastSaveAt>1000){this.saveProgress();this.lastSaveAt=time;}
       this.ui.setScene(active.id);
@@ -272,7 +300,7 @@ export class Game {
     for(const timer of this.photoTimers)clearTimeout(timer);
     for(const url of this.photoURLs)URL.revokeObjectURL(url);
     this.photoTimers.clear();this.photoURLs.clear();
-    this.events.abort();this.menu?.dispose();this.input.dispose();this.director.dispose();this.presentation.dispose();
+    this.events.abort();this.menuAudio.dispose();this.menu?.dispose();this.input.dispose();this.director.dispose();this.presentation.dispose();
     this.assets.dispose();disposeSurfaceTextureCache();disposeRoverMaterialCache();this.renderer.dispose();
   }
 }

@@ -1,0 +1,52 @@
+{
+  "click": {
+    "sourceSha256": "2aadf05f1f1976a132fe72a9ade13b14f1277aaed4f69d4ffd2f5c1f1c9966c7",
+    "outputSha256": "81270412d17839aa824e95cca54815744fe5d5bd94cea3c9ab465bfebc42ce26",
+    "sliceSeconds": [
+      0.108,
+      0.175
+    ],
+    "seconds": 0.06698412698412698,
+    "edit": "First transient only; .3 ms attack / 2.5 ms release; original preserved"
+  },
+  "music": {
+    "sourceSha256": "bf07708aec52e02483b1cc4b9fab1308d8e3950c72da2f284915c2a84b7e8ee4",
+    "outputSha256": "e32ad442b59141225e088d70eddfc775e846cd0e90496e56141d22b22e5e06aa",
+    "sourceSliceSeconds": [
+      1.75,
+      4
+    ],
+    "stretchFactor": 3,
+    "stretchMethod": "stereo-linked waveform similarity overlap-add",
+    "crossfadeSeconds": 0.4,
+    "seconds": 6.219977324263039,
+    "peak": 0.49728,
+    "rms250ms": [
+      0.13921,
+      0.14603,
+      0.13189,
+      0.14099,
+      0.13805,
+      0.14323,
+      0.13966,
+      0.1397,
+      0.13992,
+      0.13886,
+      0.13593,
+      0.14446,
+      0.13451,
+      0.14375,
+      0.13673,
+      0.14523,
+      0.13723,
+      0.13591,
+      0.14301,
+      0.1378,
+      0.14052,
+      0.13791,
+      0.1387,
+      0.13876
+    ],
+    "loopBoundaryDelta": 0.006802
+  }
+}
