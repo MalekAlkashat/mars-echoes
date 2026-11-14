@@ -86,3 +86,37 @@ graphify-out/
 !/outputs/review/terrain-100/refinement/*.md
 !/outputs/review/terrain-100/refinement/*.json
 !/outputs/review/terrain-100/refinement/*.jpg
+# Mission 1 provenance and selected runtime evidence.
+!/outputs/review/mission-one-v1/
+/outputs/review/mission-one-v1/*
+!/outputs/review/mission-one-v1/*.md
+!/outputs/review/mission-one-v1/*.json
+!/outputs/review/mission-one-v1/*.png
+
+# Mission 1 reference/cinematic increment; keep local video out of Git.
+!/outputs/review/mission-one-v2/
+/outputs/review/mission-one-v2/*
+!/outputs/review/mission-one-v2/*.md
+!/outputs/review/mission-one-v2/*.json
+!/outputs/review/mission-one-v2/*.png
+
+# Mission 1 site/reconstruction review; full-resolution video remains local.
+!/outputs/review/mission-one-site-v3/
+/outputs/review/mission-one-site-v3/*
+!/outputs/review/mission-one-site-v3/*.md
+!/outputs/review/mission-one-site-v3/*.json
+!/outputs/review/mission-one-site-v3/*.png
+
+# Mission 1 world-continuity evidence; full-speed originals remain local.
+!/outputs/review/mission-one-world-v4/
+/outputs/review/mission-one-world-v4/*
+!/outputs/review/mission-one-world-v4/*.md
+!/outputs/review/mission-one-world-v4/*.json
+!/outputs/review/mission-one-world-v4/*.png
+
+# Navigation-first blueberry continuity evidence; local videos stay out of Git.
+!/outputs/review/blueberry-continuity-v5/
+/outputs/review/blueberry-continuity-v5/*
+!/outputs/review/blueberry-continuity-v5/*.md
+!/outputs/review/blueberry-continuity-v5/*.json
+!/outputs/review/blueberry-continuity-v5/*.png

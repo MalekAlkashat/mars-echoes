@@ -1,0 +1,22 @@
+{
+  "mode": "mobile",
+  "errors": [],
+  "failedRequests": [],
+  "essentialSteps": "Water through pores → minerals within rock → later exposure",
+  "noHorizontalOverflow": true,
+  "saved": {
+    "version": 2,
+    "savedAt": 1794696075218,
+    "entry": {
+      "scene": "mars-hub"
+    },
+    "chapters": [
+      "blueberry-clue"
+    ],
+    "skills": [
+      "grind"
+    ],
+    "completed": []
+  },
+  "passed": true
+}

@@ -3,7 +3,7 @@ import type { HubBookmark, RoverCheckpoint, SceneEntry } from './contracts.ts';
 export const SAVE_KEY = 'mars-echoes.save.v2';
 export const BACKUP_SAVE_KEY = 'mars-echoes.save.v2.backup';
 export const LEGACY_SAVE_KEY = 'mars-echoes.save.v1';
-export type ExplorationSave = {version:2; savedAt:number; entry:SceneEntry; bookmark?:HubBookmark; completed:string[]};
+export type ExplorationSave = {version:2; savedAt:number; entry:SceneEntry; bookmark?:HubBookmark; completed:string[]; chapters?:string[]; skills?:string[]};
 export type SaveStorage = Pick<Storage,'getItem'|'setItem'> & Partial<Pick<Storage,'removeItem'>>;
 export type SaveRead = {save?:ExplorationSave; source:'primary'|'backup'|'legacy'|'empty'|'invalid'|'unavailable'};
 const phases=['ready','drive','scan','extract','align','insert','calibrate','relay','transmit','end'];
@@ -25,6 +25,10 @@ function checkpoint(value:unknown):RoverCheckpoint|undefined {
     typeof value.started!=='boolean'||!inRange(value.time,0,1e10))return;
   const common={position:[...value.position] as [number,number],heading:value.heading,cameraYaw:value.cameraYaw,
     cameraPitch:value.cameraPitch,cameraDistance:value.cameraDistance,started:value.started,time:value.time};
+  if(value.kind==='blueberry-clue'){
+    if(Math.abs(common.position[0])>12||Math.abs(common.position[1])>12||!['approach','brush','grind','inspect','compare','water','evidence'].includes(String(value.phase)))return;
+    return {...common,kind:'blueberry-clue',phase:value.phase as Extract<RoverCheckpoint,{kind:'blueberry-clue'}>['phase']};
+  }
   if(value.kind==='opportunity'&&typeof value.optical==='boolean')return {...common,kind:'opportunity',optical:value.optical};
   if(value.kind!=='repair'||!phases.includes(String(value.phase))||!inRange(value.elapsed,0,1e10)||
     !record(value.offset)||!inRange(value.offset.x,-.3,.3)||!inRange(value.offset.y,-.25,.25)||!inRange(value.offset.angle,-1.3,1.3)||
@@ -45,7 +49,9 @@ function sceneEntry(value:unknown):SceneEntry|undefined {
   if(value.scene!=='episode-rover-01'||value.wreckId!=='wreck-rover-01')return;
   const resume=checkpoint(value.resume);
   if(!resume)return;
-  return {scene:'episode-rover-01',wreckId:value.wreckId,resume};
+  if(value.chapter!==undefined&&value.chapter!=='blueberry-clue')return;
+  if(value.chapter==='blueberry-clue'&&resume.kind!=='blueberry-clue')return;
+  return {scene:'episode-rover-01',wreckId:value.wreckId,...(resume.kind==='blueberry-clue'?{chapter:'blueberry-clue' as const}:{}),resume};
 }
 /** Parse and copy only known fields. Invalid runtime numbers never replace a good save. */
 export function parseSave(raw:string|null):ExplorationSave|undefined {
@@ -55,10 +61,15 @@ export function parseSave(raw:string|null):ExplorationSave|undefined {
     const b=value.bookmark===undefined?undefined:bookmark(value.bookmark);
     if(value.bookmark!==undefined&&!b)return;
     if(value.version===1)return {version:2,savedAt:0,entry:{scene:'mars-hub',...(b?{bookmark:b}:{})},bookmark:b,completed:[...new Set<string>(value.completed)]};
+    if(value.chapters!==undefined&&(!Array.isArray(value.chapters)||!value.chapters.every(id=>id==='blueberry-clue')))return;
+    if(value.skills!==undefined&&(!Array.isArray(value.skills)||!value.skills.every(id=>id==='grind')))return;
+    const chapters=[...new Set<string>((value.chapters??[]) as string[])];
+    const skills=[...new Set<string>((value.skills??[]) as string[])];
+    if(chapters.includes('blueberry-clue')!==skills.includes('grind'))return;
     if(value.version!==2||!inRange(value.savedAt,0,1e15))return;
     const entry=sceneEntry(value.entry);
     if(!entry)return;
-    return {version:2,savedAt:value.savedAt,entry,bookmark:b,completed:[...new Set<string>(value.completed)]};
+    return {version:2,savedAt:value.savedAt,entry,bookmark:b,...(value.chapters!==undefined?{chapters,skills}:{}),completed:[...new Set<string>(value.completed)]};
   }catch{return;}
 }
 export function readSaveRecord(storage?:SaveStorage):SaveRead {

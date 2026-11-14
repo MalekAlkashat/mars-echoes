@@ -1,0 +1,60 @@
+{
+  "freshStorage": [],
+  "missionRequestsBeforeNavigation": 0,
+  "hubCount": 640,
+  "hubInitialAndReturnedMatrixHash": "5107f8bc25ce232af569082e52fb51da1ce8bbd1beb29f43bddba0e4da88414d",
+  "specimenCount": 150,
+  "sameSpecimenInstanceAcross": [
+    "04-entry",
+    "05-approach",
+    "06-at-specimen",
+    "07-brush",
+    "08-grind",
+    "09-inspect",
+    "10-cluster",
+    "11-control",
+    "12-water",
+    "13-evidence"
+  ],
+  "specimenMatrixHash": "3cc4a1a77d6edc83f549964f051d18afc6a70db698ab15cc0d79fa86f39c8877",
+  "allPhasesVisibleAndOpaque": true,
+  "save": {
+    "version": 2,
+    "savedAt": 1794696242920,
+    "entry": {
+      "scene": "mars-hub",
+      "bookmark": {
+        "position": [
+          0,
+          -1.8486331914372303,
+          -23.32
+        ],
+        "heading": 0,
+        "cameraYaw": 0,
+        "cameraPitch": 0.12,
+        "cameraDistance": 5.8
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        -1.8486331914372303,
+        -23.32
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [
+      "blueberry-clue"
+    ],
+    "skills": [
+      "grind"
+    ],
+    "completed": []
+  },
+  "errors": [],
+  "failed": [],
+  "passed": true
+}

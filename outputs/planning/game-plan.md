@@ -129,3 +129,9 @@ Ready-made assets include Kenney CC0 mission hardware and an unused NASA Perseve
 ### Focused reference refinement, 15 November 2026
 
 Extended the existing100m terrain with broken outer shelf lips, connected buried bedrock sections and margin-weighted fragments. Geology attributes now couple sediment/exposure to color, roughness and normal strength; localized derivative-filtered sand ripples remain material-only. Warm forward-right sunlight and middle-distance forms improve separation without changing graphics budgets. Map dimensions, routes, spawn and entrance remain unchanged. Native comparisons, performance and explicit remaining discrepancies: `outputs/review/terrain-100/refinement/REVIEW.md`. Final artistic acceptance remains open.
+## Current Mission 1 direction
+
+See [Mission 1 production plan](mission-one.md), reviewed against `0becdac` on 14 November 2026. It records the supplied historical/visual brief, asset sourcing and wear requirements, Focus UI assessment, save compatibility, staged implementation and acceptance gates. This is planned work, not a completed chapter.
+
+
+Mission 1 runtime increment (14 November 2026): the isolated `codex/mission-one` branch now contains the playable Blueberry Clue loop with reference-backed authored assets, chapter checkpoints and GRIND reward. See [runtime review](../review/mission-one-v1/REVIEW.md) for exact verification, scientific boundaries and remaining art limits. Main and the terrain checkout are unchanged.

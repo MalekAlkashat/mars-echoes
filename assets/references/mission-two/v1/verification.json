@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-14",
+  "baseCommit": "0becdac",
+  "originalResources": 25,
+  "originalBytes": 25173617,
+  "decodedFrames": 90,
+  "previewFiles": 15,
+  "localCatalogReferences": 46,
+  "missingLocalReferences": 0,
+  "remoteScripts": 0,
+  "reusedAssets": 10,
+  "supplierMapChecks": "All four 2K maps match official URL, byte count and MD5 metadata",
+  "visualInspection": "Static contact sheet and height-coded Figure 1 inspected; original GIF all 77 frames decoded. Runtime visuals not evaluated.",
+  "runtimeChanged": false
+}

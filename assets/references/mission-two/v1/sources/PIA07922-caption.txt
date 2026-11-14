@@ -1,0 +1,30 @@
+Source: https://science.nasa.gov/photojournal/opportunitys-sol-446-position-with-relative-heights/
+Retrieved: 2026-11-14
+Offline text extraction; navigation and scripts removed.
+
+Opportunity’s Sol 446 Position, with Relative Heights
+PIA07922
+Credits:
+NASA/JPL
+Image Addition Date:05/06/2005
+Target:
+Mars
+Is a satellite of:
+Sun
+Mission(s):
+Mars Exploration Rovers (MER)
+Spacecraft(s):
+Opportunity (Rover)
+Instrument(s):
+Navigation Camera
+Downloads
+Opportunity’s Sol 446 Position, with Relative Heights
+JPEG (539.88 KB)
+Opportunity’s Sol 446 Position, with Relative Heights
+TIFF (3.82 MB)
+Description
+Figure 1: Coding for Information About Relative Elevations
+This mosaic of navigation-camera frames from NASA's Mars Exploration Rover Opportunity, presented in a vertical projection, shows the rover's position after it dug itself to wheel-hub depth in a small dune during its 446th martian day, or sol (April 26, 2005). In figure 1, the colors are coding for information about relative elevations in the surrounding area. Red areas are the highest in the image, green areas the lowest. The difference between red and green is about 70 centimeters (28 inches).
+The elongated dune, or ripple, is about one-third of a meter (one foot) tall and 2.5 meters (8 feet) wide.
+Opportunity had completed nearly 40 meters (131 feet) of a planned 90-meter (295-foot) drive that sol when its wheels began slipping. The rover was driving backwards at the time. The rover team frequently alternates between backwards and forwards driving to keep wheel lubrication well distributed. The wheels kept rotating enough times to have covered the rest of the distance if they hadn't been slipping, but the rover eventually barely inched forward. After a turn at the end of the planned drive, Opportunity sensed that it had not turned properly and stopped moving.
+The rover team spent more than a week designing and conducting tests under simulated Mars conditions on Earth before choosing the best way for Opportunity to drive out of the dune.

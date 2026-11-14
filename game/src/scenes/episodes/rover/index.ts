@@ -11,6 +11,10 @@ import { RoverHUD } from './hud';
 export async function createRoverEpisode(
   context: SceneContext, entry: EpisodeEntry, signal: AbortSignal,
 ): Promise<GameScene> {
+  if(entry.chapter==='blueberry-clue'||entry.resume?.kind==='blueberry-clue'){
+    const {createBlueberryClue}=await import('./missions/blueberry-clue');
+    return createBlueberryClue(context,entry,signal);
+  }
   if (entry.resume?.kind === 'opportunity' || (!entry.resume && new URLSearchParams(location.search).get('prototype') !== 'repair')) {
     const {createOpportunityDrive} = await import('./opportunity-drive');
     return createOpportunityDrive(context,entry,signal);

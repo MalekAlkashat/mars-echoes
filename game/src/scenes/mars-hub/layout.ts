@@ -4,9 +4,11 @@ import { createOpportunityRover } from '../../entities/rover/opportunity';
 import { Vehicle } from '../../entities/rover/controller';
 import { createHubEnvironment } from '../../environments/mars/hub';
 import { batchStaticModel } from '../../environments/mars/static-model';
+import {createHubConcretions} from './concretions';
 
 export function createHubWorld(assets: Record<string, Object3D>) {
   const world = createHubEnvironment({variedOutcrops:true,quietGround:true});
+  world.scene.add(createHubConcretions(world.height));
   const rover = createOpportunityRover(assets.opportunity);
   const wreck = rover.root;
   const [x, z] = ROVER_MEMORY.position;

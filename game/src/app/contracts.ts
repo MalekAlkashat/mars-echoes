@@ -3,6 +3,7 @@ import type { AssetCache } from '../core/assets';
 import type { UI } from '../ui';
 import type { GameSession } from './session';
 
+export type MissionPhase = 'approach'|'brush'|'grind'|'inspect'|'compare'|'water'|'evidence';
 export type SceneId = 'mars-hub' | 'episode-rover-01';
 export type HubBookmark = {
   position: readonly [number, number, number];
@@ -16,17 +17,17 @@ export type RoverCheckpoint = {
   position: readonly [number, number]; heading: number;
   cameraYaw: number; cameraPitch: number; cameraDistance: number;
   started: boolean; time: number;
-} & ({kind:'opportunity'; optical:boolean} | {
+} & ({kind:'opportunity'; optical:boolean} | {kind:'blueberry-clue'; phase:MissionPhase} | {
   kind:'repair'; phase:'ready'|'drive'|'scan'|'extract'|'align'|'insert'|'calibrate'|'relay'|'transmit'|'end';
   elapsed:number; offset:{x:number;y:number;angle:number}; failedAttempts:number; repaired:boolean;
   serviceHeading:number; opticalRemaining:number;
 });
 export type SceneEntry =
   | { scene: 'mars-hub'; bookmark?: HubBookmark }
-  | { scene: 'episode-rover-01'; wreckId: string; resume?: RoverCheckpoint };
+  | { scene: 'episode-rover-01'; wreckId: string; chapter?: 'blueberry-clue'; resume?: RoverCheckpoint };
 export type EpisodeEntry = Extract<SceneEntry, {scene: 'episode-rover-01'}>;
 export type EpisodeResult = {
-  episodeId: 'episode-rover-01'; wreckId: string; outcome: 'completed' | 'aborted';
+  episodeId: 'episode-rover-01'; wreckId: string; outcome: 'completed' | 'aborted'; chapter?: 'blueberry-clue';
 };
 export type SceneRequest =
   | { kind: 'enter-memory'; entry: Extract<SceneEntry, {scene: 'episode-rover-01'}>; bookmark: HubBookmark }
@@ -34,12 +35,12 @@ export type SceneRequest =
 export interface InputFrame {
   moveX: number; moveY: number; rotate: number; lookX: number; lookY: number;
   dragX: number; dragY: number; zoom: number;
-  startPressed: boolean; interactPressed: boolean; confirmPressed: boolean;
+  interactHeld: boolean; startPressed: boolean; interactPressed: boolean; confirmPressed: boolean;
   opticalPressed: boolean; replayPressed: boolean; returnPressed: boolean; leapPressed: boolean;
 }
 export function emptyInput(): InputFrame {
   return {moveX:0,moveY:0,rotate:0,lookX:0,lookY:0,dragX:0,dragY:0,zoom:0,
-    startPressed:false,interactPressed:false,confirmPressed:false,opticalPressed:false,
+    interactHeld:false,startPressed:false,interactPressed:false,confirmPressed:false,opticalPressed:false,
     replayPressed:false,returnPressed:false,leapPressed:false};
 }
 export interface GameScene {

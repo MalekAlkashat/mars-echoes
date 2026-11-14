@@ -1,0 +1,30 @@
+Source: https://science.nasa.gov/photojournal/slow-progress-in-dune-right-rear-wheel/
+Retrieved: 2026-11-14
+Offline text extraction; navigation and scripts removed.
+
+Slow Progress in Dune (Right Rear Wheel)
+PIA07985
+Credits:
+NASA/JPL
+Image Addition Date:05/24/2005
+Target:
+Mars
+Is a satellite of:
+Sun
+Mission(s):
+Mars Exploration Rovers (MER)
+Spacecraft(s):
+Opportunity (Rover)
+Instrument(s):
+Hazard Avoidance Camera
+Downloads
+Slow Progress in Dune (Right Rear Wheel)
+JPEG (8.03 KB)
+Slow Progress in Dune (Right Rear Wheel)
+TIFF (64.29 KB)
+Slow Progress in Dune (Right Rear Wheel)
+GIF (4.25 MB)
+Slow Progress in Dune (Right Rear Wheel)
+MOV (8.81 MB)
+Description
+The right rear wheel of NASA's Mars Exploration Rover Opportunity makes slow but steady progress through soft dune material in this movie clip of frames taken by the rover's rear hazard identification camera over a period of several days. The wheel is largely hidden by a cable bundle. The sequence starts on Opportunity's 460th martian day, or sol (May 10, 2005) and ends 11 days later. In eight drives during that period, Opportunity advanced a total of 26 centimeters (10 inches) while spinning its wheels enough to have driven 46 meters (151 feet) if there were no slippage. The motion appears to speed up near the end of the clip, but that is an artifact of individual frames being taken less frequently.

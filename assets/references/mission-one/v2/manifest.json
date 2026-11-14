@@ -1,0 +1,69 @@
+[
+  {
+    "file": "rat-engineering.pdf",
+    "url": "https://esmats.eu/amspapers/pastpapers/pdfs/2004/myrick.pdf",
+    "bytes": 968881,
+    "sha256": "7d26306079a2d9ba33ed4ecaa26edcb23df2b5e9984795c499f75ee585a3f889"
+  },
+  {
+    "file": "rat-face.jpg",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia08/pia08625/PIA08625.jpg",
+    "bytes": 50337,
+    "sha256": "99fe7c9eabe7e9041d8c4222d923c99fd5c945699c3e8b15f29b4a8807931f99"
+  },
+  {
+    "file": "grinding-path.jpg",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia05/pia05446/PIA05446.jpg",
+    "bytes": 240792,
+    "sha256": "bd55a359cb25628484cec385b0e716c3e66f27a68d22f54169d1a02828e86b05"
+  },
+  {
+    "file": "user-reference-1.png",
+    "origin": "user attachment 1, 14 November 2026",
+    "role": "visual reference only; not a runtime texture",
+    "bytes": 820781,
+    "sha256": "41235fdbc0e4592ebe538b0469f82713190f821c670fdeb86c9b138fcf6396d4"
+  },
+  {
+    "file": "user-reference-2.png",
+    "origin": "user attachment 2, 14 November 2026",
+    "role": "visual reference only; not a runtime texture",
+    "bytes": 3051061,
+    "sha256": "99e7083669bda189e7c662ac07dcdbc617e1ce97be3c3275495c86b1ce230c8c"
+  },
+  {
+    "file": "user-reference-3.png",
+    "origin": "user attachment 3, 14 November 2026",
+    "role": "visual reference only; not a runtime texture",
+    "bytes": 1003203,
+    "sha256": "5c5b4d47635c09578ae71971c850f5e6c7e6ce082a3c5210fa136dd11f26d7e2"
+  },
+  {
+    "file": "user-reference-4.png",
+    "origin": "user attachment 4, 14 November 2026",
+    "role": "visual reference only; not a runtime texture",
+    "bytes": 2134276,
+    "sha256": "e4c214393741121fa7dca7d5a463c9cf1e0bfdc86cd153e70b8ca2704c83551a"
+  },
+  {
+    "file": "rat-engineering-page-4.png",
+    "derivedFrom": "rat-engineering.pdf",
+    "operation": "page rasterization at 1.4 scale, pypdfium2; no image editing",
+    "bytes": 340392,
+    "sha256": "b49d6101c6f86f9fd2e376baf9322af327e0a5a44284bf74d926f321ec6e7f1a"
+  },
+  {
+    "file": "rat-engineering-page-5.png",
+    "derivedFrom": "rat-engineering.pdf",
+    "operation": "page rasterization at 1.4 scale, pypdfium2; no image editing",
+    "bytes": 330816,
+    "sha256": "318dc5545603bf2e9d7417d1fae9a13e66b6fed94b19acdf96c58ed843bedf11"
+  },
+  {
+    "file": "rat-engineering-page-6.png",
+    "derivedFrom": "rat-engineering.pdf",
+    "operation": "page rasterization at 1.4 scale, pypdfium2; no image editing",
+    "bytes": 378673,
+    "sha256": "426cec959bb0404cf78bc12bd6ef520540e7021351294fdc21888912b202e267"
+  }
+]

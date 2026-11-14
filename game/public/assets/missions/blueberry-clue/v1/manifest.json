@@ -1,0 +1,44 @@
+{
+  "type": "authored procedural reconstruction, not NASA scan",
+  "seed": 4912,
+  "resolution": 2048,
+  "tileWidthMeters": 0.3,
+  "normalConvention": "OpenGL +Y",
+  "colorSpace": "base color sRGB; normal and roughness linear",
+  "sources": [
+    "PIA05634 palette/layout",
+    "PIA18885 structure only"
+  ],
+  "files": [
+    {
+      "file": "fine-sand-color.jpg",
+      "bytes": 676644,
+      "sha256": "3b5170c6e207650ed96ac425d0d93d644ab0c9778f9288b7c68db64e3388d2d0"
+    },
+    {
+      "file": "fine-sand-normal.png",
+      "bytes": 8468208,
+      "sha256": "a676970835bd8d2e264673b1d355e1228103936b8d2e6184563d22433002c79b"
+    },
+    {
+      "file": "fine-sand-roughness.jpg",
+      "bytes": 828477,
+      "sha256": "715828c94d242c14776976ac7a3cf1060040e962ce779ae0f5fe60d83c9086bc"
+    },
+    {
+      "file": "laminated-rock-color.jpg",
+      "bytes": 883654,
+      "sha256": "b03a75ef9419ac8cfa50969fa3a2745858fb5f302273c4961fd3a82ecc748d29"
+    },
+    {
+      "file": "laminated-rock-normal.png",
+      "bytes": 8180142,
+      "sha256": "73d4894e5800cdaf529b3e0b78ffdf4562a05b391d53af0ad7aa476189ccb734"
+    },
+    {
+      "file": "laminated-rock-roughness.jpg",
+      "bytes": 754974,
+      "sha256": "0e5d3bf48380780497e68309201cb11339ab3799675dbeb53908c8009c64c064"
+    }
+  ]
+}

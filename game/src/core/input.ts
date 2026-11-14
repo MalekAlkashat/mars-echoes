@@ -60,7 +60,7 @@ export class Input {
   }
   take():InputFrame {
     const axis=(positive:string,negative:string)=>Number(this.keys.has(positive))-Number(this.keys.has(negative));
-    const frame={...this.frame,moveX:axis('KeyD','KeyA'),moveY:axis('KeyW','KeyS'),rotate:axis('KeyE','KeyQ'),
+    const frame={...this.frame,interactHeld:this.keys.has('KeyE'),moveX:axis('KeyD','KeyA'),moveY:axis('KeyW','KeyS'),rotate:axis('KeyE','KeyQ'),
       lookX:axis('ArrowRight','ArrowLeft'),lookY:axis('ArrowDown','ArrowUp')};
     this.frame=emptyInput();return frame;
   }

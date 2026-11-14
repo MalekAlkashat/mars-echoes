@@ -1,0 +1,39 @@
+{
+  "errors": [],
+  "failed": [],
+  "initialStorage": [],
+  "save": {
+    "version": 2,
+    "savedAt": 1794696078743,
+    "entry": {
+      "scene": "mars-hub",
+      "bookmark": {
+        "position": [
+          0,
+          0.6045664105879537,
+          8
+        ],
+        "heading": 0,
+        "cameraYaw": 0,
+        "cameraPitch": 0.12,
+        "cameraDistance": 5.8
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        0.6045664105879537,
+        8
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [],
+    "skills": [],
+    "completed": []
+  },
+  "overflow": false,
+  "passed": true
+}

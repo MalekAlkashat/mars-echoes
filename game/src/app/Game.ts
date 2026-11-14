@@ -47,6 +47,8 @@ export class Game {
     if(saved){
       this.hasStarted=true;this.session.bookmark=saved.bookmark;
       for(const id of saved.completed)this.session.completed.add(id);
+      for(const id of saved.chapters??[])this.session.chapters.add(id);
+      for(const id of saved.skills??[])this.session.skills.add(id);
       entry=saved.entry;
     }
     this.input=new Input(this.ui.canvas,(key,event)=>{
@@ -139,19 +141,20 @@ export class Game {
     this.menu=new MainMenu({
       newGame:async()=>{
         if(this.director.active?.id!=='mars-hub'&&!await this.director.open({scene:'mars-hub'}))return;
-        this.session.completed.clear();this.session.bookmark=undefined;this.hasStarted=true;
+        this.session.completed.clear();this.session.chapters.clear();this.session.skills.clear();this.session.bookmark=undefined;this.hasStarted=true;
         this.startupNotice='';
         this.director.restart();this.menu?.hide();this.ui.canvas.focus();
         this.menu?.setSaveAvailable(true);this.saveProgress(false,{replaceBackup:true});this.needsRender=true;
       },
       continueGame:()=>{
-        this.menu?.hide();this.director.setPaused(false);this.director.active?.activate();this.ui.playing();this.input.clear();
+        this.menu?.hide();this.director.setPaused(false);this.ui.playing();this.director.active?.activate();this.input.clear();
         // A valid save may precede the first checkpoint; start the existing hub without a second intro.
         this.input.trigger('start');this.needsRender=true;
       },
       settings:value=>{this.presentation.setQuality(value.graphics);this.needsRender=true;},
       pauseForSettings:()=>this.pause(true),
       captureTerrain:()=>this.captureTerrain(),
+      grindUnlocked:()=>this.session.skills.has('grind'),
     },showMenu);
     this.menu.setSaveAvailable(Boolean(saved));
     const recoveryMessage=saveRead.source==='backup'?'A saved backup was recovered. Your journey can continue.':
@@ -193,10 +196,10 @@ export class Game {
     const checkpoint=this.director.active.getBookmark?.();
     if(checkpoint)this.session.bookmark=checkpoint;
     const entry=this.director.active.getSaveEntry?.()??
-      (this.director.active.id==='mars-hub'&&this.session.bookmark?{scene:'mars-hub' as const,bookmark:this.session.bookmark}:undefined);
+      (this.director.active.id==='mars-hub'?{scene:'mars-hub' as const,...(this.session.bookmark?{bookmark:this.session.bookmark}:{})}:undefined);
     if(!entry){if(manual)this.setSaveStatus('Waiting for a safe checkpoint. Your last save is unchanged.');return false;}
     const savedAt=Date.now();
-    const saved=writeSave({version:2,savedAt,entry,bookmark:this.session.bookmark,completed:[...this.session.completed]},undefined,options);
+    const saved=writeSave({version:2,savedAt,entry,bookmark:this.session.bookmark,completed:[...this.session.completed],chapters:[...this.session.chapters],skills:[...this.session.skills]},undefined,options);
     if(!saved){
       this.menu?.storageWarning();this.setSaveStatus('Saving failed. Your last valid save has been kept. Check browser storage.');
     }else{
@@ -258,7 +261,7 @@ export class Game {
       if(import.meta.env.DEV){
         for(const [key,value] of Object.entries(active.debug()))this.ui.canvas.dataset[key]=String(value);
         Object.assign(this.ui.canvas.dataset,{sceneId:active.id,transitioning:String(this.director.transitioning),
-          paused:String(this.director.paused),completed:String(this.session.completed.size),activeLoops:'1',
+          paused:String(this.director.paused),chapters:String(this.session.chapters.size),grindUnlocked:String(this.session.skills.has('grind')),completed:String(this.session.completed.size),activeLoops:'1',
           geometries:String(this.renderer.info.memory.geometries),textures:String(this.renderer.info.memory.textures),
           drawCalls:String(this.renderer.info.render.calls),triangles:String(this.renderer.info.render.triangles),
           renderCpuMs:renderMs.toFixed(2),renderedFps:this.renderedFps.toFixed(1),fpsCap:String(RENDER_FPS),

@@ -1,0 +1,27 @@
+{
+  "runtimeRevision": "1ab4f188b38068ba47cad25841b13a67f2583e16",
+  "base": "864724fecb7569ec772ae560e83c13fca48a2123",
+  "files": {
+    ".gitignore": "39ba05d0bca16e0c17e139a369e63bef93f575088b715156ec8d8795db351bb0",
+    "game/src/content/blueberry-clue.ts": "a7593d3e2cefcf63aaf5a2d0dcbfb334235124dbc76a4089541d8ab4e0b9d7d6",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/art.ts": "470f3e7514c7b5195a4ff9139d4ef347ec7a4e1bc06d452f03a711098558e12e",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/index.ts": "9eda9b53d399e558ca57b7d1a19373f787382bb9aaf3c14cd09be1db4f5286ac",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/reconstruction.ts": "978fa09b6ee7d47bd36682208ebe222f74f9951cca8f590bade231bb35e3b729",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/site.ts": "9c3eff929e8dd28516e1c7b3dc7949f23bd5738c2a9b9e6dfe563bcaeb00ff5f",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/surface.ts": "4a306cfcde050bbf88388d33e8d3e25a784fda7d5120e21619f55fa097e52a58",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/water-state.ts": "7b44a40feb4a3482e14bbe7dd7bcafb505dcf4fd643dc54a8b69819c1b6f4186",
+    "game/tests/mission-one-site.test.ts": "b2f9f42ac59779cc781d098da1a95bf68ed4a282c9f0005f1118a0aac7a00fd3",
+    "outputs/planning/mission-one/site-and-water-v3.md": "d602ef0ac0bd8f8982357dfff76d57534aa77a8d909baf7dcd49fc7d505a399f",
+    "outputs/planning/mission-one/site-v3.svg": "e3d016e4c2045c64112dec66912017b28f6a010ed860565f44b43cb40b831b06"
+  },
+  "buildAssets": {
+    "blueberry-clue-Dm1qbJZU.js": "b3253119f7ea462bde4b053bd6ecddb1ee3e6bcdc5868e168d58a6b091468f27",
+    "hub-zetbCoTI.js": "56ccfd1f3dc029949ce9803f920f43db40485271fef12034624c17b584d2a88f",
+    "index-CbpVJfDu.js": "a2ed43c9be8d4a958973feb19ec3f9f42756ba2a74f4c87e144fd0cf1cb8c78a",
+    "index-CFoBK2AG.js": "daff4895da444c9d1327095ede89190cbdcb57317cb69a16a2c2a7585f878fe7",
+    "mars-hub-DdRpaNz-.js": "0a01d75a452a0be4788118ef41d0c1808078b6221df9a50ad5f93c73e663128f",
+    "opportunity-Byd7pinP.js": "bebc32a6faf67edc3236c44e051c71f58f99a229d1ec772bab693cd007be0ce5",
+    "opportunity-drive-Cw9gxdiT.js": "c2fbed3614a404db5243407a41792d1a773745f052f1063a520cff73bcbce285",
+    "terrain-BkZzkntF.js": "d25eae5aa77b4e7b6d682f43711edd3701adf0449c70251ee5db1870a73b2470"
+  }
+}

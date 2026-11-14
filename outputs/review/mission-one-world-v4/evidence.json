@@ -1,0 +1,147 @@
+{
+  "base": "d87c05670bac9c77128edd409c73572a163300e1",
+  "nativeCaptures": true,
+  "files": {
+    "before-spawn.png": {
+      "original": "work/world-polish/before/01-spawn.png",
+      "sha256": "70e1f9fbf6463e57f5432e5bbbd2b9a91aa2c3bf08ae8e18d26d812fad00a7a5"
+    },
+    "before-work.png": {
+      "original": "work/world-polish/before/03-work-zone.png",
+      "sha256": "540d0df308b3d1bb969ac1daa30d159201132bdf01e3f16974125adf77ca867b"
+    },
+    "before-water.png": {
+      "original": "work/world-polish/before/water-6.png",
+      "sha256": "79c1546b74778451252e9349ee52785e61f88938c8cb8bccd5447458401c2464"
+    },
+    "after-spawn.png": {
+      "original": "work/world-polish/delivery/01-spawn.png",
+      "sha256": "926faffa140456de74ad7427a860b7268184a03216d74f69840c29be9b3391aa"
+    },
+    "after-work.png": {
+      "original": "work/world-polish/delivery/03-work-zone.png",
+      "sha256": "2d57e85b4f0151b2c8a582af1d797207e6e2ac629feaef1065c84619e60513eb"
+    },
+    "after-water.png": {
+      "original": "work/world-polish/delivery/water-6.png",
+      "sha256": "3746dbe65f0c2d6e45ad66773b8de220b02eff4d314b924318332f2d0893d332"
+    },
+    "after-entry.png": {
+      "original": "work/world-polish/delivery/00-entry.png",
+      "sha256": "57b02cbedbd0b49125c9cd4c7454183b73005e1325296d30f18cb0d09496f6b9"
+    },
+    "after-overview.png": {
+      "original": "work/world-polish/delivery/02-overview.png",
+      "sha256": "a6463c3af5e435d7241bbcff8b2207e50fa93c8df2ffb8c0c74dabb8532f2c70"
+    },
+    "after-ending.png": {
+      "original": "work/world-polish/delivery/04-dry-evidence.png",
+      "sha256": "0fca1b303bfccf1ac81500580da112de70ea48850fec118bbc6e0704043dfc29"
+    },
+    "after-side.png": {
+      "original": "work/world-polish/orbit/bearing-1.png",
+      "sha256": "5bf7bc2739f44a6f27f635daa78e2a347bb3fd53bd283537436b1869572b92bc"
+    },
+    "hub-before.png": {
+      "original": "work/world-polish/hub-before-close/03-outcrop.png",
+      "sha256": "58ec7f6be18f61c21713478edc4074f5096680101353e369dd282e4e93e1eae0"
+    },
+    "hub-after.png": {
+      "original": "work/world-polish/hub-after-close/03-outcrop.png",
+      "sha256": "47c7c690cb390e0533b35744c88478a0448fe9967dc29e846644d752755870ec"
+    },
+    "mobile-ending.png": {
+      "original": "work/world-polish/mobile-dry-evidence.png",
+      "sha256": "a89d3f148397bfa24ed43d4a6070f647e44a03d7da7cba6d94864f484ab14046"
+    },
+    "before-runtime.json": {
+      "original": "work/world-polish/before/report.json",
+      "sha256": "f022bb71ff699fb89866c32b983d0b84238e958492a0b65340b518d5f822af35"
+    },
+    "after-runtime.json": {
+      "original": "work/world-polish/delivery/report.json",
+      "sha256": "0cc7cc3881d3ead85d4c11f7fd5eb36621efbc9ebbe495ae33eecbcb4b2692f9"
+    },
+    "hub-before.json": {
+      "original": "work/world-polish/hub-before-close/report.json",
+      "sha256": "c5f557bafb93f8c2bbfa39200eb3c8c4bacec3624192279b7d5e3b93adc555cb"
+    },
+    "hub-after.json": {
+      "original": "work/world-polish/hub-after-close/report.json",
+      "sha256": "5fc1530ac893743256d82ea38122d88bea879e252093e908e3944ede1012f622"
+    },
+    "orbit.json": {
+      "original": "work/world-polish/orbit/report.json",
+      "sha256": "d661395bbb7ab32090e41d81dc981fb1596a670ac9142d8b63819fdf7a27e0c1"
+    },
+    "development.json": {
+      "original": "work/world-polish/dev-report.json",
+      "sha256": "79ea0c44ff7edae5e723ed882b1cb4980b8a36d903a2d1d046fa22ba468107bc"
+    },
+    "production.json": {
+      "original": "work/world-polish/production-report.json",
+      "sha256": "2cacc54d52e7ac4a25c15e6aea7accb6f7db0b27b698d41d704380344fee6e32"
+    },
+    "mobile.json": {
+      "original": "work/world-polish/mobile-report.json",
+      "sha256": "80f10c1f28fca7b68ac1b1dcc69a661b8dc39a26705ce5bf6ed6289c72b03dc2"
+    },
+    "cycles.json": {
+      "original": "work/world-polish/cycles-report.json",
+      "sha256": "d8b503d78cc12c65aa6cf6525e47142ae26a9c3257ebe1c9ff7f7848c5a8eb25"
+    },
+    "preservation.json": {
+      "original": "work/world-polish/preservation.json",
+      "sha256": "0f21295d16ba3e843ee46631eaf28c04fbf32823babf8038e54177d5d34e17ce"
+    }
+  },
+  "source": {
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/art.ts": "722380c0c37cc45b35b33ede98d4ab25c9eff89b25a671c98a10e5d499d2a85b",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/surface.ts": "39eadd0b464f46e468cce68b0ab01450a5691ecdbd494c5c906b39630b042615",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/field-rocks.ts": "3133bb72428651b921ff0eb2adeb73f121429fc788bd914b1fc49270c198a88e",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/landscape.ts": "88beca1f20bded0389bef0c1d79d50f7a8a13d19c14079bb1d9dd947f29e8caf"
+  },
+  "protectedModulesUnchanged": [
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/site.ts",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/index.ts",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/geology.ts",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/rat.ts",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/cinematic.ts",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/progress.ts",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/reconstruction.ts",
+    "game/src/scenes/episodes/rover/missions/blueberry-clue/water-state.ts"
+  ],
+  "videos": {
+    "before-mission.webm": {
+      "original": "work/world-polish/before/video/page@e0286df56805593550ae33c953522858.webm",
+      "sha256": "5b8e25dee96f139a0339c6e6d84f51f77c918c45ae6fae36617e06133de12490",
+      "bytes": 13389099,
+      "duration": "00:00:30.88",
+      "speed": "normal playback; no retiming"
+    },
+    "after-mission.webm": {
+      "original": "work/world-polish/delivery/video/page@c67d92ca27ff16c00f9761e2eec1ce47.webm",
+      "sha256": "5735bf00e9cae3bbaad8c78954be69c9b0644196c49276f33342f09ac7269af3",
+      "bytes": 16141126,
+      "duration": "00:00:38.76",
+      "speed": "normal playback; no retiming"
+    },
+    "turning-orbit.webm": {
+      "original": "work/world-polish/orbit/video/page@24fe51308f4f2896f1e13138996475be.webm",
+      "sha256": "993f06d152dd73cf1f0d370f7023c19a7fef88d36bb61f0331decfa25916bc5c",
+      "bytes": 19277238,
+      "duration": "00:00:50.00",
+      "speed": "normal playback; no retiming"
+    }
+  },
+  "checks": {
+    "tests": [
+      "# tests 62",
+      "# pass 62",
+      "# fail 0",
+      "# cancelled 0",
+      "# skipped 0"
+    ],
+    "build": "✓ built in 1.93s"
+  }
+}
