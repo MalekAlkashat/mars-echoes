@@ -1,0 +1,116 @@
+[
+  {
+    "id": "eagle-panorama",
+    "file": "eagle-panorama.jpg",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia05/pia05755/PIA05755.jpg",
+    "page": "https://science.nasa.gov/photojournal/opportunity-captures-lion-king-panorama/",
+    "imageId": "PIA05755",
+    "observation": "Sols 58 and 60; published 2004-04-14",
+    "colorInterpretation": "Approximate true color",
+    "credit": "NASA/JPL/Cornell",
+    "downloaded": "2026-11-14",
+    "bytes": 34476,
+    "dimensions": [
+      1280,
+      252
+    ],
+    "sha256": "1542682c66601c43af402b3011306e782e0244bba1e48777e24cb61444d4a2fd",
+    "role": "reference only; not a calibrated texture",
+    "rights": "NASA media guidance; retain listed institutional credits; not blanket CC0"
+  },
+  {
+    "id": "berry-bowl",
+    "file": "berry-bowl.jpg",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/5/35718_Sol048B-PIA05634.jpg",
+    "page": "https://science.nasa.gov/resource/discovery-served-up-in-a-bowl/",
+    "imageId": "PIA05634",
+    "observation": "Sol 48; published 2004-03-25",
+    "colorInterpretation": "Approximate true color",
+    "credit": "NASA/JPL-Caltech/Cornell",
+    "downloaded": "2026-11-14",
+    "bytes": 70018,
+    "dimensions": [
+      768,
+      512
+    ],
+    "sha256": "91c5f44ce53584b2b6ee6bcfff66b151e1ac502abf88e0b59f508e83b11006e5",
+    "role": "reference only; not a calibrated texture",
+    "rights": "NASA media guidance; retain listed institutional credits; not blanket CC0"
+  },
+  {
+    "id": "last-chance",
+    "file": "last-chance.jpg",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/8/38237_PIA18885_1MM039ILF05PER44P2933M222M1.jpg",
+    "page": "https://science.nasa.gov/resource/clues-to-wet-history-in-texture-of-a-martian-rock/",
+    "imageId": "PIA18885",
+    "observation": "Sol 39, 2004-03-03; published 2014-11-18",
+    "colorInterpretation": "Monochrome microscopic image; not palette authority",
+    "credit": "NASA/JPL-Caltech/Cornell Univ./USGS",
+    "downloaded": "2026-11-14",
+    "bytes": 155664,
+    "dimensions": [
+      1280,
+      777
+    ],
+    "sha256": "70364f0f9125d4b8ae0966048f9d637bed90f71ad374661d70020ea39252e81b",
+    "role": "reference only; not a calibrated texture",
+    "rights": "NASA media guidance; retain listed institutional credits; not blanket CC0"
+  },
+  {
+    "id": "flatrock",
+    "file": "flatrock.jpg",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA05521.jpg",
+    "page": "https://www.jpl.nasa.gov/images/pia05521-focus-on-flatrock/",
+    "imageId": "PIA05521",
+    "observation": "Sol 44; published 2004-03-09",
+    "colorInterpretation": "Color interpretation not stated; use for geometry only",
+    "credit": "NASA/JPL/Cornell",
+    "downloaded": "2026-11-14",
+    "bytes": 12005,
+    "dimensions": [
+      320,
+      338
+    ],
+    "sha256": "251de6fd544a1586c3f2b5ae3c03d5b05b74d87bb0e0329fa234430eda46d56e",
+    "role": "reference only; not a calibrated texture",
+    "rights": "NASA media guidance; retain listed institutional credits; not blanket CC0"
+  },
+  {
+    "id": "mckittrick",
+    "file": "mckittrick.jpg",
+    "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia05/pia05459/PIA05459.jpg",
+    "page": "https://science.nasa.gov/photojournal/circular-signs-of-the-rock-abrasion-tool/",
+    "imageId": "PIA05459",
+    "observation": "Grinding sol 30, 2004-02-23; image acquisition not separately asserted",
+    "colorInterpretation": "Monochrome hazard-camera view; geometry/context only",
+    "credit": "NASA/JPL",
+    "downloaded": "2026-11-14",
+    "bytes": 146292,
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "sha256": "ff5f72bdd930e7d82d2de341c47cdd5d815f5e6984b28475ec74d2b8dbd90753",
+    "role": "reference only; not a calibrated texture",
+    "rights": "NASA media guidance; retain listed institutional credits; not blanket CC0"
+  },
+  {
+    "id": "rat-hardware",
+    "file": "rat-hardware.jpg",
+    "url": "https://science.nasa.gov/wp-content/uploads/2024/03/rat-2.jpg",
+    "page": "https://science.nasa.gov/mission/mars-exploration-rovers-spirit-and-opportunity/science-instruments/",
+    "imageId": "NASA science instruments RAT photograph",
+    "observation": "Acquisition date not stated",
+    "colorInterpretation": "Hardware photo; no Mars environment color inference",
+    "credit": "NASA/JPL-Caltech",
+    "downloaded": "2026-11-14",
+    "bytes": 32337,
+    "dimensions": [
+      500,
+      326
+    ],
+    "sha256": "a64eebb16e40d3575dc6ef58836545a921f4d39ff0c1aa2298d44599a8c53562",
+    "role": "reference only; not a calibrated texture",
+    "rights": "NASA media guidance; retain listed institutional credits; not blanket CC0"
+  }
+]

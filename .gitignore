@@ -56,3 +56,24 @@ graphify-out/
 !/outputs/review/opportunity-v1/*.md
 !/outputs/review/opportunity-v1/*.json
 !/outputs/review/opportunity-v1/*.jpg
+
+# Mission 1 provenance and selected runtime evidence.
+!/outputs/review/mission-one-v1/
+/outputs/review/mission-one-v1/*
+!/outputs/review/mission-one-v1/*.md
+!/outputs/review/mission-one-v1/*.json
+!/outputs/review/mission-one-v1/*.png
+
+# Mission 1 reference/cinematic increment; keep local video out of Git.
+!/outputs/review/mission-one-v2/
+/outputs/review/mission-one-v2/*
+!/outputs/review/mission-one-v2/*.md
+!/outputs/review/mission-one-v2/*.json
+!/outputs/review/mission-one-v2/*.png
+
+# Mission 1 site/reconstruction review; full-resolution video remains local.
+!/outputs/review/mission-one-site-v3/
+/outputs/review/mission-one-site-v3/*
+!/outputs/review/mission-one-site-v3/*.md
+!/outputs/review/mission-one-site-v3/*.json
+!/outputs/review/mission-one-site-v3/*.png
