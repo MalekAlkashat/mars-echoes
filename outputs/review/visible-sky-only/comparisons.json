@@ -1,0 +1,155 @@
+{
+  "viewport": [
+    1440,
+    900
+  ],
+  "graphics": "balanced",
+  "errors": [],
+  "httpErrors": [],
+  "views": [
+    {
+      "version": "before",
+      "name": "hub",
+      "view": "horizon",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "before",
+      "name": "hub",
+      "view": "upward",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "before",
+      "name": "hub",
+      "view": "reverse",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "before",
+      "name": "m1",
+      "view": "horizon",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "before",
+      "name": "m1",
+      "view": "upward",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "before",
+      "name": "m1",
+      "view": "reverse",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "before",
+      "name": "m2",
+      "view": "horizon",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "before",
+      "name": "m2",
+      "view": "upward",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "before",
+      "name": "m2",
+      "view": "reverse",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "hub",
+      "view": "horizon",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "hub",
+      "view": "upward",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "hub",
+      "view": "reverse",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "m1",
+      "view": "horizon",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "m1",
+      "view": "upward",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "m1",
+      "view": "reverse",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "m2",
+      "view": "horizon",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "m2",
+      "view": "upward",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    },
+    {
+      "version": "after",
+      "name": "m2",
+      "view": "reverse",
+      "counters": {
+        "engine": "three.js r181"
+      }
+    }
+  ]
+}

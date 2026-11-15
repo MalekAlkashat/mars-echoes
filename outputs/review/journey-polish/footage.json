@@ -1,0 +1,33 @@
+{
+  "capture": "Native Playwright browser video, 1280x800, 25 FPS; original 1440x900 game viewport, no retiming or interpolation",
+  "files": {
+    "before-rock": {
+      "source": "work\\qa\\before-old-rock\\page@248daa6a2e70727ac3832c5762875574.webm",
+      "bytes": 3442309
+    },
+    "before-return": {
+      "source": "work\\qa\\before-old-return\\page@27f3d41fe24b21c90ba22f5576bc673e.webm",
+      "bytes": 4367967
+    },
+    "integrated-rock": {
+      "source": "work\\qa\\before-integrated-rock\\page@d95d5e6e8ed68c60168a2e32cf47f126.webm",
+      "bytes": 3147415
+    },
+    "integrated-return": {
+      "source": "work\\qa\\before-integrated-return\\page@cf29b628ab095f9c1844b9b326411612.webm",
+      "bytes": 3852646
+    },
+    "after-rock": {
+      "source": "work\\qa\\after-rock\\page@e72f74fe214974df1442b4c04f7fddac.webm",
+      "bytes": 2683276
+    },
+    "after-overtime": {
+      "source": "work\\qa\\after-overtime\\page@c462106291ed6155b3ca987333f48e8d.webm",
+      "bytes": 3494109
+    },
+    "after-return": {
+      "source": "work\\qa\\after-return\\page@2daa2633915fe1fdda2b05f9d5d0d38b.webm",
+      "bytes": 2484077
+    }
+  }
+}

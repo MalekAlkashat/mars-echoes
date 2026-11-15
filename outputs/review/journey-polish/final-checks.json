@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "paused preparation failure focuses Retry; Cancel restores accessible paused source",
+    "held W Shift E do not move or complete the incoming unplayed chapter",
+    "incoming chapter restart restores its own controls and no bridge overlay"
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -135,7 +135,7 @@ export async function createPurgatorySlice(context: SceneContext, entry: Episode
       ground.reset(); driver.reset(SITE.observe); dust.reset(); cameras.reset(); rover.reset();
       vehicle.reset(SITE.observe.x, SITE.observe.z, SITE.observe.heading); pose(0.25); world.mesh.refresh(); drawPreview();
       lastX = driver.state.x; lastZ = driver.state.z; lastAngle = driver.state.wheelAngle;
-      world.follow(driver.state.x, driver.state.z);
+      world.follow(driver.state.x, driver.state.z); world.tickSky(0);
       cameras.update(0, { x: vehicle.position.x, y: vehicle.position.y, z: vehicle.position.z, heading: vehicle.heading, pitch: vehicle.pitch, travelSign: driver.state.travelSign }, ground.surface, reduced(), 'intro', 0);
       driver.startReplay(); assist.reset(); beginPlan();
       context.clearInput(); panel.actions.length = 0;
@@ -157,7 +157,7 @@ export async function createPurgatorySlice(context: SceneContext, entry: Episode
       phase=s.phase;phaseTime=s.phaseTime;effects.time=s.time;manualControl=true;
       odoWheel=s.wheelMetres;odoMoved=s.movedMetres;lastAngle=s.wheelAngle;lastX=s.position[0];lastZ=s.position[1];
       cameras.reset();cameras.mode=s.cameraMode;cameras.yaw=s.cameraYaw;cameras.pitch=s.cameraPitch;cameras.distance=s.cameraDistance;
-      assist.reset(s.wheelAngle);pose(.25);world.mesh.refresh();world.follow(lastX,lastZ);
+      assist.reset(s.wheelAngle);pose(.25);world.mesh.refresh();world.follow(lastX,lastZ);world.tickSky(effects.time);
       const shot=phase==='outro'?'outro':['sand','archive','end'].includes(phase)?'sand':undefined;
       cameras.update(0,{x:vehicle.position.x,y:vehicle.position.y,z:vehicle.position.z,heading:s.heading,pitch:vehicle.pitch,travelSign:1},ground.surface,reduced(),shot,1);
       hint='Saved rover and sand restored. Queued commands cleared; WASD is ready.';
@@ -191,6 +191,7 @@ export async function createPurgatorySlice(context: SceneContext, entry: Episode
           return;
         }
         effects.time += step; phaseTime += step;
+        world.tickSky(effects.time);
         if (phase === 'stuck' && phaseTime >= SEQUENCE_TIMING.stuck) { phase = 'recover'; phaseTime = 0; manualControl = true; cameras.set('chase'); context.clearInput(); panel.root.hidden = false; }
         if (phase === 'outro' && phaseTime >= SEQUENCE_TIMING.outro) { phase = 'sand'; phaseTime = 0; }
         if (phase === 'sand' && phaseTime >= SEQUENCE_TIMING.sand) { phase = 'archive'; phaseTime = 0; }

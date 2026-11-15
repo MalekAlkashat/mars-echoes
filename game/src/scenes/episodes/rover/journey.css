@@ -12,3 +12,10 @@ body.playing.journey-cinema #touch-controls,.journey-cinema #topbar{display:none
 @media(max-width:650px){.journey-caption{left:6vw;right:6vw;bottom:25vh}.journey-actions{left:6vw;right:6vw;bottom:4vh}.journey-actions button{font-size:12px;padding:10px}.journey-caption h2{max-width:300px}}
 
 .journey-source{pointer-events:auto;color:#e0bd93;font-size:12px;line-height:1.5}
+.journey-wait{position:absolute;left:7vw;right:7vw;bottom:17vh;max-width:34em;font-size:clamp(14px,1.2vw,17px);line-height:1.6;color:#d8d4cb}
+.journey-bridge[data-chapter=present] .journey-caption{bottom:auto;top:8vh}
+.journey-bridge[aria-busy=true] [data-journey-exit]{display:none}
+.game-paused .journey-actions{pointer-events:none;visibility:hidden}
+.journey-cinema .epilogue-revisit,.journey-cinema .discovery-archive{display:none!important}
+.journey-cinema .journal-toast,.epilogue-active .journal-toast{display:none!important}
+@media(max-width:650px){.journey-wait{left:6vw;bottom:26vh}.journey-bridge[data-chapter=present] .journey-caption{top:7vh}}

@@ -1,0 +1,15 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "port": 5266,
+      "macroPause": true,
+      "outdoorRestart": true
+    },
+    {
+      "port": 5267,
+      "macroPause": true,
+      "outdoorRestart": true
+    }
+  ]
+}

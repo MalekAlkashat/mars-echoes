@@ -206,3 +206,32 @@ graphify-out/
 !/outputs/review/journey-journal-epilogue/*.md
 !/outputs/review/journey-journal-epilogue/*.json
 !/outputs/review/journey-journal-epilogue/*.png
+
+# Journey handoff polish; original recordings remain local.
+!/outputs/review/journey-polish/
+/outputs/review/journey-polish/*
+!/outputs/review/journey-polish/*.md
+!/outputs/review/journey-polish/*.json
+!/outputs/review/journey-polish/*.png
+!/outputs/review/journey-polish/*.html
+
+# Visible-sky-only review evidence; recordings remain under ignored work/.
+!/outputs/review/visible-sky-only/
+/outputs/review/visible-sky-only/*
+!/outputs/review/visible-sky-only/*.md
+!/outputs/review/visible-sky-only/*.json
+!/outputs/review/visible-sky-only/*.html
+!/outputs/review/visible-sky-only/*.png
+
+# Combined transition/sky integration evidence; raw QA stays under work/.
+!/outputs/review/transition-sky-integration/
+/outputs/review/transition-sky-integration/*
+!/outputs/review/transition-sky-integration/*.md
+!/outputs/review/transition-sky-integration/*.json
+!/outputs/review/transition-sky-integration/*.png
+
+# Compact evidence for local cloud-placeholder recovery.
+!/outputs/review/startup-recovery/
+/outputs/review/startup-recovery/*
+!/outputs/review/startup-recovery/REVIEW.md
+!/outputs/review/startup-recovery/mars-loaded.jpg

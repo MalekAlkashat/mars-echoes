@@ -1,0 +1,40 @@
+{
+  "checks": [
+    {
+      "name": "m1 slow preparation retains authored UI; pause survives activation; no popup or modal focus theft"
+    },
+    {
+      "name": "m2 slow preparation retains authored UI; pause survives activation; no popup or modal focus theft"
+    },
+    {
+      "name": "m3 slow preparation retains authored UI; pause survives activation; no popup or modal focus theft"
+    },
+    {
+      "name": "real image-load failure exposes Retry and preserves only earned memories"
+    },
+    {
+      "name": "injected final-hub preparation failure defers SUNLIGHT and story completion until retry"
+    },
+    {
+      "name": "cancel late preparation, exit, reenter and Skip preserve unfinished chapter and original bookmark"
+    },
+    {
+      "name": "m1 boundary reload resumes without replaying completed work"
+    },
+    {
+      "name": "m2 boundary reload resumes without replaying completed work"
+    },
+    {
+      "name": "m3 boundary reload resumes without replaying completed work"
+    },
+    {
+      "name": "touch, large text, reduced motion, focus loss and Skip preserve final reveal and delayed ending"
+    }
+  ],
+  "errors": [],
+  "expectedFailures": [
+    "last-message.jpg"
+  ],
+  "seeded": true,
+  "passed": true
+}

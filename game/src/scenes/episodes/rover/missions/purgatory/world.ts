@@ -1,6 +1,7 @@
-/** Scene-owned Meridiani plain: one ground mesh, one sun, a plain sky. No rocks or landmarks (PIA07216 shows none). */
+/** Scene-owned Meridiani plain: one ground mesh, one sun, a shared visible sky. No rocks or landmarks (PIA07216 shows none). */
 import * as T from 'three';
 import { disposeSceneResources } from '../../../../../environments/mars/resources';
+import { createMarsSkyMaterial } from '../../../../../environments/mars/sky';
 import { Ground } from './field';
 import { buildGroundGeometry } from './mesh';
 
@@ -29,6 +30,12 @@ export async function createPurgatoryWorld(signal: AbortSignal) {
   const scene = new T.Scene();
   scene.background = new T.Color(SKY);
   scene.fog = new T.FogExp2(HAZE, 0.0026);
+  // Visible backdrop only. Existing fog, lights and warm reflection probe stay unchanged.
+  // Inside the existing camera's 900 m far plane; normal scene cleanup owns these resources.
+  const sky = new T.Mesh(new T.SphereGeometry(700, 48, 28), createMarsSkyMaterial());
+  sky.name = 'purgatory-visible-hub-sky'; sky.renderOrder = -10; sky.frustumCulled = false;
+  sky.userData.excludeAO = true; // A backdrop must not change existing contact shading.
+  scene.add(sky);
   const ground = new Ground(), mesh = buildGroundGeometry(ground);
   const sand = new T.MeshStandardMaterial({ map: color, normalMap: normal, roughnessMap: roughness, roughness: 1, metalness: 0, vertexColors: true, normalScale: new T.Vector2(0.55, 0.55) });
   const terrain = new T.Mesh(mesh.geometry, sand);
@@ -47,7 +54,8 @@ export async function createPurgatoryWorld(signal: AbortSignal) {
 
   return {
     scene, ground, mesh, terrain,
-    /** Builds the reflection probe from a plain sky dome, so rover metal sees the same sky as the player. */
+    tickSky(time: number) { sky.material.uniforms.time.value = time; },
+    /** Preserve the authored warm reflection probe independently of the visible backdrop. */
     setup(renderer: T.WebGLRenderer) {
       if (environment) return;
       const probe = new T.Scene(), dome = new T.Mesh(new T.SphereGeometry(10, 32, 16), new T.ShaderMaterial({
@@ -66,6 +74,7 @@ export async function createPurgatoryWorld(signal: AbortSignal) {
       focus.set(Math.round(x * 4) / 4, 0, Math.round(z * 4) / 4);
       sun.target.position.copy(focus); sun.position.copy(focus).addScaledVector(SUN_DIRECTION, 40);
       sun.target.updateMatrixWorld();
+      sky.position.set(x * 0.8, 0, z * 0.8);
     },
     dispose() {
       textures.forEach(texture => texture.dispose());

@@ -91,10 +91,12 @@ export class Game {
             if(this.startupNotice){const status=this.menu?.root.querySelector<HTMLElement>('[data-menu="status"]');if(status)status.textContent=this.startupNotice;}
           }
           // A blur during asynchronous scene preparation must survive the switch.
-          if(!value&&this.focusSuspended&&!this.menu?.visible&&!this.titlePending)this.pause(true);
+          if(!value&&element('transition').hidden&&this.focusSuspended&&!this.menu?.visible&&!this.titlePending)this.pause(true);
+          else if(!value&&element('transition').hidden&&this.director.paused&&!this.menu?.visible&&!this.titlePending)this.ui.pause(true);
           this.needsRender=true;
         },
-        error:()=>{
+        error:message=>{
+          if(import.meta.env.DEV)console.error('Scene loading failed:',message);
           if(this.menu?.visible){this.titlePending=true;this.menu.hide();this.menu.setReady(false);}
           this.ui.error('The scene could not load. Retry, or cancel to keep exploring.');
         },
@@ -183,14 +185,13 @@ export class Game {
   }
   private cancelLoading():void {
     this.director.cancel();
-    if(this.director.active)this.ui.dismiss();
+    if(this.director.active){this.ui.dismiss();if(this.director.paused)this.ui.pause(true);}
     else location.reload();
   }
   private pause(value:boolean):void {
     if(!value)this.focusSuspended=false;
     if(this.menu?.visible||this.menu?.modalOpen)return;
     if(!this.director.active)return;
-    if(this.director.transitioning){if(value)this.focusSuspended=true;return;}
     if(value)this.saveProgress();
     this.director.setPaused(value);this.ui.pause(value);
     this.lastTime=0;this.nextFrameAt=0;this.needsRender=true;
@@ -249,8 +250,9 @@ export class Game {
     this.frame=0;
     if(this.disposed||document.hidden)return;
     const blocked=this.director.paused||this.director.transitioning||!element('transition').hidden||Boolean(this.director.active?.isPresentationIdle?.());
-    if((blocked&&!this.needsRender)||(time<this.nextFrameAt&&!this.needsRender)){
-      if(blocked)this.lastTime=0;
+    const preparing=this.director.transitioning&&!this.director.paused&&!this.focusSuspended&&Boolean(this.director.active?.updatePreparation);
+    if((blocked&&!preparing&&!this.needsRender)||(time<this.nextFrameAt&&!this.needsRender)){
+      if(blocked&&!preparing)this.lastTime=0;
       this.scheduleFrame();return;
     }
     const dt=this.lastTime===0?0:Math.min(Math.max((time-this.lastTime)/1000,0),.05);this.lastTime=time;
@@ -259,6 +261,9 @@ export class Game {
     const input=this.input.take();
     const active=this.director.active;
     if(active){
+      if(preparing)active.updatePreparation?.(dt);
+      // Waiting feedback uses the app clock, but the frozen world needs no new GPU frames.
+      if(blocked&&!this.needsRender){this.scheduleFrame();return;}
       if(!blocked)active.update(dt,input);
       if(!blocked&&active.isPresentationIdle?.())this.saveProgress();
       if(!blocked&&time-this.lastSaveAt>1000){this.saveProgress();this.lastSaveAt=time;}
