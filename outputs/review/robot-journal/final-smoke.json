@@ -1,0 +1,12 @@
+{
+  "errors": [],
+  "failed": [],
+  "checks": [
+    "v1-legacy-visit-reveals-opportunity-without-invented-chapters",
+    "touch-landscape-footer-fits",
+    "new-game-resets-journal-and-new-entry-emphasis",
+    "settings-controls-remain-operable-after-journal",
+    "actual-encounter-survives-walking-away-saving-and-reload"
+  ],
+  "passed": true
+}

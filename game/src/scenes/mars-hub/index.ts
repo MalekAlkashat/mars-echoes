@@ -81,9 +81,10 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
         rig.update(step, controller, follow.camera, world.height, context.renderer.getPixelRatio(), innerHeight);
         if (!started) return;
         const distance = controller.position.distanceTo(world.wreck.position);
+        if(!paused&&distance<ROVER_MEMORY.entryDistance)context.session.encounterOpportunity();
         choice.hidden=distance>=ROVER_MEMORY.entryDistance||paused;
         element('interaction-text').textContent = distance < ROVER_MEMORY.entryDistance
-          ? context.session.skills.has('sunlight') ? 'SUNLIGHT remembered · Opportunity remains silent.' : context.session.chapters.has('purgatory') ? 'SAND remembered · Opportunity escaped Purgatory.' : context.session.chapters.has('blueberry-clue') ? 'Blueberry Clue remembered · GRIND unlocked.' : context.session.completed.has(ROVER_MEMORY.wreckId) ? 'Rover sequence visited.' : 'A rover lies silent.'
+          ? context.session.chapters.size>0 ? 'Memories recorded · Explore your Robot Journal.' : context.session.completed.has(ROVER_MEMORY.wreckId) ? 'Rover sequence visited.' : 'A rover lies silent.'
           : `Abandoned rover · ${Math.ceil(distance)} m`;
         element('interact-button').hidden = distance >= ROVER_MEMORY.entryDistance;
         element('interact-button').textContent = choice.value==='journey'?(context.session.journey?'Continue memory  E':context.session.opportunityComplete?'Replay full memory  E':'Enter memory  E'):'Replay chapter  E';

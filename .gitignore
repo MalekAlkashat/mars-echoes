@@ -177,3 +177,14 @@ graphify-out/
 !/outputs/review/continuous-journey/*.md
 !/outputs/review/continuous-journey/*.json
 !/outputs/review/continuous-journey/*.png
+# Robot Journal review; full captures and recordings remain local.
+!/outputs/review/robot-journal/
+/outputs/review/robot-journal/*
+!/outputs/review/robot-journal/*.md
+!/outputs/review/robot-journal/*.json
+!/outputs/review/robot-journal/desktop-opportunity.png
+!/outputs/review/robot-journal/desktop-spirit.png
+!/outputs/review/robot-journal/desktop-ingenuity.png
+!/outputs/review/robot-journal/mobile-spirit-large.png
+!/outputs/review/robot-journal/mobile-320-large.png
+!/outputs/review/robot-journal/mobile-landscape.png

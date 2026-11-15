@@ -10,7 +10,7 @@ export const blueberryText = {
     inspect:{title:'Look beneath the weathered surface',body:'A shallow cut exposes the interior. Hard spherules could obstruct the tool, as documented separately at Flatrock.',action:'Compare a different target · E',label:'Exposed interior · reconstructed macro view'},
     compare:{title:'Berry Bowl: a separate observation',body:'Compare the spherule-rich cluster with a brushed, relatively berry-free patch. No grinding was needed here.',action:'Examine cluster · E',label:'Magnified reconstruction · grains about 4 mm across'},
     water:{title:'An interpretation of ancient conditions',body:'Long ago, water could move through pores and deposit minerals within rock. Later erosion exposed resistant grains. This inferred history is compressed for illustration; it is not present-day water or a geochemical simulation.',action:'Skip reconstruction · E',label:'Inferred ancient conditions · geological time compressed'},
-    evidence:{title:'The grains carry a clue',body:'Instrument measurements identified hematite-rich spherules, supporting an ancient-water interpretation. Spirit carried the same Rock Abrasion Tool and made the first grind on Mars.',action:'Return to Mars · E',label:'Discovery complete · GRIND is recorded on return'},
+    evidence:{title:'The grains carry a clue',body:'Instrument measurements identified hematite-rich spherules, supporting an ancient-water interpretation. Spirit carried the same Rock Abrasion Tool and made the first grind on Mars.',action:'Return to Mars · E',label:'Discovery complete · Journal records this memory on return'},
   },
   comparison:'Compare brushed surface · E',
   factIds:['F-07','F-11','F-34'],

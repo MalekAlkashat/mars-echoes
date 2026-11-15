@@ -183,6 +183,9 @@ export async function createPurgatorySlice(context: SceneContext, entry: Episode
         if (overlay.action === 'restart') { reset(); overlay.action = null; return; }
         if (input.returnPressed || overlay.action === 'return' || (phase==='end'&&input.interactPressed)) {
           const complete=phase==='end'&&driver.free()&&!input.returnPressed;
+          // Consume the click before requesting a transition. A failed/cancelled return
+          // must wait for a new player action, not silently submit the same completion.
+          overlay.action = null;
           returning = true; driver.interrupt(); panel.root.hidden = overlay.root.hidden = true; context.clearInput();
           context.request({ kind: 'return-to-hub', result: { episodeId: 'episode-rover-01', wreckId: entry.wreckId, chapter:'purgatory', outcome: complete?'completed':'aborted' } });
           return;

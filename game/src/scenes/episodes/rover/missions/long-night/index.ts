@@ -33,7 +33,7 @@ export async function createLongNight(context:SceneContext,entry:EpisodeEntry,si
  <p class="night-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
  <figure hidden><figcaption>NASA/JPL-Caltech/Cornell/ASU · June 10, 2018</figcaption></figure>
  <div class="night-campaign" hidden><strong>1,000+</strong><span>commands to restore contact</span><div class="night-timeline"><time>JUNE 2018</time><span aria-hidden="true"></span><time>FEBRUARY 2019</time></div><small>Campaign total · not a live command log</small></div>
- <div class="night-legacy" hidden><span class="night-sun" aria-hidden="true">☼</span><strong>SUNLIGHT</strong><div class="night-links"><span>Opportunity</span><span>Spirit</span><span>Ingenuity</span></div><small>A shared dependence on the Sun</small></div>
+ <div class="night-legacy" hidden><span class="night-sun" aria-hidden="true">☼</span><strong>Shared sunlight</strong><div class="night-links"><span>Opportunity</span><span>Spirit</span><span>Ingenuity</span></div><small>A shared dependence on the Sun</small></div>
  <details><summary>Sources & reconstruction</summary><small>Authored terrain, compressed time and simplified service choices, not a historical command log. Local lighting helps you see the rover; it is an artistic aid, not charging sunlight. No exact final pose, battery history or shutdown threshold is implied. Spirit return is fiction. </small></details>
  <div class="night-footer"><p class="night-service-summary"></p><p class="night-distance"></p><button class="night-next"></button></div>`;
  image.alt='PIA22929: dark noisy partial solar-filter image, with black missing data below.';panel.querySelector('figure')!.prepend(image);

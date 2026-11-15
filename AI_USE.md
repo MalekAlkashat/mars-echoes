@@ -17,3 +17,6 @@ The imported chapter implementations and research catalogs also contain AI-assis
 ## Continuous Opportunity journey — 15 November 2026
 
 The user supplied the ROCK → SAND → DUST → SILENCE direction and continuity requirements. Codex implemented chapter-boundary persistence, separate journey/replay routing, scene-owned camera bridges, the OVERTIME knowledge beat, pause/skip behavior and automated/native-browser verification in an isolated branch. Reused rover/environment/archival assets; no generated media, external video, paid generation, new dependency or archival-pixel edit. See outputs/review/continuous-journey/REVIEW.md for evidence and remaining acceptance limits.
+## Robot Journal candidate — 15 November 2026
+
+The user supplied the journal concept and scope, replacing the proposed player-facing skill tree. Codex implemented the DOM archive, chapter-derived connections, compatible encounter persistence, sourced copy and focused transaction/UI tests in isolated `codex/robot-journal` from `6eef598`. A browser cancellation check exposed a pre-existing Purgatory return-click re-submission; the candidate consumes that action before routing. Existing NASA imagery is reused unchanged, with credits. No generated imagery, paid services, new packages, merge, push or deployment. Verification and limitations: `outputs/review/robot-journal/REVIEW.md`.

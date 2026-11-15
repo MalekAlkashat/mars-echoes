@@ -9,6 +9,7 @@ import { SceneDirector } from './SceneDirector';
 import { GameSession } from './session';
 import { createScene } from './registry';
 import type { SceneEntry } from './contracts';
+import { hasOpportunityEncounter } from '../content/robot-journal';
 import { MainMenu } from '../ui/main-menu';
 import { readSaveRecord, writeSave } from './save';
 
@@ -46,6 +47,7 @@ export class Game {
     const saved=saveRead.save;
     if(saved){
       this.hasStarted=true;this.session.bookmark=saved.bookmark;this.session.journey=saved.journey;this.session.opportunityComplete=saved.opportunityComplete??false;
+      this.session.opportunityEncountered=hasOpportunityEncounter(saved);
       for(const id of saved.completed)this.session.completed.add(id);
       for(const id of saved.chapters??[])this.session.chapters.add(id);
       for(const id of saved.skills??[])this.session.skills.add(id);
@@ -141,7 +143,7 @@ export class Game {
     this.menu=new MainMenu({
       newGame:async()=>{
         if(this.director.active?.id!=='mars-hub'&&!await this.director.open({scene:'mars-hub'}))return;
-        this.session.completed.clear();this.session.chapters.clear();this.session.skills.clear();this.session.bookmark=undefined;this.session.journey=undefined;this.session.opportunityComplete=false;this.hasStarted=true;
+        this.session.completed.clear();this.session.chapters.clear();this.session.skills.clear();this.session.bookmark=undefined;this.session.journey=undefined;this.session.opportunityComplete=false;this.session.opportunityEncountered=false;this.menu?.resetJournal();this.hasStarted=true;
         this.startupNotice='';
         this.director.restart();this.menu?.hide();this.ui.canvas.focus();
         this.menu?.setSaveAvailable(true);this.saveProgress(false,{replaceBackup:true});this.needsRender=true;
@@ -152,11 +154,11 @@ export class Game {
         this.input.trigger('start');this.needsRender=true;
       },
       settings:value=>{this.presentation.setQuality(value.graphics);this.needsRender=true;},
-      pauseForSettings:()=>this.pause(true),
+      pauseForSettings:()=>{if(!this.director.paused)this.pause(true);},
       captureTerrain:()=>this.captureTerrain(),
-      grindUnlocked:()=>this.session.skills.has('grind'),
-      recordedSkills:()=>[...this.session.skills],
+      journalProgress:()=>this.session,
     },showMenu);
+    this.session.onJournalUpdate=()=>{this.menu?.journalUpdated();this.saveProgress();};
     this.menu.setSaveAvailable(Boolean(saved));
     const recoveryMessage=saveRead.source==='backup'?'A saved backup was recovered. Your journey can continue.':
       saveRead.source==='legacy'?'Your previous exploration save is ready to continue.':
@@ -205,7 +207,7 @@ export class Game {
     }
     if(!entry){if(manual)this.setSaveStatus('Waiting for a safe checkpoint. Your last save is unchanged.');return false;}
     const savedAt=Date.now();
-    const saved=writeSave({version:2,savedAt,entry,bookmark:this.session.bookmark,completed:[...this.session.completed],chapters:[...this.session.chapters],skills:[...this.session.skills],journey:this.session.journey,opportunityComplete:this.session.opportunityComplete},undefined,options);
+    const saved=writeSave({version:2,savedAt,entry,bookmark:this.session.bookmark,completed:[...this.session.completed],chapters:[...this.session.chapters],skills:[...this.session.skills],journey:this.session.journey,opportunityComplete:this.session.opportunityComplete,opportunityEncountered:this.session.opportunityEncountered},undefined,options);
     if(!saved){
       this.menu?.storageWarning();this.setSaveStatus('Saving failed. Your last valid save has been kept. Check browser storage.');
     }else{
@@ -283,6 +285,7 @@ export class Game {
     for(const timer of this.photoTimers)clearTimeout(timer);
     for(const url of this.photoURLs)URL.revokeObjectURL(url);
     this.photoTimers.clear();this.photoURLs.clear();
+    this.session.onJournalUpdate=undefined;
     this.events.abort();this.menu?.dispose();this.input.dispose();this.director.dispose();this.presentation.dispose();
     this.assets.dispose();disposeSurfaceTextureCache();disposeRoverMaterialCache();this.renderer.dispose();
   }
