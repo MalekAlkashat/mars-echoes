@@ -1,5 +1,9 @@
 # AI assistance
 
+## Remote planning sync — 15 November 2026
+
+Codex inspected and fast-forwarded the remote main and fixing_terrain planning commits through 4402b58, retaining the team's Mission I reference ownership and six-item presentation backlog. AI corrected two stale milestone labels against the already integrated chapters and recovery evidence. Runtime source, dependencies and original assets were unchanged; all 111 tests and TypeScript/production build passed. The 39 pre-existing local files, 35 staged resource additions and three recovery stashes were preserved. Uncommitted journey, journal and epilogue candidates were not included.
+
 ## Remote spirit merge — 15 November 2026
 
 Codex reconciled the local three-chapter integration with remote commit 8568f41, preserving both the teammate's flame/restored hub and mission/save/reward code. AI resolved the hub cleanup/roadmap conflicts, ran the combined 111-test/typecheck/build and native production checks, and preserved unrelated local work and stashes. Existing source/reference attribution remains in its respective records; no new paid generation or archival-image editing was performed.
