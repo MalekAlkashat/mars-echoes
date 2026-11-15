@@ -66,7 +66,7 @@ export class DiscoveryArchive {
     } else if (this.root.parentElement !== this.panel) this.before.before(this.root);
     this.root.dataset.closing = String(cue.closing);
     this.root.dataset.hero = String(cue.hero);
-    this.root.querySelector('.discovery-archive-next')!.textContent = cue.closing ? 'Return to Mars · E' : 'Continue · E';
+    this.root.querySelector('.discovery-archive-next')!.textContent = cue.closing ? (this.before.textContent ?? 'Continue · E') : 'Continue · E';
     this.root.style.setProperty('--archive-reveal', String(cue.reveal));
     this.root.hidden = false;
     this.root.inert = cue.reveal < .1;

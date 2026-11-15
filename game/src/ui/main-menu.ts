@@ -1,8 +1,9 @@
 import { readPreferences, writePreferences, type Preferences } from '../app/preferences';
 import './main-menu.css';
-import { SkillTree } from './skills';
+import { RobotJournal } from './robot-journal';
+import type { JournalProgress } from '../content/robot-journal';
 
-type Actions = { newGame(): Promise<void>; continueGame(): void; settings(value: Preferences): void; pauseForSettings(): void; captureTerrain?():Promise<boolean>; grindUnlocked?():boolean; recordedSkills?():readonly string[] };
+type Actions = { newGame(): Promise<void>; continueGame(): void; settings(value: Preferences): void; pauseForSettings(): void; captureTerrain?():Promise<boolean>; journalProgress():JournalProgress };
 /** Presentation-only overlays. The application owns scene lifetime and saves. */
 export class MainMenu {
   readonly root = document.createElement('section');
@@ -10,7 +11,7 @@ export class MainMenu {
   private preferences = readPreferences();
   private settingsPanel: HTMLElement;
   private confirmPanel: HTMLElement;
-  private readonly skills: SkillTree;
+  private readonly journal: RobotJournal;
   private ready = false;
   private hasSave = false;
   private returnFocus?: HTMLElement;
@@ -67,11 +68,11 @@ export class MainMenu {
     this.confirmPanel.setAttribute('aria-labelledby','new-game-title');
     this.confirmPanel.innerHTML = `<div class="mars-modal-content mars-confirm"><p class="mars-menu-kicker">A new beginning</p><h2 id="new-game-title">Start again?</h2><p>New Game replaces your saved exploration and memory markers on this browser.</p><button id="menu-keep-save">Keep my journey</button><button id="menu-confirm-new" class="mars-secondary">Start New Game</button></div>`;
     document.body.append(this.settingsPanel,this.confirmPanel);
-    this.skills=new SkillTree(()=>this.closeSkills(),actions.captureTerrain,actions.grindUnlocked,actions.recordedSkills);
-    this.backgroundElements = [...document.body.children].filter((el): el is HTMLElement => el instanceof HTMLElement && ![this.root,this.settingsPanel,this.confirmPanel,this.skills.root].includes(el) && el.tagName !== 'SCRIPT');
+    this.journal=new RobotJournal(()=>this.closeJournal(),actions.journalProgress,actions.captureTerrain);
+    this.backgroundElements = [...document.body.children].filter((el): el is HTMLElement => el instanceof HTMLElement && ![this.root,this.settingsPanel,this.confirmPanel,this.journal.root].includes(el) && el.tagName !== 'SCRIPT');
     const signal=this.events.signal;
     this.button('settings').addEventListener('click',()=>this.openSettings(),{signal});
-    this.get('skills-button').addEventListener('click',()=>this.openSkills(),{signal});
+    this.get('journal-button').addEventListener('click',()=>this.openJournal(),{signal});
     this.button('continue').addEventListener('click',()=>this.actions.continueGame(),{signal});
     this.button('new').addEventListener('click',()=>{
       if(this.hasSave){this.confirmPanel.hidden=false;this.updateInert();this.get('menu-keep-save').focus();}
@@ -117,7 +118,7 @@ export class MainMenu {
   private get(id:string): HTMLElement { return document.getElementById(id)!; }
   private button(name:string): HTMLButtonElement { return this.root.querySelector(`[data-menu="${name}"]`)!; }
   get visible(): boolean { return !this.root.hidden; }
-  get modalOpen(): boolean { return !this.settingsPanel.hidden || !this.confirmPanel.hidden || !this.skills.root.hidden; }
+  get modalOpen(): boolean { return !this.settingsPanel.hidden || !this.confirmPanel.hidden || !this.journal.root.hidden; }
   setReady(ready:boolean):void {
     this.ready=ready;
     for(const name of ['continue','new'])this.button(name).disabled=!ready;
@@ -128,11 +129,13 @@ export class MainMenu {
   hide():void {this.root.hidden=true;this.updateInert();}
   storageWarning():void {this.root.querySelector('[data-menu="status"]')!.textContent='Browser storage is unavailable. Progress will last only for this visit.';}
   saveMessage(message:string):void {this.root.querySelector('[data-menu="status"]')!.textContent=message;}
-  private openSkills():void {
+  private openJournal():void {
     this.returnFocus=document.activeElement as HTMLElement;
-    this.actions.pauseForSettings();this.skills.show();this.updateInert();
+    this.actions.pauseForSettings();this.journal.show();this.updateInert();
   }
-  private closeSkills():void {this.skills.hide();this.updateInert();this.returnFocus?.focus({preventScroll:true});}
+  private closeJournal():void {this.journal.hide();this.updateInert();this.returnFocus?.focus({preventScroll:true});}
+  journalUpdated():void {this.journal.notify();}
+  resetJournal():void {this.journal.reset();}
   openSettings():void {
     this.returnFocus=document.activeElement as HTMLElement;
     if(!this.visible)this.actions.pauseForSettings();
@@ -153,13 +156,13 @@ export class MainMenu {
   }
   /** Called by the single shared input listener, before gameplay shortcuts. */
   handleKey(event:KeyboardEvent):boolean {
-    const panel=!this.skills.root.hidden?this.skills.root:!this.settingsPanel.hidden?this.settingsPanel:!this.confirmPanel.hidden?this.confirmPanel:this.visible?this.root:undefined;
+    const panel=!this.journal.root.hidden?this.journal.root:!this.settingsPanel.hidden?this.settingsPanel:!this.confirmPanel.hidden?this.confirmPanel:this.visible?this.root:undefined;
     if(!panel)return false;
     if(event.code==='Escape'){
-      event.preventDefault();if(!this.skills.root.hidden)this.closeSkills();else if(!this.settingsPanel.hidden)this.closeSettings();else if(!this.confirmPanel.hidden)this.closeConfirm();
+      event.preventDefault();if(!this.journal.root.hidden)this.closeJournal();else if(!this.settingsPanel.hidden)this.closeSettings();else if(!this.confirmPanel.hidden)this.closeConfirm();
     }
     if(event.code==='Tab'){
-      const items=[...panel.querySelectorAll<HTMLElement>('button,input,select')].filter(el=>el.tabIndex>=0&&!el.closest('[hidden]')&&!(el as HTMLButtonElement).disabled);
+      const items=[...panel.querySelectorAll<HTMLElement>('button,input,select,a[href],summary,[tabindex]')].filter(el=>el.tabIndex>=0&&!el.closest('[hidden]')&&!(el as HTMLButtonElement).disabled&&el.getClientRects().length>0);
       const i=items.indexOf(document.activeElement as HTMLElement);
       event.preventDefault();items[(i+(event.shiftKey?-1:1)+items.length)%items.length]?.focus();
     }
@@ -200,5 +203,5 @@ export class MainMenu {
     } catch {this.get('fullscreen-status').textContent='Fullscreen is unavailable in this browser or window.';}
     this.updateFullscreen();
   }
-  dispose():void {this.events.abort();this.skills.dispose();for(const el of this.backgroundElements)el.inert=false;this.root.remove();this.settingsPanel.remove();this.confirmPanel.remove();}
+  dispose():void {this.events.abort();this.journal.dispose();for(const el of this.backgroundElements)el.inert=false;this.root.remove();this.settingsPanel.remove();this.confirmPanel.remove();}
 }

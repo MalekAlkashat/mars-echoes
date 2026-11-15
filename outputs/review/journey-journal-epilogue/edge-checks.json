@@ -1,0 +1,60 @@
+{
+  "checks": [
+    {
+      "name": "boundary-pause-reload-and-exact-purgatory-pose-soil-save"
+    },
+    {
+      "name": "inter-chapter-failure-retains-work-and-retry-opens-next-chapter"
+    },
+    {
+      "name": "masked-async-preparation-can-cancel-leave-and-resume"
+    },
+    {
+      "name": "failed-final-return-defers-sunlight-and-ending-until-retry-ending-resumes-and-skips"
+    },
+    {
+      "name": "production-touch-held-recovery-large-text-reduced-motion"
+    },
+    {
+      "name": "production-touch-ending-journal-pause-skip-and-layout"
+    },
+    {
+      "name": "six-replay-abort-returns-stable-resources-and-one-journal",
+      "resources": [
+        {
+          "geometries": "30",
+          "textures": "26",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "26",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "26",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "26",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "26",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "26",
+          "loops": "1"
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "seeded": true,
+  "passed": true
+}

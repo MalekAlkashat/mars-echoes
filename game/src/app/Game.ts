@@ -9,6 +9,7 @@ import { SceneDirector } from './SceneDirector';
 import { GameSession } from './session';
 import { createScene } from './registry';
 import type { SceneEntry } from './contracts';
+import { hasOpportunityEncounter } from '../content/robot-journal';
 import { MainMenu } from '../ui/main-menu';
 import { readSaveRecord, writeSave } from './save';
 
@@ -30,6 +31,7 @@ export class Game {
   private readonly photoURLs = new Set<string>();
   private readonly photoTimers = new Set<ReturnType<typeof setTimeout>>();
   private faultInjected = false;
+  private focusSuspended = false;
   private frame = 0;
   private disposed = false;
   private lastTime = 0;
@@ -45,7 +47,9 @@ export class Game {
     const saveRead=showMenu?readSaveRecord():{source:'empty' as const,save:undefined};
     const saved=saveRead.save;
     if(saved){
-      this.hasStarted=true;this.session.bookmark=saved.bookmark;
+      this.hasStarted=true;this.session.bookmark=saved.bookmark;this.session.journey=saved.journey;this.session.opportunityComplete=saved.opportunityComplete??false;
+      this.session.opportunityEncountered=hasOpportunityEncounter(saved);
+      this.session.finale=saved.finale;
       for(const id of saved.completed)this.session.completed.add(id);
       for(const id of saved.chapters??[])this.session.chapters.add(id);
       for(const id of saved.skills??[])this.session.skills.add(id);
@@ -57,7 +61,7 @@ export class Game {
       if(key==='Tab'){this.ui.trapFocus(event);return true;}
       if(key==='Escape'){
         event.preventDefault();if(event.repeat)return true;
-        if(!element('transition').hidden)this.cancelLoading();
+        if(this.director.transitioning||!element('transition').hidden)this.cancelLoading();
         else this.pause(!this.director.paused);
         return true;
       }
@@ -81,11 +85,13 @@ export class Game {
         },
         loading:value=>{
           element('cancel-button').textContent=this.director.active?'Cancel':'Reload';
-          this.ui.loading(value);
+          this.ui.loading(value,Boolean(value&&this.director.active?.isCinematicBoundary?.()));
           if(!value&&this.director.active&&(this.menu?.visible||this.titlePending)){
             this.titlePending=false;this.director.setPaused(true);this.ui.resetView();this.menu?.setReady(true);this.menu?.show();
             if(this.startupNotice){const status=this.menu?.root.querySelector<HTMLElement>('[data-menu="status"]');if(status)status.textContent=this.startupNotice;}
           }
+          // A blur during asynchronous scene preparation must survive the switch.
+          if(!value&&this.focusSuspended&&!this.menu?.visible&&!this.titlePending)this.pause(true);
           this.needsRender=true;
         },
         error:()=>{
@@ -114,9 +120,10 @@ export class Game {
     bind('restart-button',()=>{this.director.restart();this.ui.pause(false);});
     bind('cancel-button',()=>this.cancelLoading());
     bind('retry-button',()=>void this.director.retry());
-    window.addEventListener('blur',()=>this.pause(true),{signal});
+    window.addEventListener('blur',()=>{this.focusSuspended=true;this.input.clear();this.pause(true);},{signal});
     document.addEventListener('visibilitychange',()=>{
       if(document.hidden){
+        this.focusSuspended=true;this.input.clear();
         this.saveProgress();
         this.pause(true);
         cancelAnimationFrame(this.frame);this.frame=0;
@@ -140,23 +147,25 @@ export class Game {
     },{signal});
     this.menu=new MainMenu({
       newGame:async()=>{
+        this.focusSuspended=false;
         if(this.director.active?.id!=='mars-hub'&&!await this.director.open({scene:'mars-hub'}))return;
-        this.session.completed.clear();this.session.chapters.clear();this.session.skills.clear();this.session.bookmark=undefined;this.hasStarted=true;
+        this.session.completed.clear();this.session.chapters.clear();this.session.skills.clear();this.session.bookmark=undefined;this.session.journey=undefined;this.session.opportunityComplete=false;this.session.opportunityEncountered=false;this.menu?.resetJournal();this.session.finale=undefined;this.hasStarted=true;
         this.startupNotice='';
         this.director.restart();this.menu?.hide();this.ui.canvas.focus();
         this.menu?.setSaveAvailable(true);this.saveProgress(false,{replaceBackup:true});this.needsRender=true;
       },
       continueGame:()=>{
+        this.focusSuspended=false;
         this.menu?.hide();this.director.setPaused(false);this.ui.playing();this.director.active?.activate();this.input.clear();
         // A valid save may precede the first checkpoint; start the existing hub without a second intro.
         this.input.trigger('start');this.needsRender=true;
       },
       settings:value=>{this.presentation.setQuality(value.graphics);this.needsRender=true;},
-      pauseForSettings:()=>this.pause(true),
+      pauseForSettings:()=>{if(!this.director.paused)this.pause(true);},
       captureTerrain:()=>this.captureTerrain(),
-      grindUnlocked:()=>this.session.skills.has('grind'),
-      recordedSkills:()=>[...this.session.skills],
+      journalProgress:()=>this.session,
     },showMenu);
+    this.session.onJournalUpdate=()=>{this.menu?.journalUpdated();this.saveProgress();};
     this.menu.setSaveAvailable(Boolean(saved));
     const recoveryMessage=saveRead.source==='backup'?'A saved backup was recovered. Your journey can continue.':
       saveRead.source==='legacy'?'Your previous exploration save is ready to continue.':
@@ -178,8 +187,10 @@ export class Game {
     else location.reload();
   }
   private pause(value:boolean):void {
+    if(!value)this.focusSuspended=false;
     if(this.menu?.visible||this.menu?.modalOpen)return;
-    if(!this.director.active||this.director.transitioning)return;
+    if(!this.director.active)return;
+    if(this.director.transitioning){if(value)this.focusSuspended=true;return;}
     if(value)this.saveProgress();
     this.director.setPaused(value);this.ui.pause(value);
     this.lastTime=0;this.nextFrameAt=0;this.needsRender=true;
@@ -196,11 +207,16 @@ export class Game {
     }
     const checkpoint=this.director.active.getBookmark?.();
     if(checkpoint)this.session.bookmark=checkpoint;
-    const entry=this.director.active.getSaveEntry?.()??
+    let entry=this.director.active.getSaveEntry?.()??
       (this.director.active.id==='mars-hub'?{scene:'mars-hub' as const,...(this.session.bookmark?{bookmark:this.session.bookmark}:{})}:undefined);
+    if(entry?.scene==='episode-rover-01'&&this.director.entry?.scene==='episode-rover-01'&&this.director.entry.journey&&this.session.journey){
+      const journey=this.session.journey;
+      if(!journey.boundary)journey.resume=entry.resume;
+      entry={scene:'episode-rover-01',wreckId:'wreck-rover-01',chapter:journey.chapter,journey:true,...(journey.resume?{resume:journey.resume}:{})};
+    }
     if(!entry){if(manual)this.setSaveStatus('Waiting for a safe checkpoint. Your last save is unchanged.');return false;}
     const savedAt=Date.now();
-    const saved=writeSave({version:2,savedAt,entry,bookmark:this.session.bookmark,completed:[...this.session.completed],chapters:[...this.session.chapters],skills:[...this.session.skills]},undefined,options);
+    const saved=writeSave({version:2,savedAt,entry,bookmark:this.session.bookmark,completed:[...this.session.completed],chapters:[...this.session.chapters],skills:[...this.session.skills],journey:this.session.journey,opportunityComplete:this.session.opportunityComplete,opportunityEncountered:this.session.opportunityEncountered,finale:this.session.finale},undefined,options);
     if(!saved){
       this.menu?.storageWarning();this.setSaveStatus('Saving failed. Your last valid save has been kept. Check browser storage.');
     }else{
@@ -232,7 +248,7 @@ export class Game {
   private tick(time:number):void {
     this.frame=0;
     if(this.disposed||document.hidden)return;
-    const blocked=this.director.paused||this.director.transitioning||!element('transition').hidden;
+    const blocked=this.director.paused||this.director.transitioning||!element('transition').hidden||Boolean(this.director.active?.isPresentationIdle?.());
     if((blocked&&!this.needsRender)||(time<this.nextFrameAt&&!this.needsRender)){
       if(blocked)this.lastTime=0;
       this.scheduleFrame();return;
@@ -244,6 +260,7 @@ export class Game {
     const active=this.director.active;
     if(active){
       if(!blocked)active.update(dt,input);
+      if(!blocked&&active.isPresentationIdle?.())this.saveProgress();
       if(!blocked&&time-this.lastSaveAt>1000){this.saveProgress();this.lastSaveAt=time;}
       this.ui.setScene(active.id);
       this.presentation.film.uniforms.time.value=active.effects.time;
@@ -278,6 +295,7 @@ export class Game {
     for(const timer of this.photoTimers)clearTimeout(timer);
     for(const url of this.photoURLs)URL.revokeObjectURL(url);
     this.photoTimers.clear();this.photoURLs.clear();
+    this.session.onJournalUpdate=undefined;
     this.events.abort();this.menu?.dispose();this.input.dispose();this.director.dispose();this.presentation.dispose();
     this.assets.dispose();disposeSurfaceTextureCache();disposeRoverMaterialCache();this.renderer.dispose();
   }

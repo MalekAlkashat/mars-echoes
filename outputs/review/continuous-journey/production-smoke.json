@@ -1,0 +1,16 @@
+{
+  "checks": [
+    {
+      "name": "final production M1 early exit, resume, wording, and M2 cinematic skip"
+    },
+    {
+      "name": "final production reduced-motion touch bridge, clean UI and readable layout"
+    },
+    {
+      "name": "standalone production chapter previews and compatibility alias preserve the normal save"
+    }
+  ],
+  "errors": [],
+  "seeded": true,
+  "passed": true
+}

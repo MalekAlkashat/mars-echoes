@@ -1,0 +1,9 @@
+{
+  "checks": [
+    "retry-native-return-preserves-journal-transaction",
+    "cancel-native-return-preserves-journal-transaction",
+    "replay-native-return-preserves-journal-transaction"
+  ],
+  "errors": [],
+  "passed": true
+}

@@ -182,3 +182,27 @@ graphify-out/
 !/outputs/review/mission-one-archive/closing-mobile.jpg
 
 !/outputs/review/mission-one-archive/picture-first.jpg
+# Continuous journey evidence; native videos stay local.
+!/outputs/review/continuous-journey/
+/outputs/review/continuous-journey/*
+!/outputs/review/continuous-journey/*.md
+!/outputs/review/continuous-journey/*.json
+!/outputs/review/continuous-journey/*.png
+# Robot Journal review; full captures and recordings remain local.
+!/outputs/review/robot-journal/
+/outputs/review/robot-journal/*
+!/outputs/review/robot-journal/*.md
+!/outputs/review/robot-journal/*.json
+!/outputs/review/robot-journal/desktop-opportunity.png
+!/outputs/review/robot-journal/desktop-spirit.png
+!/outputs/review/robot-journal/desktop-ingenuity.png
+!/outputs/review/robot-journal/mobile-spirit-large.png
+!/outputs/review/robot-journal/mobile-320-large.png
+!/outputs/review/robot-journal/mobile-landscape.png
+
+# Combined journey, journal and automatic-ending verification.
+!/outputs/review/journey-journal-epilogue/
+/outputs/review/journey-journal-epilogue/*
+!/outputs/review/journey-journal-epilogue/*.md
+!/outputs/review/journey-journal-epilogue/*.json
+!/outputs/review/journey-journal-epilogue/*.png

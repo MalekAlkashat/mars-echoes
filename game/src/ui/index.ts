@@ -36,8 +36,9 @@ export class UI {
     element('pause').hidden=!value;
     if(value)element('resume-button').focus();else this.canvas.focus();
   }
-  loading(value:boolean):void {
+  loading(value:boolean,cinematic=false):void {
     if(value)this.failed=false;
+    if(value&&cinematic){element('transition').hidden=true;return;}
     element('transition').hidden=!value&&!this.failed;
     if(value){element('transition-text').textContent='Preparing the scene…';element('retry-button').hidden=true;element('cancel-button').focus();}
   }
@@ -48,6 +49,8 @@ export class UI {
   }
   dismiss():void {this.failed=false;element('transition').hidden=true;this.canvas.focus();}
   setScene(id:string):void {
+    // Visibility belongs to the active scene, not the outgoing chapter's disposal.
+    element('restart-button').hidden=id!=='episode-rover-01';
     element('leave-button').hidden=id!=='episode-rover-01';
     element('touch-leap').hidden=id!=='mars-hub';
     element('hub-controls').hidden=id!=='mars-hub';

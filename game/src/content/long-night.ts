@@ -4,7 +4,7 @@ export const nightCopy={
  silence:['10 JUNE 2018 · LAST CONTACT','The signal falls silent.','The last signal arrived on June 10, 2018. What happened inside the rover afterward remains unknown.','See the last transmission'],
  archive:['PIA22929 · PANCAM ARCHIVE','An unfinished transmission.','The black area is missing data. White speckles are camera noise. This was the last partial full-frame image transmitted, not the last exposure.','The months that followed'],
  recovery:['THE RECOVERY CAMPAIGN','Earth kept listening.','For months, engineers kept trying to restore contact.','Remember the legacy'],
- legacy:['13 FEBRUARY 2019 · MISSION CONCLUSION','What endures.','Spirit and Ingenuity also relied on solar power. SUNLIGHT records that shared connection.','Return to Mars']
+ legacy:['13 FEBRUARY 2019 · MISSION CONCLUSION','What endures.','Spirit and Ingenuity also relied on solar power. Your journal records this shared connection when you return.','Return to Mars']
 } as const;
 export const nightSources=[
  ['Last transmitted image','https://science.nasa.gov/photojournal/opportunitys-last-message/'],

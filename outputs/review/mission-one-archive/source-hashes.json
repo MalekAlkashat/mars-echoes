@@ -1,8 +1,8 @@
 {
   "game/src/scenes/episodes/rover/missions/blueberry-clue/archive-cues.ts": "e93b3cf62c6696677022eda47f06f9c3272f872f6e28bf88c6ef903a48069e64",
   "game/src/scenes/episodes/rover/missions/blueberry-clue/archive-data.ts": "6846da9a9b4e30aa19a9b99e041d2cb6f9e4f1f2a420f858842b0a3fa68c4cdf",
-  "game/src/scenes/episodes/rover/missions/blueberry-clue/archive-view.ts": "086db75259b67430097acb64e1ca7d1437d50557982db5f43fdc7115c58bdf19",
-  "game/src/scenes/episodes/rover/missions/blueberry-clue/index.ts": "061afb2dbea6d45788e7187d2cf54b36fa5eef3315d101258eeb123fc1f80f98",
+  "game/src/scenes/episodes/rover/missions/blueberry-clue/archive-view.ts": "67c3baba698bcdbbcfe0224ee0b2b289868e169dcaab2de80aafc6fc4cb25f1f",
+  "game/src/scenes/episodes/rover/missions/blueberry-clue/index.ts": "f5324611e583965ed765ecb628f4e354e2bd4053835ddeca24cac13f2079306c",
   "game/src/scenes/episodes/rover/missions/blueberry-clue/style.css": "7bc2348676eb92dbbef8a5acc3e526903022bd6dc410ab69f7be1dbd0297c2a1",
   "game/tests/mission-one-archive.test.ts": "3d317ecff4eddc99cf01f04287bbbe35f18bddd7a2a9b2f795818377845d7aa6",
   "game/src/content/blueberry-clue.ts": "176ccb576c8cf0491a7447b5c286e838f534680acd263f2c20674ad0dfccb21d",

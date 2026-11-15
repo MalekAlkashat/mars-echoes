@@ -1,0 +1,36 @@
+{
+  "production": true,
+  "checks": [
+    {
+      "name": "fresh-new-game-before-any-mission"
+    },
+    {
+      "name": "real-encounter-reveals-only-opportunity"
+    },
+    {
+      "name": "mission-one-full-production-journey-and-reward"
+    },
+    {
+      "name": "purgatory-save-reload-retains-exact-pose-soil-and-prior-grind"
+    },
+    {
+      "name": "purgatory-full-production-flow-and-sand-on-return"
+    },
+    {
+      "name": "long-night-16-second-storm-archive-continue-and-sunlight",
+      "stormMs": 16004
+    },
+    {
+      "name": "combined-memory-display-and-real-png-photography"
+    },
+    {
+      "name": "repeated-entry-abort-return-no-extra-ui-or-rewards"
+    },
+    {
+      "name": "combined-save-survives-final-reload"
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "passed": true
+}

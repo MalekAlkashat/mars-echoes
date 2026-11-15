@@ -1,0 +1,14 @@
+.journey-bridge{position:fixed;inset:0;z-index:22;pointer-events:none;color:#f3eee5;background:linear-gradient(#080b0d55,transparent 24%,transparent 55%,#080b0de0)}
+.journey-mask{position:absolute;inset:0;background:#060a0d;pointer-events:none}
+.journey-caption{position:absolute;left:7vw;right:7vw;bottom:17vh;max-width:680px;text-shadow:0 2px 8px #000}
+.journey-date{font-size:clamp(12px,1.2vw,17px);letter-spacing:.13em;text-transform:uppercase;color:#e0bd93}
+.journey-caption h2{font-weight:400;font-size:clamp(26px,4vw,52px);line-height:1.1;margin:12px 0}
+.journey-note{font-size:clamp(13px,1.2vw,16px);line-height:1.55;max-width:550px}
+.journey-actions{position:absolute;left:7vw;right:7vw;bottom:max(24px,5vh);display:flex;flex-wrap:wrap;gap:8px;pointer-events:auto}
+.journey-actions button{background:#141b20ed;min-height:44px}
+.journey-cinema .discovery-panel,.journey-cinema .memory-opening,.journey-cinema .night-panel,.journey-cinema .pg-sequence,.journey-cinema .pg-panel,.journey-cinema #intro,.journey-cinema #hud,.journey-cinema #touch-controls,.journey-cinema #hub-controls,.journey-cinema #topbar .objective{display:none!important}
+.journey-cinema #pause{z-index:26}
+body.playing.journey-cinema #touch-controls,.journey-cinema #topbar{display:none!important}
+@media(max-width:650px){.journey-caption{left:6vw;right:6vw;bottom:25vh}.journey-actions{left:6vw;right:6vw;bottom:4vh}.journey-actions button{font-size:12px;padding:10px}.journey-caption h2{max-width:300px}}
+
+.journey-source{pointer-events:auto;color:#e0bd93;font-size:12px;line-height:1.5}

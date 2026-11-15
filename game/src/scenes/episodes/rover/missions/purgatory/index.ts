@@ -32,7 +32,7 @@ export async function createPurgatorySlice(context: SceneContext, entry: Episode
     const rover = createOpportunityRover(assets.opportunity); world.scene.add(rover.root);
     const vehicle = new Vehicle(rover.contactConfig), driver = new Driver(ground), cameras = new SliceCameras();
     const dust = new WheelEffects(world.scene, ground.surface, 0.14), panel = new PlanPanel();
-    const overlay = new SequenceOverlay(), assist = new RecoveryAssist();
+    const overlay = new SequenceOverlay(Boolean(entry.journey)), assist = new RecoveryAssist();
     const tread = world.scene.getObjectByName('wheel-contact-tread-impressions');
     if (tread) tread.visible = false;
     const effects = { time: 0, degraded: 0 }, camera = cameras.camera;
@@ -170,9 +170,22 @@ export async function createPurgatorySlice(context: SceneContext, entry: Episode
         if (!active || paused || disposed) return;
         const step = Math.min(Math.max(dt, 0), 0.05);
         if (returning) return;
+        if(overlay.action==='skip'){
+          overlay.action=null;context.clearInput();
+          if(phase==='replay'){
+            // Resolve only the authored encounter, never the player's recovery.
+            for(let i=0;i<7200&&driver.busy;i++)driver.step(1/60);
+            planFinished();pose(.25);world.mesh.refresh();
+          }else if(phase==='stuck'){phase='recover';phaseTime=0;manualControl=true;cameras.set('chase');}
+          else if(phase==='outro'||phase==='sand'){phase='archive';phaseTime=0;}
+          else if(phase==='archive'){phase='end';phaseTime=0;}
+        }
         if (overlay.action === 'restart') { reset(); overlay.action = null; return; }
         if (input.returnPressed || overlay.action === 'return' || (phase==='end'&&input.interactPressed)) {
           const complete=phase==='end'&&driver.free()&&!input.returnPressed;
+          // Consume the click before requesting a transition. A failed/cancelled return
+          // must wait for a new player action, not silently submit the same completion.
+          overlay.action = null;
           returning = true; driver.interrupt(); panel.root.hidden = overlay.root.hidden = true; context.clearInput();
           context.request({ kind: 'return-to-hub', result: { episodeId: 'episode-rover-01', wreckId: entry.wreckId, chapter:'purgatory', outcome: complete?'completed':'aborted' } });
           return;
@@ -240,6 +253,7 @@ export async function createPurgatorySlice(context: SceneContext, entry: Episode
         }
         overlay.render(phase, phaseTime, (SITE.stuck.z - s.z) / (SITE.stuck.z - (SITE.escape.z + 0.9)), held, blocked);
       },
+      journeyShot(direction,seconds,reduced){if(direction==='out'){seconds=reduced?0:seconds;rover.root.position.z=vehicle.position.z-Math.min(seconds,6)*.12;rover.root.position.y=vehicle.position.y+ground.surface(rover.root.position.x,rover.root.position.z)-ground.surface(vehicle.position.x,vehicle.position.z);rover.root.updateMatrixWorld(true);}},
       resize(width, height) { camera.aspect = width / height; camera.updateProjectionMatrix(); dust.setView(camera.fov, height); },
       setPaused(value) { paused = value; if(!value)returning=false; document.body.classList.toggle('purgatory-recover',phase==='recover'&&!value); panel.root.hidden = value || phase !== 'recover'; overlay.root.hidden = value; panel.actions.length = 0; },
       restart() { paused = false; reset(); show(); },
