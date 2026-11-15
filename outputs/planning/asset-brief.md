@@ -1,5 +1,13 @@
 # Rover and opening scene asset brief
 
+## Blue flame spirit authority, 15 November 2026
+
+Use `assets/spirit/blue-flame-v1/reference.png` as the accepted spirit image authority; its original and SHA-256 are retained in the adjacent `SOURCE.md`. The character is now procedural code in `entities/spirit/`, with a white-cyan nucleus, blue flowing shell, world-space wake and sparse embers. No model generation or skeleton is needed for this appearance. The supplied image is reference-only, not a runtime texture or an assertion of third-party redistribution rights. Final runtime visual acceptance remains open. The former humanoid was tentative and is superseded; keep movement and appearance separate. See `spirit-flame.md` and `../references/montblanc-run/study.md`.
+
+## Approved hub restoration, 15 November 2026
+
+The user selected the terrain from commit `a38322f`. The default hub and Opportunity drive preview again use its trough/basin terrain, fine scanned dust, varied grounded outcrops, distant crater vista and cold cloudy atmosphere. New-game spawn is `(0,8)` and Opportunity remains `(0,-25)`. Existing missions, saves, spirit work and soft stone-contact physics are retained. The newer reference100 map stays available only through `createHubEnvironment({legacyTerrain:false})`; earlier notes calling it the default are historical. Terrain/material source matches a38322f; modern contact tagging/cache integration is retained. Existing saved positions remain valid and are not cleared.
+
 ## Reference terrain update, 15 November 2026
 
 The active branch is `fixing_terrain`. The default hub and Opportunity drive preview now use an authored 100 × 100 metre terrain: broad winding sandy floor, asymmetric low western shelf and higher eastern headland, restrained orange/peach haze, sparse scanned rock anchors and debris. The three new user-supplied images under `outputs/references/terrain-100/` are the primary direction for this pass, superseding the old gray-sky hub appearance. Spawn is now `(0,36)`; the single memory rover remains at `(0,-25)`. Legacy terrain is retained through `createHubEnvironment({legacyTerrain:true})`, and the fictional repair episode remains separate.

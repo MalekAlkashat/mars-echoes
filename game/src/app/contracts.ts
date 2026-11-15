@@ -34,12 +34,13 @@ export type SceneRequest =
   | { kind: 'return-to-hub'; result: EpisodeResult };
 export interface InputFrame {
   moveX: number; moveY: number; rotate: number; lookX: number; lookY: number;
+  rushHeld: boolean;
   dragX: number; dragY: number; zoom: number;
   interactHeld: boolean; startPressed: boolean; interactPressed: boolean; confirmPressed: boolean;
   opticalPressed: boolean; replayPressed: boolean; returnPressed: boolean; leapPressed: boolean;
 }
 export function emptyInput(): InputFrame {
-  return {moveX:0,moveY:0,rotate:0,lookX:0,lookY:0,dragX:0,dragY:0,zoom:0,
+  return {moveX:0,moveY:0,rotate:0,lookX:0,lookY:0,rushHeld:false,dragX:0,dragY:0,zoom:0,
     interactHeld:false,startPressed:false,interactPressed:false,confirmPressed:false,opticalPressed:false,
     replayPressed:false,returnPressed:false,leapPressed:false};
 }
@@ -47,7 +48,7 @@ export interface GameScene {
   readonly id: SceneId;
   readonly scene: Scene;
   readonly camera: PerspectiveCamera;
-  readonly effects: {time: number; degraded: number};
+  readonly effects: {time: number; degraded: number; speed?: number};
   activate(): void;
   update(dt: number, input: Readonly<InputFrame>): void;
   resize(width: number, height: number): void;

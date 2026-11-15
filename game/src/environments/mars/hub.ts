@@ -13,7 +13,8 @@ import { createTerrain100World } from './terrain-100-world';
 
 /** Present-day hub dressing; the fictional repair episode keeps its separate baseline. */
 export function createHubEnvironment(options: { scannedOutcropPreview?: boolean; variedOutcrops?: boolean; quietGround?: boolean; legacyTerrain?:boolean } = {}): MarsEnvironment {
-  if(!options.legacyTerrain)return createTerrain100World();
+  // User-selected a38322f landscape is the default; retain the alternate map explicitly.
+  if(options.legacyTerrain===false)return createTerrain100World();
   const hubHeight = (x: number, z: number) => sampleHubHeight(x, z, options.quietGround);
   const scene = new Scene();
   scene.name = 'meridiani-trough-and-crater-hub';
@@ -90,7 +91,7 @@ export function createHubEnvironment(options: { scannedOutcropPreview?: boolean;
   scene.userData.layout = {
     units:'metres',up:'+Y',forward:'-Z',spawn:spawn.toArray(),
     playableRadius:HUB_TERRAIN.playableRadius,vistaRadius:HUB_TERRAIN.vistaRadius,
-    decorativeWrecks:0,terrain:'hub-troughs-v1',seed:18427,
+    decorativeWrecks:0,terrain:'hub-troughs-v1',terrainWidth:160,terrainDepth:160,seed:18427,
     landmarks:{overlook:[-10,-14],basin:[9,-37],rim:[60,-850]},
   };
   let disposed = false;

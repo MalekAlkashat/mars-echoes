@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-15",
+  "baseRevision": "548ce49",
+  "branch": "fixing_terrain",
+  "testsPassed": 81,
+  "spiritTestsPassed": 12,
+  "productionBuild": "passed",
+  "productionNativeSmoke": "passed",
+  "productionBrowserErrors": 0,
+  "tuning": {
+    "glideMetresPerSecond": 4.2,
+    "rushMetresPerSecond": 7.5,
+    "movementDampingPerSecond": 8,
+    "brakeDampingPerSecond": 12,
+    "fovDegrees": [48, 54],
+    "trailLifeSeconds": [0.38, 0.65],
+    "trailSamples": 64,
+    "trailSampleRateHz": 60
+  },
+  "spiritBudget": {
+    "mainViewDraws": 6,
+    "triangles": 3074,
+    "noiseTexturePixels": [128, 128],
+    "noiseTextureBytesWithoutDriverOverhead": 65536,
+    "maxEmbers": 32,
+    "lowPixelRatioEmbers": 12,
+    "addedRenderTargets": 0,
+    "addedShadowLights": 0
+  },
+  "nativeObservations": {
+    "quality": "balanced",
+    "pixelRatio": 1.25,
+    "bloomEnabled": false,
+    "fpsCap": 45,
+    "observedFpsRange": [44.9, 45.2],
+    "renderSubmissionMsRange": [0.5, 0.9],
+    "memoryReturns": 10,
+    "returnPositionXZ": [1.08, -23.70],
+    "returnedGeometries": 30,
+    "returnedTextures": 32,
+    "returnedTrailSpan": 0,
+    "returnedRush": 0,
+    "returnedFov": 48,
+    "pausedRenderedFramesBefore": 19819,
+    "pausedRenderedFramesAfter": 19819,
+    "thermalBenchmarkPerformed": false,
+    "matchedUnchangedMapGpuBenchmarkPerformed": false,
+    "terrainChangedConcurrently": true
+  },
+  "sourceSha256": {
+    "appearance.ts": "7e6c59b0440bc504a358615602d4a21686ad034f3e34a08fb6401dea25c9ab1f",
+    "flame-materials.ts": "7fb8883daae67a46341bd6c5dd579a9342b5c4df8a22ee07a613cc38cb8c75e5",
+    "wake.ts": "5dfdc981f0755e03703804ce97fdc0dc6aa0ce0048b3e6d2d621e98692446404",
+    "trail-history.ts": "f24a9ffecb2b0349b500ac7828c9f203e44a56d625654d181d288f49d55a03a8",
+    "controller.ts": "e2dae71dae21089c6173a668937df3b504db0906d9dca55efa2e810dd9ca9225",
+    "camera.ts": "bf392d94b0daf15b21b3638f867305e79a64fb3ea2802f9d24ed115cf37f30f7"
+  }
+}

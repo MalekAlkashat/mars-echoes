@@ -1,5 +1,13 @@
 # Spirit and machine memories: development roadmap
 
+## Blue flame spirit, 15 November 2026
+
+The user approved replacing the humanoid placeholder with a compact living blue flame, using their supplied image as the design authority. WASD glides at 4.2 m/s; either Shift smoothly rushes at 7.5 m/s; Space retains the bounded leap and obstacles remain solid. The implemented procedural spirit has a white-cyan core, flowing blue envelope, world-space wake, pooled embers and speed-responsive camera. It uses six effect draws, 3,074 triangles and one small noise texture without requiring bloom. Existing terrain and mission work is preserved. See `outputs/planning/spirit-flame.md` and `outputs/review/blue-flame-v1/REVIEW.md`. Build and 81 tests pass; native development/production review and ten stable memory returns pass. Final runtime visual acceptance and thermal measurement remain open. Older notes deferring spirit art or calling the humanoid current are superseded by this section.
+
+## Approved hub restoration, 15 November 2026
+
+The user selected the terrain from commit `a38322f`. The default hub and Opportunity drive preview again use its trough/basin terrain, fine scanned dust, varied grounded outcrops, distant crater vista and cold cloudy atmosphere. New-game spawn is `(0,8)` and Opportunity remains `(0,-25)`. Existing missions, saves, spirit work and soft stone-contact physics are retained. The newer reference100 map stays available only through `createHubEnvironment({legacyTerrain:false})`; earlier notes calling it the default are historical. Terrain/material source matches a38322f; modern contact tagging/cache integration is retained. Existing saved positions remain valid and are not cleared.
+
 ## Reference terrain update, 15 November 2026
 
 The active branch is `fixing_terrain`. The default hub and Opportunity drive preview now use an authored 100 × 100 metre terrain: broad winding sandy floor, asymmetric low western shelf and higher eastern headland, restrained orange/peach haze, sparse scanned rock anchors and debris. The three new user-supplied images under `outputs/references/terrain-100/` are the primary direction for this pass, superseding the old gray-sky hub appearance. Spawn is now `(0,36)`; the single memory rover remains at `(0,-25)`. Legacy terrain is retained through `createHubEnvironment({legacyTerrain:true})`, and the fictional repair episode remains separate.
