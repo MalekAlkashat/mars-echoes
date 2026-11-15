@@ -1,5 +1,28 @@
 # Spirit and machine memories: development roadmap
 
+## Active polish backlog, 15 November 2026
+
+The user's six-item To do list is the current polish backlog. These are planned tasks, not completed features. Existing chapter integration and approved a38322f terrain remain the baseline. This section supersedes older proposals to expand the Skills interface: replace that player-facing interface with a journal linking robots/equipment. Preserve existing chapter rewards and saved progress while migrating their presentation. The exact robot-link structure remains to be defined.
+
+| ID | Task | Status | Owner | Completion check |
+| --- | --- | --- | --- | --- |
+| VIS-01 | Halo on the embodied equipment | Planned | Scene / visual owner | A readable halo identifies the equipment currently embodied during a memory; follows its model, clears on exit/reset and is checked under each mission's lighting without another renderer or loop. Exact appearance remains to be reviewed. |
+| TRN-01 | Transition between Opportunity missions | Planned | Integrator + chapter owners | Completing a chapter advances to the next; leaving a memory returns to the hub; final shutdown returns to the spirit. Preserve the original hub bookmark, unlocks and checkpoints, and handle loading failure safely. Native end-to-end rehearsal passes. |
+| REF-01 | Real reference images across the remaining missions, following Mission II's presentation | Mission I in progress (project owner); remaining gaps planned | Chapter owners + asset owner | Audit each chapter against Mission II, add relevant historical images at the discoveries/actions they explain, with captions, source credits and clear separation of evidence from reconstruction. Verify reveals and readability in gameplay. Keep existing Mission I work intact. |
+| ANI-01 | Fix Mission I animation | Audit / fix planned | Mission I owner | Identify the affected sequence in the current mission; fix abrupt or incorrect motion and interruption/reset behavior. Capture the same action before/after at normal speed in the actual game. |
+| UX-01 | Review a better way to display data than the sidebar | Design review planned | UI owner + chapter owners | Compare a compact contextual presentation with the current sidebar using actual mission evidence. Select a direction before implementation; preserve access to observations, source captions and controls without blocking the rover view. |
+| JRN-01 | Replace Skills with a journal linking robots | Planned | UI owner + integrator | A journal connects discovered robots/equipment with their mission memories and evidence. Replace Skills entry points and migrate existing rewards/progress presentation without losing saves. Detailed linking behavior and content remain to be defined; verify navigation, reopen, pause and resume. |
+
+### TRN-01: swift cinematic implementation
+
+Use the existing scene director, chapter factories and fade infrastructure, with separate compact maps. A proposed 3–4-second transition holds on the rover briefly, fades out, displays one concise passage-of-time caption while loading, then fades into a matching rover shot before restoring controls. Keep this driven by scene state and elapsed time; no prerendered video, new renderer, animation loop or continuous connecting world is required. Final duration, wording and camera framing remain tunable.
+
+Sequence: ancient-water discovery → Purgatory Dune → final dust storm → present-day spirit hub. Intermediate chapter completion should advance within Opportunity's memory; explicit Leave Memory should still return to the bookmarked hub. The integrator owns the typed chapter-advance request, transition lock, input clearing and save boundary. Chapter owners supply completion hooks and arrival/exit framing. Record progress and reward changes once the next destination activates successfully, retain a recoverable current scene/checkpoint on load failure, and dispose retired scene effects through the existing lifecycle.
+
+Checks: normal chapter advance, repeated completion input, pause/resume during the fade, failed destination load/retry, reload from the next checkpoint, explicit abort to hub and final return. Confirm the implemented chapter IDs and current routing before editing; older single-chapter descriptions below are historical.
+
+Suggested order: audit Mission I animation and chapter reference gaps; integrate safe mission transitions; apply the halo; review data presentation together with the journal so the same evidence does not acquire competing interfaces. Each task can be reviewed independently; UI design choices are not silently selected by this backlog.
+
 ## Reference terrain update, 15 November 2026
 
 The active branch is `fixing_terrain`. The default hub and Opportunity drive preview now use an authored 100 × 100 metre terrain: broad winding sandy floor, asymmetric low western shelf and higher eastern headland, restrained orange/peach haze, sparse scanned rock anchors and debris. The three new user-supplied images under `outputs/references/terrain-100/` are the primary direction for this pass, superseding the old gray-sky hub appearance. Spawn is now `(0,36)`; the single memory rover remains at `(0,-25)`. Legacy terrain is retained through `createHubEnvironment({legacyTerrain:true})`, and the fictional repair episode remains separate.
