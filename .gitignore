@@ -222,3 +222,10 @@ graphify-out/
 !/outputs/review/visible-sky-only/*.json
 !/outputs/review/visible-sky-only/*.html
 !/outputs/review/visible-sky-only/*.png
+
+# Combined transition/sky integration evidence; raw QA stays under work/.
+!/outputs/review/transition-sky-integration/
+/outputs/review/transition-sky-integration/*
+!/outputs/review/transition-sky-integration/*.md
+!/outputs/review/transition-sky-integration/*.json
+!/outputs/review/transition-sky-integration/*.png

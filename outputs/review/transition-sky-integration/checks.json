@@ -1,0 +1,297 @@
+{
+  "fullProduction": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "fresh-new-game-before-any-mission"
+      },
+      {
+        "name": "mission-one-boundary-no-hub"
+      },
+      {
+        "name": "purgatory-native-control"
+      },
+      {
+        "name": "mission-two-boundary-no-hub"
+      },
+      {
+        "name": "long-night-16-second-storm-archive-continue-and-sunlight",
+        "stormMs": 15992
+      },
+      {
+        "name": "story-completed-one-final-return"
+      },
+      {
+        "name": "automatic-ending-journal-photo-and-no-loading-popup"
+      },
+      {
+        "name": "completed-save-continues-without-forced-ending-replay"
+      }
+    ],
+    "errors": []
+  },
+  "transitionEdges": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "m1 slow preparation retains authored UI; pause survives activation; no popup or modal focus theft"
+      },
+      {
+        "name": "m2 slow preparation retains authored UI; pause survives activation; no popup or modal focus theft"
+      },
+      {
+        "name": "m3 slow preparation retains authored UI; pause survives activation; no popup or modal focus theft"
+      },
+      {
+        "name": "real image-load failure exposes Retry and preserves only earned memories"
+      },
+      {
+        "name": "injected final-hub preparation failure defers SUNLIGHT and story completion until retry"
+      },
+      {
+        "name": "cancel late preparation, exit, reenter and Skip preserve unfinished chapter and original bookmark"
+      },
+      {
+        "name": "m1 boundary reload resumes without replaying completed work"
+      },
+      {
+        "name": "m2 boundary reload resumes without replaying completed work"
+      },
+      {
+        "name": "m3 boundary reload resumes without replaying completed work"
+      },
+      {
+        "name": "touch, large text, reduced motion, focus loss and Skip preserve final reveal and delayed ending"
+      }
+    ],
+    "errors": [],
+    "expectedFailures": [
+      "last-message.jpg"
+    ]
+  },
+  "finalPauseInput": {
+    "passed": true,
+    "checks": [
+      "paused preparation failure focuses Retry; Cancel restores accessible paused source",
+      "held W Shift E do not move or complete the incoming unplayed chapter",
+      "incoming chapter restart restores its own controls and no bridge overlay"
+    ],
+    "errors": []
+  },
+  "preparationClock": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "waiting clock advances at low cap and freezes only on pause",
+        "waitSeconds": 2.503
+      },
+      {
+        "name": "waiting clock advances at balanced cap and freezes only on pause",
+        "waitSeconds": 2.509
+      }
+    ],
+    "errors": [],
+    "expectedFailures": []
+  },
+  "macroRestoration": {
+    "checks": [
+      {
+        "port": 5283,
+        "macroPause": true,
+        "outdoorRestart": true
+      }
+    ],
+    "errors": []
+  },
+  "skyViews": {
+    "errors": [],
+    "views": [
+      {
+        "version": "combined",
+        "name": "hub",
+        "view": "horizon",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      },
+      {
+        "version": "combined",
+        "name": "hub",
+        "view": "upward",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      },
+      {
+        "version": "combined",
+        "name": "hub",
+        "view": "reverse",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      },
+      {
+        "version": "combined",
+        "name": "m1",
+        "view": "horizon",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      },
+      {
+        "version": "combined",
+        "name": "m1",
+        "view": "upward",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      },
+      {
+        "version": "combined",
+        "name": "m1",
+        "view": "reverse",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      },
+      {
+        "version": "combined",
+        "name": "m2",
+        "view": "horizon",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      },
+      {
+        "version": "combined",
+        "name": "m2",
+        "view": "upward",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      },
+      {
+        "version": "combined",
+        "name": "m2",
+        "view": "reverse",
+        "counters": {
+          "engine": "three.js r181"
+        }
+      }
+    ],
+    "viewport": [
+      1440,
+      900
+    ],
+    "graphics": "balanced"
+  },
+  "resourceReturns": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "six-replay-abort-returns-stable-resources-and-one-journal",
+        "resources": [
+          {
+            "geometries": "30",
+            "textures": "26",
+            "loops": "1"
+          },
+          {
+            "geometries": "30",
+            "textures": "26",
+            "loops": "1"
+          },
+          {
+            "geometries": "30",
+            "textures": "26",
+            "loops": "1"
+          },
+          {
+            "geometries": "30",
+            "textures": "26",
+            "loops": "1"
+          },
+          {
+            "geometries": "30",
+            "textures": "26",
+            "loops": "1"
+          },
+          {
+            "geometries": "30",
+            "textures": "26",
+            "loops": "1"
+          }
+        ]
+      }
+    ],
+    "errors": [],
+    "activeScenes": [
+      {
+        "chapter": "blueberry-clue",
+        "counters": {
+          "drawCalls": "53",
+          "triangles": "240820",
+          "geometries": "31",
+          "textures": "31",
+          "loops": "1",
+          "fpsCap": "30"
+        }
+      },
+      {
+        "chapter": "purgatory",
+        "counters": {
+          "drawCalls": "36",
+          "triangles": "176414",
+          "geometries": "19",
+          "textures": "28",
+          "loops": "1",
+          "fpsCap": "30"
+        }
+      },
+      {
+        "chapter": "blueberry-clue",
+        "counters": {
+          "drawCalls": "53",
+          "triangles": "240820",
+          "geometries": "31",
+          "textures": "31",
+          "loops": "1",
+          "fpsCap": "30"
+        }
+      },
+      {
+        "chapter": "purgatory",
+        "counters": {
+          "drawCalls": "36",
+          "triangles": "176414",
+          "geometries": "19",
+          "textures": "28",
+          "loops": "1",
+          "fpsCap": "30"
+        }
+      },
+      {
+        "chapter": "blueberry-clue",
+        "counters": {
+          "drawCalls": "53",
+          "triangles": "240820",
+          "geometries": "31",
+          "textures": "31",
+          "loops": "1",
+          "fpsCap": "30"
+        }
+      },
+      {
+        "chapter": "purgatory",
+        "counters": {
+          "drawCalls": "36",
+          "triangles": "176414",
+          "geometries": "19",
+          "textures": "28",
+          "loops": "1",
+          "fpsCap": "30"
+        }
+      }
+    ]
+  }
+}

@@ -251,7 +251,7 @@ export class Game {
     const blocked=this.director.paused||this.director.transitioning||!element('transition').hidden||Boolean(this.director.active?.isPresentationIdle?.());
     const preparing=this.director.transitioning&&!this.director.paused&&!this.focusSuspended&&Boolean(this.director.active?.updatePreparation);
     if((blocked&&!preparing&&!this.needsRender)||(time<this.nextFrameAt&&!this.needsRender)){
-      if(blocked)this.lastTime=0;
+      if(blocked&&!preparing)this.lastTime=0;
       this.scheduleFrame();return;
     }
     const dt=this.lastTime===0?0:Math.min(Math.max((time-this.lastTime)/1000,0),.05);this.lastTime=time;

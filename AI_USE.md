@@ -27,3 +27,7 @@ The user supplied the journal concept and scope, replacing the proposed player-f
 ## Journey handoff polish — 15 November 2026
 
 Codex continued the integrated journey in isolated `codex/journey-polish` from `ac65d6e`: preparation/pause/recovery presentation, a scene-owned return camera using the accepted blue spirit, and native runtime verification. No generated assets, historical captions, dependencies, merge, push or deployment. Evidence and measured limitations: `outputs/review/journey-polish/REVIEW.md`. Visual acceptance remains with the project owner.
+
+## Transition and visible-sky integration — 15 November 2026
+
+At the user's request, Codex combined the completed journey-polish and visible-sky-only candidates from `ac65d6e`, preserving their original worktrees and main's unrelated staged resources/notes/stashes. The sky shader was separated from lighting so Mission I/II share the visible hub sky without replacing lights, fog or reflections. Combined controlled-load QA exposed a frame-cap preparation-clock reset; Codex corrected the clock guard and verified the affected behavior in isolated browser storage. No new media generation, NASA-pixel editing, package addition or public deployment. Combined evidence and limits: `outputs/review/transition-sky-integration/REVIEW.md`.
