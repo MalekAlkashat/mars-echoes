@@ -1,0 +1,9 @@
+{
+  "errors": [],
+  "checks": [
+    "restart pending epilogue retains first answer, removes old UI, and returns beside rover",
+    "production keyboard-only check, skip saves complete, fully opaque end produces zero additional GPU draw calls",
+    "production renderer wakes for replay and normal exploration"
+  ],
+  "passed": true
+}

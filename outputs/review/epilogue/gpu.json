@@ -1,0 +1,86 @@
+[
+  {
+    "name": "baseline",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dpr": 1,
+    "preset": "balanced",
+    "cap": 45,
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gpuTimerAvailable": true,
+    "cpuCallbackMs": {
+      "samples": 226,
+      "median": 0.7999999970197678,
+      "p95": 1.2999999970197678
+    },
+    "gpuElapsedMs": {
+      "samples": 226,
+      "median": 6.521856,
+      "p95": 7.79264
+    },
+    "draws": {
+      "samples": 226,
+      "median": 94,
+      "p95": 94
+    },
+    "presentedFps": 45.00180007200287
+  },
+  {
+    "name": "candidate-idle",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dpr": 1,
+    "preset": "balanced",
+    "cap": 45,
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gpuTimerAvailable": true,
+    "cpuCallbackMs": {
+      "samples": 225,
+      "median": 0.7000000029802322,
+      "p95": 1.199999988079071
+    },
+    "gpuElapsedMs": {
+      "samples": 225,
+      "median": 6.967296,
+      "p95": 8.22784
+    },
+    "draws": {
+      "samples": 225,
+      "median": 94,
+      "p95": 94
+    },
+    "presentedFps": 45.101276527201705
+  },
+  {
+    "name": "candidate-ending",
+    "viewport": [
+      1440,
+      900
+    ],
+    "dpr": 1,
+    "preset": "balanced",
+    "cap": 45,
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "gpuTimerAvailable": true,
+    "cpuCallbackMs": {
+      "samples": 225,
+      "median": 0.7000000029802322,
+      "p95": 1
+    },
+    "gpuElapsedMs": {
+      "samples": 225,
+      "median": 2.562048,
+      "p95": 4.384768
+    },
+    "draws": {
+      "samples": 225,
+      "median": 97,
+      "p95": 97
+    },
+    "presentedFps": 45.102184637068355
+  }
+]

@@ -1,11 +1,12 @@
 import type { HubBookmark, RoverCheckpoint, SceneEntry, OpportunityJourney } from './contracts.ts';
+import {parseFinale,type FinaleState} from './finale.ts';
 import {parsePurgatoryData} from '../scenes/episodes/rover/missions/purgatory/checkpoint.ts';
 import {legacyNightReserve,type NightPhase} from '../scenes/episodes/rover/missions/long-night/progress.ts';
 
 export const SAVE_KEY = 'mars-echoes.save.v2';
 export const BACKUP_SAVE_KEY = 'mars-echoes.save.v2.backup';
 export const LEGACY_SAVE_KEY = 'mars-echoes.save.v1';
-export type ExplorationSave = {version:2; savedAt:number; entry:SceneEntry; bookmark?:HubBookmark; completed:string[]; chapters?:string[]; skills?:string[]; journey?:OpportunityJourney; opportunityComplete?:boolean; opportunityEncountered?:boolean};
+export type ExplorationSave = {version:2; savedAt:number; entry:SceneEntry; bookmark?:HubBookmark; completed:string[]; chapters?:string[]; skills?:string[]; journey?:OpportunityJourney; opportunityComplete?:boolean; opportunityEncountered?:boolean; finale?:FinaleState};
 export type SaveStorage = Pick<Storage,'getItem'|'setItem'> & Partial<Pick<Storage,'removeItem'>>;
 export type SaveRead = {save?:ExplorationSave; source:'primary'|'backup'|'legacy'|'empty'|'invalid'|'unavailable'};
 const phases=['ready','drive','scan','extract','align','insert','calibrate','relay','transmit','end'];
@@ -87,6 +88,8 @@ export function parseSave(raw:string|null):ExplorationSave|undefined {
     if(chapters.includes('purgatory')!==skills.includes('sand'))return;
     if(chapters.includes('long-night')!==skills.includes('sunlight'))return;
     if(chapters.includes('blueberry-clue')!==skills.includes('grind'))return;
+    const finale=value.finale===undefined?undefined:parseFinale(value.finale);
+    if(value.finale!==undefined&&(!finale||!chapters.includes('long-night')))return;
     if(value.version!==2||!inRange(value.savedAt,0,1e15))return;
     const entry=sceneEntry(value.entry);
     if(!entry)return;
@@ -104,7 +107,7 @@ export function parseSave(raw:string|null):ExplorationSave|undefined {
     if(entry.scene==='episode-rover-01'&&entry.journey&&(!journey||entry.chapter!==journey.chapter))return;
     if(value.opportunityComplete!==undefined&&typeof value.opportunityComplete!=='boolean')return;
     if(value.opportunityComplete&&!['blueberry-clue','purgatory','long-night'].every(id=>chapters.includes(id)))return;
-    return {version:2,savedAt:value.savedAt,entry,...(journey?{journey}:{}),...(value.opportunityComplete!==undefined?{opportunityComplete:value.opportunityComplete}:{}),bookmark:b,...(value.opportunityEncountered!==undefined?{opportunityEncountered:value.opportunityEncountered}:{}),...(value.chapters!==undefined?{chapters,skills}:{}),completed:[...new Set<string>(value.completed)]};
+    return {version:2,savedAt:value.savedAt,entry,...(journey?{journey}:{}),...(value.opportunityComplete!==undefined?{opportunityComplete:value.opportunityComplete}:{}),bookmark:b,...(finale?{finale}:{}),...(value.opportunityEncountered!==undefined?{opportunityEncountered:value.opportunityEncountered}:{}),...(value.chapters!==undefined?{chapters,skills}:{}),completed:[...new Set<string>(value.completed)]};
   }catch{return;}
 }
 export function readSaveRecord(storage?:SaveStorage):SaveRead {

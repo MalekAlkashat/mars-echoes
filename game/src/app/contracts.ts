@@ -67,6 +67,8 @@ export interface GameScene {
   getSaveEntry?(): SceneEntry;
   /** Scene-local cinematic adapter; never interpolates between different maps. */
   journeyShot?(direction:'in'|'out', seconds:number, reduced:boolean):void;
+  /** Opaque, settled UI can stop 3D work while DOM actions remain responsive. */
+  isPresentationIdle?(): boolean;
 }
 export interface SceneContext {
   assets: AssetCache;

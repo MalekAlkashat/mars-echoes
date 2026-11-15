@@ -5,6 +5,7 @@ import { createSpiritAppearance, type SpiritAppearance } from '../../entities/sp
 import { SpiritCamera } from '../../entities/spirit/camera';
 import { element } from '../../ui';
 import { createHubWorld } from './layout';
+import {OpportunityEpilogue} from './epilogue';
 
 export async function createMarsHub(context: SceneContext, entry: Extract<SceneEntry, {scene: 'mars-hub'}>, signal: AbortSignal): Promise<GameScene> {
   const assets = await context.assets.load();
@@ -21,6 +22,9 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
     const follow = new SpiritCamera();
     let started = Boolean(entry.bookmark), active = false, paused = false, disposed = false;
     const effects = { time: 0, degraded: 0, speed: 0 };
+    let epilogue:OpportunityEpilogue|undefined,finaleObserved=false;
+    const localEvents=new AbortController();
+    const revisit=document.createElement('button');revisit.className='epilogue-revisit';revisit.textContent='Revisit ending';revisit.hidden=true;document.body.append(revisit);
     const restore = (bookmark?: HubBookmark) => {
       effects.speed = 0;
       controller.reset(bookmark?.position[0] ?? world.spawn.x, bookmark?.position[2] ?? world.spawn.z, world.height, bookmark?.heading ?? 0);
@@ -29,6 +33,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       follow.distance = bookmark?.cameraDistance ?? 5.8;
       rig.reset(controller);
       follow.reset();
+      follow.camera.zoom=1;follow.camera.updateProjectionMatrix();
       follow.update(0, controller.position, world.height, world.obstacles);
       rig.update(0, controller, follow.camera, world.height, context.renderer.getPixelRatio(), innerHeight);
     };
@@ -52,12 +57,36 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       element('objective').textContent = 'Approach the abandoned rover.';
       element('controls').hidden = true;
       element('hub-controls').hidden = !started;
+      if(epilogue)epilogue.show();
     };
+    const beginEnding=()=>{
+      if(epilogue||!context.session.chapters.has('long-night'))return;
+      started=true;finaleObserved=true;revisit.hidden=true;choice.hidden=true;
+      // Direct chapter previews have no entry bookmark. Reuse the unobstructed
+      // southern approach rather than composing an ending at the hub spawn.
+      if(controller.position.distanceTo(world.wreck.position)>ROVER_MEMORY.entryDistance){
+        restore({position:[world.wreck.position.x,world.wreck.position.y,world.wreck.position.z+2.6],heading:0,cameraYaw:0,cameraPitch:.12,cameraDistance:5.8});
+      }
+      const bookmark:HubBookmark={position:controller.position.toArray() as [number,number,number],heading:controller.heading,cameraYaw:follow.yaw,cameraPitch:follow.pitch,cameraDistance:follow.distance};
+      controller.reset(bookmark.position[0],bookmark.position[2],world.height,bookmark.heading);
+      epilogue=new OpportunityEpilogue({context,world,controller,camera:follow.camera,bookmark,resetAppearance:()=>rig.reset(controller),exit:()=>{
+        const saved=epilogue?.bookmark;epilogue?.dispose();epilogue=undefined;restore(saved);context.clearInput();show();
+      }});
+    };
+    revisit.addEventListener('click',beginEnding,{signal:localEvents.signal});
     const scene: GameScene = {
       id: 'mars-hub', scene: world.scene, camera: follow.camera, effects,
       activate() { active = true; show(); },
       update(dt, input) {
         if (!active || disposed) return;
+        if(!paused&&!finaleObserved&&context.session.finale?.status==='pending')beginEnding();
+        revisit.hidden=Boolean(epilogue)||paused||!started||!context.session.chapters.has('long-night')||controller.position.distanceTo(world.wreck.position)>=ROVER_MEMORY.entryDistance;
+        if(epilogue){
+          const step=paused?0:dt;effects.time+=step;effects.speed=0;
+          epilogue.update(step);world.tick(effects.time,step);world.follow(controller.position);
+          rig.update(step,controller,follow.camera,world.height,context.renderer.getPixelRatio(),innerHeight);
+          return;
+        }
         if(!choiceReady){choice.value='journey';choiceReady=true;}
         if (!started && input.startPressed) { started = true; show(); }
         const step = paused ? 0 : dt;
@@ -93,19 +122,21 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       },
       resize(width, height) { follow.camera.aspect = width / height; follow.camera.updateProjectionMatrix(); },
       getBookmark() {
+        if(epilogue)return epilogue.bookmark;
         if (!started || !controller.grounded) return;
         return {position:controller.position.toArray() as [number,number,number],heading:controller.heading,
           cameraYaw:follow.yaw,cameraPitch:follow.pitch,cameraDistance:follow.distance};
       },
-      setPaused(value) { paused = value; choice.hidden=true; },
-      restart() { effects.time = 0; restore(); started = true; paused = false; context.clearInput(); show(); },
-      dispose() { if (disposed) return; disposed = true; active = false; choice.remove(); rig.dispose(); world.dispose(); },
+      isPresentationIdle(){return epilogue?.idle??false;},
+      setPaused(value) { paused = value; choice.hidden=true;revisit.hidden=true;epilogue?.setPaused(value); },
+      restart() { epilogue?.dispose();epilogue=undefined;finaleObserved=false;effects.time = 0; restore(); started = true; paused = false; context.clearInput(); show(); },
+      dispose() { if (disposed) return; disposed = true; active = false;localEvents.abort();epilogue?.dispose();revisit.remove(); choice.remove(); rig.dispose(); world.dispose(); },
       debug() { return {phase: started ? 'hub' : 'ready', position: `${controller.position.x.toFixed(2)},${controller.position.z.toFixed(2)}`,
         heading: controller.heading.toFixed(3), grounded: controller.grounded, repaired: false,
         terrain:world.scene.userData.layout?.terrain??'reference100-v1', decorativeWrecks:0,
         terrainWidth:world.scene.userData.layout?.terrainWidth??100,terrainDepth:world.scene.userData.layout?.terrainDepth??100,
         speed:Math.hypot(controller.actualVelocity.x,controller.actualVelocity.z), cameraFov:follow.camera.fov,
-        ...rig.debug()}; },
+        ...rig.debug(),...(epilogue?epilogue.debug():{epilogueBeat:'inactive'})}; },
     };
     return scene;
   } catch (error) {
