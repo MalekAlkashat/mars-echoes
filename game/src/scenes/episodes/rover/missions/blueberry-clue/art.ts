@@ -74,7 +74,7 @@ export async function createDiscoveryArt(signal:AbortSignal){
    landscape.group.visible=!value;rim.visible=value;macro.position.copy(value?MACRO:worldSpecimen);surroundGroup.visible=value;macroLight.visible=value;fill.visible=value;scene.environment=value?(env?.texture??null):landscape.environment();scene.environmentIntensity=value?1:.82;scene.fog=value?macroFog:worldFog;scene.background=value?macroColor:worldColor;
   },
   interpret(active:boolean,elapsed:number,reduce:boolean){return reconstruction.update(active,elapsed,reduce);},
-  tick(time:number,working:boolean,grinding:boolean,depth=0){rat.animate(time,working,grinding,depth*CUT_DEPTH);dust.visible=working;for(let i=0;i<80;i++){const a=i*2.4,t=(time*.7+i*.012)%1;points[i*3]=-.045+Math.cos(a)*t*.035;points[i*3+1]=.027+Math.sin(t*Math.PI)*.012;points[i*3+2]=Math.sin(a)*t*.035;}dust.geometry.getAttribute('position').needsUpdate=true;},
+  tick(time:number,working:boolean,grinding:boolean,depth=0){landscape.tickSky(time);rat.animate(time,working,grinding,depth*CUT_DEPTH);dust.visible=working;for(let i=0;i<80;i++){const a=i*2.4,t=(time*.7+i*.012)%1;points[i*3]=-.045+Math.cos(a)*t*.035;points[i*3+1]=.027+Math.sin(t*Math.PI)*.012;points[i*3+2]=Math.sin(a)*t*.035;}dust.geometry.getAttribute('position').needsUpdate=true;},
   dispose(){textures.forEach(t=>t.dispose());landscape.dispose();env?.dispose();disposeUnusedGrains();disposeSceneResources(scene);},
  };
 }

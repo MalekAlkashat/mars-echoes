@@ -214,3 +214,11 @@ graphify-out/
 !/outputs/review/journey-polish/*.json
 !/outputs/review/journey-polish/*.png
 !/outputs/review/journey-polish/*.html
+
+# Visible-sky-only review evidence; recordings remain under ignored work/.
+!/outputs/review/visible-sky-only/
+/outputs/review/visible-sky-only/*
+!/outputs/review/visible-sky-only/*.md
+!/outputs/review/visible-sky-only/*.json
+!/outputs/review/visible-sky-only/*.html
+!/outputs/review/visible-sky-only/*.png

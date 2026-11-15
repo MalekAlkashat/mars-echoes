@@ -1,0 +1,10 @@
+{
+  "errors": [],
+  "checks": [
+    "six-cameras",
+    "pause-frozen-canvas",
+    "resume-drive",
+    "restart-intro"
+  ],
+  "passed": true
+}

@@ -1,5 +1,6 @@
 import * as T from 'three';
 import {surfaceMaterial,surfaceTexturesReady} from '../../../../../environments/mars/materials';
+import {createMarsSkyMaterial} from '../../../../../environments/mars/sky';
 import {addAtmosphere} from '../../../../../environments/mars/atmosphere';
 import {bakeRockBaseDust,setRockGroundPlanes,type DustFootprint} from '../../../../../environments/mars/hub-rock-dust';
 import {SLABS} from './site';
@@ -54,10 +55,14 @@ export function createLandscape(){
  (sky.material.uniforms.sunDirection.value as T.Vector3).set(-.5,.34,-1).normalize();
  atmosphere.follow(new T.Vector3(0,0,3));
  atmosphere.sun.shadow.camera.left=-16;atmosphere.sun.shadow.camera.right=16;atmosphere.sun.shadow.camera.top=18;atmosphere.sun.shadow.camera.bottom=-18;
+ // Preserve the original material for the existing light direction and PMREM capture.
+ // Replace only the visible material on the same dome; macro visibility stays group-owned.
+ const probeMaterial=sky.material;sky.material=createMarsSkyMaterial();
  group.add(...[...lighting.children]);
  return {group,sun:atmosphere.sun,ground,concretions,ready:surfaceTexturesReady(),
   setup(renderer:T.WebGLRenderer){atmosphere.setupEnvironment(renderer);},
   environment(){return lighting.environment;},
-  dispose(){atmosphere.dispose();},
+  tickSky(time:number){sky.material.uniforms.time.value=time;},
+  dispose(){atmosphere.dispose();probeMaterial.dispose();},
  };
 }
