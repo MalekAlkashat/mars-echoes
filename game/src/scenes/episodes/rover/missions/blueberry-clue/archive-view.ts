@@ -1,5 +1,6 @@
 import { NASA_ARCHIVE } from './archive-data';
 import type { ArchiveCue } from './archive-cues';
+import { archiveWords, archiveHeading, renderWords } from './passage';
 
 /** One centered archive photograph, following the completed reconstruction. */
 export class DiscoveryArchive {
@@ -29,7 +30,10 @@ export class DiscoveryArchive {
     const summary = document.createElement('summary'); summary.textContent = 'Photo details';
     details.append(summary, this.metadata);
     caption.append(this.title, this.source, details);
-    this.figure.append(this.label, this.image, caption, this.note);
+    const explanation=document.createElement('p');explanation.className='discovery-explanation';
+    renderWords(explanation,archiveWords);
+    const interpretation=document.createElement('p');interpretation.className='discovery-interpretation';interpretation.textContent='The animation is a reconstruction, not a photograph of the past.';
+    this.figure.append(this.label, this.image, caption, this.note, explanation, interpretation);
     const pause = document.createElement('button');
     pause.type = 'button'; pause.className = 'discovery-archive-pause'; pause.textContent = 'Pause';
     pause.addEventListener('click', onPause, { signal: this.events.signal });
@@ -73,7 +77,7 @@ export class DiscoveryArchive {
     this.root.inert = cue.reveal < .1;
     this.root.setAttribute('aria-hidden', String(cue.reveal < .1));
     this.panel.dataset.archive = cue.hero ? 'hero' : 'context';
-    if (this.note.textContent !== cue.note) this.note.textContent = cue.note;
+    renderWords(this.note,archiveHeading);
   }
 
   hide(): void {

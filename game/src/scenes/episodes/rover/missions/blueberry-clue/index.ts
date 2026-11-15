@@ -13,6 +13,7 @@ import {SITE} from './site';
 import { archiveCue } from './archive-cues';
 import { DiscoveryArchive } from './archive-view';
 import { MacroCamera } from './macro-camera';
+import { isDiscoveryPassage, discoveryWords, renderWords } from './passage';
 import './style.css';
 
 export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntry,signal:AbortSignal):Promise<GameScene>{
@@ -52,11 +53,13 @@ export async function createBlueberryClue(context:SceneContext,entry:EpisodeEntr
   };
   const text=(node:HTMLElement,value:string)=>{if(node.textContent!==value)node.textContent=value;};
   const renderUI=()=>{
-   const phaseText=copy.phases[progress.phase];text(label,phaseText.label);text(title,phaseText.title);text(body,phaseText.body);if(progress.phase==='compare'&&progress.comparison===1){text(title,'Compare the clear patch');text(body,'Fewer grains here. What changed?');}
-   text(button,entry.journey&&progress.phase==='evidence'?'Continue · Purgatory':progress.phase==='compare'&&progress.comparison===1?copy.comparison:phaseText.action);
-   button.hidden=progress.phase==='brush'||progress.phase==='grind';button.disabled=progress.phase==='approach'&&!near()||withdrawing>0;
+   panel.dataset.passage=String(isDiscoveryPassage(progress.phase));
+   const phaseText=copy.phases[progress.phase];text(label,phaseText.label);text(title,phaseText.title);if(!isDiscoveryPassage(progress.phase))text(body,phaseText.body);if(progress.phase==='compare'&&progress.comparison===1){text(title,'Compare the clear patch');}
+   const words=discoveryWords(progress.phase,progress.comparison);if(words)renderWords(body,words);
+   text(button,entry.journey&&progress.phase==='evidence'?'Continue · Purgatory':progress.phase==='compare'&&progress.comparison===1?copy.comparison.replace(/\s*\u00b7\s*E$/,''):phaseText.action.replace(/\s*\u00b7\s*E$/,''));
+   button.disabled=progress.phase==='approach'&&!near()||withdrawing>0;button.hidden=progress.phase==='brush'||progress.phase==='grind'||button.disabled;
    meter.hidden=progress.phase!=='grind';meter.value=progress.hold;
-   text(hint,progress.phase==='approach'?`${Math.max(0,Math.hypot(vehicle.position.x-WORK.x,vehicle.position.z-WORK.z)).toFixed(1)} m to working area · WASD drive · arrows/drag look`:progress.phase==='grind'?'Keyboard: hold E · touch: hold the E control':'E continue · Esc pause');
+   text(hint,progress.phase==='approach'?`${Math.max(0,Math.hypot(vehicle.position.x-WORK.x,vehicle.position.z-WORK.z)).toFixed(1)} m to working area`:'');
    if(progress.phase==='water')text(hint,reduced()?'Water → minerals → exposed grains':progress.elapsed<4.5?'Water enters the rock':progress.elapsed<8.3?'Minerals form over time':'Wind uncovers the grains');
    text(element('objective'),phaseText.title);text(element('chapter'),copy.location);
    element('mission-hold').hidden=progress.phase!=='grind';

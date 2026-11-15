@@ -102,3 +102,9 @@
 .reduced-menu-motion .pg-wheel-photo,.reduced-menu-motion .pg-archive-photo,.reduced-menu-motion .pg-archive-scrim{transition:none}
 
 .pg-skip-sequence{position:absolute;right:24px;top:76px;pointer-events:auto;z-index:5;background:#172023ed;min-height:44px}
+
+/* Optional tools remain a deliberate disclosure, with comfortable controls. */
+.purgatory-panel:has(.pg-toolbox:not([open])){background:transparent;border:0;box-shadow:none;text-align:right;text-shadow:0 2px 5px #000;padding:0}
+.purgatory-panel .pg-toolbox>summary{min-height:44px;font-size:14px}.purgatory-panel .pg-cameras button{min-height:44px;font-size:13px}.purgatory-panel button{min-height:44px}
+.purgatory-panel:has(.pg-toolbox[open]){background:#141916f2;border:1px solid #c3a48455;box-shadow:none}
+.pg-recovery{background:transparent;border:0;box-shadow:none;text-shadow:0 2px 6px #000;text-align:center;padding:8px 16px}

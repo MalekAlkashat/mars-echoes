@@ -111,3 +111,59 @@
 @media(max-width:650px){.discovery-archive[data-hero=true] figure{inset:12vh 5vw 16vh}.discovery-archive[data-hero=true] img{max-height:48vh}.discovery-archive[data-hero=true] .discovery-archive-note{font-size:22px}}
 .discovery-archive[data-hero=true]::before,.discovery-archive[data-hero=true]::after{z-index:0;pointer-events:none}
 .discovery-archive[data-hero=true] figure,.discovery-archive[data-hero=true] button{z-index:1}
+
+/* Ordinary mission tracker; archive composition keeps its own rules. */
+.discovery-panel:not([data-archive=closing]):not([data-archive=hero]){top:max(88px,env(safe-area-inset-top));right:max(24px,env(safe-area-inset-right));bottom:auto;width:min(300px,calc(100vw - 40px));padding:0;border:0;background:transparent;box-shadow:none;text-align:right;overflow:visible;max-height:none;text-shadow:0 2px 6px #000,0 0 18px #0009}
+.discovery-panel h2{font-size:21px;line-height:1.25;margin:8px 0}.discovery-copy{font-size:15px;margin-bottom:10px}.discovery-kicker{font-size:12px}.discovery-hint{font-size:13px;color:#efe0ca}
+.discovery-panel:not([data-archive=closing]) .discovery-action{position:fixed;left:50%;bottom:max(28px,env(safe-area-inset-bottom));transform:translateX(-50%);width:auto;max-width:calc(100vw - 32px);min-height:44px;background:#141916cf;color:#f2e7d4;border:1px solid #c3a48466;padding:10px 20px;font-size:16px}
+.discovery-action::before{content:'E';display:inline-block;border:1px solid #d5c1a8;padding:0 6px;margin-right:12px;font-size:13px}.discovery-action[hidden]{display:none}
+.discovery-panel details{font-size:13px}.discovery-panel summary{min-height:44px;cursor:pointer;align-content:center}.discovery-panel details[open]{background:#141916f2;padding:12px;text-align:left}.discovery-panel details p{max-height:35vh}
+body:has(.discovery-panel:not([hidden])) #mission-hold:not([hidden]){display:block;position:fixed;left:50%;bottom:28px;transform:translateX(-50%);background:#141916cf;color:#f2e7d4;min-height:48px;border:1px solid #c3a48466}
+@media(max-width:650px){.discovery-panel:not([data-archive=closing]):not([data-archive=hero]){right:16px;width:260px}.discovery-panel:not([data-archive=closing]) .discovery-action{bottom:145px}}
+body.playing:has(.discovery-panel:not([hidden])) #touch-controls:has(#mission-hold:not([hidden])){display:flex}.game-paused #mission-hold{display:none!important}
+
+
+/* Critical understanding and its action form one lower-center stack. */
+.discovery-panel:not([data-passage=true]) {color:#d8d4cc}
+.discovery-panel:not([data-passage=true]) h2{font-size:18px;font-weight:500;color:#d8d4cc}
+.discovery-panel:not([data-passage=true]) .discovery-copy{color:#d8d4cc;font-size:15px}
+.discovery-panel .discovery-kicker{color:#c9c0b1;font-size:12px;letter-spacing:.07em}
+.discovery-panel[data-passage=true]:not([data-archive=hero]){
+ top:auto;bottom:max(24px,5dvh);left:50%;right:auto;transform:translateX(-50%);
+ width:min(620px,calc(100vw - 32px));padding:16px 20px 0;text-align:center;
+ display:flex;flex-direction:column;align-items:center;gap:8px;
+ background:radial-gradient(ellipse at center,#131816b8,transparent 74%);border:0;
+}
+.discovery-panel[data-passage=true] :is(h2,p){margin:0}
+.discovery-panel[data-passage=true] h2{font:500 23px/1.3 system-ui;color:#eee7dc;letter-spacing:0}
+.discovery-panel[data-passage=true] .discovery-copy{font-size:17px;line-height:1.45;color:#e6dfd4;max-width:580px}
+.discovery-panel[data-passage=true] .discovery-hint{font-size:14px;line-height:1.4;color:#d8d4cc}
+.discovery-panel[data-passage=true] .discovery-action{position:static;transform:none;width:auto;max-width:100%;margin-top:8px;order:5;font-size:15px;font-weight:500}
+.discovery-panel[data-passage=true] .discovery-hint:empty{display:none}
+.discovery-panel[data-passage=true] details{order:6;margin:0;font-size:12px}
+.discovery-panel[data-passage=true] summary{min-height:32px}
+.discovery-panel[data-passage=true] details[open]{max-height:25dvh;overflow:auto}
+.discovery-emphasis{font-style:normal;color:#dfb879;font-weight:500}
+.discovery-explanation{font:17px/1.45 system-ui;color:#e6dfd4;max-width:600px;text-align:center;margin:8px auto 0}
+.discovery-interpretation{font:14px/1.4 system-ui;color:#d8d4cc;text-align:center;margin:8px auto 0;max-width:580px}
+/* Photograph above, explanation below, and the existing continuation in flow. */
+.discovery-archive[data-hero=true]{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:76px 24px 24px;gap:16px}
+.discovery-archive[data-hero=true] figure{position:static;inset:auto;transform:none;flex:0 1 auto;min-height:0;width:min(100%,900px);display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.discovery-archive[data-hero=true] img{height:auto;max-height:43dvh;width:auto;max-width:100%;min-height:0;object-fit:contain;flex:0 1 auto}
+.discovery-archive[data-hero=true] .discovery-archive-note{font:500 23px/1.3 system-ui;margin:14px 0 0;letter-spacing:0}
+.discovery-archive[data-hero=true] .discovery-archive-next{position:static;transform:none;min-height:44px;font-size:15px;flex-shrink:0}
+.large-interface .discovery-panel[data-passage=true] h2,.large-interface .discovery-archive[data-hero=true] .discovery-archive-note{font-size:26px}
+.large-interface .discovery-panel[data-passage=true] .discovery-copy,.large-interface .discovery-explanation{font-size:20px}
+.large-interface .discovery-interpretation{font-size:16px}
+@media(max-width:650px){
+ .discovery-panel[data-passage=true]:not([data-archive=hero]){right:auto;bottom:max(20px,4dvh);width:calc(100vw - 24px);padding:12px 10px 0;gap:7px}
+ .discovery-panel[data-passage=true] h2{font-size:22px}
+ .discovery-panel[data-passage=true] .discovery-copy{font-size:16px}
+ .discovery-panel[data-passage=true] .discovery-action{bottom:auto;margin-top:10px}
+ .discovery-archive[data-hero=true]{padding:76px 18px 24px;gap:14px}
+ .discovery-archive[data-hero=true] img{max-height:30dvh}
+ .discovery-explanation{font-size:16px}
+ .discovery-archive[data-hero=true] .discovery-archive-note{font-size:22px}
+ .large-interface .discovery-panel[data-passage=true] .discovery-copy{font-size:19px}
+ .large-interface .discovery-archive[data-hero=true] img{max-height:25dvh}
+}

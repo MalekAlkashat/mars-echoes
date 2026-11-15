@@ -42,7 +42,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
     choice.innerHTML='<option value="journey">Opportunity · Full memory journey</option><option value="blueberry-clue">2004 · The Blueberry Clue</option><option value="purgatory">2005 · Stuck in Purgatory</option><option value="long-night">2018 · The Long Night</option>';
     let choiceReady=false;
     const firstUnrecorded=():OpportunityChapter=>(['blueberry-clue','purgatory','long-night'] as const).find(id=>!context.session.chapters.has(id))??'blueberry-clue';
-    choice.style.cssText='background:#202422;color:#fff;padding:10px;border:1px solid #d6ad78;max-width:100%;min-width:0;font:inherit';choice.hidden=true;element('interaction').prepend(choice);
+    choice.style.cssText='background:#202422;color:#fff;padding:10px;border:1px solid #d6ad78;max-width:100%;min-width:0;font:inherit';choice.hidden=true;const replay=document.createElement('details');replay.className='memory-replay';const summary=document.createElement('summary');summary.textContent='Choose a memory';replay.append(summary,choice);element('interaction').prepend(replay);
     const show = () => {
       context.ui.resetView();
       context.ui.setScene('mars-hub');
@@ -111,7 +111,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
         if (!started) return;
         const distance = controller.position.distanceTo(world.wreck.position);
         if(!paused&&distance<ROVER_MEMORY.entryDistance)context.session.encounterOpportunity();
-        choice.hidden=distance>=ROVER_MEMORY.entryDistance||paused;
+        choice.hidden=distance>=ROVER_MEMORY.entryDistance||paused;replay.hidden=choice.hidden;if(replay.hidden)replay.open=false;
         element('interaction-text').textContent = distance < ROVER_MEMORY.entryDistance
           ? context.session.chapters.size>0 ? 'Memories recorded · Explore your Robot Journal.' : context.session.completed.has(ROVER_MEMORY.wreckId) ? 'Rover sequence visited.' : 'A rover lies silent.'
           : `Abandoned rover · ${Math.ceil(distance)} m`;
@@ -130,7 +130,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       isPresentationIdle(){return epilogue?.idle??false;},
       setPaused(value) { paused = value; choice.hidden=true;revisit.hidden=true;epilogue?.setPaused(value); },
       restart() { epilogue?.dispose();epilogue=undefined;finaleObserved=false;effects.time = 0; restore(); started = true; paused = false; context.clearInput(); show(); },
-      dispose() { if (disposed) return; disposed = true; active = false;localEvents.abort();epilogue?.dispose();revisit.remove(); choice.remove(); rig.dispose(); world.dispose(); },
+      dispose() { if (disposed) return; disposed = true; active = false;localEvents.abort();epilogue?.dispose();revisit.remove(); replay.remove(); rig.dispose(); world.dispose(); },
       debug() { return {phase: started ? 'hub' : 'ready', position: `${controller.position.x.toFixed(2)},${controller.position.z.toFixed(2)}`,
         heading: controller.heading.toFixed(3), grounded: controller.grounded, repaired: false,
         terrain:world.scene.userData.layout?.terrain??'reference100-v1', decorativeWrecks:0,

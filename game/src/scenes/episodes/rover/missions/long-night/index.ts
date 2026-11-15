@@ -56,7 +56,7 @@ export async function createLongNight(context:SceneContext,entry:EpisodeEntry,si
   if(changed)panel.scrollTop=0;
   element('chapter').textContent='The Long Night';element('objective').textContent=c[1];
   set('.night-kicker',c[0]);set('h2',c[1]);set('.night-copy',c[2]);set('.night-next',c[3]);
-  next.disabled=progress.phase==='arrival'&&!near();
+  next.disabled=progress.phase==='arrival'&&!near();next.hidden=next.disabled;
   choices.hidden=progress.phase!=='storm';(panel.querySelector('.night-energy') as HTMLElement).hidden=choices.hidden;
   (panel.querySelector('.night-feedback') as HTMLElement).hidden=choices.hidden;
   (panel.querySelector('.night-service-summary') as HTMLElement).hidden=!['storm','silence'].includes(progress.phase);
@@ -70,7 +70,7 @@ export async function createLongNight(context:SceneContext,entry:EpisodeEntry,si
   (panel.querySelector('figure') as HTMLElement).hidden=progress.phase!=='archive';
   (panel.querySelector('.night-campaign') as HTMLElement).hidden=progress.phase!=='recovery';
   (panel.querySelector('.night-legacy') as HTMLElement).hidden=progress.phase!=='legacy';
-  set('.night-distance',progress.phase==='arrival'?Math.hypot(vehicle.position.x,vehicle.position.z-2).toFixed(1)+' m · WASD drive · E observe':progress.phase==='storm'?'The storm unfolds in 16 seconds. Watch the reserve change.':progress.phase==='silence'?'Your choices slowed model drain; they could not change history.':'E or button to continue · Esc pauses');
+  set('.night-distance',progress.phase==='arrival'?Math.hypot(vehicle.position.x,vehicle.position.z-2).toFixed(1)+' m to observation point':progress.phase==='storm'?'The storm unfolds in 16 seconds. Watch the reserve change.':progress.phase==='silence'?'Your choices slowed model drain; they could not change history.':'E or button to continue · Esc pauses');
   element('touch-controls').querySelector<HTMLElement>('.dpad')!.hidden=progress.phase!=='arrival';
  }
  const show=()=>{context.ui.resetView();context.ui.setScene('episode-rover-01');element('restart-button').hidden=false;if(started){context.ui.playing();element('hud').hidden=true;panel.hidden=false;element('touch-controls').hidden=false;element('touch-controls').style.visibility='visible';}else{panel.hidden=true;context.ui.showIntro({eyebrow:'A memory · 2018',title:'The Long Night',copy:'A solar-powered rover. A sky filling with dust. Follow the evidence through silence and the effort to restore contact.',button:'Enter the memory',controls:'WASD drive · E interact · Esc pause',note:'Reconstruction and simplified conservation model. The historical outcome is fixed.'});}renderUI();};
