@@ -206,3 +206,11 @@ graphify-out/
 !/outputs/review/journey-journal-epilogue/*.md
 !/outputs/review/journey-journal-epilogue/*.json
 !/outputs/review/journey-journal-epilogue/*.png
+
+# Journey handoff polish; original recordings remain local.
+!/outputs/review/journey-polish/
+/outputs/review/journey-polish/*
+!/outputs/review/journey-polish/*.md
+!/outputs/review/journey-polish/*.json
+!/outputs/review/journey-polish/*.png
+!/outputs/review/journey-polish/*.html

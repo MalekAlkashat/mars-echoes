@@ -24,3 +24,6 @@ The user supplied the ROCK → SAND → DUST → SILENCE direction and continuit
 ## Robot Journal candidate — 15 November 2026
 
 The user supplied the journal concept and scope, replacing the proposed player-facing skill tree. Codex implemented the DOM archive, chapter-derived connections, compatible encounter persistence, sourced copy and focused transaction/UI tests in isolated `codex/robot-journal` from `6eef598`. A browser cancellation check exposed a pre-existing Purgatory return-click re-submission; the candidate consumes that action before routing. Existing NASA imagery is reused unchanged, with credits. No generated imagery, paid services, new packages, merge, push or deployment. Verification and limitations: `outputs/review/robot-journal/REVIEW.md`.
+## Journey handoff polish — 15 November 2026
+
+Codex continued the integrated journey in isolated `codex/journey-polish` from `ac65d6e`: preparation/pause/recovery presentation, a scene-owned return camera using the accepted blue spirit, and native runtime verification. No generated assets, historical captions, dependencies, merge, push or deployment. Evidence and measured limitations: `outputs/review/journey-polish/REVIEW.md`. Visual acceptance remains with the project owner.

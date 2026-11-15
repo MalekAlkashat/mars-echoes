@@ -1,0 +1,325 @@
+{
+  "browser": "159.0.8154.6",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "deviceScaleFactor": 1,
+  "quality": "balanced",
+  "cap": 45,
+  "measurement": "Instrumented WebGL2 allocations/draw submissions and application requestAnimationFrame CPU duration; rendered-callback intervals are a presented-frame proxy. No GPU timing.",
+  "summary": [
+    {
+      "build": "baseline",
+      "chapter": "m1",
+      "cache": "cold",
+      "errors": [],
+      "frames": 260,
+      "cpuMs": {
+        "median": 1.2,
+        "p95": 3,
+        "max": 364.3
+      },
+      "renderedIntervalsMs": {
+        "median": 17.3,
+        "p95": 34.7,
+        "max": 539.8
+      },
+      "peakDrawSubmissions": 94,
+      "peakTextures": 30,
+      "peakBuffers": 217,
+      "waitingMs": 539.8,
+      "firstActiveFrames": {
+        "median": 2.7,
+        "p95": 3.8,
+        "max": 3.8
+      }
+    },
+    {
+      "build": "baseline",
+      "chapter": "m1",
+      "cache": "warm",
+      "errors": [],
+      "frames": 265,
+      "cpuMs": {
+        "median": 1.2,
+        "p95": 2.8,
+        "max": 146.2
+      },
+      "renderedIntervalsMs": {
+        "median": 17.2,
+        "p95": 34.5,
+        "max": 306.4
+      },
+      "peakDrawSubmissions": 94,
+      "peakTextures": 30,
+      "peakBuffers": 217,
+      "waitingMs": 306.5,
+      "firstActiveFrames": {
+        "median": 2.45,
+        "p95": 3.4,
+        "max": 3.4
+      }
+    },
+    {
+      "build": "baseline",
+      "chapter": "m2",
+      "cache": "cold",
+      "errors": [],
+      "frames": 440,
+      "cpuMs": {
+        "median": 0.9,
+        "p95": 1.5,
+        "max": 565.9
+      },
+      "renderedIntervalsMs": {
+        "median": 17.1,
+        "p95": 34.6,
+        "max": 638.3
+      },
+      "peakDrawSubmissions": 74,
+      "peakTextures": 35,
+      "peakBuffers": 103,
+      "waitingMs": 638.3,
+      "firstActiveFrames": {
+        "median": 0.7,
+        "p95": 2.2,
+        "max": 2.2
+      }
+    },
+    {
+      "build": "baseline",
+      "chapter": "m2",
+      "cache": "warm",
+      "errors": [],
+      "frames": 458,
+      "cpuMs": {
+        "median": 0.9,
+        "p95": 1.7,
+        "max": 122
+      },
+      "renderedIntervalsMs": {
+        "median": 17.2,
+        "p95": 34.3,
+        "max": 172.7
+      },
+      "peakDrawSubmissions": 74,
+      "peakTextures": 35,
+      "peakBuffers": 103,
+      "waitingMs": 172.7,
+      "firstActiveFrames": {
+        "median": 1.4,
+        "p95": 2.2,
+        "max": 2.2
+      }
+    },
+    {
+      "build": "baseline",
+      "chapter": "m3",
+      "cache": "cold",
+      "errors": [],
+      "frames": 267,
+      "cpuMs": {
+        "median": 1.3,
+        "p95": 2,
+        "max": 465
+      },
+      "renderedIntervalsMs": {
+        "median": 17.2,
+        "p95": 34.4,
+        "max": 757.1
+      },
+      "peakDrawSubmissions": 94,
+      "peakTextures": 38,
+      "peakBuffers": 128,
+      "waitingMs": 757.1,
+      "firstActiveFrames": {
+        "median": 1.4,
+        "p95": 6.2,
+        "max": 6.2
+      }
+    },
+    {
+      "build": "baseline",
+      "chapter": "m3",
+      "cache": "warm",
+      "errors": [],
+      "frames": 267,
+      "cpuMs": {
+        "median": 1.1,
+        "p95": 1.8,
+        "max": 38.5
+      },
+      "renderedIntervalsMs": {
+        "median": 17.0,
+        "p95": 34.4,
+        "max": 314.4
+      },
+      "peakDrawSubmissions": 94,
+      "peakTextures": 38,
+      "peakBuffers": 128,
+      "waitingMs": 314.4,
+      "firstActiveFrames": {
+        "median": 1.25,
+        "p95": 2,
+        "max": 2
+      }
+    },
+    {
+      "build": "candidate",
+      "chapter": "m1",
+      "cache": "cold",
+      "errors": [],
+      "frames": 266,
+      "cpuMs": {
+        "median": 1.3,
+        "p95": 2.8,
+        "max": 138.3
+      },
+      "renderedIntervalsMs": {
+        "median": 17.2,
+        "p95": 34.7,
+        "max": 309.9
+      },
+      "peakDrawSubmissions": 94,
+      "peakTextures": 30,
+      "peakBuffers": 217,
+      "waitingMs": 309.9,
+      "firstActiveFrames": {
+        "median": 1.6,
+        "p95": 2.9,
+        "max": 2.9
+      }
+    },
+    {
+      "build": "candidate",
+      "chapter": "m1",
+      "cache": "warm",
+      "errors": [],
+      "frames": 266,
+      "cpuMs": {
+        "median": 1.1,
+        "p95": 3.2,
+        "max": 146.9
+      },
+      "renderedIntervalsMs": {
+        "median": 17.2,
+        "p95": 34.5,
+        "max": 306.2
+      },
+      "peakDrawSubmissions": 94,
+      "peakTextures": 30,
+      "peakBuffers": 217,
+      "waitingMs": 306.2,
+      "firstActiveFrames": {
+        "median": 2.0,
+        "p95": 3.3,
+        "max": 3.3
+      }
+    },
+    {
+      "build": "candidate",
+      "chapter": "m2",
+      "cache": "cold",
+      "errors": [],
+      "frames": 457,
+      "cpuMs": {
+        "median": 1,
+        "p95": 1.8,
+        "max": 123.5
+      },
+      "renderedIntervalsMs": {
+        "median": 17.1,
+        "p95": 34.3,
+        "max": 198.2
+      },
+      "peakDrawSubmissions": 74,
+      "peakTextures": 35,
+      "peakBuffers": 103,
+      "waitingMs": 198.2,
+      "firstActiveFrames": {
+        "median": 1.35,
+        "p95": 2.2,
+        "max": 2.2
+      }
+    },
+    {
+      "build": "candidate",
+      "chapter": "m2",
+      "cache": "warm",
+      "errors": [],
+      "frames": 457,
+      "cpuMs": {
+        "median": 0.9,
+        "p95": 1.5,
+        "max": 121.4
+      },
+      "renderedIntervalsMs": {
+        "median": 17.2,
+        "p95": 34.3,
+        "max": 169.9
+      },
+      "peakDrawSubmissions": 74,
+      "peakTextures": 35,
+      "peakBuffers": 103,
+      "waitingMs": 169.9,
+      "firstActiveFrames": {
+        "median": 1.1,
+        "p95": 1.4,
+        "max": 1.4
+      }
+    },
+    {
+      "build": "candidate",
+      "chapter": "m3",
+      "cache": "cold",
+      "errors": [],
+      "frames": 317,
+      "cpuMs": {
+        "median": 1.3,
+        "p95": 2.1,
+        "max": 39
+      },
+      "renderedIntervalsMs": {
+        "median": 17.1,
+        "p95": 34.5,
+        "max": 346.9
+      },
+      "peakDrawSubmissions": 96,
+      "peakTextures": 38,
+      "peakBuffers": 128,
+      "waitingMs": 346.9,
+      "firstActiveFrames": {
+        "median": 1.2,
+        "p95": 2.5,
+        "max": 2.5
+      }
+    },
+    {
+      "build": "candidate",
+      "chapter": "m3",
+      "cache": "warm",
+      "errors": [],
+      "frames": 295,
+      "cpuMs": {
+        "median": 1.2,
+        "p95": 2,
+        "max": 40.1
+      },
+      "renderedIntervalsMs": {
+        "median": 17.3,
+        "p95": 34.4,
+        "max": 319.5
+      },
+      "peakDrawSubmissions": 96,
+      "peakTextures": 38,
+      "peakBuffers": 128,
+      "waitingMs": 319.5,
+      "firstActiveFrames": {
+        "median": 1.15,
+        "p95": 1.8,
+        "max": 1.8
+      }
+    }
+  ]
+}

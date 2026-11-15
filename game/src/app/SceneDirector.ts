@@ -50,6 +50,7 @@ export class SceneDirector {
     this.failedIntent = undefined;
     this.transitioning = true;
     hooks.clearInput();
+    source?.setPreparing?.(true);
     source?.setPaused(true);
     hooks.loading(true);
     let destination: GameScene | undefined;
@@ -66,14 +67,14 @@ export class SceneDirector {
       this.entry = entry;
       hooks.switch(destination);
       destination.activate();
-      destination.setPaused(false);
-      this.paused = false;
+      destination.setPaused(this.paused);
     } catch (error) {
       destination?.dispose();
       if (this.pending !== transaction || this.disposed) return false;
       this.active = source;
       this.entry = oldEntry;
       if (source) {
+        source.setPreparing?.(false);
         hooks.switch(source);
         source.activate();
         source.setPaused(this.paused);
@@ -160,7 +161,10 @@ export class SceneDirector {
     pending.controller.abort();
     this.transitioning = false;
     this.options.hooks.clearInput();
-    if (!this.disposed) pending.source?.setPaused(this.paused);
+    if (!this.disposed) {
+      pending.source?.setPreparing?.(false);
+      pending.source?.setPaused(this.paused);
+    }
     this.options.hooks.loading(false);
   }
 

@@ -66,7 +66,10 @@ export interface GameScene {
   /** Current scene-local progress, supplied by the scene rather than inferred from debug labels. */
   getSaveEntry?(): SceneEntry;
   /** Scene-local cinematic adapter; never interpolates between different maps. */
-  journeyShot?(direction:'in'|'out', seconds:number, reduced:boolean):void;
+  journeyShot?(direction:'in'|'out', seconds:number, reduced:boolean, dt?:number):void;
+  /** Preparation is not a user pause. Only scene-owned waiting UI may tick here. */
+  setPreparing?(preparing:boolean):void;
+  updatePreparation?(dt:number):void;
   /** Opaque, settled UI can stop 3D work while DOM actions remain responsive. */
   isPresentationIdle?(): boolean;
   /** An authored opaque boundary can remain visible while its next scene prepares. */

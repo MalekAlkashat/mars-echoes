@@ -6,6 +6,7 @@ import { SpiritCamera } from '../../entities/spirit/camera';
 import { element } from '../../ui';
 import { createHubWorld } from './layout';
 import {OpportunityEpilogue} from './epilogue';
+import {ReturnShot} from './return-shot';
 
 export async function createMarsHub(context: SceneContext, entry: Extract<SceneEntry, {scene: 'mars-hub'}>, signal: AbortSignal): Promise<GameScene> {
   const assets = await context.assets.load();
@@ -38,6 +39,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       rig.update(0, controller, follow.camera, world.height, context.renderer.getPixelRatio(), innerHeight);
     };
     restore(entry.bookmark);
+    let returnShot:ReturnShot|undefined;
     const choice=document.createElement('select');choice.id='memory-chapter';choice.setAttribute('aria-label','Choose Opportunity memory');
     choice.innerHTML='<option value="journey">Opportunity · Full memory journey</option><option value="blueberry-clue">2004 · The Blueberry Clue</option><option value="purgatory">2005 · Stuck in Purgatory</option><option value="long-night">2018 · The Long Night</option>';
     let choiceReady=false;
@@ -119,6 +121,14 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
         element('interact-button').textContent = choice.value==='journey'?(context.session.journey?'Continue memory  E':context.session.opportunityComplete?'Replay full memory  E':'Enter memory  E'):'Replay chapter  E';
         element('touch-controls').hidden = false;
         element('touch-controls').style.visibility = 'visible';
+      },
+      journeyShot(direction,seconds,reduced,dt=0){
+        if(direction!=='in'||!entry.memoryReturn)return;
+        returnShot??=new ReturnShot(follow.camera,controller.position,world.wreck.position,world.height);
+        returnShot.apply(seconds,reduced,innerWidth<=650);
+        // Cosmetic life only: no controller, follow rig, mission or epilogue update.
+        effects.time+=dt;world.follow(controller.position);
+        rig.update(reduced?0:dt,controller,follow.camera,world.height,context.renderer.getPixelRatio(),innerHeight);
       },
       resize(width, height) { follow.camera.aspect = width / height; follow.camera.updateProjectionMatrix(); },
       getBookmark() {
