@@ -1,7 +1,7 @@
 import { NASA_ARCHIVE } from './archive-data';
 import type { ArchiveCue } from './archive-cues';
 
-/** One scene-owned photograph, shown in context before its larger closing reprise. */
+/** One centered archive photograph, following the completed reconstruction. */
 export class DiscoveryArchive {
   readonly root = document.createElement('section');
   private readonly figure = document.createElement('figure');
@@ -21,6 +21,7 @@ export class DiscoveryArchive {
     this.label.className = 'discovery-archive-label';
     this.label.textContent = 'Actual NASA image · Opportunity';
     this.image.decoding = 'async';
+    this.image.src = `${import.meta.env.BASE_URL}assets/missions/blueberry-clue/v1/${NASA_ARCHIVE.comparison.file}`;
     this.source.target = '_blank'; this.source.rel = 'noopener';
     this.note.className = 'discovery-archive-note';
     const caption = document.createElement('figcaption');

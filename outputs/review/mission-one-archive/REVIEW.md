@@ -1,5 +1,9 @@
 # Mission I: photographic evidence
 
+## Single Berry Bowl reveal
+
+The latest user direction removes McKittrick from gameplay and retains only Berry Bowl, once after the ancient-water sequence returns dry. No photo appears in inspect or comparison. After a 0.35-second settling beat, the centered archive dissolves in over 1.1 seconds and remains centered until Continue/Return. The 70 KB local berry image is warmed at chapter construction so its download does not interrupt the reveal. Original research assets and credits are retained. Build and all 141 tests pass. A fresh isolated development-browser playthrough confirms no image at inspect/compare, no image during the ancient-water animation, and one centered Berry Bowl view afterward; picture-first.jpg records the final composition.
+
 15 November 2026. Local implementation on `fixing_terrain`, started from `dca84e4`. Concurrent commit `4402b58` updated roadmap documents during the work; those additions are preserved. This is an agent runtime review, not owner visual acceptance. The user subsequently authorized merging and pushing this implementation to main.
 
 ## Picture-first revision

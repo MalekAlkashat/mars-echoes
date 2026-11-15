@@ -1,5 +1,9 @@
 # Rover game plan
 
+## Single Berry Bowl reveal
+
+The latest user direction removes McKittrick from gameplay and retains only Berry Bowl, once after the ancient-water sequence returns dry. No photo appears in inspect or comparison. After a 0.35-second settling beat, the centered archive dissolves in over 1.1 seconds and remains centered until Continue/Return. The 70 KB local berry image is warmed at chapter construction so its download does not interrupt the reveal. Original research assets and credits are retained. Build and all 141 tests pass.
+
 ## Picture-first refinement
 
 The user requested much less reading for school learners. Active prompts now use short familiar sentences; scientific qualifications remain under Sources & reconstruction. Inspect/comparison photographs occupy their own full-screen hold from the existing reveal threshold until phase time 6 s, then return to a compact contextual view. Continue/E can advance immediately. The ending remains photo-centered with one short caption, a Return control and Pause; the former reflection paragraph is hidden there. Image IDs, dates and instrument/color information are expandable under Photo details, with credit/source retained. Original images are unchanged. Build and all 115 checks pass; cue tests now cover the picture-hold boundary.

@@ -7,35 +7,26 @@ import { archiveCue } from '../src/scenes/episodes/rover/missions/blueberry-clue
 import { NASA_ARCHIVE } from '../src/scenes/episodes/rover/missions/blueberry-clue/archive-data.ts';
 
 test('archive images never imply photographic evidence during tool operation or ancient-water reconstruction', () => {
-  const phases: MissionPhase[] = ['approach', 'brush', 'grind', 'water'];
+  const phases: MissionPhase[] = ['approach', 'brush', 'grind', 'inspect', 'compare', 'water'];
   for (const phase of phases) for (const elapsed of [0, .5, 2, 12, 100]) {
     assert.equal(archiveCue(phase, elapsed, 0, 0), undefined, `${phase} at ${elapsed}s`);
   }
 });
 
-test('abrasion evidence waits for withdrawal; comparison and reflection preserve separate target context', () => {
-  assert.equal(archiveCue('inspect', 4, 0, .01), undefined, 'the moving tool retains visual priority');
-  assert.equal(archiveCue('inspect', .5, 0, 0), undefined, 'the shot settles before the photograph appears');
-  const abrasion = archiveCue('inspect', 3, 0, 0)!;
-  assert.equal(abrasion.image, 'abrasion');
-  assert.equal(abrasion.closing, false);
-  const cluster = archiveCue('compare', 3, 0, 0)!;
-  const control = archiveCue('compare', 3, 1, 0)!;
-  assert.equal(cluster.image, 'comparison');
-  assert.equal(control.image, 'comparison');
-  assert.match(cluster.note, /different rock/i);
-  assert.match(control.note, /brushed/i);
-  assert.equal(archiveCue('inspect', 3, 0, 0)!.hero, true);
-  assert.equal(archiveCue('inspect', 6, 0, 0)!.hero, false);
-  assert.equal(archiveCue('evidence', 100, 2, 0)!.hero, true);
-  const reflection = archiveCue('evidence', 3, 2, 0)!;
-  assert.equal(reflection.image, 'comparison');
-  assert.equal(reflection.closing, true);
-  assert.match(reflection.note, /clue to ancient water/i);
+test('only the berries appear, centered after the reconstruction; no timed return to a side panel', () => {
+  assert.equal(archiveCue('evidence', .35, 2, 0), undefined);
+  assert.equal(archiveCue('evidence', 3, 2, .1), undefined);
+  for (const elapsed of [1, 3, 6, 100]) {
+    const cue = archiveCue('evidence', elapsed, 2, 0)!;
+    assert.equal(cue.image, 'comparison');
+    assert.equal(cue.hero, true);
+    assert.equal(cue.closing, true);
+    assert.match(cue.note, /clue to ancient water/i);
+  }
 });
 
 test('scene-time reveal is bounded, monotonic and repeatable across pause and restored phases', () => {
-  for (const phase of ['inspect', 'compare', 'evidence'] as const) {
+  for (const phase of ['evidence'] as const) {
     let previous = 0;
     for (const elapsed of [0, .25, .5, .75, 1, 1.25, 1.5, 2, 3, 100]) {
       const cue = archiveCue(phase, elapsed, 0, 0);
@@ -51,10 +42,10 @@ test('scene-time reveal is bounded, monotonic and repeatable across pause and re
   for (const elapsed of [-1, NaN, Infinity, -Infinity]) {
     assert.equal(archiveCue('evidence', elapsed, 0, 0), undefined);
   }
-  const editable = archiveCue('inspect', 3, 0, 0)!;
-  editable.image = 'comparison'; editable.reveal = -100;
-  assert.equal(archiveCue('inspect', 3, 0, 0)!.image, 'abrasion', 'callers cannot mutate future cue state');
-  assert.equal(archiveCue('inspect', 3, 0, 0)!.reveal, 1);
+  const editable = archiveCue('evidence', 3, 0, 0)!;
+  editable.reveal = -100;
+  assert.equal(archiveCue('evidence', 3, 0, 0)!.image, 'comparison', 'callers cannot mutate future cue state');
+  assert.equal(archiveCue('evidence', 3, 0, 0)!.reveal, 1);
 });
 
 function jpegDimensions(bytes: Buffer): number[] {
