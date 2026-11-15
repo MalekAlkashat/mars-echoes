@@ -1,5 +1,13 @@
 # Spirit and memory architecture
 
+## Flame appearance boundary, 15 November 2026
+
+`createSpiritAppearance()` returns a `SpiritAppearance` with `root`, `reset(motion)`, `update(dt,motion,camera,height,pixelRatio,viewportHeight)`, `debug()` and idempotent `dispose()`. The hub adds `root`, updates after controller/camera resolution, and explicitly removes/disposes the appearance before world disposal. Its private texture/material/geometry resources are not asset-cache resources. The body moves in local space under a world-positioned body group; wake vertices and embers stay in world space under the stationary appearance root. Never rotate or translate the wake with the body. `TrailHistory` uses a 64-point fixed-60-Hz buffer, clears on restore/teleport and freezes at zero delta. `SpiritController.actualVelocity` is measured from resolved world displacement; `InputFrame.rushHeld` defaults false. No scene IDs, bookmark formats, renderer ownership or extra event listeners were introduced. See `spirit-flame.md` and `../review/blue-flame-v1/REVIEW.md`.
+
+## Approved hub restoration, 15 November 2026
+
+The user selected the terrain from commit `a38322f`. The default hub and Opportunity drive preview again use its trough/basin terrain, fine scanned dust, varied grounded outcrops, distant crater vista and cold cloudy atmosphere. New-game spawn is `(0,8)` and Opportunity remains `(0,-25)`. Existing missions, saves, spirit work and soft stone-contact physics are retained. The newer reference100 map stays available only through `createHubEnvironment({legacyTerrain:false})`; earlier notes calling it the default are historical. Terrain/material source matches a38322f; modern contact tagging/cache integration is retained. Existing saved positions remain valid and are not cleared.
+
 ## Static stone contact, 15 November 2026
 
 Soft-motion revision: wheel loading now uses a dense cubic contact profile and look-ahead rock speed reduction, while retaining hard clearance constraints. See `outputs/review/soft-climb/REVIEW.md` for the same-input native comparison, quantified continuity audit and limits. Build and 59 tests pass; extreme terrain can still invoke the safety clamp.

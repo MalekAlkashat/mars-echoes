@@ -9,6 +9,7 @@ import { readPreferences, type GraphicsQuality } from '../app/preferences';
 
 let quality: GraphicsQuality = new URLSearchParams(location.search).get('quality') === 'high' ? 'high' : readPreferences().graphics;
 let highQuality = quality === 'high';
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 export let RENDER_FPS = highQuality ? 60 : quality === 'low' ? 30 : 45;
 const pixelRatio = () => Math.min(devicePixelRatio, quality === 'low' ? .8 : highQuality ? (innerWidth < 700 ? 1.2 : 1.5) : (innerWidth < 700 ? 1 : 1.25));
 
@@ -52,16 +53,30 @@ export function createPresentation(renderer:THREE.WebGLRenderer,scene:THREE.Scen
   bloom.enabled=highQuality;
   composer.addPass(bloom);
   const film=new ShaderPass({
-    uniforms:{tDiffuse:{value:null},time:{value:0},degraded:{value:0}},
+    uniforms:{tDiffuse:{value:null},time:{value:0},degraded:{value:0},speed:{value:0},motionQuality:{value:quality==='low'||reducedMotion?0:1}},
     vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
-    fragmentShader:`uniform sampler2D tDiffuse;uniform float time,degraded;varying vec2 vUv;
+    fragmentShader:`uniform sampler2D tDiffuse;uniform float time,degraded,speed,motionQuality;varying vec2 vUv;
       float hash(vec2 p){return fract(sin(dot(p,vec2(12.9898,78.233)))*43758.5453);}
       void main(){vec2 uv=vUv;uv.x+=degraded*sin(uv.y*83.+time*16.)*.0014;
+        // Peripheral spatial blur, not temporal motion blur: no velocity/history buffer.
+        float edge=smoothstep(.24,.65,length((uv-.5)*vec2(1.,.8)));
+        float rush=clamp(speed,0.,1.)*motionQuality;
+        // Gentle barrel-style expansion at speed; the protected centre stays undistorted.
+        uv=.5+(uv-.5)*(1.-.018*rush*edge);
         vec3 c=texture2D(tDiffuse,uv).rgb;
+        if(rush>.005 && edge>.001){
+          vec2 smear=(uv-.5)*(.035*rush*edge);
+          vec3 blurred=c*.28;
+          blurred+=texture2D(tDiffuse,clamp(uv-smear*.25,vec2(.001),vec2(.999))).rgb*.24;
+          blurred+=texture2D(tDiffuse,clamp(uv-smear*.5,vec2(.001),vec2(.999))).rgb*.20;
+          blurred+=texture2D(tDiffuse,clamp(uv-smear*.75,vec2(.001),vec2(.999))).rgb*.16;
+          blurred+=texture2D(tDiffuse,clamp(uv-smear,vec2(.001),vec2(.999))).rgb*.12;
+          c=mix(c,blurred,rush*edge);
+        }
         float luminance=dot(c,vec3(.2126,.7152,.0722));
         c*=mix(vec3(.94,.985,1.045),vec3(1.025,1.,.97),smoothstep(.05,.8,luminance));
         c=mix(vec3(luminance),c,.98);
-        float vignette=1.-.17*pow(length((uv-.5)*1.3),1.8);c*=vignette;
+        float vignette=1.-(.17+.14*rush)*pow(length((uv-.5)*1.3),1.8);c*=vignette;
         c+=(hash(gl_FragCoord.xy+floor(time*24.)*231.)-.5)*.004;
         float grey=dot(c,vec3(.2126,.7152,.0722));c=mix(c,vec3(grey)*vec3(.95,1.,1.02),degraded*.65);
         c*=1.-degraded*.10*sin(uv.y*1200.);gl_FragColor=vec4(max(c,0.),1.);}`,
@@ -72,12 +87,14 @@ export function createPresentation(renderer:THREE.WebGLRenderer,scene:THREE.Scen
     setQuality(value:GraphicsQuality){
       quality=value;highQuality=value==='high';RENDER_FPS=highQuality?60:value==='low'?30:45;
       ao.enabled=value!=='low';bloom.enabled=highQuality;
+      film.uniforms.motionQuality.value=value==='low'||reducedMotion?0:1;
       ao.updateGtaoMaterial({samples:highQuality?12:8});
       renderer.setPixelRatio(pixelRatio());composer.setPixelRatio(renderer.getPixelRatio());composer.setSize(innerWidth,innerHeight);
     },
     bind(scene:THREE.Scene,camera:THREE.PerspectiveCamera){
       renderPass.scene=scene;renderPass.camera=camera;ao.scene=scene;ao.camera=camera;
       film.uniforms.degraded.value=0;
+      film.uniforms.speed.value=0;
     },
     resize(){renderer.setPixelRatio(pixelRatio());composer.setPixelRatio(renderer.getPixelRatio());composer.setSize(innerWidth,innerHeight);},
     dispose(){composer.passes.forEach(pass=>pass.dispose());composer.dispose();},

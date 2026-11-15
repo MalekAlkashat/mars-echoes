@@ -2,7 +2,15 @@
 
 ## Current integration — 15 November 2026
 
-Main now contains reference100 terrain, Mission 1 polish/continuity, production Purgatory with checkpoints/SAND, and The Long Night with the restored 16-second presentation/SUNLIGHT. The hub selects all three independently. See README.md and outputs/review/mission-integration/REVIEW.md; older snapshots below are historical. Connected time jumps, OVERTIME, selected teammate spirit, wider skills/map, Memory Check, finale/audio and release acceptance remain open. The abandoned comet and its global rendering/timing changes are excluded.
+The three production chapters, checkpoints and GRIND/SAND/SUNLIGHT return rewards remain integrated. The remote blue flame spirit and approved a38322f hub restoration below are merged with those mission updates; reference100 remains an explicit alternate. Older status/test snapshots are historical. Connected story progression, OVERTIME, broader skills/map, Memory Check, finale/audio and release acceptance remain separate work.
+
+## Blue flame spirit, 15 November 2026
+
+The user approved replacing the humanoid placeholder with a compact living blue flame, using their supplied image as the design authority. WASD glides at 4.2 m/s; either Shift smoothly rushes at 7.5 m/s; Space retains the bounded leap and obstacles remain solid. The implemented procedural spirit has a white-cyan core, flowing blue envelope, world-space wake, pooled embers and speed-responsive camera. It uses six effect draws, 3,074 triangles and one small noise texture without requiring bloom. Existing terrain and mission work is preserved. See `outputs/planning/spirit-flame.md` and `outputs/review/blue-flame-v1/REVIEW.md`. Build and 81 tests pass; native development/production review and ten stable memory returns pass. Final runtime visual acceptance and thermal measurement remain open. Older notes deferring spirit art or calling the humanoid current are superseded by this section.
+
+## Approved hub restoration, 15 November 2026
+
+The user selected the terrain from commit `a38322f`. The default hub and Opportunity drive preview again use its trough/basin terrain, fine scanned dust, varied grounded outcrops, distant crater vista and cold cloudy atmosphere. New-game spawn is `(0,8)` and Opportunity remains `(0,-25)`. Existing missions, saves, spirit work and soft stone-contact physics are retained. The newer reference100 map stays available only through `createHubEnvironment({legacyTerrain:false})`; earlier notes calling it the default are historical. Terrain/material source matches a38322f; modern contact tagging/cache integration is retained. Existing saved positions remain valid and are not cleared.
 
 ## Reference terrain update, 15 November 2026
 

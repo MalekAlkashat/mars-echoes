@@ -1,12 +1,13 @@
 import { MathUtils, Vector3 } from 'three';
 import { boundPosition, type WorldBounds } from '../../core/world-bounds.ts';
 
-type SpiritInput = { moveX: number; moveY: number; leapPressed: boolean };
+type SpiritInput = { moveX: number; moveY: number; leapPressed: boolean; rushHeld?: boolean };
 type Solid = { x: number; z: number; radius: number };
 type Height = (x: number, z: number) => number;
 const RADIUS = 0.28;
 const HOVER = 0.28;
-const SPEED = 4.2;
+export const SPIRIT_GLIDE_SPEED = 4.2;
+export const SPIRIT_RUSH_SPEED = 7.5;
 
 /** Ground-following movement; its appearance and camera have no effect on collision. */
 export class SpiritController {
@@ -14,6 +15,9 @@ export class SpiritController {
   constructor(bounds?:WorldBounds){this.bounds=bounds;}
   readonly position = new Vector3();
   readonly velocity = new Vector3();
+  /** Resolved displacement, including terrain height, rather than requested velocity at a wall. */
+  readonly actualVelocity = new Vector3();
+  private readonly previousPosition = new Vector3();
   heading = 0;
   grounded = true;
   private lift = 0;
@@ -23,6 +27,7 @@ export class SpiritController {
     const [bx,bz]=this.bounds?boundPosition(x,z,RADIUS,this.bounds):[x,z];
     this.position.set(bx, height(bx, bz) + HOVER, bz);
     this.velocity.set(0, 0, 0);
+    this.actualVelocity.set(0, 0, 0);
     this.heading = heading;
     this.lift = 0;
     this.verticalVelocity = 0;
@@ -32,17 +37,20 @@ export class SpiritController {
   update(dt: number, input: SpiritInput, cameraYaw: number, obstacles: readonly Solid[], height: Height): void {
     const duration = Number.isFinite(dt) ? MathUtils.clamp(dt, 0, .1) : 0;
     if (!duration) return;
+    this.previousPosition.copy(this.position);
     if (input.leapPressed && this.grounded) {
       this.verticalVelocity = 3.8;
       this.grounded = false;
     }
     const magnitude = Math.max(1, Math.hypot(input.moveX, input.moveY));
-    const targetX = (input.moveX * Math.cos(cameraYaw) - input.moveY * Math.sin(cameraYaw)) / magnitude * SPEED;
-    const targetZ = (-input.moveX * Math.sin(cameraYaw) - input.moveY * Math.cos(cameraYaw)) / magnitude * SPEED;
+    const speed = input.rushHeld ? SPIRIT_RUSH_SPEED : SPIRIT_GLIDE_SPEED;
+    const moving = Math.hypot(input.moveX, input.moveY) > .01;
+    const targetX = (input.moveX * Math.cos(cameraYaw) - input.moveY * Math.sin(cameraYaw)) / magnitude * speed;
+    const targetZ = (-input.moveX * Math.sin(cameraYaw) - input.moveY * Math.cos(cameraYaw)) / magnitude * speed;
     const steps = Math.max(1, Math.ceil(duration * 120));
     const step = duration / steps;
     for (let i = 0; i < steps; i++) {
-      const ease = 1 - Math.exp(-step * 8);
+      const ease = 1 - Math.exp(-step * (moving ? 8 : 12));
       this.velocity.x = MathUtils.lerp(this.velocity.x, targetX, ease);
       this.velocity.z = MathUtils.lerp(this.velocity.z, targetZ, ease);
       this.position.x += this.velocity.x * step;
@@ -79,8 +87,9 @@ export class SpiritController {
       }
       this.position.y = height(this.position.x, this.position.z) + HOVER + this.lift;
     }
-    if (Math.hypot(this.velocity.x, this.velocity.z) > .1) {
-      this.heading = Math.atan2(-this.velocity.x, -this.velocity.z);
+    this.actualVelocity.subVectors(this.position, this.previousPosition).divideScalar(duration);
+    if (Math.hypot(this.actualVelocity.x, this.actualVelocity.z) > .1) {
+      this.heading = Math.atan2(-this.actualVelocity.x, -this.actualVelocity.z);
     }
   }
 }

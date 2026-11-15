@@ -214,6 +214,7 @@ export class Game {
     // Capture a fresh game frame: WebGL's drawing buffer is cleared between frames.
     this.presentation.film.uniforms.time.value=active.effects.time;
     this.presentation.film.uniforms.degraded.value=active.effects.degraded;
+    this.presentation.film.uniforms.speed.value=active.effects.speed??0;
     this.presentation.composer.render();
     const blob=await new Promise<Blob|null>(resolve=>this.ui.canvas.toBlob(resolve,'image/png'));
     if(!blob||this.disposed)return false;
@@ -247,6 +248,7 @@ export class Game {
       this.ui.setScene(active.id);
       this.presentation.film.uniforms.time.value=active.effects.time;
       this.presentation.film.uniforms.degraded.value=active.effects.degraded;
+      this.presentation.film.uniforms.speed.value=active.effects.speed??0;
       this.renderer.info.reset();
       const renderStart=performance.now();
       this.presentation.composer.render();

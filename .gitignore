@@ -27,10 +27,34 @@ graphify-out/
 !/outputs/assets/environment-c-orange-graveyard.png
 !/outputs/references/
 /outputs/references/*
+!/outputs/references/montblanc-run/
 !/outputs/references/endurance-racing/
 /outputs/references/endurance-racing/*.jpg
 !/outputs/review/
 /outputs/review/*
+!/outputs/review/blue-flame-v1/
+/outputs/review/blue-flame-v1/*
+!/outputs/review/blue-flame-v1/*.md
+!/outputs/review/blue-flame-v1/metrics.json
+!/outputs/review/blue-flame-v1/return-checks.json
+!/outputs/review/blue-flame-v1/rush.jpg
+!/outputs/review/blue-flame-v1/idle.jpg
+!/outputs/review/blue-flame-v1/returned-hub.jpg
+!/outputs/review/blue-flame-v1/production-rush.jpg
+!/outputs/review/blue-flame-v1/velocity-pulse.jpg
+!/outputs/review/blue-flame-v1/soft-core.jpg
+!/outputs/review/blue-flame-v1/speed-filters.jpg
+!/outputs/review/blue-flame-v1/speed-filters-side.jpg
+!/outputs/review/blue-flame-v1/lens-effects.jpg
+!/outputs/review/blue-flame-v1/feel-refinement.jpg
+!/outputs/review/spirit-turn-v2/
+/outputs/review/spirit-turn-v2/*
+!/outputs/review/spirit-turn-v2/*.md
+!/outputs/review/spirit-turn-v2/before-08.jpg
+!/outputs/review/spirit-turn-v2/before-13.jpg
+!/outputs/review/spirit-turn-v2/final-08.jpg
+!/outputs/review/spirit-turn-v2/final-13.jpg
+!/outputs/review/spirit-turn-v2/corner.jpg
 !/outputs/review/visual-pass-v2/
 /outputs/review/visual-pass-v2/*
 !/outputs/review/visual-pass-v2/*.md
@@ -69,6 +93,12 @@ graphify-out/
 !/outputs/review/soft-climb/*.md
 !/outputs/review/soft-climb/metrics.json
 !/outputs/review/soft-climb/*.jpg
+
+!/outputs/review/a383-restoration/
+/outputs/review/a383-restoration/*
+!/outputs/review/a383-restoration/*.md
+!/outputs/review/a383-restoration/*.json
+!/outputs/review/a383-restoration/*.jpg
 
 # Authored 100 m terrain references and compact native evidence.
 !/outputs/references/terrain-100/

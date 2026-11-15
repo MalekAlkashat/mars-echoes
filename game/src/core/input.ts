@@ -20,7 +20,7 @@ export class Input {
       if (hotkey(event.code,event) === true) return;
       if (event.target instanceof HTMLInputElement || event.target instanceof HTMLSelectElement || event.target instanceof HTMLTextAreaElement) return;
       if (event.target instanceof HTMLButtonElement && ['Enter','Space'].includes(event.code)) return;
-      if (/^(Key[WASDQEF]|Arrow(Left|Right|Up|Down)|Enter|Space)$/.test(event.code)) {
+      if (/^(Key[WASDQEF]|Arrow(Left|Right|Up|Down)|Shift(Left|Right)|Enter|Space)$/.test(event.code)) {
         event.preventDefault(); if (!event.repeat) press(event.code);
       }
     }, {signal});
@@ -61,7 +61,8 @@ export class Input {
   take():InputFrame {
     const axis=(positive:string,negative:string)=>Number(this.keys.has(positive))-Number(this.keys.has(negative));
     const frame={...this.frame,interactHeld:this.keys.has('KeyE'),moveX:axis('KeyD','KeyA'),moveY:axis('KeyW','KeyS'),rotate:axis('KeyE','KeyQ'),
-      lookX:axis('ArrowRight','ArrowLeft'),lookY:axis('ArrowDown','ArrowUp')};
+      lookX:axis('ArrowRight','ArrowLeft'),lookY:axis('ArrowDown','ArrowUp'),
+      rushHeld:this.keys.has('ShiftLeft')||this.keys.has('ShiftRight')};
     this.frame=emptyInput();return frame;
   }
   clear():void {this.keys.clear();this.frame=emptyInput();this.pointer=undefined;}

@@ -1,5 +1,13 @@
 # Spirit and equipment-memory game
 
+## Blue flame spirit, 15 November 2026
+
+The user approved the blue flame reference in `assets/spirit/blue-flame-v1/reference.png`, replacing the tentative white humanoid. This is now implemented: compact living flame at rest, longer motion-driven flame and world-space wake during rushing; WASD 4.2 m/s, either Shift 7.5 m/s, existing bounded Space leap, solid obstacles. Appearance is separate from movement and camera; `createSpiritAppearance()` now returns `{root,reset,update,dispose,debug}` through `SpiritAppearance`, rather than a raw Group. Shared input adds `rushHeld:false` by default. Private scene-owned effects must reset on restore and dispose before world resources. No new renderer, loop, listeners, packages, full-screen effects, rig or paid asset jobs. Read `outputs/planning/spirit-flame.md` and `outputs/review/blue-flame-v1/REVIEW.md`. Build and 81 tests pass; native production/development checks and ten stable memory returns pass. User visual acceptance and thermal measurements remain outstanding. This supersedes older notes deferring final spirit direction or retaining the humanoid as the current appearance.
+
+## Approved hub restoration, 15 November 2026
+
+The user selected the terrain from commit `a38322f`. The default hub and Opportunity drive preview again use its trough/basin terrain, fine scanned dust, varied grounded outcrops, distant crater vista and cold cloudy atmosphere. New-game spawn is `(0,8)` and Opportunity remains `(0,-25)`. Existing missions, saves, spirit work and soft stone-contact physics are retained. The newer reference100 map stays available only through `createHubEnvironment({legacyTerrain:false})`; earlier notes calling it the default are historical. Terrain/material source matches a38322f; modern contact tagging/cache integration is retained. Existing saved positions remain valid and are not cleared.
+
 ## Reference terrain update, 15 November 2026
 
 The active branch is `fixing_terrain`. The default hub and Opportunity drive preview now use an authored 100 × 100 metre terrain: broad winding sandy floor, asymmetric low western shelf and higher eastern headland, restrained orange/peach haze, sparse scanned rock anchors and debris. The three new user-supplied images under `outputs/references/terrain-100/` are the primary direction for this pass, superseding the old gray-sky hub appearance. Spawn is now `(0,36)`; the single memory rover remains at `(0,-25)`. Legacy terrain is retained through `createHubEnvironment({legacyTerrain:true})`, and the fictional repair episode remains separate.

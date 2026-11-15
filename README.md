@@ -46,8 +46,8 @@ Read [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md) and the integrat
 
 - The integrator owns `app/`, `core/`, bootstrap, registry, shared UI and dependencies. `app/contracts.ts` defines the shared boundary. Keep one renderer, loop and input service.
 - Hub/spirit code owns exploration. Each chapter owns its directory under `scenes/episodes/rover/missions/`; coordinate shared vehicle/environment changes.
-- Default hub terrain is an authored 100 × 100 m reconstruction with geometric rock contact, not measured HiRISE elevation or a rigid-body vehicle solver.
-- The selected NASA MER model is used. Final mast/arm articulation is unfinished. The current spirit remains a placeholder; the abandoned comet is excluded in favor of the selected teammate version when its source is supplied.
+- The default hub restores the approved a38322f trough terrain and cold sky; reference100 remains an explicit alternate. Contact is geometric, not rigid-body simulation or measured Mars elevation.
+- The selected NASA MER model is used. Final mast/arm articulation is unfinished. The teammate’s blue flame spirit is integrated, with solid collision, bounded leap, Shift rush and a world-space wake. The separate abandoned comet experiment remains excluded.
 - Mission reference packs retain claim ledgers and rights. Runtime NASA images remain unchanged and labeled. Earth material analogues are not Mars scans.
 
 Retain originals, SOURCE records, item-specific rights and credits. NASA-hosted material is not automatically CC0. Kenney/Poly Haven and dependency licenses remain with their assets. [AI_USE.md](AI_USE.md) records assistance. A project-wide license and final release acceptance are not established here.

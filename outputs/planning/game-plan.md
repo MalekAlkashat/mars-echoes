@@ -1,5 +1,13 @@
 # Rover game plan
 
+## Blue flame spirit, 15 November 2026
+
+The spirit is now a compact living blue flame derived from the user's supplied reference, replacing the tentative humanoid. Confirmed controls are responsive camera-relative WASD gliding, holding Shift to rush, and the existing bounded Space leap with solid collision. The implemented appearance uses a white-cyan core, animated blue envelope, curved fading wake, embers and restrained speed FOV. See `spirit-flame.md` for implementation and `../review/blue-flame-v1/REVIEW.md` for verification. Terrain, mission selection and saved hub bookmarks remain governed by their existing owners. Earlier humanoid/deferred-art notes below are historical.
+
+## Approved hub restoration, 15 November 2026
+
+The user selected the terrain from commit `a38322f`. The default hub and Opportunity drive preview again use its trough/basin terrain, fine scanned dust, varied grounded outcrops, distant crater vista and cold cloudy atmosphere. New-game spawn is `(0,8)` and Opportunity remains `(0,-25)`. Existing missions, saves, spirit work and soft stone-contact physics are retained. The newer reference100 map stays available only through `createHubEnvironment({legacyTerrain:false})`; earlier notes calling it the default are historical. Terrain/material source matches a38322f; modern contact tagging/cache integration is retained. Existing saved positions remain valid and are not cleared.
+
 ## Reference terrain update, 15 November 2026
 
 The active branch is `fixing_terrain`. The default hub and Opportunity drive preview now use an authored 100 × 100 metre terrain: broad winding sandy floor, asymmetric low western shelf and higher eastern headland, restrained orange/peach haze, sparse scanned rock anchors and debris. The three new user-supplied images under `outputs/references/terrain-100/` are the primary direction for this pass, superseding the old gray-sky hub appearance. Spawn is now `(0,36)`; the single memory rover remains at `(0,-25)`. Legacy terrain is retained through `createHubEnvironment({legacyTerrain:true})`, and the fictional repair episode remains separate.
