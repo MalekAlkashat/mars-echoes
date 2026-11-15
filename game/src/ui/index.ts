@@ -36,8 +36,9 @@ export class UI {
     element('pause').hidden=!value;
     if(value)element('resume-button').focus();else this.canvas.focus();
   }
-  loading(value:boolean):void {
+  loading(value:boolean,cinematic=false):void {
     if(value)this.failed=false;
+    if(value&&cinematic){element('transition').hidden=true;return;}
     element('transition').hidden=!value&&!this.failed;
     if(value){element('transition-text').textContent='Preparing the scene…';element('retry-button').hidden=true;element('cancel-button').focus();}
   }

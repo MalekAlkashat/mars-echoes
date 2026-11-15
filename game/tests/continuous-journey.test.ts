@@ -23,7 +23,7 @@ test('three boundaries form one story, with one original bookmark and no interve
  for(const chapter of ['blueberry-clue','purgatory','long-night'] as const){
   assert.equal(h.session.opportunityComplete,false);
   await h.director.request(request(chapter,'chapter-boundary'));
-  assert.ok(h.session.chapters.has(chapter));
+  assert.equal(h.session.chapters.has(chapter),chapter!=='long-night');
   await h.director.request(request(chapter));
  }
  assert.deepEqual(h.events.map(e=>e.entry.scene==='mars-hub'?'hub':e.entry.chapter),['hub','blueberry-clue','purgatory','long-night','hub']);
@@ -59,14 +59,14 @@ test('standalone replay preserves unfinished journey and does not finish story',
  const journey=structuredClone(h.session.journey);
  await h.director.request({...start,entry:{scene:'episode-rover-01',wreckId:'wreck-rover-01',chapter:'long-night'}} as SceneRequest);
  await h.director.request(request('long-night'));
- assert.deepEqual(h.session.journey,journey);assert.equal(h.session.opportunityComplete,false);assert.ok(h.session.skills.has('sunlight'));
+ assert.deepEqual(h.session.journey,journey);assert.equal(h.session.opportunityComplete,false);assert.equal(h.session.skills.has('sunlight'),true);assert.equal(h.session.finale,undefined);
 });
-test('failed final hub return retains earned sunlight but cannot mark story complete',async()=>{
+test('failed final hub return defers sunlight and the finale until successful retry',async()=>{
  const h=harness();await h.director.open({scene:'mars-hub'});await h.director.request(start);
  for(const chapter of ['blueberry-clue','purgatory'] as const){await h.director.request(request(chapter,'chapter-boundary'));await h.director.request(request(chapter));}
  await h.director.request(request('long-night','chapter-boundary'));h.fail('mars-hub');
- assert.equal(await h.director.request(request('long-night')),false);assert.equal(h.session.opportunityComplete,false);assert.ok(h.session.skills.has('sunlight'));
- h.fail('');assert.equal(await h.director.retry(),true);assert.equal(h.session.opportunityComplete,true);
+ assert.equal(await h.director.request(request('long-night')),false);assert.equal(h.session.opportunityComplete,false);assert.equal(h.session.skills.has('sunlight'),false);assert.equal(h.session.finale,undefined);
+ h.fail('');assert.equal(await h.director.retry(),true);assert.equal(h.session.opportunityComplete,true);assert.ok(h.session.skills.has('sunlight'));assert.equal(h.session.finale?.status,'pending');
 });
 test('boundary saves roundtrip without requiring an unplayed chapter checkpoint',()=>{
  const save={version:2,savedAt:100,completed:[],chapters:['blueberry-clue'],skills:['grind'],bookmark,

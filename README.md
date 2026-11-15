@@ -1,6 +1,6 @@
 # Mars Echoes (working name)
 
-Explore present-day Mars as a spirit, enter Opportunity's memories, then return beside the silent rover. Current main includes three independently selectable historical chapters in the existing Three.js/TypeScript/Vite runtime.
+Explore present-day Mars as a spirit, enter Opportunity's memories, then return beside the silent rover. The default Opportunity memory now plays all three chapters continuously, followed by one spirit return and an automatic cinematic ending. Standalone chapter replays remain available in the existing Three.js/TypeScript/Vite runtime.
 
 ## Run and play
 
@@ -11,13 +11,15 @@ npm --prefix game ci
 npm --prefix game run dev -- --port 5180 --strictPort
 ```
 
-Start New Game, cross the valley, select a memory near Opportunity and enter. WASD moves/drives; drag or arrows look; Escape pauses. Restart is a deliberate pause-menu action. Existing saves, settings and PNG photography remain available.
+Start New Game, cross the valley and enter Opportunity’s full memory journey. The chapter selector also offers standalone replays. WASD moves/drives; drag or arrows look; Escape pauses. Restart is a deliberate pause-menu action. Existing saves, settings and PNG photography remain available.
 
-- **The Blueberry Clue:** approach, brush, hold E to grind, compare separate observations and watch the labeled ancient-water interpretation. Successful return records GRIND.
-- **Stuck in Purgatory:** cinematic entrapment, hold W for metered recovery, optional planning and unchanged, labeled NASA images. Successful return records SAND. Touch uses the existing direction pad.
+- **The Blueberry Clue:** approach, brush, hold E to grind, compare separate observations and watch the labeled ancient-water interpretation. The completed chapter boundary records GRIND in the Robot Journal.
+- **Stuck in Purgatory:** cinematic entrapment, hold W for metered recovery, optional planning and unchanged, labeled NASA images. The completed chapter boundary records SAND; the OVERTIME bridge leads into 2018. Touch uses the existing direction pad.
 - **The Long Night:** drive to observe, make illustrative conservation choices during a 16-second storm, then follow silence, archival evidence and the later recovery campaign. Successful return records SUNLIGHT.
 
-Completing one chapter does not fabricate completion of the others. Each has its own map/checkpoint. Purgatory preserves rover/soil state during recovery; a saved opening replay restarts safely from its beginning. Connected story transitions, OVERTIME montage, wider skills/map, Memory Check, final spirit and audio remain separate work.
+The full journey advances Blueberry Clue → Purgatory → OVERTIME → Long Night without intermediate hub returns. Continue resumes the unfinished journey. Final SUNLIGHT/story completion and the ending start only after the hub return succeeds. The 39-second ending advances automatically, supports pause/Skip/replay and preserves earned memories; it has no quiz or movement gate.
+
+Pause → Journal opens sourced robot connections, recorded chapters and photography. Old valid saves remain supported. Chapter replays do not fabricate other completions or finish an unfinished journey. Purgatory retains pose/soil checkpoints. Halo, a broader map, audio, physical-device testing and final artistic/release acceptance remain separate work.
 
 Developer previews use the production factories and do not overwrite the normal saved journey:
 
@@ -38,7 +40,7 @@ npm --prefix game run build
 npm --prefix game run preview -- --port 5181 --strictPort
 ```
 
-The static build uses local runtime assets without a generation account. The existing large-bundle advisory remains. See [integration evidence](outputs/review/mission-integration/REVIEW.md) for verified scenarios and limits. A local build does not establish deployment or remote CI acceptance.
+The static build uses local runtime assets without a generation account. The existing large-bundle advisory remains. See [combined journey/journal/ending verification](outputs/review/journey-journal-epilogue/REVIEW.md) for verified scenarios and limits. A local build does not establish deployment or remote CI acceptance.
 
 ## Ownership and provenance
 

@@ -18,7 +18,7 @@ export class GameSession {
   readonly skills = new Set<string>();
   finale?: FinaleState;
 
-  record(result: EpisodeResult): void {
+  record(result: EpisodeResult, initiateFinale = true): void {
     if (result.outcome !== 'completed') return;
     const previouslyRecorded = result.chapter ? this.chapters.has(result.chapter) : true;
     if(result.chapter==='blueberry-clue'){this.chapters.add('blueberry-clue');this.skills.add('grind');}
@@ -26,7 +26,7 @@ export class GameSession {
     else if(result.chapter==='long-night'){
       this.chapters.add('long-night');this.skills.add('sunlight');
       // Called by the director only after the return transaction commits.
-      this.finale??=newFinale();
+      if(initiateFinale)this.finale??=newFinale();
     }
     else this.completed.add(result.wreckId);
     if(!previouslyRecorded){this.opportunityEncountered=true;this.onJournalUpdate?.();}

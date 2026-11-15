@@ -69,6 +69,8 @@ export interface GameScene {
   journeyShot?(direction:'in'|'out', seconds:number, reduced:boolean):void;
   /** Opaque, settled UI can stop 3D work while DOM actions remain responsive. */
   isPresentationIdle?(): boolean;
+  /** An authored opaque boundary can remain visible while its next scene prepares. */
+  isCinematicBoundary?(): boolean;
 }
 export interface SceneContext {
   assets: AssetCache;

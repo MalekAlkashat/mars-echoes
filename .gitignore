@@ -188,3 +188,10 @@ graphify-out/
 !/outputs/review/robot-journal/mobile-spirit-large.png
 !/outputs/review/robot-journal/mobile-320-large.png
 !/outputs/review/robot-journal/mobile-landscape.png
+
+# Combined journey, journal and automatic-ending verification.
+!/outputs/review/journey-journal-epilogue/
+/outputs/review/journey-journal-epilogue/*
+!/outputs/review/journey-journal-epilogue/*.md
+!/outputs/review/journey-journal-epilogue/*.json
+!/outputs/review/journey-journal-epilogue/*.png

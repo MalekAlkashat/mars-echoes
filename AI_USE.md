@@ -1,5 +1,9 @@
 # AI assistance
 
+## Journey, Journal and automatic ending integration — 15 November 2026
+
+Codex combined preserved snapshots from the three isolated feature worktrees, reconciled journey/encounter/finale save state and UI lifecycle, and authored the combined transaction/continuation fixes. The final chapter reward and ending wait for successful hub return; standalone replay cannot initiate an ending over an unfinished journey. Cinematic loading retains its authored mask with cancellation/error recovery. AI ran the existing suite, added an integrated boundary/journal regression check, built production output and exercised the actual game with isolated browser storage. The original worktrees, main local files/index and recovery stashes were retained. Existing NASA originals and provenance remain unchanged; no paid generation, new dependency or fabricated historical imagery was introduced. Full evidence and limitations are in outputs/review/journey-journal-epilogue/REVIEW.md.
+
 ## Remote planning sync — 15 November 2026
 
 Codex inspected and fast-forwarded the remote main and fixing_terrain planning commits through 4402b58, retaining the team's Mission I reference ownership and six-item presentation backlog. AI corrected two stale milestone labels against the already integrated chapters and recovery evidence. Runtime source, dependencies and original assets were unchanged; all 111 tests and TypeScript/production build passed. The 39 pre-existing local files, 35 staged resource additions and three recovery stashes were preserved. Uncommitted journey, journal and epilogue candidates were not included.

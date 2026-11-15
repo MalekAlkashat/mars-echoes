@@ -20,7 +20,7 @@ export async function createJourneyScene(context:SceneContext,entry:SceneEntry,s
   const text=(node:HTMLElement,value:string)=>{if(node.textContent!==value)node.textContent=value;};
   skipButton.addEventListener('click',()=>{skip=true;},{signal:events.signal});
   root.querySelector('[data-journey-pause]')!.addEventListener('click',()=>element('pause-button').click(),{signal:events.signal});
-  root.querySelector('[data-journey-exit]')!.addEventListener('click',()=>{exit=true;},{signal:events.signal});
+  root.querySelector('[data-journey-exit]')!.addEventListener('click',()=>{exit=true;if(mode==='waiting')element('cancel-button').click();},{signal:events.signal});
   try{scene=await create({...context,request(request){
     if(request.kind==='return-to-hub'&&request.result.outcome==='completed'){
       if(mode!=='play')return;
@@ -105,7 +105,7 @@ export async function createJourneyScene(context:SceneContext,entry:SceneEntry,s
       else if(enabled&&context.session.journey?.boundary==='return'){
         result={episodeId:'episode-rover-01',wreckId:'wreck-rover-01',chapter:'long-night',outcome:'completed'};begin('out');
       }
-    }else if(mode!=='play'){document.body.classList.add('journey-cinema');root.hidden=paused;render();}},
+    }else if(mode!=='play'){document.body.classList.add('journey-cinema');root.hidden=paused&&mode!=='waiting';render();}},
     update(dt,input){
       if(disposed||paused)return;
       if(mode==='play'){scene.update(dt,input);return;}
@@ -120,7 +120,8 @@ export async function createJourneyScene(context:SceneContext,entry:SceneEntry,s
         else if(result){if(chapter==='purgatory')context.request({kind:'remember-overtime'});mode='waiting';skipButton.textContent='Continue journey';context.clearInput();context.request({kind:'return-to-hub',result});}
       }
     },
-    setPaused(value){paused=value;scene.setPaused(value||mode!=='play');root.hidden=value||mode==='play';},
+    isCinematicBoundary(){return mode==='waiting';},
+    setPaused(value){paused=value;scene.setPaused(value||mode!=='play');root.hidden=(value&&mode!=='waiting')||mode==='play';if(mode==='waiting'){root.setAttribute('aria-busy',String(value));skipButton.disabled=value;skipButton.textContent=value?'Preparing next memory...':'Continue journey';}},
     restart(){
       if(mode==='out'||mode==='waiting'){elapsed=0;mode='out';skip=false;paused=false;render();context.clearInput();return;}
       root.hidden=true;document.body.classList.remove('journey-cinema');mode='play';paused=false;scene.restart();

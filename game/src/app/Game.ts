@@ -61,7 +61,7 @@ export class Game {
       if(key==='Tab'){this.ui.trapFocus(event);return true;}
       if(key==='Escape'){
         event.preventDefault();if(event.repeat)return true;
-        if(!element('transition').hidden)this.cancelLoading();
+        if(this.director.transitioning||!element('transition').hidden)this.cancelLoading();
         else this.pause(!this.director.paused);
         return true;
       }
@@ -85,7 +85,7 @@ export class Game {
         },
         loading:value=>{
           element('cancel-button').textContent=this.director.active?'Cancel':'Reload';
-          this.ui.loading(value);
+          this.ui.loading(value,Boolean(value&&this.director.active?.isCinematicBoundary?.()));
           if(!value&&this.director.active&&(this.menu?.visible||this.titlePending)){
             this.titlePending=false;this.director.setPaused(true);this.ui.resetView();this.menu?.setReady(true);this.menu?.show();
             if(this.startupNotice){const status=this.menu?.root.querySelector<HTMLElement>('[data-menu="status"]');if(status)status.textContent=this.startupNotice;}
@@ -189,7 +189,8 @@ export class Game {
   private pause(value:boolean):void {
     if(!value)this.focusSuspended=false;
     if(this.menu?.visible||this.menu?.modalOpen)return;
-    if(!this.director.active||this.director.transitioning)return;
+    if(!this.director.active)return;
+    if(this.director.transitioning){if(value)this.focusSuspended=true;return;}
     if(value)this.saveProgress();
     this.director.setPaused(value);this.ui.pause(value);
     this.lastTime=0;this.nextFrameAt=0;this.needsRender=true;

@@ -123,7 +123,7 @@ export class SceneDirector {
     const next=this.entry.chapter==='blueberry-clue'?'purgatory':this.entry.chapter==='purgatory'?'long-night':undefined;
     if(request.kind==='chapter-boundary') {
       if(!journey || request.result.outcome!=='completed')return false;
-      session.record(request.result);
+      if(next)session.record(request.result);
       session.journey={chapter:next??'long-night',bookmark:journey.bookmark,boundary:next?'next':'return',
         ...(!next?{resume:(this.active.getSaveEntry?.() as Extract<SceneEntry,{scene:'episode-rover-01'}>)?.resume}:{})};
       // Save the earned chapter before any asynchronous destination work begins.
@@ -145,7 +145,7 @@ export class SceneDirector {
     if(finished && journey && journey.boundary!=='return')return false;
     const succeeded = await this.transition({scene:'mars-hub',bookmark:journey?journey.bookmark:session.bookmark,...(finished?{memoryReturn:true as const}:{})},{kind:'request',request});
     if (succeeded) {
-      session.record(request.result);
+      session.record(request.result,!session.journey||finished);
       if(finished){session.opportunityComplete=['blueberry-clue','purgatory','long-night'].every(id=>session.chapters.has(id));session.journey=undefined;}
       this.options.hooks.settled?.();
     }

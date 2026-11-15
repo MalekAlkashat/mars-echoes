@@ -100,7 +100,7 @@ export function parseSave(raw:string|null):ExplorationSave|undefined {
       const jb=bookmark(j.bookmark),jr=j.resume===undefined?undefined:checkpoint(j.resume);
       if(!jb||(j.resume!==undefined&&(!jr||jr.kind!==j.chapter)))return;
       if(j.boundary!==undefined&&j.boundary!=='next'&&j.boundary!=='return')return;
-      if(j.boundary==='return'&&(j.chapter!=='long-night'||!chapters.includes('long-night')))return;
+      if(j.boundary==='return'&&(j.chapter!=='long-night'||!chapters.includes('long-night')&&!['blueberry-clue','purgatory'].every(id=>chapters.includes(id))))return;
       if(j.boundary==='next'&&(j.resume!==undefined||j.chapter==='blueberry-clue'||!chapters.includes(j.chapter==='purgatory'?'blueberry-clue':'purgatory')))return;
       journey={chapter:j.chapter as OpportunityJourney['chapter'],bookmark:jb,...(jr?{resume:jr}:{}),...(j.boundary?{boundary:j.boundary}:{})};
     }

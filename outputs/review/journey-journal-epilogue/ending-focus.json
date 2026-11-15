@@ -1,0 +1,10 @@
+{
+  "errors": [],
+  "seededLegacySave": true,
+  "idleFrames": 638,
+  "legacyMigrationAndAutomaticSave": true,
+  "replayWakesRenderer": true,
+  "keyboardFocusAndPause": true,
+  "returnToExploration": true,
+  "passed": true
+}
