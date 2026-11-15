@@ -95,7 +95,8 @@ export class Game {
           else if(!value&&element('transition').hidden&&this.director.paused&&!this.menu?.visible&&!this.titlePending)this.ui.pause(true);
           this.needsRender=true;
         },
-        error:()=>{
+        error:message=>{
+          if(import.meta.env.DEV)console.error('Scene loading failed:',message);
           if(this.menu?.visible){this.titlePending=true;this.menu.hide();this.menu.setReady(false);}
           this.ui.error('The scene could not load. Retry, or cancel to keep exploring.');
         },

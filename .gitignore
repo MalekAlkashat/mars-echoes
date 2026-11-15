@@ -229,3 +229,9 @@ graphify-out/
 !/outputs/review/transition-sky-integration/*.md
 !/outputs/review/transition-sky-integration/*.json
 !/outputs/review/transition-sky-integration/*.png
+
+# Compact evidence for local cloud-placeholder recovery.
+!/outputs/review/startup-recovery/
+/outputs/review/startup-recovery/*
+!/outputs/review/startup-recovery/REVIEW.md
+!/outputs/review/startup-recovery/mars-loaded.jpg
