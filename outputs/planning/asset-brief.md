@@ -1,5 +1,17 @@
 # Rover and opening scene asset brief
 
+## Picture-first refinement
+
+The user requested much less reading for school learners. Active prompts now use short familiar sentences; scientific qualifications remain under Sources & reconstruction. Inspect/comparison photographs occupy their own full-screen hold from the existing reveal threshold until phase time 6 s, then return to a compact contextual view. Continue/E can advance immediately. The ending remains photo-centered with one short caption, a Return control and Pause; the former reflection paragraph is hidden there. Image IDs, dates and instrument/color information are expandable under Photo details, with credit/source retained. Original images are unchanged. Build and all 115 checks pass; cue tests now cover the picture-hold boundary.
+
+
+## Mission I NASA archive assets, 15 November 2026
+
+The chapter now ships byte-identical local copies of retained NASA reference photographs under `game/public/assets/missions/blueberry-clue/v1/`: `mckittrick.jpg` (PIA05459, 1024 × 1024, NASA/JPL) and `berry-bowl.jpg` (PIA05634, 768 × 512, NASA/JPL-Caltech/Cornell). `source-records.json` records provenance and hashes; the existing runtime `SOURCE.md` retains its material documentation and adds the photograph sources. Originals remain under `assets/references/mission-one/v1/`. These NASA media resources are not relabeled CC0. No image generation, recoloring, cropping or replacement of accepted references was performed; runtime images use contained framing with their full source aspect ratios.
+
+PIA05459 supports the `inspect` reveal after tool withdrawal and the 0.9-second phase-time settling threshold; its caption dates the grinding event, not an independently established camera acquisition. PIA05634 supports the spherule-cluster/brushed-control comparison and the larger closing reprise after the ancient-water reconstruction. Berry Bowl was brushed, not ground, and its mineral interpretation depends on instrument measurements. No archive photograph appears during brushing, grinding or the inferred ancient-water animation. Source metadata and presentation are chapter-local in `archive-data.ts`, `archive-cues.ts` and `archive-view.ts`; no new renderer, input service, package or GPU texture ownership is introduced. Final owner visual acceptance is not implied by asset integrity checks or runtime review.
+
+
 ## Blue flame spirit authority, 15 November 2026
 
 Use `assets/spirit/blue-flame-v1/reference.png` as the accepted spirit image authority; its original and SHA-256 are retained in the adjacent `SOURCE.md`. The character is now procedural code in `entities/spirit/`, with a white-cyan nucleus, blue flowing shell, world-space wake and sparse embers. No model generation or skeleton is needed for this appearance. The supplied image is reference-only, not a runtime texture or an assertion of third-party redistribution rights. Final runtime visual acceptance remains open. The former humanoid was tentative and is superseded; keep movement and appearance separate. See `spirit-flame.md` and `../references/montblanc-run/study.md`.

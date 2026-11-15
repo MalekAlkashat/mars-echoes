@@ -1,5 +1,17 @@
 # Rover game plan
 
+## Picture-first refinement
+
+The user requested much less reading for school learners. Active prompts now use short familiar sentences; scientific qualifications remain under Sources & reconstruction. Inspect/comparison photographs occupy their own full-screen hold from the existing reveal threshold until phase time 6 s, then return to a compact contextual view. Continue/E can advance immediately. The ending remains photo-centered with one short caption, a Return control and Pause; the former reflection paragraph is hidden there. Image IDs, dates and instrument/color information are expandable under Photo details, with credit/source retained. Original images are unchanged. Build and all 115 checks pass; cue tests now cover the picture-hold boundary.
+
+
+## Mission I NASA photographs, 15 November 2026
+
+Mission I now connects real Opportunity photographs to the chapter's existing discovery stages, following Mission II's contextual reveal and closing archive presentation. McKittrick (PIA05459) appears at `inspect` after tool withdrawal and the 0.9-second phase-time settling threshold; Berry Bowl (PIA05634) appears during both the spherule-cluster and brushed-control comparison. After the ancient-water reconstruction returns to the dry evidence stage, Berry Bowl reprises as a larger photograph over a restrained cinematic backdrop. Brushing, grinding and the ancient-water interpretation display no archive photograph. These are authored presentation timings, not historical durations.
+
+The archive uses the scene clock, existing pause action and chapter lifecycle. The closing view retains a visible Pause button; source links support keyboard activation. Reset/return hide the archive and disposal removes its scene-owned DOM. Photographs retain captions, instrument/color context, source links and NASA credits. McKittrick's date is identified as the grinding event rather than an independently verified acquisition time; Berry Bowl remains a separate brushed, unground target. Mineral identification comes from instrument measurements; the water animation remains an interpretation. No generated, recolored or cropped replacement imagery is used. Runtime visual review and owner acceptance remain distinct; see `../review/mission-one-archive/` for this pass's evidence.
+
+
 ## Blue flame spirit, 15 November 2026
 
 The spirit is now a compact living blue flame derived from the user's supplied reference, replacing the tentative humanoid. Confirmed controls are responsive camera-relative WASD gliding, holding Shift to rush, and the existing bounded Space leap with solid collision. The implemented appearance uses a white-cyan core, animated blue envelope, curved fading wake, embers and restrained speed FOV. See `spirit-flame.md` for implementation and `../review/blue-flame-v1/REVIEW.md` for verification. Terrain, mission selection and saved hub bookmarks remain governed by their existing owners. Earlier humanoid/deferred-art notes below are historical.

@@ -1,0 +1,50 @@
+{
+  "prepared": "2026-11-15",
+  "sourceManifest": "assets/references/mission-one/v1/manifest.json",
+  "files": [
+    {
+      "id": "mckittrick",
+      "file": "mckittrick.jpg",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia05/pia05459/PIA05459.jpg",
+      "page": "https://science.nasa.gov/photojournal/circular-signs-of-the-rock-abrasion-tool/",
+      "imageId": "PIA05459",
+      "observation": "Grinding sol 30, 2004-02-23; image acquisition not separately asserted",
+      "colorInterpretation": "Monochrome hazard-camera view; geometry/context only",
+      "credit": "NASA/JPL",
+      "downloaded": "2026-11-14",
+      "bytes": 146292,
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "sha256": "ff5f72bdd930e7d82d2de341c47cdd5d815f5e6984b28475ec74d2b8dbd90753",
+      "role": "reference only; not a calibrated texture",
+      "rights": "NASA media guidance; retain listed institutional credits; not blanket CC0",
+      "originalPath": "assets/references/mission-one/v1/mckittrick.jpg",
+      "runtimeFile": "mckittrick.jpg",
+      "transform": "Byte-identical copy of the retained NASA-delivered reference JPEG; no crop, recolor, resize or re-encoding."
+    },
+    {
+      "id": "berry-bowl",
+      "file": "berry-bowl.jpg",
+      "url": "https://assets.science.nasa.gov/dynamicimage/assets/science/psd/mars/downloadable_items/3/5/35718_Sol048B-PIA05634.jpg",
+      "page": "https://science.nasa.gov/resource/discovery-served-up-in-a-bowl/",
+      "imageId": "PIA05634",
+      "observation": "Sol 48; published 2004-03-25",
+      "colorInterpretation": "Approximate true color",
+      "credit": "NASA/JPL-Caltech/Cornell",
+      "downloaded": "2026-11-14",
+      "bytes": 70018,
+      "dimensions": [
+        768,
+        512
+      ],
+      "sha256": "91c5f44ce53584b2b6ee6bcfff66b151e1ac502abf88e0b59f508e83b11006e5",
+      "role": "reference only; not a calibrated texture",
+      "rights": "NASA media guidance; retain listed institutional credits; not blanket CC0",
+      "originalPath": "assets/references/mission-one/v1/berry-bowl.jpg",
+      "runtimeFile": "berry-bowl.jpg",
+      "transform": "Byte-identical copy of the retained NASA-delivered reference JPEG; no crop, recolor, resize or re-encoding."
+    }
+  ]
+}

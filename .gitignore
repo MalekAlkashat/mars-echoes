@@ -170,3 +170,15 @@ graphify-out/
 !/outputs/review/mission-integration/*.md
 !/outputs/review/mission-integration/*.json
 !/outputs/review/mission-integration/*.png
+
+# Mission I historical-photo presentation: final review evidence only.
+!/outputs/review/mission-one-archive/
+/outputs/review/mission-one-archive/*
+!/outputs/review/mission-one-archive/REVIEW.md
+!/outputs/review/mission-one-archive/source-hashes.json
+!/outputs/review/mission-one-archive/abrasion-desktop.jpg
+!/outputs/review/mission-one-archive/comparison-desktop.jpg
+!/outputs/review/mission-one-archive/closing-desktop.jpg
+!/outputs/review/mission-one-archive/closing-mobile.jpg
+
+!/outputs/review/mission-one-archive/picture-first.jpg

@@ -1,0 +1,100 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import type { MissionPhase } from '../src/app/contracts.ts';
+import { archiveCue } from '../src/scenes/episodes/rover/missions/blueberry-clue/archive-cues.ts';
+import { NASA_ARCHIVE } from '../src/scenes/episodes/rover/missions/blueberry-clue/archive-data.ts';
+
+test('archive images never imply photographic evidence during tool operation or ancient-water reconstruction', () => {
+  const phases: MissionPhase[] = ['approach', 'brush', 'grind', 'water'];
+  for (const phase of phases) for (const elapsed of [0, .5, 2, 12, 100]) {
+    assert.equal(archiveCue(phase, elapsed, 0, 0), undefined, `${phase} at ${elapsed}s`);
+  }
+});
+
+test('abrasion evidence waits for withdrawal; comparison and reflection preserve separate target context', () => {
+  assert.equal(archiveCue('inspect', 4, 0, .01), undefined, 'the moving tool retains visual priority');
+  assert.equal(archiveCue('inspect', .5, 0, 0), undefined, 'the shot settles before the photograph appears');
+  const abrasion = archiveCue('inspect', 3, 0, 0)!;
+  assert.equal(abrasion.image, 'abrasion');
+  assert.equal(abrasion.closing, false);
+  const cluster = archiveCue('compare', 3, 0, 0)!;
+  const control = archiveCue('compare', 3, 1, 0)!;
+  assert.equal(cluster.image, 'comparison');
+  assert.equal(control.image, 'comparison');
+  assert.match(cluster.note, /different rock/i);
+  assert.match(control.note, /brushed/i);
+  assert.equal(archiveCue('inspect', 3, 0, 0)!.hero, true);
+  assert.equal(archiveCue('inspect', 6, 0, 0)!.hero, false);
+  assert.equal(archiveCue('evidence', 100, 2, 0)!.hero, true);
+  const reflection = archiveCue('evidence', 3, 2, 0)!;
+  assert.equal(reflection.image, 'comparison');
+  assert.equal(reflection.closing, true);
+  assert.match(reflection.note, /clue to ancient water/i);
+});
+
+test('scene-time reveal is bounded, monotonic and repeatable across pause and restored phases', () => {
+  for (const phase of ['inspect', 'compare', 'evidence'] as const) {
+    let previous = 0;
+    for (const elapsed of [0, .25, .5, .75, 1, 1.25, 1.5, 2, 3, 100]) {
+      const cue = archiveCue(phase, elapsed, 0, 0);
+      const reveal = cue?.reveal ?? 0;
+      assert.ok(Number.isFinite(reveal) && reveal >= 0 && reveal <= 1);
+      assert.ok(reveal >= previous, `${phase} should dissolve in without flickering`);
+      assert.deepEqual(archiveCue(phase, elapsed, 0, 0), cue, 'same paused scene time produces the same view');
+      previous = reveal;
+    }
+    assert.equal(previous, 1, 'late/restored stable phases display fully');
+    assert.equal(archiveCue(phase, 0, 0, 0), undefined, 'restart does not retain a previous reveal');
+  }
+  for (const elapsed of [-1, NaN, Infinity, -Infinity]) {
+    assert.equal(archiveCue('evidence', elapsed, 0, 0), undefined);
+  }
+  const editable = archiveCue('inspect', 3, 0, 0)!;
+  editable.image = 'comparison'; editable.reveal = -100;
+  assert.equal(archiveCue('inspect', 3, 0, 0)!.image, 'abrasion', 'callers cannot mutate future cue state');
+  assert.equal(archiveCue('inspect', 3, 0, 0)!.reveal, 1);
+});
+
+function jpegDimensions(bytes: Buffer): number[] {
+  assert.equal(bytes.readUInt16BE(0), 0xffd8, 'JPEG start marker');
+  let offset = 2;
+  while (offset < bytes.length) {
+    assert.equal(bytes[offset++], 0xff);
+    while (bytes[offset] === 0xff) offset++;
+    const marker = bytes[offset++];
+    if (marker === 0xda || marker === 0xd9) break;
+    const length = bytes.readUInt16BE(offset);
+    assert.ok(length >= 2 && offset + length <= bytes.length, 'valid JPEG segment');
+    if ([0xc0, 0xc1, 0xc2].includes(marker)) {
+      return [bytes.readUInt16BE(offset + 5), bytes.readUInt16BE(offset + 3)];
+    }
+    offset += length;
+  }
+  throw new Error('JPEG has no supported frame dimensions');
+}
+
+test('runtime photographs remain byte-identical to credited NASA references with truthful dimensions', () => {
+  const runtime = new URL('../public/assets/missions/blueberry-clue/v1/', import.meta.url);
+  const records = JSON.parse(readFileSync(new URL('source-records.json', runtime), 'utf8'));
+  const originals = JSON.parse(readFileSync(new URL('../../assets/references/mission-one/v1/manifest.json', import.meta.url), 'utf8'));
+  for (const image of Object.values(NASA_ARCHIVE)) {
+    const record = records.files.find((entry: { imageId: string }) => entry.imageId === image.id);
+    assert.ok(record, `source receipt for ${image.id}`);
+    const original = originals.find((entry: { imageId: string }) => entry.imageId === image.id);
+    assert.ok(original);
+    const bytes = readFileSync(new URL(image.file, runtime));
+    const hash = createHash('sha256').update(bytes).digest('hex');
+    assert.equal(hash, record.sha256);
+    assert.equal(hash, original.sha256, 'the retained reference is the independent integrity authority');
+    assert.equal(bytes.length, record.bytes);
+    assert.deepEqual(jpegDimensions(bytes), [image.width, image.height]);
+    assert.deepEqual(record.dimensions, [image.width, image.height]);
+    assert.equal(image.credit, record.credit);
+    assert.equal(image.page, record.page);
+    assert.equal(image.file, record.runtimeFile);
+  }
+  assert.match(NASA_ARCHIVE.abrasion.capture, /grinding event/i, 'event date is not asserted as photo acquisition date');
+  assert.match(NASA_ARCHIVE.comparison.context, /brushed, not ground/i);
+});
