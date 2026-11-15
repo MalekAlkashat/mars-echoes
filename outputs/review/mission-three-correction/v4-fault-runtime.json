@@ -1,0 +1,37 @@
+{
+  "errors": [],
+  "cases": [
+    {
+      "mobile": true,
+      "phase": "silence",
+      "width": 390,
+      "scrollWidth": 390,
+      "height": 844,
+      "scrollHeight": 907
+    },
+    {
+      "mobile": true,
+      "phase": "archive",
+      "width": 390,
+      "scrollWidth": 390,
+      "height": 844,
+      "scrollHeight": 1084
+    },
+    {
+      "mobile": true,
+      "phase": "recovery",
+      "width": 390,
+      "scrollWidth": 390,
+      "height": 844,
+      "scrollHeight": 880
+    },
+    {
+      "mobile": true,
+      "phase": "legacy",
+      "width": 390,
+      "scrollWidth": 390,
+      "height": 844,
+      "scrollHeight": 844
+    }
+  ]
+}

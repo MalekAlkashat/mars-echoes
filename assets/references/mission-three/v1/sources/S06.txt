@@ -1,0 +1,130 @@
+Six Things About Opportunity's Recovery Efforts
+https://www.jpl.nasa.gov/news/six-things-about-opportunitys-recovery-efforts/
+
+Solar System.4 min read
+Six Things About Opportunity's Recovery Efforts
+Jet Propulsion Laboratory https://www.jpl.nasa.gov/ Aug. 16, 2018
+Side-by-side movies shows how the 2018 global dust storm enveloped the Red Planet, courtesy of the Mars Color Imager (MARCI) camera onboard NASA's Mars Reconnaissance Orbiter (MRO). This global dust storm caused NASA's Opportunity rover to lose contact with Earth.› Full image and caption Credit: NASA/JPL-Caltech/MSSS
+The global dust storm on Mars could soon let in enough sunlight for the Opportunity rover to recharge.
+NASA's Opportunity rover has been
+silent since June 10, when a planet-encircling dust storm cut off solar power
+for the nearly-15-year-old rover. Now that scientists think the global dust
+storm is "decaying" -- meaning more dust is falling out of the
+atmosphere than is being raised back into it -- skies might soon clear enough
+for the solar-powered rover to recharge and attempt to "phone home."
+No one will know how the rover is doing until it speaks. But
+the team notes there's reason to be optimistic: They've performed several
+studies on the state of its batteries before the storm, and temperatures at its
+location. Because the batteries were in relatively good health before the storm,
+there's not likely to be too much degradation. And because dust storms tend to
+warm the environment -- and the 2018 storm happened as Opportunity's location
+on Mars entered summer -- the rover should have stayed warm enough to survive.
+What will engineers at NASA's Jet
+Propulsion Laboratory in Pasadena, California, be looking for -- and what will
+those signs mean for recovery efforts?
+A tau below 2
+Dust storms on Mars block sunlight
+from reaching the surface, raising the level of a measurement called
+"tau." The higher the tau, the less sunlight is available; the last
+tau measured by Opportunity was 10.8 on June 10. To compare, an average tau for
+its location on Mars is usually 0.5.
+JPL engineers predict that
+Opportunity will need a tau of less than 2.0 before the solar-powered rover will
+be able to recharge its batteries. A wide-angle camera on NASA's Mars
+Reconnaissance Orbiter will watch for surface features to become visible as the
+skies clear. That will help scientists estimate the tau.
+Updates on the dust storm and tau
+can be found here.
+Two Ways to Listen for Opportunity
+Several times a week, engineers
+use NASA's Deep Space
+Network, which communicates between planetary probes and Earth,
+to attempt to talk with Opportunity. The massive DSN antennas ping the rover
+during scheduled "wake-up" times, and then search for signals sent
+from Opportunity in response.
+In addition, JPL's radio science
+group uses special equipment on DSN antennas that can detect a wider range of
+frequencies. Each day, they record any radio signal from Mars over most of the
+rover's daylight hours, then search the recordings for Opportunity's "voice."
+Rover faults out
+When Opportunity experiences a
+problem, it can go into so-called "fault modes" where it
+automatically takes action to maintain its health. Engineers are preparing for
+three key fault modes if they do hear back from Opportunity.
+Low-power fault: engineers assume the rover went into
+low-power fault shortly after it stopped communicating on June 10. This mode
+causes the rover to hibernate, assuming that it will wake up at a time when
+there's more sunlight to let it recharge.
+Clock fault: critical to operating while in hibernation is
+the rover's onboard clock. If the rover doesn't know what time it is, it
+doesn't know when it should be attempting to communicate. The rover can use
+environmental clues, like an increase in sunlight, to make assumptions about
+the time.
+Uploss fault: when the rover hasn't heard from Earth in a
+long time, it can go into "uploss" fault -- a warning that its
+communication equipment may not be functioning. When it experiences this, it
+begins to check the equipment and tries different ways to communicate with
+Earth.
+What happens if they
+hear back?
+After the first time engineers hear from Opportunity, there
+could be a lag of several weeks before a second time. It's like a patient
+coming out of a coma: It takes time to fully recover. It may take several
+communication sessions before engineers have enough information to take action.
+The first thing to do is learn more about the state of the
+rover. Opportunity's team will ask for a history of the rover's battery and
+solar cells and take its temperature. If the clock lost track of time, it will
+be reset. The rover would take pictures of itself to see whether dust might be
+caked on sensitive parts, and test actuators to see if dust slipped inside,
+affecting its joints.
+Once they've gathered all this data, the team would take a
+poll about whether they're ready to attempt a full recovery.
+Not out of the woods
+Even if engineers hear back from Opportunity, there's a real
+possibility the rover won't be the same.
+The rover's batteries could have discharged so much power --
+and stayed inactive so long -- that their capacity is reduced. If those
+batteries can't hold as much charge, it could affect the rover's continued
+operations. It could also mean that energy-draining behavior, like running its
+heaters during winter, could cause the batteries to brown out.
+Dust isn't usually as much of a problem. Previous storms
+plastered dust on the camera lenses, but most of that was shed off over time.
+Any remaining dust can be calibrated out.
+Send Opportunity a
+postcard
+Do you miss Opportunity as much as the rover's team? You can
+write a message sharing your thoughts here.
+Read more about
+Opportunity at:
+https://mars.nasa.gov/mer/highlights/
+http://mars.nasa.gov
+Media Contacts
+Andrew Good
+Jet Propulsion Laboratory, Pasadena, Calif.
+818-393-2433
+andrew.c.good@jpl.nasa.gov
+JoAnna Wendel
+202-358-1003
+joanna.r.wendel@nasa.gov
+2018-192
+Related News
+Solar System.
+NASA Invites Media, Public to Join Voyager 1 One-Light Day Activities
+Solar System.
+NASA Awards Moon Base Transportation, Technology, Science Projects
+Mars.
+NASA-funded Study Details One of Oldest Mars Meteorites Ever Found
+Solar System.
+NASA’s Voyager 1 Conserves Power, Resolves Brief Communications Pause
+Mars.
+NASA’s Perseverance Offers Clues to Protect Crews from Mars Dust
+Asteroids and Comets.
+Pedal to the Metal: NASA’s Psyche Heads Toward Asteroid Belt
+Mars.
+NASA’s Perseverance Sets Off-World Record for Total Distance Driven
+Mars.
+NASA’s Curiosity Rover Catches Stunning Martian Dawn
+Mars.
+NASA Discovery Reveals Complex Water Systems on Early Mars
+Earth.
+How 2 US, European Satellites Are Studying Hurricanes During El Niño

@@ -1,0 +1,647 @@
+{
+  "date": "2026-11-15",
+  "status": "Files inspected on disk in the Mission 2 worktree. Categories follow the Mission 2 brief.",
+  "originals": [
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07216-rub-al-khali.jpg",
+      "bytes": 7104699,
+      "sha256": "530f8d3c172f2eeeb477fcbf2e92e9a087d9527e2499e3d86116e40519879dab",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 22780,
+      "height": 6000,
+      "mode": "RGB",
+      "frames": 1,
+      "eventDate": "2005-05-06 to 2005-05-14 (sols 456-464)",
+      "published": "2005-07-28",
+      "credit": "NASA/JPL/Cornell",
+      "pageUrl": "https://science.nasa.gov/photojournal/opportunitys-rub-al-khali-panorama/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07895-earth-recovery-tests.jpg",
+      "bytes": 986997,
+      "sha256": "24dcb15be548e354857146f4c7987896762d07179dc3444a1d6289168a486c9d",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 3008,
+      "height": 2000,
+      "mode": "RGB",
+      "frames": 1,
+      "eventDate": "early May 2005",
+      "published": "2005-05-06",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/tests-to-help-plan-opportunity-moves/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07922-overhead-mosaic.jpg",
+      "bytes": 552841,
+      "sha256": "c63efce95e27351667a62a1c029637327392aa6485144d9e2e86162faeb09eee",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 2000,
+      "height": 2000,
+      "mode": "L",
+      "frames": 1,
+      "eventDate": "2005-04-26 (sol 446)",
+      "published": "2005-05-06",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://www.jpl.nasa.gov/images/pia07922-opportunitys-sol-446-position-with-relative-heights/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07922-relative-heights-figure1.jpg",
+      "bytes": 158415,
+      "sha256": "c222f5af5e0d49a6c2f868bdf7a8cf22cb9dfe082776477d790bcef52b5101c4",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 800,
+      "height": 800,
+      "mode": "RGB",
+      "frames": 1,
+      "eventDate": "2005-04-26 (sol 446)",
+      "published": "2005-05-06",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/opportunitys-sol-446-position-with-relative-heights/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07983-left-front-wheel.jpg",
+      "bytes": 9574,
+      "sha256": "1ca74ba01ab0dfce6f3ba6baba87b17ebd55a41d0322059e984807722bab4346",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 256,
+      "height": 256,
+      "mode": "L",
+      "frames": 1,
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/slow-progress-in-dune-left-front-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07984-right-front-wheel.jpg",
+      "bytes": 7488,
+      "sha256": "2c64f8c574208a59428e26cf3dfac6a0e084cbd79a465225e3e10b8b6bd11782",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 256,
+      "height": 256,
+      "mode": "L",
+      "frames": 1,
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://www.jpl.nasa.gov/images/pia07984-slow-progress-in-dune-right-front-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07985-right-rear-wheel.jpg",
+      "bytes": 8226,
+      "sha256": "491586cb3e434e4da0d5fabf47728cd9c8e3cb3e517b2efb437b5b38c3d2a667",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 256,
+      "height": 256,
+      "mode": "L",
+      "frames": 1,
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/slow-progress-in-dune-right-rear-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07986-left-rear-wheel.jpg",
+      "bytes": 8512,
+      "sha256": "531cb423a9f54c783697e1197bff3ef556470c8b0bbffca9ad6d9f485ec99ce1",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 256,
+      "height": 256,
+      "mode": "L",
+      "frames": 1,
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://www.jpl.nasa.gov/images/pia07986-slow-progress-in-dune-left-rear-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/images/PIA07999-looking-back.jpg",
+      "bytes": 140176,
+      "sha256": "bcbf158eb0ae813fe134b90d5d81d6dc2aa52d557eddea19d3aa9abc878f1b0e",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 1024,
+      "height": 1024,
+      "mode": "L",
+      "frames": 1,
+      "eventDate": "2005-06-11 (sol 491)",
+      "published": "2005-06-21",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/looking-back-at-purgatory-dune/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/material-candidates/dense-sand/dense_sand_ao_2k.jpg",
+      "bytes": 2414014,
+      "sha256": "1b499b1fdf6132e95e407d1693f50995342a5120bdb9bca6082bdad923fc1333",
+      "manifestMatch": true,
+      "category": "Licensed external analogue",
+      "width": 2048,
+      "height": 2048,
+      "mode": "L",
+      "frames": 1,
+      "credit": "Dimitrios Savva / Poly Haven",
+      "pageUrl": "https://polyhaven.com/a/dense_sand"
+    },
+    {
+      "file": "assets/references/mission-two/v1/material-candidates/dense-sand/dense_sand_diff_2k.jpg",
+      "bytes": 2803876,
+      "sha256": "b2e3f157c315b9645d23e55d54b4c2c8fec39e5114001cbbc9a797ed27a06980",
+      "manifestMatch": true,
+      "category": "Licensed external analogue",
+      "width": 2048,
+      "height": 2048,
+      "mode": "RGB",
+      "frames": 1,
+      "credit": "Dimitrios Savva / Poly Haven",
+      "pageUrl": "https://polyhaven.com/a/dense_sand"
+    },
+    {
+      "file": "assets/references/mission-two/v1/material-candidates/dense-sand/dense_sand_nor_gl_2k.jpg",
+      "bytes": 3923081,
+      "sha256": "22a97f0fb874ab6976c7ad566c09e776d4c191b074ed5fa258cdb29a2e83a7c6",
+      "manifestMatch": true,
+      "category": "Licensed external analogue",
+      "width": 2048,
+      "height": 2048,
+      "mode": "RGB",
+      "frames": 1,
+      "credit": "Dimitrios Savva / Poly Haven",
+      "pageUrl": "https://polyhaven.com/a/dense_sand"
+    },
+    {
+      "file": "assets/references/mission-two/v1/material-candidates/dense-sand/dense_sand_rough_2k.jpg",
+      "bytes": 1926419,
+      "sha256": "e8ea428bb774ac990e7f656f18ff1ddb012ecc147b4b479dfd04491654e202c7",
+      "manifestMatch": true,
+      "category": "Licensed external analogue",
+      "width": 2048,
+      "height": 2048,
+      "mode": "L",
+      "frames": 1,
+      "credit": "Dimitrios Savva / Poly Haven",
+      "pageUrl": "https://polyhaven.com/a/dense_sand"
+    },
+    {
+      "file": "assets/references/mission-two/v1/motion/PIA07983-left-front-wheel.gif",
+      "bytes": 5079522,
+      "sha256": "dd0d405c733218dfb7419ace32d151d2f81779115961ff4a68bce92747bf14cf",
+      "manifestMatch": true,
+      "category": "NASA original imagery/data",
+      "width": 256,
+      "height": 256,
+      "mode": "L",
+      "frames": 77,
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/slow-progress-in-dune-left-front-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/dense-sand-files.json",
+      "bytes": 25193,
+      "sha256": "9e4e6c6822b69b4502ad0d692240395bfa2341652a288bc60822907e40fe4e39",
+      "manifestMatch": true,
+      "category": "Licensed external analogue (supplier metadata)",
+      "credit": null,
+      "pageUrl": "https://polyhaven.com/a/dense_sand"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/dense-sand-info.json",
+      "bytes": 934,
+      "sha256": "9b42aeb38e0529cb7c4f3c6b536b0c7b73f832d45a3a9be98bf26205431e5267",
+      "manifestMatch": true,
+      "category": "Licensed external analogue (supplier metadata)",
+      "credit": null,
+      "pageUrl": "https://polyhaven.com/a/dense_sand"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/nasa-media-guidance.txt",
+      "bytes": 11230,
+      "sha256": "bf918e6f4332648ef3e7158c6567545107f2006f60c89ee066f1feed1fba7ecf",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "credit": "NASA",
+      "pageUrl": "https://www.nasa.gov/nasa-brand-center/images-and-media/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/PIA07216-caption.txt",
+      "bytes": 2781,
+      "sha256": "f17f0862a867cac0acfb5d4d99f09388e20d8abbb5533d805be7627d440ef9fb",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "eventDate": "2005-05-06 to 2005-05-14 (sols 456-464)",
+      "published": "2005-07-28",
+      "credit": "NASA/JPL/Cornell",
+      "pageUrl": "https://science.nasa.gov/photojournal/opportunitys-rub-al-khali-panorama/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/PIA07895-caption.txt",
+      "bytes": 1066,
+      "sha256": "5d4dfb1090a67f62c40495ffd1a6c9263c2ddb88bce1168bc07d03d2edfa4353",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "eventDate": "early May 2005",
+      "published": "2005-05-06",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/tests-to-help-plan-opportunity-moves/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/PIA07922-caption.txt",
+      "bytes": 2026,
+      "sha256": "a163bb0d1be09db4f2e9eaeffc8ee410ae947e720d670752a4f60881cc174b49",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "eventDate": "2005-04-26 (sol 446)",
+      "published": "2005-05-06",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/opportunitys-sol-446-position-with-relative-heights/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/PIA07983-caption.txt",
+      "bytes": 1326,
+      "sha256": "61564368424e967c1c876a0a73de5517358ff5d2bf6e1722c8e5b16d382f30d3",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/slow-progress-in-dune-left-front-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/PIA07984-caption.txt",
+      "bytes": 1333,
+      "sha256": "87927a99ec57a22cd0d54fd5e5c278fda94586e883a2af6a0f69ee9b0b1c684a",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/slow-progress-in-dune-right-front-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/PIA07985-caption.txt",
+      "bytes": 1372,
+      "sha256": "057b4a78d04d655eb004ad44bf95f94cfa93b5f293bc748ff689d18cc855950c",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/slow-progress-in-dune-right-rear-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/PIA07986-caption.txt",
+      "bytes": 1318,
+      "sha256": "925b05628eb05b753a3049c46d1d5df6bde61277c02f7e0de996f3f93eed8d69",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "eventDate": "from 2005-05-10 (sol 460) and the following 11 days",
+      "published": "2005-05-24",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/slow-progress-in-dune-left-rear-wheel/"
+    },
+    {
+      "file": "assets/references/mission-two/v1/sources/PIA07999-caption.txt",
+      "bytes": 1198,
+      "sha256": "db79e6b57f3fdfb3cf9e4983ea5983597553190ba0c0aa8a162403df80cef9ec",
+      "manifestMatch": true,
+      "category": "Source text (caption or guidance extraction)",
+      "eventDate": "2005-06-11 (sol 491)",
+      "published": "2005-06-21",
+      "credit": "NASA/JPL",
+      "pageUrl": "https://science.nasa.gov/photojournal/looking-back-at-purgatory-dune/"
+    }
+  ],
+  "existingProjectAssets": [
+    {
+      "file": "game/public/assets/opportunity/opportunity-v1.glb",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 3498588,
+      "sha256": "b1ddfcd389a7b1b25750a22f3eb6e2ff73f51d44eec3d57e0d91d964b15461d6"
+    },
+    {
+      "file": "game/public/assets/opportunity/rig-metadata.json",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 3329,
+      "sha256": "65562e2601b305392fbb05d5b812b9ec83fb7c14943a7b1e34642403562d4fae"
+    },
+    {
+      "file": "game/public/assets/surfaces/regolith/color.jpg",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 947222,
+      "sha256": "c9d143db07db9a6be2eba285fae961d868520422ee5fa4d38d55da24f9968d51",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "file": "game/public/assets/surfaces/regolith/normal.jpg",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 1185078,
+      "sha256": "36db1d118fb74885991ada4a3028f4fe346c65a8e3c75edea123c08856068e41",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "file": "game/public/assets/surfaces/regolith/roughness.jpg",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 382424,
+      "sha256": "a215a6cee823f170a5b2e51f8a30ff8ca49e00c72f73d9dbee1a9c0ec2d56ed1",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "file": "game/public/assets/surfaces/regolith/ao.jpg",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 880161,
+      "sha256": "668c6e02f0f45dc9aebe4a4355d08a36c5e600a7c86d8eb23b0686bcd6163363",
+      "width": 1024,
+      "height": 1024
+    },
+    {
+      "file": "game/public/assets/missions/blueberry-clue/v1/fine-sand-color.jpg",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 676644,
+      "sha256": "3b5170c6e207650ed96ac425d0d93d644ab0c9778f9288b7c68db64e3388d2d0",
+      "width": 2048,
+      "height": 2048
+    },
+    {
+      "file": "game/public/assets/missions/blueberry-clue/v1/fine-sand-normal.png",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 8468208,
+      "sha256": "a676970835bd8d2e264673b1d355e1228103936b8d2e6184563d22433002c79b",
+      "width": 2048,
+      "height": 2048
+    },
+    {
+      "file": "game/public/assets/missions/blueberry-clue/v1/fine-sand-roughness.jpg",
+      "exists": true,
+      "category": "Existing project runtime asset",
+      "bytes": 828477,
+      "sha256": "715828c94d242c14776976ac7a3cf1060040e962ce779ae0f5fe60d83c9086bc",
+      "width": 2048,
+      "height": 2048
+    }
+  ],
+  "derived": [
+    {
+      "file": "outputs/planning/mission-two/board/pan-full.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07216-rub-al-khali.jpg",
+      "sourceSha256": "530f8d3c172f2eeeb477fcbf2e92e9a087d9527e2499e3d86116e40519879dab",
+      "transform": "whole image resized to 2278 x 600",
+      "note": "Overview",
+      "bytes": 103597,
+      "sha256": "de0bd199b120ce95e47180b2cec7e55876dd53cc7d8a8ac59143e29903b84f4f"
+    },
+    {
+      "file": "outputs/planning/mission-two/board/pan-north-tracks.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07216-rub-al-khali.jpg",
+      "sourceSha256": "530f8d3c172f2eeeb477fcbf2e92e9a087d9527e2499e3d86116e40519879dab",
+      "transform": "crop x 8190-14590, y 900-5400, resized to 1280 x 900",
+      "note": "Centre of the panorama: entry tracks leading north; trench in the foreground",
+      "bytes": 141568,
+      "sha256": "045f89642adfcac9decd6f63ed8d4ebe3fa50a073279e73f12b864ccc5f4eeb4"
+    },
+    {
+      "file": "outputs/planning/mission-two/board/pan-south-deck.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07216-rub-al-khali.jpg",
+      "sourceSha256": "530f8d3c172f2eeeb477fcbf2e92e9a087d9527e2499e3d86116e40519879dab",
+      "transform": "crop x 20180-22780, y 2300-4300, resized to 1040 x 800",
+      "note": "Edge of the panorama, facing away from the tracks: the deck end with the sundial calibration target",
+      "bytes": 122534,
+      "sha256": "ae04bb4fe4934b0197308b542c1023fd39fa63ce064e5f6775b121c6bed1e689"
+    },
+    {
+      "file": "outputs/planning/mission-two/board/pan-soil-undisturbed.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07216-rub-al-khali.jpg",
+      "sourceSha256": "530f8d3c172f2eeeb477fcbf2e92e9a087d9527e2499e3d86116e40519879dab",
+      "transform": "crop x 20600-21800, y 2600-3400, native resolution",
+      "note": "Undisturbed soil at native resolution: fine dark granules on brown soil",
+      "bytes": 154110,
+      "sha256": "cf6b72383c76da4b2cf649a6157cee9e901e713522a509464f93123e79f04aa0"
+    },
+    {
+      "file": "outputs/planning/mission-two/board/pan-soil-track.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07216-rub-al-khali.jpg",
+      "sourceSha256": "530f8d3c172f2eeeb477fcbf2e92e9a087d9527e2499e3d86116e40519879dab",
+      "transform": "crop x 11500-12700, y 4000-4800, native resolution",
+      "note": "Churned track material at native resolution",
+      "bytes": 158122,
+      "sha256": "ab1b578ec9fea6f05224d96cd6819a202ebf796e6f045856777a10de873c916f"
+    },
+    {
+      "file": "outputs/planning/mission-two/board/mosaic-centre-10m-annotated.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07922-overhead-mosaic.jpg",
+      "sourceSha256": "c63efce95e27351667a62a1c029637327392aa6485144d9e2e86162faeb09eee",
+      "transform": "crop x 500-1500, y 500-1500 (10 x 10 m at 1 cm per pixel); 1 m grid and labels drawn on top",
+      "note": "Measurement study",
+      "bytes": 287017,
+      "sha256": "35e35b73c019cbbc02170e53cb8f921c0564949da1be00515c9b6faf66d48840"
+    },
+    {
+      "file": "outputs/planning/mission-two/board/mosaic-20m.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07922-overhead-mosaic.jpg",
+      "sourceSha256": "c63efce95e27351667a62a1c029637327392aa6485144d9e2e86162faeb09eee",
+      "transform": "whole image resized to 1000 x 1000",
+      "note": "Whole 20 x 20 m mosaic",
+      "bytes": 185598,
+      "sha256": "77b8ff0887701c4e94dcc01914b847a35b25ef54a8b9d8c98c909b9593c29bae"
+    },
+    {
+      "file": "outputs/planning/mission-two/board/lookback-far.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07999-looking-back.jpg",
+      "sourceSha256": "bcbf158eb0ae813fe134b90d5d81d6dc2aa52d557eddea19d3aa9abc878f1b0e",
+      "transform": "crop y 0-520, native resolution",
+      "note": "Tracks end at the trench heads; no tracks continue beyond them",
+      "bytes": 87104,
+      "sha256": "b9ac39519654c2ef69fce5c864db6d878a6197add7f077881b37b84b87fcfa79"
+    },
+    {
+      "file": "outputs/planning/mission-two/board/lookback-deck.jpg",
+      "category": "Derived reconstruction study (crop or annotation of a NASA original)",
+      "source": "assets/references/mission-two/v1/images/PIA07999-looking-back.jpg",
+      "sourceSha256": "bcbf158eb0ae813fe134b90d5d81d6dc2aa52d557eddea19d3aa9abc878f1b0e",
+      "transform": "crop x 200-1024, y 820-1024, native resolution",
+      "note": "The deck end in view carries the sundial calibration target",
+      "bytes": 42139,
+      "sha256": "c26993753c12b38ebd5519a84f29ed0bd0ad93553001d30450adc9d9bb29016d"
+    }
+  ],
+  "paletteSamples": {
+    "source": "assets/references/mission-two/v1/images/PIA07216-rub-al-khali.jpg",
+    "note": "Mean encoded sRGB of JPEG pixels in each box. The image is 'approximately true-color'; these are study samples, not calibrated colours.",
+    "samples": [
+      {
+        "name": "Sky",
+        "box": [
+          11000,
+          200,
+          12000,
+          500
+        ],
+        "meanRGB": [
+          216,
+          174,
+          118
+        ],
+        "stdRGB": [
+          2,
+          1,
+          1
+        ],
+        "hex": "#d8ae76"
+      },
+      {
+        "name": "Sky near horizon",
+        "box": [
+          11000,
+          1180,
+          12000,
+          1380
+        ],
+        "meanRGB": [
+          215,
+          173,
+          118
+        ],
+        "stdRGB": [
+          4,
+          4,
+          3
+        ],
+        "hex": "#d7ad76"
+      },
+      {
+        "name": "Far plain",
+        "box": [
+          6000,
+          1520,
+          8000,
+          1700
+        ],
+        "meanRGB": [
+          77,
+          55,
+          34
+        ],
+        "stdRGB": [
+          5,
+          3,
+          3
+        ],
+        "hex": "#4d3722"
+      },
+      {
+        "name": "Undisturbed, mid distance",
+        "box": [
+          6500,
+          2800,
+          8000,
+          3300
+        ],
+        "meanRGB": [
+          77,
+          53,
+          33
+        ],
+        "stdRGB": [
+          9,
+          7,
+          5
+        ],
+        "hex": "#4d3521"
+      },
+      {
+        "name": "Undisturbed, near",
+        "box": [
+          20380,
+          2500,
+          21780,
+          3300
+        ],
+        "meanRGB": [
+          86,
+          58,
+          35
+        ],
+        "stdRGB": [
+          8,
+          6,
+          5
+        ],
+        "hex": "#563a23"
+      },
+      {
+        "name": "Between the tracks",
+        "box": [
+          10250,
+          4330,
+          11390,
+          5010
+        ],
+        "meanRGB": [
+          93,
+          65,
+          40
+        ],
+        "stdRGB": [
+          6,
+          5,
+          5
+        ],
+        "hex": "#5d4128"
+      },
+      {
+        "name": "Churned track",
+        "box": [
+          11730,
+          4210,
+          12410,
+          4560
+        ],
+        "meanRGB": [
+          117,
+          72,
+          42
+        ],
+        "stdRGB": [
+          26,
+          17,
+          11
+        ],
+        "hex": "#75482a"
+      }
+    ]
+  },
+  "notSupplied": [
+    "Biesiadecki and Maimone 2006 paper (PDF)",
+    "Saved copies of the article pages",
+    "Wheel time-lapses PIA07984, PIA07985, PIA07986",
+    "PIA07922 TIFF",
+    "Opportunity status reports for sols 446-491"
+  ]
+}

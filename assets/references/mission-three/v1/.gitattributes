@@ -1,0 +1,4 @@
+# Preserve the acquired pack byte-for-byte, including hash/receipt metadata.
+* -text whitespace=cr-at-eol,-blank-at-eof
+# Archived web responses are evidence, not authored code to whitespace-normalize.
+sources/*.html -diff

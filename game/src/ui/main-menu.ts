@@ -2,7 +2,7 @@ import { readPreferences, writePreferences, type Preferences } from '../app/pref
 import './main-menu.css';
 import { SkillTree } from './skills';
 
-type Actions = { newGame(): Promise<void>; continueGame(): void; settings(value: Preferences): void; pauseForSettings(): void; captureTerrain?():Promise<boolean>; grindUnlocked?():boolean };
+type Actions = { newGame(): Promise<void>; continueGame(): void; settings(value: Preferences): void; pauseForSettings(): void; captureTerrain?():Promise<boolean>; grindUnlocked?():boolean; recordedSkills?():readonly string[] };
 /** Presentation-only overlays. The application owns scene lifetime and saves. */
 export class MainMenu {
   readonly root = document.createElement('section');
@@ -67,7 +67,7 @@ export class MainMenu {
     this.confirmPanel.setAttribute('aria-labelledby','new-game-title');
     this.confirmPanel.innerHTML = `<div class="mars-modal-content mars-confirm"><p class="mars-menu-kicker">A new beginning</p><h2 id="new-game-title">Start again?</h2><p>New Game replaces your saved exploration and memory markers on this browser.</p><button id="menu-keep-save">Keep my journey</button><button id="menu-confirm-new" class="mars-secondary">Start New Game</button></div>`;
     document.body.append(this.settingsPanel,this.confirmPanel);
-    this.skills=new SkillTree(()=>this.closeSkills(),actions.captureTerrain,actions.grindUnlocked);
+    this.skills=new SkillTree(()=>this.closeSkills(),actions.captureTerrain,actions.grindUnlocked,actions.recordedSkills);
     this.backgroundElements = [...document.body.children].filter((el): el is HTMLElement => el instanceof HTMLElement && ![this.root,this.settingsPanel,this.confirmPanel,this.skills.root].includes(el) && el.tagName !== 'SCRIPT');
     const signal=this.events.signal;
     this.button('settings').addEventListener('click',()=>this.openSettings(),{signal});

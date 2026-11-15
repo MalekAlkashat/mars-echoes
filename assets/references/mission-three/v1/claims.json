@@ -1,0 +1,658 @@
+{
+  "schema_version": 1,
+  "reviewed_date": "2026-11-15",
+  "method": "Read primary pages and paper text; search snippets are not verification. Duplicate hosted captions are not independent datasets.",
+  "claims": [
+    {
+      "id": "M3-C01",
+      "wording": "Opportunity's final region was Perseverance Valley, on Endeavour Crater's inner western rim.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S21",
+          "url": "https://www.jpl.nasa.gov/images/pia22909-opportunity-legacy-pan-true-color/",
+          "locator": "Description, terrain-location paragraph"
+        },
+        {
+          "source_id": "S10",
+          "url": "https://www.uahirise.org/ESP_056955_1775",
+          "locator": "Caption, first two paragraphs"
+        }
+      ],
+      "caveat": "Pancam and later orbital observations support the region, not our authored map coordinates.",
+      "runtime_use": "Location card and level reference",
+      "team_fact_ids": [
+        "F-19"
+      ]
+    },
+    {
+      "id": "M3-C02",
+      "wording": "Tau describes atmospheric optical opacity; it is not a deposited dust-layer thickness.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S20",
+          "url": "https://ntrs.nasa.gov/citations/20190027303",
+          "locator": "Paper p.1 Nomenclature; p.4 section II.A"
+        },
+        {
+          "source_id": "S06",
+          "url": "https://www.jpl.nasa.gov/news/six-things-about-opportunitys-recovery-efforts/",
+          "locator": "A tau below 2"
+        }
+      ],
+      "caveat": "Dimensionless; value depends on observational context. Avoid converting it into a linear percentage.",
+      "runtime_use": "HUD glossary",
+      "team_fact_ids": [
+        "F-24"
+      ]
+    },
+    {
+      "id": "M3-C03",
+      "wording": "JPL gives roughly 0.5 as an average tau at Opportunity's site.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S06",
+          "url": "https://www.jpl.nasa.gov/news/six-things-about-opportunitys-recovery-efforts/",
+          "locator": "A tau below 2, first paragraph"
+        }
+      ],
+      "caveat": "Contextual site average, not a universal clear-sky value or confirmed opening-day telemetry.",
+      "runtime_use": "Optional historical reference label",
+      "team_fact_ids": [
+        "F-24"
+      ]
+    },
+    {
+      "id": "M3-C04",
+      "wording": "Opportunity's last reported tau was approximately 10.8 on June 10, 2018.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S03",
+          "url": "https://science.nasa.gov/photojournal/last-images-opportunity-took/",
+          "locator": "Description, opacity estimate"
+        },
+        {
+          "source_id": "S06",
+          "url": "https://www.jpl.nasa.gov/news/six-things-about-opportunitys-recovery-efforts/",
+          "locator": "A tau below 2"
+        }
+      ],
+      "caveat": "Two documents reference the same mission observation; not independent measurements. Not proof of the storm's eventual global maximum.",
+      "runtime_use": "Reported observation card",
+      "team_fact_ids": [
+        "F-24"
+      ]
+    },
+    {
+      "id": "M3-C05",
+      "wording": "The later atmospheric paper describes Opportunity's extreme opacity as a lower limit above 10.7.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S20",
+          "url": "https://ntrs.nasa.gov/citations/20190027303",
+          "locator": "Paper p.4, section II.A, second paragraph"
+        }
+      ],
+      "caveat": "Consistent with an approximate 10.8 report; do not invent excess precision or compare directly with different wavelengths/sites.",
+      "runtime_use": "Technical caveat, not necessary player copy",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C06",
+      "wording": "MRO first detected the developing storm on May 30, 2018; Opportunity reduced operations by June 6.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "url": "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/",
+          "locator": "Original story posted on June 8; paragraph beginning Opportunity's power levels"
+        }
+      ],
+      "caveat": "Page header is July 26 because it accumulates updates; use the dated June section.",
+      "runtime_use": "Timeline",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C07",
+      "wording": "On June 10, Opportunity still transmitted; science operations remained suspended.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "url": "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/",
+          "locator": "Updated at 4:30 p.m. PDT on June 10, first paragraph"
+        }
+      ],
+      "caveat": "Reported battery sufficiency to communicate at that time is not a later battery state-of-charge record.",
+      "runtime_use": "Final operating interval",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C08",
+      "wording": "NASA identifies June 10, 2018 as the last communication date.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S09",
+          "url": "https://www.jpl.nasa.gov/news/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+          "locator": "Main mission-conclusion text"
+        },
+        {
+          "source_id": "S13",
+          "url": "https://science.nasa.gov/mission/mer-opportunity/",
+          "locator": "Key Dates"
+        }
+      ],
+      "caveat": "Mission records cross-check the date; both are NASA records, not independent telemetry datasets.",
+      "runtime_use": "Date card",
+      "team_fact_ids": [
+        "F-16"
+      ]
+    },
+    {
+      "id": "M3-C09",
+      "wording": "PIA22929 is a partial Pancam frame exposed around 09:30 PDT on June 10, sol 5111.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S02",
+          "url": "https://science.nasa.gov/photojournal/opportunitys-last-message/",
+          "locator": "Description, first and last paragraphs"
+        }
+      ],
+      "caveat": "Exposure time differs from relay and Earth receipt; no exact shutdown time follows from it.",
+      "runtime_use": "Archival image label",
+      "team_fact_ids": [
+        "F-23"
+      ]
+    },
+    {
+      "id": "M3-C10",
+      "wording": "In PIA22929, noise accounts for bright speckles and missing transmission data accounts for the black lower area.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S02",
+          "url": "https://science.nasa.gov/photojournal/opportunitys-last-message/",
+          "locator": "Description, camera noise and interrupted transmission paragraph"
+        }
+      ],
+      "caveat": "The dark received area is not the same thing as the unreceived region. Preserve both without generative filling.",
+      "runtime_use": "Archival authenticity",
+      "team_fact_ids": [
+        "F-23"
+      ]
+    },
+    {
+      "id": "M3-C11",
+      "wording": "PIA22929's caption places relay at about 09:45 PDT and Earth receipt at about 10:05 PDT.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S02",
+          "url": "https://science.nasa.gov/photojournal/opportunitys-last-message/",
+          "locator": "Description, first paragraph"
+        }
+      ],
+      "caveat": "Approximate Earth time-standard labels as published, not Mars local time. No instant simultaneous scene beat.",
+      "runtime_use": "Optional detailed timeline",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C12",
+      "wording": "PIA22930 contains later exposures, around 09:33 PDT; their full-size frames were never received.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S03",
+          "url": "https://science.nasa.gov/photojournal/last-images-opportunity-took/",
+          "locator": "Description, last paragraph"
+        }
+      ],
+      "caveat": "Thumbnails arrived before the last partial frame. The caption's EDT a.m. parenthetical is inconsistent; use PDT or explicitly converted UTC.",
+      "runtime_use": "Last taken versus last transmitted",
+      "team_fact_ids": [
+        "F-23"
+      ]
+    },
+    {
+      "id": "M3-C13",
+      "wording": "PIA22930 uses left/right Pancam views through 440 nm and 750 nm filters.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S03",
+          "url": "https://science.nasa.gov/photojournal/last-images-opportunity-took/",
+          "locator": "Description, filter paragraph"
+        }
+      ],
+      "caveat": "Not natural-color imagery; enlargement cannot recover absent detail.",
+      "runtime_use": "Image provenance",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C14",
+      "wording": "The final panorama combines 354 frames acquired May 13–June 10, sols 5084–5111.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S21",
+          "url": "https://www.jpl.nasa.gov/images/pia22909-opportunity-legacy-pan-true-color/",
+          "locator": "Description, first paragraph"
+        }
+      ],
+      "caveat": "Multi-date assembled observation, not one instantaneous storm view.",
+      "runtime_use": "Final-site visual reference",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C15",
+      "wording": "PIA22909 is approximate true color; PIA22908 is false color; some mosaic panels lack a complete filter set.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S21",
+          "url": "https://www.jpl.nasa.gov/images/pia22909-opportunity-legacy-pan-true-color/",
+          "locator": "Description, approximate color and filter paragraphs"
+        },
+        {
+          "source_id": "S22",
+          "url": "https://www.jpl.nasa.gov/images/pia22908-opportunity-legacy-pan-false-color/",
+          "locator": "Description, first and incomplete-image paragraphs"
+        }
+      ],
+      "caveat": "Related products of the same panorama, not independent corroborating observations.",
+      "runtime_use": "Palette versus composition references",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C16",
+      "wording": "PIA22521 depicts simulated skies at tau 1, 3, 5, 7, 9 and 11.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S04",
+          "url": "https://science.nasa.gov/photojournal/shades-of-martian-darkness/",
+          "locator": "Description"
+        }
+      ],
+      "caveat": "Simulation, not six sequential rover photographs or a calibrated brightness curve.",
+      "runtime_use": "Reference graphic with Simulation label",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C17",
+      "wording": "By June 19 the event was classified as planet-encircling in JPL's June 20 update.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "url": "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/",
+          "locator": "Updated at 1:20 p.m. PDT on June 20, first paragraph"
+        }
+      ],
+      "caveat": "Retrospective paper p.5 describes June 20 circumnavigation. Use June 19–20 or attribution; do not silently pick a universal timestamp.",
+      "runtime_use": "Local-to-global timeline",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C18",
+      "wording": "After contact was lost, engineers considered low-power, clock and uploss fault scenarios.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S06",
+          "url": "https://www.jpl.nasa.gov/news/six-things-about-opportunitys-recovery-efforts/",
+          "locator": "Rover faults out"
+        }
+      ],
+      "caveat": "Low-power entry was an engineering assumption. These are not confirmed final diagnoses or player-selected historical switches.",
+      "runtime_use": "Fault explanation",
+      "team_fact_ids": [
+        "F-16"
+      ]
+    },
+    {
+      "id": "M3-C19",
+      "wording": "JPL's June 12 explanation described assumed low-power behavior that shut down subsystems while retaining a mission clock.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "url": "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/",
+          "locator": "Updated at 6:30 p.m. PDT on June 12"
+        }
+      ],
+      "caveat": "Its 24 V reference is voltage, not battery charge percent; describe as an assumption made after a failed contact attempt.",
+      "runtime_use": "Basis for labeled simplified conservation choices",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C20",
+      "wording": "Clearing skies did not establish clean solar panels or a recovered rover.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S07",
+          "url": "https://www.jpl.nasa.gov/news/update-on-opportunity-rover-recovery-efforts/",
+          "locator": "Oct.11 update, possible dust layer and unknown quantity"
+        },
+        {
+          "source_id": "S10",
+          "url": "https://www.uahirise.org/ESP_056955_1775",
+          "locator": "Caption, unknown array dust and limits of orbital observation"
+        }
+      ],
+      "caveat": "Atmospheric opacity and deposited dust are separate. Later images cannot determine array dust amount.",
+      "runtime_use": "Storm versus solar-array effects",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C21",
+      "wording": "On September 11, commands increased from three times weekly to multiple times daily while passive listening continued.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S07",
+          "url": "https://www.jpl.nasa.gov/news/update-on-opportunity-rover-recovery-efforts/",
+          "locator": "Updated at 2:45 p.m. PDT on Sept.11"
+        }
+      ],
+      "caveat": "Operational increase after two MARCI tau estimates below 1.5; this is not a physical universal recovery threshold.",
+      "runtime_use": "Recovery campaign",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C22",
+      "wording": "The team kept trying through a hoped-for November–January dust-clearing season.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S07",
+          "url": "https://www.jpl.nasa.gov/news/update-on-opportunity-rover-recovery-efforts/",
+          "locator": "Oct.11 and Oct.29 updates"
+        }
+      ],
+      "caveat": "Expected winds and cleaning were uncertain, not a documented successful cleaning or rescue.",
+      "runtime_use": "Time transition and human persistence",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C23",
+      "wording": "January 2019 commands tested possible radio failures or clock offset as well as sweep-and-beep.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S08",
+          "url": "https://www.jpl.nasa.gov/news/rover-team-beaming-new-commands-to-opportunity-on-mars/",
+          "locator": "Main text, three possible scenarios and proposed remedies"
+        }
+      ],
+      "caveat": "Unlikely hypotheses, not known component failures. Over 600 attempts then and over 1,000 commands later are different time/count descriptions.",
+      "runtime_use": "Recovery diversity",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C24",
+      "wording": "NASA reported more than 1,000 recovery commands and declared the mission complete February 13, 2019.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S09",
+          "url": "https://www.jpl.nasa.gov/news/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+          "locator": "Mission conclusion, paragraph beginning The Opportunity rover stopped communicating"
+        },
+        {
+          "source_id": "S19",
+          "url": "https://www.jpl.nasa.gov/edu/resources/teachable-moment/mars-rover-mission-comes-to-an-end-but-science-legacy-live-on/",
+          "locator": "The Final Act"
+        }
+      ],
+      "caveat": "Use aggregate campaign summary. Do not invent a timestamped record for each displayed command.",
+      "runtime_use": "Finale",
+      "team_fact_ids": [
+        "F-17"
+      ]
+    },
+    {
+      "id": "M3-C25",
+      "wording": "The final command attempt was late February 12 in the JPL account, before the February 13 announcement.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S09",
+          "url": "https://www.jpl.nasa.gov/news/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+          "locator": "Image caption beginning Late on Feb.12, 2019"
+        }
+      ],
+      "caveat": "Keep the local-date wording; do not assert an unprovided exact time or conflate it with the June loss of contact.",
+      "runtime_use": "Finale timeline",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C26",
+      "wording": "HiRISE observed Opportunity on September 20, 2018 in ESP_056955_1775.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S10",
+          "url": "https://www.uahirise.org/ESP_056955_1775",
+          "locator": "Acquisition date and caption"
+        },
+        {
+          "source_id": "S11",
+          "url": "https://www.jpl.nasa.gov/images/pia22549-opportunity-after-the-dust-storm/",
+          "locator": "Description, image date"
+        }
+      ],
+      "caveat": "Same orbital observation in two presentations; no independent confirmation of rover internal condition.",
+      "runtime_use": "Recovery-era location reference",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C27",
+      "wording": "The HiRISE record lists center latitude -2.335 degrees and east longitude 354.652 degrees; full map-projected imagery is north-up at 25 cm/pixel.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S10",
+          "url": "https://www.uahirise.org/ESP_056955_1775",
+          "locator": "Acquisition metadata: Latitude centered, Longitude East, Map projected scale"
+        }
+      ],
+      "caveat": "Image-center metadata is not exact rover GPS. Do not apply full-product pixel scale to downsampled context JPEGs.",
+      "runtime_use": "Future map-data acquisition",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C28",
+      "wording": "Spirit and Opportunity both depended on solar power; Ingenuity also used a solar panel and batteries.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S19",
+          "url": "https://www.jpl.nasa.gov/edu/resources/teachable-moment/mars-rover-mission-comes-to-an-end-but-science-legacy-live-on/",
+          "locator": "How They Did It, solar-powered twins"
+        },
+        {
+          "source_id": "S15",
+          "url": "https://science.nasa.gov/mission/mer-spirit/",
+          "locator": "In Depth, solar panels and winter discussion"
+        },
+        {
+          "source_id": "S14",
+          "url": "https://www.jpl.nasa.gov/news/nasas-ingenuity-mars-helicopter-team-says-goodbye-for-now/",
+          "locator": "Bytes and Cake, daily solar-panel and battery tests"
+        }
+      ],
+      "caveat": "Shared energy dependence, not identical hardware or a common cause of mission endings. Ingenuity's flight-ending damage is a different event.",
+      "runtime_use": "SUNLIGHT connection",
+      "team_fact_ids": [
+        "F-16",
+        "F-38"
+      ]
+    },
+    {
+      "id": "M3-C29",
+      "wording": "Opportunity's end-of-mission odometry was 45.16 km.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S13",
+          "url": "https://science.nasa.gov/mission/mer-opportunity/",
+          "locator": "In Depth, paragraph beginning When NASA declared"
+        }
+      ],
+      "caveat": "Historical final distance, not a claim that it still holds a present-day record.",
+      "runtime_use": "Optional legacy card",
+      "team_fact_ids": [
+        "F-05"
+      ]
+    },
+    {
+      "id": "M3-C30",
+      "wording": "The storm's global peak occurred after Opportunity's final contact; other spacecraft continued observing it.",
+      "status": "verified",
+      "evidence": [
+        {
+          "source_id": "S20",
+          "url": "https://ntrs.nasa.gov/citations/20190027303",
+          "locator": "Paper abstract and section II.A, pp.4–5"
+        }
+      ],
+      "caveat": "Do not transfer Curiosity's 880 nm opacity or REMS temperature/UV curves to Opportunity's site.",
+      "runtime_use": "Timeline and engineering limits",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C31",
+      "wording": "A complete numerical battery-percent or shutdown trajectory after June 10 is established by these sources.",
+      "status": "unverified",
+      "evidence": [],
+      "caveat": "Not found in the sources checked. Do not ship this claim; source communication loss does not prove zero charge or an exact final failure.",
+      "runtime_use": "Blocked numeric HUD",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C32",
+      "wording": "The exact final rover heading, pitch/roll and full articulation pose are established for direct game placement.",
+      "status": "unverified",
+      "evidence": [
+        {
+          "source_id": "S10",
+          "url": "https://www.uahirise.org/ESP_056955_1775",
+          "locator": "Product metadata and orbital context"
+        },
+        {
+          "source_id": "S21",
+          "url": "https://www.jpl.nasa.gov/images/pia22909-opportunity-legacy-pan-true-color/",
+          "locator": "Panorama description"
+        }
+      ],
+      "caveat": "Region and surrounding forms are supported; exact final body-frame pose was not found in the records checked. Do not substitute valley slope or image solar angles.",
+      "runtime_use": "Custom reconstruction gap",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C33",
+      "wording": "22 Wh is a primary-verified final battery charge for this pack.",
+      "status": "unverified",
+      "evidence": [],
+      "caveat": "This figure appeared in secondary coverage; a primary, context-complete energy record was not established here. It would describe energy, not a battery percentage. Omit from runtime pending a primary record.",
+      "runtime_use": "Blocked numeric telemetry",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C34",
+      "wording": "Player conservation choices should illustrate demand reduction without a savable alternative ending.",
+      "status": "design proposal",
+      "evidence": [
+        {
+          "source_id": "S01",
+          "url": "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/",
+          "locator": "June8 science suspension and June12 assumed low-power explanation"
+        }
+      ],
+      "caveat": "Design abstraction, not historical command reenactment. Do not assign invented watts, a guaranteed survival strategy or required heater shutdown.",
+      "runtime_use": "Small feasible interaction",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C35",
+      "wording": "Use a period break before the later recovery campaign and return beside the silent rover.",
+      "status": "design proposal",
+      "evidence": [
+        {
+          "source_id": "S07",
+          "url": "https://www.jpl.nasa.gov/news/update-on-opportunity-rover-recovery-efforts/",
+          "locator": "Dated recovery updates"
+        },
+        {
+          "source_id": "S09",
+          "url": "https://www.jpl.nasa.gov/news/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+          "locator": "Mission conclusion"
+        }
+      ],
+      "caveat": "The spirit and transitions are fiction. Preserve the fixed historical outcome without blaming the player.",
+      "runtime_use": "Ending structure",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C36",
+      "wording": "High opacity by itself proves destructive surface winds or physical rover damage.",
+      "status": "unverified",
+      "evidence": [],
+      "caveat": "Unsupported inference. No exact wind-speed/impact/damage claim is selected.",
+      "runtime_use": "Reject spectacle-driven damage",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C37",
+      "wording": "Authentic Opportunity recordings of the 2018 storm were located.",
+      "status": "unverified",
+      "evidence": [],
+      "caveat": "Not found in the sources checked. Any later designed audio, Earth analogue or other-mission recording needs clear labeling and rights.",
+      "runtime_use": "Audio gap",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C38",
+      "wording": "The source parenthetical 12:33 a.m. EDT is consistent with 09:33 a.m. PDT.",
+      "status": "conflicting",
+      "evidence": [
+        {
+          "source_id": "S03",
+          "url": "https://science.nasa.gov/photojournal/last-images-opportunity-took/",
+          "locator": "Description, last paragraph"
+        }
+      ],
+      "caveat": "The offsets differ by three hours; the EDT a.m. text is inconsistent. Preserve original record; use published PDT. 16:33 UTC / 12:33 p.m. EDT are explicit time-zone conversions, not new acquisition evidence.",
+      "runtime_use": "Caption correction note",
+      "team_fact_ids": []
+    },
+    {
+      "id": "M3-C39",
+      "wording": "The final-panorama caption's June 3, 2018 / sol 5014 pairing is ready for runtime use.",
+      "status": "conflicting",
+      "evidence": [
+        {
+          "source_id": "S05",
+          "url": "https://science.nasa.gov/resource/opportunity-rovers-final-mars-images/",
+          "locator": "Tabular outcrop annotation"
+        },
+        {
+          "source_id": "S22",
+          "url": "https://www.jpl.nasa.gov/images/pia22908-opportunity-legacy-pan-false-color/",
+          "locator": "Tabular outcrop annotation"
+        }
+      ],
+      "caveat": "Internally inconsistent with its own March sols 5015–5038 and May/June sols 5084–5111. Omit this date-sol pair; no guessed correction is selected.",
+      "runtime_use": "Blocked caption detail",
+      "team_fact_ids": []
+    }
+  ]
+}

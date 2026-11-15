@@ -2,14 +2,14 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {Group,Matrix4,Vector3} from 'three';
 import {hubConcretionPlacements} from '../src/scenes/mars-hub/concretions.ts';
-import {hubHeight} from '../src/environments/mars/hub-terrain.ts';
+import {terrain100Height,TERRAIN_100} from '../src/environments/mars/terrain-100.ts';
 import {createConcretionField} from '../src/environments/mars/concretions.ts';
 import {addConcretions} from '../src/scenes/episodes/rover/missions/blueberry-clue/geology.ts';
 
 test('hub grains are deterministic, separated, seated, and include the initial navigation foreground',()=>{
- const height=(x:number,z:number)=>hubHeight(x,z,true),a=hubConcretionPlacements(height),b=hubConcretionPlacements(height);
+ const height=terrain100Height,a=hubConcretionPlacements(height),b=hubConcretionPlacements(height);
  assert.deepEqual(a,b);assert.equal(a.length,640);assert.equal(new Set(a.map(p=>p.id)).size,a.length);
- assert.equal(a.filter(p=>p.z>4&&p.z<11&&Math.abs(p.x)<3).length,180);
+ assert.equal(a.filter(p=>Math.abs(p.z-TERRAIN_100.spawn[1])<4&&Math.abs(p.x)<3).length,90);
  for(let i=0;i<a.length;i++){
   const p=a[i];assert.ok(p.y-p.r*p.sy<height(p.x,p.z));assert.ok(p.y+p.r*p.sy>height(p.x,p.z));
   for(let j=0;j<i;j++)assert.ok(Math.hypot(p.x-a[j].x,p.z-a[j].z)>p.r+a[j].r);

@@ -1,0 +1,82 @@
+{
+  "errors": [],
+  "failed": [
+    "http://127.0.0.1:5208/assets/opportunity/opportunity-v1.glb",
+    "http://127.0.0.1:5208/assets/kenney/nature-kit/rock-talla.glb",
+    "http://127.0.0.1:5208/assets/kenney/nature-kit/cliff-rock.glb"
+  ],
+  "profiles": {
+    "arrival": {
+      "samples": 89,
+      "median": 17,
+      "p95": 34.30000000447035,
+      "hitchesOver50": 1
+    },
+    "onset": {
+      "samples": 73,
+      "median": 17.299999997019768,
+      "p95": 35.400000005960464,
+      "hitchesOver50": 0
+    },
+    "peak": {
+      "samples": 90,
+      "median": 17.200000002980232,
+      "p95": 34.19999999552965,
+      "hitchesOver50": 0
+    },
+    "archive": {
+      "samples": 89,
+      "median": 17.100000001490116,
+      "p95": 33.900000005960464,
+      "hitchesOver50": 0
+    },
+    "return": {
+      "samples": 89,
+      "median": 17,
+      "p95": 34.399999998509884,
+      "hitchesOver50": 0
+    }
+  },
+  "restored": true,
+  "saved": {
+    "version": 2,
+    "savedAt": 1794701460494,
+    "entry": {
+      "scene": "mars-hub",
+      "bookmark": {
+        "position": [
+          0,
+          -1.6582488298416138,
+          -23.32
+        ],
+        "heading": 0,
+        "cameraYaw": 0,
+        "cameraPitch": 0.12,
+        "cameraDistance": 5.8
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        -1.6582488298416138,
+        -23.32
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [
+      "blueberry-clue",
+      "long-night"
+    ],
+    "skills": [
+      "grind",
+      "sunlight"
+    ],
+    "completed": []
+  },
+  "repeats": 3,
+  "mobileOverflow": false,
+  "mobile": true
+}

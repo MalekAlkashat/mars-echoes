@@ -1,0 +1,24 @@
+MER NASA 3D model
+https://science.nasa.gov/resource/mars-exploration-rovers-3d-model/
+
+Explore This Section
+Science
+The Solar System
+Mars Exploration Rovers 3D Model
+Solar System Resources
+Curated Resource Packages
+Solar System Home
+Mars Exploration Rovers 3D Model
+April 22, 2019
+Credit
+NASA Visualization Technology Applications and Development (VTAD)
+Language
+english
+A 3D model of the twin Mars Exploration Rovers, Spirit and Opportunity.
+Downloads
+glTF File (3D Model)
+Sep 9, 2023
+(11.36 MB)
+USDZ File (3D Model)
+Sep 9, 2023
+USDZ (3.01 MB)

@@ -1,4 +1,6 @@
 import type { HubBookmark, RoverCheckpoint, SceneEntry } from './contracts.ts';
+import {parsePurgatoryData} from '../scenes/episodes/rover/missions/purgatory/checkpoint.ts';
+import {legacyNightReserve,type NightPhase} from '../scenes/episodes/rover/missions/long-night/progress.ts';
 
 export const SAVE_KEY = 'mars-echoes.save.v2';
 export const BACKUP_SAVE_KEY = 'mars-echoes.save.v2.backup';
@@ -25,6 +27,18 @@ function checkpoint(value:unknown):RoverCheckpoint|undefined {
     typeof value.started!=='boolean'||!inRange(value.time,0,1e10))return;
   const common={position:[...value.position] as [number,number],heading:value.heading,cameraYaw:value.cameraYaw,
     cameraPitch:value.cameraPitch,cameraDistance:value.cameraDistance,started:value.started,time:value.time};
+  if(value.kind==='purgatory'){
+    const data=parsePurgatoryData(value);
+    return data?{...common,kind:'purgatory',...data}:undefined;
+  }
+  if(value.kind==='long-night'){
+    if(Math.abs(common.position[0])>30||Math.abs(common.position[1])>30||!['arrival','storm','silence','archive','recovery','legacy'].includes(String(value.phase))||!inRange(value.elapsed,0,40)||typeof value.imaging!=='boolean'||typeof value.science!=='boolean')return;
+    if(value.phase!=='storm'&&value.elapsed!==0)return;
+    if(value.reserve!==undefined&&!inRange(value.reserve,0,100))return;
+    const phase=value.phase as NightPhase;
+    return {...common,kind:'long-night',phase,elapsed:value.elapsed,imaging:value.imaging,science:value.science,
+      reserve:value.reserve??legacyNightReserve(phase,value.elapsed,value.imaging,value.science)};
+  }
   if(value.kind==='blueberry-clue'){
     if(Math.abs(common.position[0])>12||Math.abs(common.position[1])>12||!['approach','brush','grind','inspect','compare','water','evidence'].includes(String(value.phase)))return;
     return {...common,kind:'blueberry-clue',phase:value.phase as Extract<RoverCheckpoint,{kind:'blueberry-clue'}>['phase']};
@@ -49,9 +63,11 @@ function sceneEntry(value:unknown):SceneEntry|undefined {
   if(value.scene!=='episode-rover-01'||value.wreckId!=='wreck-rover-01')return;
   const resume=checkpoint(value.resume);
   if(!resume)return;
-  if(value.chapter!==undefined&&value.chapter!=='blueberry-clue')return;
+  if(value.chapter!==undefined&&value.chapter!=='blueberry-clue'&&value.chapter!=='purgatory'&&value.chapter!=='long-night')return;
   if(value.chapter==='blueberry-clue'&&resume.kind!=='blueberry-clue')return;
-  return {scene:'episode-rover-01',wreckId:value.wreckId,...(resume.kind==='blueberry-clue'?{chapter:'blueberry-clue' as const}:{}),resume};
+  if(value.chapter==='long-night'&&resume.kind!=='long-night')return;
+  if(value.chapter==='purgatory'&&resume.kind!=='purgatory')return;
+  return {scene:'episode-rover-01',wreckId:value.wreckId,...(resume.kind==='blueberry-clue'||resume.kind==='purgatory'||resume.kind==='long-night'?{chapter:resume.kind}:{}),resume};
 }
 /** Parse and copy only known fields. Invalid runtime numbers never replace a good save. */
 export function parseSave(raw:string|null):ExplorationSave|undefined {
@@ -61,10 +77,12 @@ export function parseSave(raw:string|null):ExplorationSave|undefined {
     const b=value.bookmark===undefined?undefined:bookmark(value.bookmark);
     if(value.bookmark!==undefined&&!b)return;
     if(value.version===1)return {version:2,savedAt:0,entry:{scene:'mars-hub',...(b?{bookmark:b}:{})},bookmark:b,completed:[...new Set<string>(value.completed)]};
-    if(value.chapters!==undefined&&(!Array.isArray(value.chapters)||!value.chapters.every(id=>id==='blueberry-clue')))return;
-    if(value.skills!==undefined&&(!Array.isArray(value.skills)||!value.skills.every(id=>id==='grind')))return;
+    if(value.chapters!==undefined&&(!Array.isArray(value.chapters)||!value.chapters.every(id=>id==='blueberry-clue'||id==='purgatory'||id==='long-night')))return;
+    if(value.skills!==undefined&&(!Array.isArray(value.skills)||!value.skills.every(id=>id==='grind'||id==='sand'||id==='sunlight')))return;
     const chapters=[...new Set<string>((value.chapters??[]) as string[])];
     const skills=[...new Set<string>((value.skills??[]) as string[])];
+    if(chapters.includes('purgatory')!==skills.includes('sand'))return;
+    if(chapters.includes('long-night')!==skills.includes('sunlight'))return;
     if(chapters.includes('blueberry-clue')!==skills.includes('grind'))return;
     if(value.version!==2||!inRange(value.savedAt,0,1e15))return;
     const entry=sceneEntry(value.entry);

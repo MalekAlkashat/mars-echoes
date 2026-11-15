@@ -1,61 +1,53 @@
 # Mars Echoes (working name)
 
-Current development focus: build the present-day exploration map first, using the existing spirit placeholder while final art is prepared. Players roam to Opportunity, enter its story on three separate chapter maps, then return. Build shared terrain and mission systems so the chapters can develop in parallel. See [foundation audit and plan](outputs/planning/mission-foundation.md). The current executable still starts at the placeholder hub and uses the fictional repair episode; this planning update does not implement the new route.
+Explore present-day Mars as a spirit, enter Opportunity's memories, then return beside the silent rover. Current main includes three independently selectable historical chapters in the existing Three.js/TypeScript/Vite runtime.
 
-A Three.js narrative game in development: a spirit explores Mars, enters abandoned equipment and lives through its past mission, then returns to the present. The hackathon target is one complete story about the real Opportunity rover, with cinematic time jumps. The current playable rover sequence is a fictional prototype; Opportunity’s historical chapters are not built yet. The title and spirit appearance are provisional.
+## Run and play
 
-Start with [ROADMAP.md](ROADMAP.md) for the current vision and development stages. Read [CONTRIBUTING.md](CONTRIBUTING.md) before parallel work. AI contributors also read [AGENTS.md](AGENTS.md).
-
-The local build command below is verified. A GitHub Actions build template is prepared at `outputs/planning/build-workflow.yml`; it is not installed as an active workflow because the current GitHub login lacks permission to publish workflows. Repository code can still be pushed and shared normally.
-
-## What runs now
-
-`game/` now has the actual owner-responsibility structure: shared application/input/assets/rendering services, a placeholder Mars hub and spirit controller, and an isolated rover episode. The default opens the hub. Approach its registered abandoned rover to enter the preserved repair/call sequence, then return to Mars. The earlier rover-only source is tagged `rover-v2-baseline`.
-
-This proves the shared runtime and entry/return foundation, not the complete selected past mission. The Opportunity chapters, cinematic time jumps, eventual shutdown, final spirit art and sound remain unfinished. The spirit's procedural humanoid silhouette is a tentative placeholder.
-
-Use Node.js 22.12 or newer, then from the repository root:
+Use Node 22.12 or newer. From this repository:
 
 ```sh
 npm --prefix game ci
 npm --prefix game run dev -- --port 5180 --strictPort
 ```
 
-Open [the development preview](http://127.0.0.1:5180/) while that server is running. The default and `?scene=mars-hub` use the hub factory. `?scene=episode-rover-01` previews the rover episode directly through the same production factory.
+Start New Game, cross the valley, select a memory near Opportunity and enter. WASD moves/drives; drag or arrows look; Escape pauses. Restart is a deliberate pause-menu action. Existing saves, settings and PNG photography remain available.
 
-- In the hub, click **Enter the graveyard**, use WASD to glide, Space to leap and E near the rover to enter. Obstacles remain solid; there is no phasing.
-- In the rover episode, click **Wake the rover**. WASD drives; E interacts; F briefly shows the optical feed. Repair uses WASD positioning, Q/E rotation and Enter insertion.
-- Drag or arrow keys look; scroll changes camera distance. Escape pauses; R restarts the active scene. The episode pause menu allows leaving early, and **Return to Mars** is available after its unanswered call. An early exit does not complete the sequence.
+- **The Blueberry Clue:** approach, brush, hold E to grind, compare separate observations and watch the labeled ancient-water interpretation. Successful return records GRIND.
+- **Stuck in Purgatory:** cinematic entrapment, hold W for metered recovery, optional planning and unchanged, labeled NASA images. Successful return records SAND. Touch uses the existing direction pad.
+- **The Long Night:** drive to observe, make illustrative conservation choices during a 16-second storm, then follow silence, archival evidence and the later recovery campaign. Successful return records SUNLIGHT.
 
-Run the automated checks:
+Completing one chapter does not fabricate completion of the others. Each has its own map/checkpoint. Purgatory preserves rover/soil state during recovery; a saved opening replay restarts safely from its beginning. Connected story transitions, OVERTIME montage, wider skills/map, Memory Check, final spirit and audio remain separate work.
+
+Developer previews use the production factories and do not overwrite the normal saved journey:
+
+| Query | Experience |
+| --- | --- |
+| `?mission=blueberry-clue` | Mission 1 |
+| `?mission=purgatory` | Mission 2 |
+| `?mission=long-night` | Mission 3 |
+| `?scene=mars-hub` | Hub |
+| `?scene=episode-rover-01` | Opportunity drive preview |
+| `?scene=episode-rover-01&prototype=repair` | Preserved fictional repair/call prototype |
+
+The earlier `?scene=episode-rover-01&slice=purgatory` link remains an alias. The fictional prototype is not Opportunity history.
 
 ```sh
 npm --prefix game test
-```
-
-Build and serve the production version:
-
-```sh
 npm --prefix game run build
 npm --prefix game run preview -- --port 5181 --strictPort
 ```
 
-Open [the production preview](http://127.0.0.1:5181/) while that server is running. Runtime assets are local, and no generation account or paid service is needed to run the prototype. The build is still silent. Production build/typecheck and 23 automated tests pass. Native development-browser review passes the preserved rover sequence, return to Mars and ten additional aborted visits with stable returned resource counts; mobile, fault UI, production-browser review and stage-machine acceptance are tracked separately. Historical v2 evidence remains in `outputs/review/visual-pass-v2/REVIEW.md` and does not replace current review. Larger captures and packaged ZIPs remain local and are intentionally excluded from Git.
+The static build uses local runtime assets without a generation account. The existing large-bundle advisory remains. See [integration evidence](outputs/review/mission-integration/REVIEW.md) for verified scenarios and limits. A local build does not establish deployment or remote CI acceptance.
 
-## Sources and repository contents
+## Ownership and provenance
 
-- `game/src/app/` and `core/`: the shared runtime, contracts, director, input, asset cache and presentation, owned by the integrator.
-- `game/src/entities/spirit/` and `scenes/mars-hub/`: the hub author's actual source boundaries.
-- `game/src/scenes/episodes/rover/`: episode-local factory, mission, HUD and layout. `entities/rover/` contains reusable machinery/control code; `environments/mars/` contains shared terrain and dressing.
-- `game/src/content/equipment.ts`: stable wreck-to-episode registration; shared `ui/` contains presentation primitives/styles. `main.ts` is bootstrap only. `app/contracts.ts` is the authoritative contract for contributor work.
-- `game/public/assets/`: runtime GLBs and surface maps.
-- `assets/vendor/`: original Kenney, Poly Haven and unused NASA material, with source and rights records. NASA's rover is not used in the game.
-- `outputs/assets/`: selected design references; acceptance of an image does not imply approval of its procedural model.
-- `outputs/planning/`: architecture, asset provenance, decisions and contributor handoffs.
-- `.agents/`: retained project workflows and their source/license records. Read only the workflow relevant to a task.
+Read [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md) and the integration handoff before editing. Older roadmap paragraphs retain historical status snapshots.
 
-Kenney and Poly Haven assets are CC0; their exact origins are recorded beside the originals. Three.js and other installed packages retain their own licenses in the dependency distribution. The NASA model follows its recorded NASA usage terms rather than a blanket CC0 claim. Project Endurance and Fortnite inform selected references; their code, characters and artwork are not imported into the game. No project-wide open-source license has been selected.
+- The integrator owns `app/`, `core/`, bootstrap, registry, shared UI and dependencies. `app/contracts.ts` defines the shared boundary. Keep one renderer, loop and input service.
+- Hub/spirit code owns exploration. Each chapter owns its directory under `scenes/episodes/rover/missions/`; coordinate shared vehicle/environment changes.
+- Default hub terrain is an authored 100 × 100 m reconstruction with geometric rock contact, not measured HiRISE elevation or a rigid-body vehicle solver.
+- The selected NASA MER model is used. Final mast/arm articulation is unfinished. The current spirit remains a placeholder; the abandoned comet is excluded in favor of the selected teammate version when its source is supplied.
+- Mission reference packs retain claim ledgers and rights. Runtime NASA images remain unchanged and labeled. Earth material analogues are not Mars scans.
 
-The present-day hub now has a NASA-reference-informed basin and crater vista with one rover entrance, no decorative rover graveyard and balanced rendering defaults. Final spirit art and historical chapters remain in development. [Hub review](outputs/review/mars-hub-v1/REVIEW.md) records the 26 passing checks and native observations; the game server is stopped after review.
-
-The supplied NASA Opportunity model now appears in the hub and default rover drive preview. Wheel pivots, steering, spin, contact, camera and dust use the imported model. Historical chapters remain unbuilt. The fictional repair baseline is available at `?scene=episode-rover-01&prototype=repair`. See [model review](outputs/review/opportunity-v1/REVIEW.md).
+Retain originals, SOURCE records, item-specific rights and credits. NASA-hosted material is not automatically CC0. Kenney/Poly Haven and dependency licenses remain with their assets. [AI_USE.md](AI_USE.md) records assistance. A project-wide license and final release acceptance are not established here.

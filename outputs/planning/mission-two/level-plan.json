@@ -1,0 +1,81 @@
+{
+  "id": "purgatory-level-plan",
+  "revision": "v1-proposal",
+  "date": "2026-11-15",
+  "status": "PROPOSAL for review. Not an engine export. Nothing here is implemented or validated in the running game.",
+  "base": {
+    "branch": "codex/mission-two",
+    "commit": "548ce49",
+    "contract": "game/src/app/contracts.ts at 548ce49"
+  },
+  "frame": {
+    "units": "metres",
+    "axes": "+X east, +Y up, +Z south (so -Z is north)",
+    "heading": "Chassis heading h in radians, as in entities/rover/controller.ts: the front points along (-sin h, -cos h) in (x, z). h = 0 faces north.",
+    "travel": "The replay drive runs south (+Z) with the rear leading, so the chassis keeps h near 0 and moves in reverse. Recovery runs north (-Z) with the front leading."
+  },
+  "rover": {
+    "source": "game/public/assets/opportunity/rig-metadata.json and opportunity-v1.glb accessor bounds",
+    "bodyHalfWidth": 1.14,
+    "frontExtent": 0.737,
+    "rearExtent": 0.911,
+    "height": 1.585,
+    "wheelRadius": 0.131,
+    "wheelWidth": 0.161,
+    "wheels": {"front": [0.53, -0.606], "middle": [0.475, 0.105], "rear": [0.53, 0.606]},
+    "collisionRadius": 1.41,
+    "suspensionTravel": 0.065,
+    "mast": {"x": [-0.17, 0.26], "z": [-0.456, -0.284], "top": 1.585}
+  },
+  "mesh": {
+    "ceilingTriangles": 58880,
+    "detailAllowanceTriangles": 5000,
+    "levels": [{"id": "L0-field", "cell": 0.5, "rect": [-30, -34, 30, 26], "parent": null, "purpose": "Whole authored square, 60 x 60 m"}, {"id": "L1-lane", "cell": 0.25, "rect": [-4, -24, 4, -4], "parent": "L0-field", "purpose": "Practice lane and its two low ripples"}, {"id": "L1-hero", "cell": 0.25, "rect": [-6, -4, 6, 9], "parent": "L0-field", "purpose": "Surround of the hero ripple; shares the z = -4 edge with L1-lane at equal resolution"}, {"id": "L2-hero", "cell": 0.125, "rect": [-3.5, -2.5, 3.5, 7], "parent": "L1-hero", "purpose": "Hero ripple form, last low crest, recovery corridor"}, {"id": "L3-trench", "cell": 0.0625, "rect": [-1.5, 0.25, 1.75, 5.5], "parent": "L2-hero", "purpose": "Soft footprint: wheel trenches, berms, packed sand"}],
+    "vista": {"rings": 5, "perimeterSegments": 480, "outerRadius": 400, "purpose": "Coarse non-playable plain to the horizon; first ring shares every L0 border vertex"},
+    "stitching": "Each finer rectangle is aligned to its parent's grid lines and inset by at least one parent cell. Parent cells on the border are re-triangulated as fans to the finer edge vertices, so no T-junctions remain."
+  },
+  "ripples": [
+    {"id": "R1-practice-low", "role": "practice", "centre": [0.3, -16.5], "azimuthDeg": 55, "length": 11, "width": 1.6, "height": 0.1, "firm": true, "basis": "PG-08: nearby ripples 10 to 15 cm tall"},
+    {"id": "R2-practice-low", "role": "practice", "centre": [-0.4, -10.5], "azimuthDeg": -42, "length": 12, "width": 2.0, "height": 0.14, "firm": true, "basis": "PG-08"},
+    {"id": "L-last-crest", "role": "last ripple crossed before the trap", "centre": [0.2, -1.9], "azimuthDeg": 40, "length": 7, "width": 1.8, "height": 0.12, "firm": true, "basis": "PIA07216 caption; M-05 (crest crossed about 3.5 to 4 m before the stuck mast position at roughly 40 degrees)"},
+    {"id": "H-purgatory", "role": "hero ripple", "centre": [-0.55, 7.0], "azimuthDeg": -8, "length": 13.6, "width": 2.5, "height": 0.33, "noseTaper": 2.5, "firm": false, "basis": "PG-03 dimensions; M-06 (ridge trends within about 10 degrees of the track direction; rover sits on its northern nose)"}
+  ],
+  "zones": [
+    {"id": "Z-envelope", "kind": "command envelope", "rect": [-6, -25.5, 6, 5.2], "rule": "Plans whose predicted path leaves this rectangle are refused before SEND with a reason. Game rule, not history."},
+    {"id": "Z-lane", "kind": "firm practice lane", "rect": [-3, -24, 3, -6.5], "surface": "firm"},
+    {"id": "Z-corridor", "kind": "recovery corridor", "rect": [-2.2, -6.5, 2.8, 5.2], "surface": "firm north of the soft footprint"},
+    {"id": "Z-soft", "kind": "soft-sand footprint", "ellipse": {"centre": [0.15, 2.9], "radiusAcross": 1.25, "radiusAlong": 2.4, "azimuthDeg": -8}, "surface": "soft", "note": "The ripple body itself. Sink and slip apply only to wheels inside it."},
+    {"id": "Z-soft-margin", "kind": "transition", "ellipse": {"centre": [0.15, 2.9], "radiusAcross": 1.55, "radiusAlong": 2.8, "azimuthDeg": -8}, "surface": "easing from soft to firm"}
+  ],
+  "markers": [
+    {"id": "M-spawn", "kind": "rover pose", "position": [0, -22], "heading": 0, "zone": "Z-lane", "note": "Start. Establishing view plays here."},
+    {"id": "M-practice-1", "kind": "goal", "position": [0, -18.5], "radius": 0.9, "note": "First plan: one straight drive."},
+    {"id": "M-practice-2", "kind": "goal", "position": [0.4, -13], "radius": 0.9, "note": "Across R1; planned and actual agree."},
+    {"id": "M-observe", "kind": "rover pose", "position": [0, -7.6], "heading": 0, "zone": "Z-lane", "note": "End of practice across R2. Observation of the route ahead. The sol 446 replay starts here."},
+    {"id": "M-stuck", "kind": "rover pose", "position": [0.3, 2.2], "heading": 0.1, "zone": "Z-soft", "note": "End of the replay drive. Heading offset stands for the failed end-of-drive turn (PG-07); its size is a tuning value."},
+    {"id": "M-deep-limit", "kind": "limit", "position": [0.3, 4.2], "note": "Farthest south the rover centre may reach. Bounded setback."},
+    {"id": "M-escape", "kind": "rover pose", "position": [0, -5.6], "heading": 0, "zone": "Z-corridor", "note": "Firm-ground confirmation: all six wheels north of the soft margin, after re-crossing L."},
+    {"id": "M-tracks-in", "kind": "static dressing", "polyline": [[0.6, -34], [0.2, -28], [0, -22]], "note": "Pre-authored entry tracks leading north to the map edge (PIA07216: tracks lead back to the north)."}
+  ],
+  "cameras": [
+    {"id": "C-establish", "type": "authored shot", "position": [-6.5, 2.6, -29.5], "lookAt": [0.6, 0.4, -8], "fov": 40, "use": "Opening. Rover small, open horizon, low ripples ahead to the south, entry tracks in the foreground."},
+    {"id": "C-chase", "type": "follow", "rule": "Trails the direction of travel so the goal is up-screen: north of the rover while it drives south, south of it during recovery. Start from CameraRig defaults (distance 5.8, pitch 0.095, FOV 44) with yaw offset pi while reversing, and raise pitch to about 0.22 so ripple crests ahead stay visible.", "use": "Practice, replay drive, recovery execution"},
+    {"id": "C-wheel-rf", "type": "inspection", "frame": "world coordinates, valid for the M-stuck pose", "position": [1.75, 0.32, 1.35], "lookAt": [0.83, 0.1, 1.6], "fov": 36, "use": "Right front wheel: sink depth against the hub. Reference PIA07984."},
+    {"id": "C-wheel-lf", "type": "inspection", "frame": "world coordinates, valid for the M-stuck pose", "position": [-1.15, 0.32, 1.2], "lookAt": [-0.23, 0.1, 1.6], "fov": 36, "use": "Left front wheel: packed cleats and berm. Reference PIA07983."},
+    {"id": "C-wheel-rear", "type": "inspection", "frame": "world coordinates, valid for the M-stuck pose", "position": [0.45, 0.42, 4.55], "lookAt": [0.36, 0.12, 2.8], "fov": 40, "use": "Both rear wheels from the south, low: the leading wheels at the trench heads."},
+    {"id": "C-overview", "type": "authored shot", "position": [5.2, 3.4, -3.6], "lookAt": [0.2, 0.2, 1.2], "fov": 42, "use": "Recovery overview: rover on the ripple nose, tracks to the north, escape point in frame on the right."},
+    {"id": "C-final", "type": "authored shot", "position": [0.05, 1.5, -5.95], "lookAt": [0.3, 0.05, 1.9], "fov": 45, "use": "Final composition from mast height at M-escape, looking south over the rear deck at the trench. Modelled on PIA07999."}
+  ],
+  "light": {
+    "sunAzimuthFromNorthDeg": 262,
+    "sunElevationDeg": 32,
+    "note": "Proposal. Sun roughly across the crest lines so low relief reads. Not derived from the sol 446 local time, which no checked source gives."
+  },
+  "route": [
+    {"step": 1, "from": "M-spawn", "to": "M-practice-1", "mode": "player plan", "surface": "firm"},
+    {"step": 2, "from": "M-practice-1", "to": "M-practice-2", "mode": "player plan", "surface": "firm, crosses R1"},
+    {"step": 3, "from": "M-practice-2", "to": "M-observe", "mode": "player plan", "surface": "firm, crosses R2"},
+    {"step": 4, "from": "M-observe", "to": "M-stuck", "mode": "historical replay, announced", "surface": "firm, crosses L, then soft"},
+    {"step": 5, "from": "M-stuck", "to": "M-escape", "mode": "player plans, repeated", "surface": "soft, then firm, re-crosses L"}
+  ]
+}

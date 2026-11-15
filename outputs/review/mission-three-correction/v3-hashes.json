@@ -1,0 +1,18 @@
+{
+  "game\\src\\content\\long-night.ts": "b8a6fdbfcc141bdbcda58eb2cff51a9a5e27a46627d7a0787629bad3ce4e8a89",
+  "game\\tests\\long-night.test.ts": "e725a234683aba5a8de87dcb6cfd86462798b7b7d544ceb38f62929c822066bf",
+  "game\\src\\scenes\\episodes\\rover\\missions\\long-night\\index.ts": "415ca68611028c345793b5faac770cf908c7b5cbdb7168fdebf6632a555694ee",
+  "game\\src\\scenes\\episodes\\rover\\missions\\long-night\\progress.ts": "740595b2d7eb88c297b072d4f2a5021ad022d8d38c6ac7dd3a4d6b87640c31a5",
+  "game\\src\\scenes\\episodes\\rover\\missions\\long-night\\style.css": "fa89dd6eb7f9ff523f35ebaaaeee62a484a4806084c9a32a7dd1472245d73334",
+  "game\\src\\scenes\\episodes\\rover\\missions\\long-night\\world.ts": "ec2c2130963dc9330ebc08a8f2ef6cd6dc2ec9ed96d4435ce48ce799a611c81c",
+  "outputs\\review\\mission-three-correction\\v3-desktop-archive.png": "9ff526ee94efa23e12200dffcddb2b63f699c1c4fdb659ebc2fa3c6d1dea8cdb",
+  "outputs\\review\\mission-three-correction\\v3-desktop-legacy.png": "d74804c4d1138318193c35cbca2ca58a1dfde3a96f6f6403890f1ddd9c4c0538",
+  "outputs\\review\\mission-three-correction\\v3-desktop-recovery.png": "f85d6411b5daa3a53fce9e07c9de6ff83eddcc65f791ef3d68b42210821d1795",
+  "outputs\\review\\mission-three-correction\\v3-desktop-silence.png": "912d4ea12dd8ca0ab4622d874504091e43a8770cb9f154891aa20e74f5c80cd5",
+  "outputs\\review\\mission-three-correction\\v3-desktop-storm.png": "59c9d9410831ada5f8a9ba7e5af80534c9f0f7cfe8cd6bc36c77e0a9e2172046",
+  "outputs\\review\\mission-three-correction\\v3-mobile-archive.png": "791b25b825c65718327d9b6f33db460e8d31909c43f942c23fa159e0e4bab132",
+  "outputs\\review\\mission-three-correction\\v3-mobile-legacy.png": "17b699eaa0130317bac0ea8c1ae0c0be86057ffc11fba3d8f0fc8f1dd8a79d38",
+  "outputs\\review\\mission-three-correction\\v3-mobile-recovery.png": "24ac551005c3566ebadf7bcc31cfd0fdc7a94f83b3c53a8368e21d22f3c7b272",
+  "outputs\\review\\mission-three-correction\\v3-mobile-silence.png": "d3f961e5e314f92f2323cae778b3f79584e00e9680146701d117c11d0ec60d87",
+  "outputs\\review\\mission-three-correction\\v3-mobile-storm.png": "f1020d65900aef206f063ff477e8e15d68b9be40dcb5d62c8e16925e9e880352"
+}

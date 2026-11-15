@@ -3,7 +3,7 @@ export class SkillTree {
   readonly root=document.createElement('section');
   private readonly events=new AbortController();
   private busy=false;
-  constructor(close:()=>void,private readonly capture?:()=>Promise<boolean>,private readonly grindUnlocked?:()=>boolean){
+  constructor(close:()=>void,private readonly capture?:()=>Promise<boolean>,private readonly grindUnlocked?:()=>boolean,private readonly recordedSkills?:()=>readonly string[]){
     this.root.className='mars-modal mars-skills';
     this.root.hidden=true;
     this.root.setAttribute('role','dialog');
@@ -32,7 +32,7 @@ export class SkillTree {
     photo.addEventListener('click',()=>void this.takePhotograph(),{signal});
     document.body.append(this.root);
   }
-  show():void {const unlocked=this.grindUnlocked?.()===true;this.root.querySelector('.mars-skill-count')!.textContent=unlocked?'2 abilities recorded':'1 available ability';this.root.querySelector('#grind-skill-status')!.textContent=unlocked?'GRIND unlocked · Blueberry Clue remembered. Use the Rock Abrasion Tool in rover memories.':'GRIND · Discover Opportunity’s Blueberry Clue to record this ability.';this.root.hidden=false;this.root.querySelector<HTMLButtonElement>('#photograph-skill-node')!.focus({preventScroll:true});}
+  show():void {const unlocked=this.grindUnlocked?.()===true;const memories=this.recordedSkills?.()??(unlocked?['grind']:[]);this.root.querySelector('.mars-skill-count')!.textContent=memories.length?'Photography · '+memories.length+' memories recorded':'1 available ability';this.root.querySelector('#grind-skill-status')!.textContent=memories.length?'Memories recorded: '+memories.map(id=>id.toUpperCase()).join(' · ')+'.':'Discover Opportunity’s memories to record their lessons.';this.root.hidden=false;this.root.querySelector<HTMLButtonElement>('#photograph-skill-node')!.focus({preventScroll:true});}
   hide():void {this.root.hidden=true;}
   private async takePhotograph():Promise<void>{
     if(this.busy||!this.capture)return;

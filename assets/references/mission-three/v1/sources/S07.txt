@@ -1,0 +1,67 @@
+Update on Opportunity Rover Recovery Efforts
+https://www.jpl.nasa.gov/news/update-on-opportunity-rover-recovery-efforts/
+
+Mars.6 min read
+Update on Opportunity Rover Recovery Efforts
+Jet Propulsion Laboratory https://www.jpl.nasa.gov/ Oct. 29, 2018
+This June 2017 view from the Pancam on NASA's Opportunity Mars rover shows the area just above 'Perseverance Valley' on the western rim of Endeavour Crater. Credit: NASA/JPL-Caltech/Cornell/Arizona State Univ.
+Full Image Details
+As the skies above Opportunity continue to clear, engineers at JPL are increasing the frequency of commands asking the solar-powered rover to communicate with Earth.
+Updated at 4 p.m. PDT on Oct. 29, 2018
+After a review of the progress of the listening campaign, NASA will continue its current strategy for attempting to make contact with the Opportunity rover for the foreseeable future. Winds could increase in the next few months at Opportunity's location on Mars, resulting in dust being blown off the rover's solar panels. The agency will reassess the situation in the January 2019 time frame.
+Updated at 2:15 p.m. PDT on Oct. 11, 2018
+One month since increasing their commanding frequency, engineers have yet to hear from NASA's Opportunity rover.
+NASA hasn't set any deadlines for the mission but will be briefed later this month on the progress and prospects for the recovery campaign being carried out at the agency's Jet Propulsion Laboratory in Pasadena, California.
+JPL engineers are employing a combination of listening and commanding methods in case Opportunity is still operational. It's possible that a layer of dust deposited on the rover's solar panels by the recent global dust storm is blocking sunlight that could recharge its batteries. No one can tell just how much dust has been deposited on its panels.
+A windy period on Mars -- known to Opportunity's team as "dust-clearing season" -- occurs in the November-to-January time frame and has helped clean the rover's panels in the past. The team remains hopeful that some dust clearing may result in hearing from the rover in this period.
+Opportunity has exceeded its expected lifespan many times over. Both Opportunity and its twin, Spirit, were designed to last only 90 days on the Martian surface, with the expectation that the planet's extreme winters and dust storms could cut their mission short. The rover has lasted nearly 15 years: It last communicated on June 10 before being forced into hibernation by the growing dust storm.
+Updated at 2:45 p.m. PDT on Sept. 11, 2018
+Scientists reviewing data from the Mars Color Imager (MARCI) aboard NASA's Mars Reconnaissance Orbiter (MRO) have determined that the tau estimate (a measure of the amount of haze in the Martian atmosphere) in the skies above the rover Opportunity has been below 1.5 for two consecutive measurements. With more sunlight reaching the rover's solar array, the Opportunity team at NASA's Jet Propulsion Laboratory in Pasadena, California, are increasing the frequency of commands it beams to the 14-plus-year-old rover via the dishes of NASA's Deep Space Network from three times a week to multiple times per day. Passive listening for Opportunity will also continue to be performed by JPL's Radio Science Group, which records radio signals emanating from Mars with a very sensitive broadband receiver.
+The original story has been updated in paragraph six to reflect NASA review at each step of the recovery process. Updates on the 2018 dust storm and tau can be found here.
+A planet-encircling dust storm on Mars, which was first detected May 30 and halted operations for the Opportunity rover, continues to abate.
+With clearing skies over Opportunity's resting spot in Mars' Perseverance Valley, engineers at NASA's Jet Propulsion Laboratory in Pasadena, California, believe the nearly 15-year-old, solar-powered rover will soon receive enough sunlight to automatically initiate recovery procedures -- if the rover is able to do so. To prepare, the Opportunity mission team has developed a two-step plan to provide the highest probability of successfully communicating with the rover and bringing it back online.
+"The Sun is breaking through the haze over Perseverance Valley, and soon there will be enough sunlight present that Opportunity should be able to recharge its batteries," said John Callas, Opportunity project manager at JPL. "When the tau level [a measure of the amount of particulate matter in the Martian sky] dips below 1.5, we will begin a period of actively attempting to communicate with the rover by sending it commands via the antennas of NASA's Deep Space Network. Assuming that we hear back from Opportunity, we will begin the process of discerning its status and bringing it back online."
+The rover's last communication with Earth was received June 10, and Opportunity's current health is unknown. Opportunity engineers are relying on the expertise of Mars scientists analyzing data from the Mars Color Imager (MARCI) aboard NASA's Mars Reconnaissance Orbiter (MRO) to estimate the tau near the rover's position.
+"The dust haze produced by the Martian global dust storm of 2018 is one of the most extensive on record, but all indications are it is finally coming to a close," said MRO Project Scientist Rich Zurek at JPL. "MARCI images of the Opportunity site have shown no active dust storms for some time within 3,000 kilometers [about 1,900 miles] of the rover site."
+With skies clearing, mission managers are hopeful the rover will attempt to call home, but they are also prepared for an extended period of silence. "If we do not hear back after 45 days, the team will be forced to conclude that the Sun-blocking dust and the Martian cold have conspired to cause some type of fault from which the rover will more than likely not recover," said Callas. At that point, the team will report to NASA HQ to determine whether to continue with the strategy or adjust it. Callas added, "In the unlikely chance that there is a large amount of dust sitting on the solar arrays that is blocking the Sun's energy, we will continue passive listening efforts for several months."
+The additional several months for passive listening are an allowance for the possibility that a Red Planet dust devil could come along and literally dust off Opportunity's solar arrays. Such "cleaning events" were first discovered by Mars rover teams in 2004 when, on several occasions, battery power levels aboard both Spirit and Opportunity increased by several percent during a single Martian night, when the logical expectation was that they would continue to decrease. These cleaning dust devils have even been imaged by both rovers on the surface and spacecraft in orbit (see https://mars.nasa.gov/resources/5307/the-serpent-dust-devil-of-mars/).
+The chances are small that dust accumulation would be the root cause of Opportunity's lack of communication. Nonetheless, each day during the passive phase, JPL's Radio Science group will scour the signal records taken by a very sensitive broadband receiver of radio frequencies emanating from Mars, looking for a sign that the rover is trying to reach out.
+Even if the team hears back from Opportunity during either phase, there is no assurance the rover will be operational. The impact of this latest storm on Opportunity's systems is unknown but could have resulted in reduced energy production, diminished battery performance, or other unforeseen damage that could make it difficult for the rover to fully return online.
+While the situation in Perseverance Valley is critical, the rover team is cautiously optimistic, knowing that Opportunity has overcome significant challenges during its 14-plus years on Mars. The rover lost use of its front steering -- its left-front in June of 2017, and right front in 2005. Its 256-megabyte flash memory is no longer functioning. The team also knows that everything about the rover is well beyond its warranty period -- both Opportunity and its twin rover, Spirit, were constructed for 90-day missions (Spirit lasted 20 times longer and Opportunity is going on 60 times). The rovers were designed to travel about 1,000 yards, and Opportunity has logged more than 28 miles. Through thick and thin, the team has seen their rover soldier on. Now, Opportunity engineers and scientists of Opportunity are planning, and hoping, that this latest dilemma is just another bump in their Martian road.
+"In a situation like this you hope for the best but plan for all eventualities," said Callas. "We are pulling for our tenacious rover to pull her feet from the fire one more time. And if she does, we will be there to hear her."
+Updates on the dust storm and tau can be foundhere.
+JPL, a division of Caltech in Pasadena, built Opportunity and manages the mission for NASA's Science Mission Directorate, Washington.
+For more information about Opportunity, visit:
+https://www.nasa.gov/rovers
+https://marsrovers.jpl.nasa.gov
+http://mars.nasa.gov
+Media Contacts
+DC Agle / Andrew Good
+Jet Propulsion Laboratory, Pasadena, Calif.
+818-393-9011 / 818-393-2433
+agle@jpl.nasa.gov / andrew.c.good@jpl.nasa.gov
+JoAnna Wendel
+202-358-1003
+joanna.r.wendel@nasa.gov
+2018-206
+Related News
+Solar System.
+NASA Invites Media, Public to Join Voyager 1 One-Light Day Activities
+Solar System.
+NASA Awards Moon Base Transportation, Technology, Science Projects
+Mars.
+NASA-funded Study Details One of Oldest Mars Meteorites Ever Found
+Solar System.
+NASA’s Voyager 1 Conserves Power, Resolves Brief Communications Pause
+Mars.
+NASA’s Perseverance Offers Clues to Protect Crews from Mars Dust
+Asteroids and Comets.
+Pedal to the Metal: NASA’s Psyche Heads Toward Asteroid Belt
+Mars.
+NASA’s Perseverance Sets Off-World Record for Total Distance Driven
+Mars.
+NASA’s Curiosity Rover Catches Stunning Martian Dawn
+Mars.
+NASA Discovery Reveals Complex Water Systems on Early Mars
+Mars.
+NASA Tests Featherweight Radar Antenna for SkyFall Mars Helicopters

@@ -30,6 +30,10 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       follow.update(0, controller.position, world.height, world.obstacles);
     };
     restore(entry.bookmark);
+    const choice=document.createElement('select');choice.id='memory-chapter';choice.setAttribute('aria-label','Choose Opportunity memory');
+    choice.innerHTML='<option value="blueberry-clue">2004 · The Blueberry Clue</option><option value="purgatory">2005 · Stuck in Purgatory</option><option value="long-night">2018 · The Long Night</option>';
+    let choiceReady=false;
+    choice.style.cssText='background:#202422;color:#fff;padding:10px;border:1px solid #d6ad78;max-width:100%;min-width:0;font:inherit';choice.hidden=true;element('interaction').prepend(choice);
     const show = () => {
       context.ui.resetView();
       context.ui.setScene('mars-hub');
@@ -50,6 +54,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       activate() { active = true; show(); },
       update(dt, input) {
         if (!active || disposed) return;
+        if(!choiceReady){choice.value=!context.session.chapters.has('blueberry-clue')?'blueberry-clue':!context.session.chapters.has('purgatory')?'purgatory':'long-night';choiceReady=true;}
         if (!started && input.startPressed) { started = true; show(); }
         const step = paused ? 0 : dt;
         effects.time += step;
@@ -57,7 +62,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
           follow.orbit(input.dragX + input.lookX * dt * 200, input.dragY + input.lookY * dt * 200, input.zoom);
           controller.update(step, input, follow.yaw, world.obstacles, world.height);
           if (input.interactPressed && controller.position.distanceTo(world.wreck.position) < ROVER_MEMORY.entryDistance) {
-            context.request({ kind: 'enter-memory', entry: {scene: ROVER_MEMORY.episodeId, wreckId: ROVER_MEMORY.wreckId, chapter:'blueberry-clue'},
+            context.request({ kind: 'enter-memory', entry: {scene: ROVER_MEMORY.episodeId, wreckId: ROVER_MEMORY.wreckId, chapter:choice.value==='long-night'?'long-night':choice.value==='purgatory'?'purgatory':'blueberry-clue'},
               bookmark: {position: controller.position.toArray() as [number, number, number], heading: controller.heading,
                 cameraYaw: follow.yaw, cameraPitch: follow.pitch, cameraDistance: follow.distance} });
           }
@@ -69,8 +74,9 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
         follow.update(step, controller.position, world.height, world.obstacles);
         if (!started) return;
         const distance = controller.position.distanceTo(world.wreck.position);
+        choice.hidden=distance>=ROVER_MEMORY.entryDistance||paused;
         element('interaction-text').textContent = distance < ROVER_MEMORY.entryDistance
-          ? context.session.chapters.has('blueberry-clue') ? 'Blueberry Clue remembered · GRIND unlocked.' : context.session.completed.has(ROVER_MEMORY.wreckId) ? 'Rover sequence visited.' : 'A rover lies silent.'
+          ? context.session.skills.has('sunlight') ? 'SUNLIGHT remembered · Opportunity remains silent.' : context.session.chapters.has('purgatory') ? 'SAND remembered · Opportunity escaped Purgatory.' : context.session.chapters.has('blueberry-clue') ? 'Blueberry Clue remembered · GRIND unlocked.' : context.session.completed.has(ROVER_MEMORY.wreckId) ? 'Rover sequence visited.' : 'A rover lies silent.'
           : `Abandoned rover · ${Math.ceil(distance)} m`;
         element('interact-button').hidden = distance >= ROVER_MEMORY.entryDistance;
         element('interact-button').textContent = 'Enter memory  E';
@@ -83,9 +89,9 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
         return {position:controller.position.toArray() as [number,number,number],heading:controller.heading,
           cameraYaw:follow.yaw,cameraPitch:follow.pitch,cameraDistance:follow.distance};
       },
-      setPaused(value) { paused = value; },
+      setPaused(value) { paused = value; choice.hidden=true; },
       restart() { effects.time = 0; restore(); started = true; paused = false; context.clearInput(); show(); },
-      dispose() { if (disposed) return; disposed = true; active = false; world.dispose(); },
+      dispose() { if (disposed) return; disposed = true; active = false; choice.remove(); world.dispose(); },
       debug() { return {phase: started ? 'hub' : 'ready', position: `${controller.position.x.toFixed(2)},${controller.position.z.toFixed(2)}`,
         heading: controller.heading.toFixed(3), grounded: controller.grounded, repaired: false,
         terrain:'reference100-v1', decorativeWrecks:0, terrainWidth:100, terrainDepth:100}; },

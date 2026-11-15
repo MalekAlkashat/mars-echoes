@@ -1,0 +1,15 @@
+{
+  "errors": [],
+  "phases": [
+    "arrival",
+    "storm",
+    "silence",
+    "archive",
+    "recovery",
+    "legacy"
+  ],
+  "overflow": false,
+  "largeText": "18px",
+  "returned": true,
+  "dpadRestored": true
+}

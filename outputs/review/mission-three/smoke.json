@@ -1,0 +1,9 @@
+{
+  "errors": [],
+  "failed": [],
+  "coldReadyMs": 1715.7864000000002,
+  "directReturn": true,
+  "photography": true,
+  "imageFailureRetry": true,
+  "cancelReenter": true
+}

@@ -103,6 +103,7 @@ export class SceneDirector {
     }
     if (this.active?.id !== 'episode-rover-01' || this.entry?.scene !== 'episode-rover-01') return false;
     if (request.result.episodeId !== this.active.id || request.result.wreckId !== this.entry.wreckId) return false;
+    if (request.result.chapter !== this.entry.chapter) return false;
     const succeeded = await this.transition({scene:'mars-hub', bookmark: session.bookmark},{kind:'request',request});
     if (succeeded) session.record(request.result);
     if (succeeded) this.options.hooks.settled?.();

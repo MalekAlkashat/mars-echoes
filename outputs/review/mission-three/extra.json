@@ -1,0 +1,12 @@
+{
+  "errors": [],
+  "cycles": [],
+  "gpu": {
+    "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4060 Laptop GPU (0x000028E0) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+    "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/159.0.8154.6 Safari/537.36",
+    "cores": 20
+  },
+  "contact": 9.031160130845706e-8,
+  "focusPause": true,
+  "restart": "arrival"
+}

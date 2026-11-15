@@ -1,0 +1,168 @@
+{
+  "head": "548ce49bbeecbd77404b868c1e47e615a6ef5fd9",
+  "status": "M AGENTS.md\nAM assets/references/hub-direction/v1/SOURCE.md\nAM assets/references/hub-direction/v1/manifest.json\nA  assets/references/hub-direction/v1/terrain-reference.jpeg\nAM assets/references/supplied-team-plans/v1/.gitattributes\nAM assets/references/supplied-team-plans/v1/README.md\nAM assets/references/supplied-team-plans/v1/SOURCE.md\nAM assets/references/supplied-team-plans/v1/manifest.json\nA  assets/references/supplied-team-plans/v1/plan-export/00_START_HERE.md\nA  assets/references/supplied-team-plans/v1/plan-export/GAME_DESIGN.md\nA  assets/references/supplied-team-plans/v1/plan-export/NASA_RESEARCH.md\nA  assets/references/supplied-team-plans/v1/plan-export/PRESENTATION_PLAN.md\nA  assets/references/supplied-team-plans/v1/plan-export/PROJECT_BRIEF.md\nA  assets/references/supplied-team-plans/v1/plan-export/PROJECT_PLAN.md\nA  assets/references/supplied-team-plans/v1/plan-export/TASK_BOARD.md\nA  assets/references/supplied-team-plans/v1/plan-export/TEAM_CONTEXT.md\nA  assets/references/supplied-team-plans/v1/plan-export/TECHNICAL_ARCHITECTURE.md\nA  assets/references/supplied-team-plans/v1/plan-export/TESTING_AND_SUBMISSION.md\nA  assets/references/supplied-team-plans/v1/plan-export/echoes-of-mars-plan.html\nA  assets/references/supplied-team-plans/v1/team-docs-export/00_START_HERE.md\nA  assets/references/supplied-team-plans/v1/team-docs-export/GAME_DESIGN.md\nA  assets/references/supplied-team-plans/v1/team-docs-export/NASA_RESEARCH.md\nA  assets/references/supplied-team-plans/v1/team-docs-export/PRESENTATION_PLAN.md\nA  assets/references/supplied-team-plans/v1/team-docs-export/PROJECT_PLAN.md\nA  assets/references/supplied-team-plans/v1/team-docs-export/TASK_BOARD.md\nA  assets/references/supplied-team-plans/v1/team-docs-export/TEAM_CONTEXT.md\nA  assets/references/supplied-team-plans/v1/team-docs-export/TECHNICAL_ARCHITECTURE.md\nA  assets/references/supplied-team-plans/v1/team-docs-export/TESTING_AND_SUBMISSION.md\nA  assets/vendor/polyhaven/moon_flat_macro_02/SOURCE.md\nA  assets/vendor/polyhaven/moon_flat_macro_02/files.json\nA  assets/vendor/polyhaven/moon_flat_macro_02/moon_flat_macro_02_ao_1k.jpg\nA  assets/vendor/polyhaven/moon_flat_macro_02/moon_flat_macro_02_diff_1k.jpg\nA  assets/vendor/polyhaven/moon_flat_macro_02/moon_flat_macro_02_nor_gl_1k.jpg\nA  assets/vendor/polyhaven/moon_flat_macro_02/moon_flat_macro_02_rough_1k.jpg\nAM outputs/planning/resource-reconciliation-2026-11-15.json\nA  outputs/planning/resource-reconciliation-2026-11-15.md\n?? HANDOFF.md\n?? TEAM_CONTEXT.md\n?? run-game.bat",
+  "index_diff_sha256": "aee1124751810d006e8d24b7e822705c19d199fc775b5ebd281be2203bdb6296",
+  "stashes": [
+    "bd7e379120251a03962221d447291e402c7943e4 On main: Preserve staged resource additions and notes before terrain pull 2026-11-15",
+    "4dcaa58e5e11242c3e77760bc776701f28013638 On main: Preserve local terrain and notes before Mission 1 merge 2026-11-14",
+    "2aab995d6312df86e4a431a36fce9edb59a5852a On main: Preserve hub terrain and local notes before origin/main sync 2026-11-14"
+  ],
+  "files": {
+    "AGENTS.md": {
+      "sha256": "ef044021814c8e900afbcd66ad571fddc2c1f04350bcb7a5ce9e8d20ceee74f2",
+      "bytes": 18640
+    },
+    "HANDOFF.md": {
+      "sha256": "c4572b5777f05819583601ee628f6561b5fdb6fe461fa9397539b5a62bdc8f92",
+      "bytes": 6207
+    },
+    "TEAM_CONTEXT.md": {
+      "sha256": "ca214ec554dcb1a47ae4d91fd7625b589e97f048f1c8b699b62d538814d7d0cd",
+      "bytes": 87582
+    },
+    "assets/references/hub-direction/v1/SOURCE.md": {
+      "sha256": "9c218dc54f45be76d2578e61b65845476446b89ba4889719d5a12e1e1f52c898",
+      "bytes": 393
+    },
+    "assets/references/hub-direction/v1/manifest.json": {
+      "sha256": "306ae9d3fc167553a1b41155812a8d59cdf00b50223139e896e96e3d4728ccd2",
+      "bytes": 207
+    },
+    "assets/references/hub-direction/v1/terrain-reference.jpeg": {
+      "sha256": "7bb4642bb4ea35b7a7cc9ce254fd5d0d262880a32be228d08643bf27da956b7b",
+      "bytes": 357094
+    },
+    "assets/references/supplied-team-plans/v1/.gitattributes": {
+      "sha256": "5477fe50082d0fee0892794e87621adc565e592bdd81c6438e9ad10b24f134bc",
+      "bytes": 71
+    },
+    "assets/references/supplied-team-plans/v1/README.md": {
+      "sha256": "34ed04a8d0ac83a37bdea2596d447921ae7f368de00965eaa2f8832273562849",
+      "bytes": 853
+    },
+    "assets/references/supplied-team-plans/v1/SOURCE.md": {
+      "sha256": "e50edad64247043f3bd412c113c133176016a79f9ac7308661399f441fbaf9c7",
+      "bytes": 462
+    },
+    "assets/references/supplied-team-plans/v1/manifest.json": {
+      "sha256": "c09164af4d41157ed4dda381ff6a7ebfee3a3324a8ca3f7cea4b152e0232f45a",
+      "bytes": 5002
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/00_START_HERE.md": {
+      "sha256": "45e7069d3fb21b2562b6181b45d3c15248f61b70a10c6dbf277256dd28dec1a3",
+      "bytes": 15625
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/GAME_DESIGN.md": {
+      "sha256": "ad6f7c1e03b0f8e2b46d6d40a3bf5d8b2168776b5015d28126007cfbc8f7549a",
+      "bytes": 15599
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/NASA_RESEARCH.md": {
+      "sha256": "915f85f4f658b66f75291d280da8b23411ce25e6ebc1753b2ad1715ee4734662",
+      "bytes": 21481
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/PRESENTATION_PLAN.md": {
+      "sha256": "fc62abd890c0ec4574daf5b959ab950ec6d05894a36d5f661a76eb09bc0f1962",
+      "bytes": 14198
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/PROJECT_BRIEF.md": {
+      "sha256": "c5533dab30d12140fcac8ff72f763b7f37085831841d69fa5b845d244ff28ddd",
+      "bytes": 13880
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/PROJECT_PLAN.md": {
+      "sha256": "d4179d2070329a8724f8eef184ee37b8c137b933c4aee55cb8cc82ab45e10d5e",
+      "bytes": 19256
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/TASK_BOARD.md": {
+      "sha256": "84d2a73b47b55c41261c609b1463a9b17e4942890025c4c8a43623af5928851c",
+      "bytes": 23533
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/TEAM_CONTEXT.md": {
+      "sha256": "3415c339d7ba05689a754c8b70937d22b31f4473e78552570d857e3ddefb0392",
+      "bytes": 102941
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/TECHNICAL_ARCHITECTURE.md": {
+      "sha256": "ca589ed49b798dae6823a514273dd87e0ce03534df555b5c17ba9d4e21562436",
+      "bytes": 6269
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/TESTING_AND_SUBMISSION.md": {
+      "sha256": "c529ddd5f9fa8f3a2fdd277d7f1d6559467a8134794bede86cbea1532b82ea69",
+      "bytes": 10940
+    },
+    "assets/references/supplied-team-plans/v1/plan-export/echoes-of-mars-plan.html": {
+      "sha256": "25c27d83e89bb0ae3723fae2a915acfa7696f249c5633acc11fa6b87249f3da4",
+      "bytes": 203064
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/00_START_HERE.md": {
+      "sha256": "60414d0de792492fa635a15b1428b2ec6a4270d1820da1e9009622f0317f13cb",
+      "bytes": 15105
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/GAME_DESIGN.md": {
+      "sha256": "2c9d345fab061735e979e1b7580d03eb488342d3a260d6387ed0f98219dc1efe",
+      "bytes": 14738
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/NASA_RESEARCH.md": {
+      "sha256": "688c1cd43b169d607c01dd5bc723538b49e37e632db915cc74fc998ed58f2a7f",
+      "bytes": 20736
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/PRESENTATION_PLAN.md": {
+      "sha256": "acdc63a7dd01455e2dbd96232f9763846959c92bd31f44c0d837505a7e2ac998",
+      "bytes": 14187
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/PROJECT_PLAN.md": {
+      "sha256": "eb0c34d11866a6d7ce9abc1d0c08c7f2e42d5f4d135f7594dd03d38c5fd28fc5",
+      "bytes": 17951
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/TASK_BOARD.md": {
+      "sha256": "3f1fdaa448bec8a8af34893eb02b77f8d928956f38a0cc48e0bddde7ae7d73c6",
+      "bytes": 18322
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/TEAM_CONTEXT.md": {
+      "sha256": "2ec71b8e5c4e84f8f0d09aeded7ba1cbb12101f8491e366e7458f0eb28ca4747",
+      "bytes": 87711
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/TECHNICAL_ARCHITECTURE.md": {
+      "sha256": "0a3c07e46a3fc27e6be9032ab2a2a93fa4cccb7cb81963a214943611e38dad79",
+      "bytes": 17208
+    },
+    "assets/references/supplied-team-plans/v1/team-docs-export/TESTING_AND_SUBMISSION.md": {
+      "sha256": "c529ddd5f9fa8f3a2fdd277d7f1d6559467a8134794bede86cbea1532b82ea69",
+      "bytes": 10940
+    },
+    "assets/vendor/polyhaven/moon_flat_macro_02/SOURCE.md": {
+      "sha256": "6d48a20467679d3e442c304730693dcd49c77065f5eb64c1b99af465b7de8a82",
+      "bytes": 784
+    },
+    "assets/vendor/polyhaven/moon_flat_macro_02/files.json": {
+      "sha256": "70c2bb7cd3213f46592c5630d4381521c0f2fda9bba3b5c9042ead7bc28c79d0",
+      "bytes": 37039
+    },
+    "assets/vendor/polyhaven/moon_flat_macro_02/moon_flat_macro_02_ao_1k.jpg": {
+      "sha256": "8c76b93f54cc747db36ea713b7e67de35ebe8c2fdc33828955c1073537836c78",
+      "bytes": 523657
+    },
+    "assets/vendor/polyhaven/moon_flat_macro_02/moon_flat_macro_02_diff_1k.jpg": {
+      "sha256": "29f88b2daf4f04aa76d892d99e87570652217d83c84ebd428b1a685e13dd9e28",
+      "bytes": 508574
+    },
+    "assets/vendor/polyhaven/moon_flat_macro_02/moon_flat_macro_02_nor_gl_1k.jpg": {
+      "sha256": "e097755176c556baea07c6e4e11b6c7f6c65fd4b4e60ce94bfa0d1c3de6cef41",
+      "bytes": 364461
+    },
+    "assets/vendor/polyhaven/moon_flat_macro_02/moon_flat_macro_02_rough_1k.jpg": {
+      "sha256": "5f9b3d36de586d33e361e7f782a9e633f997813dadd3d45f4cc12ca00525a83b",
+      "bytes": 356840
+    },
+    "outputs/planning/resource-reconciliation-2026-11-15.json": {
+      "sha256": "5683719cf5636b0df780176a1856a443c6cbb9fd3f4440077d0370924db6907f",
+      "bytes": 13636
+    },
+    "outputs/planning/resource-reconciliation-2026-11-15.md": {
+      "sha256": "21b9215086cba1ba21ca1965d18cc0c1d7fc7e63443ce2b0d37c84d11c666353",
+      "bytes": 3111
+    },
+    "run-game.bat": {
+      "sha256": "3bcb7ed251bd8e9e6342a3f4c60ccdd34eb710371d0699316ca7de0f0341b4e8",
+      "bytes": 1827
+    }
+  }
+}

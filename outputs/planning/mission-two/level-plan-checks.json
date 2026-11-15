@@ -1,0 +1,236 @@
+{
+  "plan": "v1-proposal",
+  "triangles": {
+    "L0-field": 26272,
+    "L1-lane": 5120,
+    "L1-hero": 2864,
+    "L2-hero": 6328,
+    "L3-trench": 8736,
+    "vista": 4800,
+    "stitching (estimate)": 448
+  },
+  "triangleTotal": 54568,
+  "checks": [
+    {
+      "check": "L0-field: whole number of cells",
+      "pass": true,
+      "detail": "120 x 120 cells of 0.5 m"
+    },
+    {
+      "check": "L1-lane: whole number of cells",
+      "pass": true,
+      "detail": "32 x 80 cells of 0.25 m"
+    },
+    {
+      "check": "L1-lane: aligned to parent grid (0.5 m)",
+      "pass": true,
+      "detail": "rect [-4, -24, 4, -4]"
+    },
+    {
+      "check": "L1-lane: inset from parent by at least one parent cell",
+      "pass": true,
+      "detail": "smallest inset 10 m"
+    },
+    {
+      "check": "L1-hero: whole number of cells",
+      "pass": true,
+      "detail": "48 x 52 cells of 0.25 m"
+    },
+    {
+      "check": "L1-hero: aligned to parent grid (0.5 m)",
+      "pass": true,
+      "detail": "rect [-6, -4, 6, 9]"
+    },
+    {
+      "check": "L1-hero: inset from parent by at least one parent cell",
+      "pass": true,
+      "detail": "smallest inset 17 m"
+    },
+    {
+      "check": "L2-hero: whole number of cells",
+      "pass": true,
+      "detail": "56 x 76 cells of 0.125 m"
+    },
+    {
+      "check": "L2-hero: aligned to parent grid (0.25 m)",
+      "pass": true,
+      "detail": "rect [-3.5, -2.5, 3.5, 7]"
+    },
+    {
+      "check": "L2-hero: inset from parent by at least one parent cell",
+      "pass": true,
+      "detail": "smallest inset 1.5 m"
+    },
+    {
+      "check": "L3-trench: whole number of cells",
+      "pass": true,
+      "detail": "52 x 84 cells of 0.0625 m"
+    },
+    {
+      "check": "L3-trench: aligned to parent grid (0.125 m)",
+      "pass": true,
+      "detail": "rect [-1.5, 0.25, 1.75, 5.5]"
+    },
+    {
+      "check": "L3-trench: inset from parent by at least one parent cell",
+      "pass": true,
+      "detail": "smallest inset 1.5 m"
+    },
+    {
+      "check": "Vista first ring matches the L0 border",
+      "pass": true,
+      "detail": "L0 border has 480 segments; vista ring has 480"
+    },
+    {
+      "check": "Planned terrain triangles within the ceiling",
+      "pass": true,
+      "detail": "54568 planned against 58880 (7.3% headroom)"
+    },
+    {
+      "check": "Practice lane wider than the pivot circle",
+      "pass": true,
+      "detail": "lane 6 m; pivot circle 2.82 m; side margin when centred 1.86 m beyond the panels"
+    },
+    {
+      "check": "Recovery corridor wider than the pivot circle",
+      "pass": true,
+      "detail": "corridor 5 m; pivot circle 2.82 m"
+    },
+    {
+      "check": "M-spawn: full body inside the command envelope",
+      "pass": true,
+      "detail": "corners (-1.14,-22.74), (1.14,-22.74), (1.14,-21.09), (-1.14,-21.09)"
+    },
+    {
+      "check": "M-spawn: all wheels inside Z-lane",
+      "pass": true,
+      "detail": "zone rect [-3, -24, 3, -6.5]"
+    },
+    {
+      "check": "M-observe: full body inside the command envelope",
+      "pass": true,
+      "detail": "corners (-1.14,-8.34), (1.14,-8.34), (1.14,-6.69), (-1.14,-6.69)"
+    },
+    {
+      "check": "M-observe: all wheels inside Z-lane",
+      "pass": true,
+      "detail": "zone rect [-3, -24, 3, -6.5]"
+    },
+    {
+      "check": "M-escape: full body inside the command envelope",
+      "pass": true,
+      "detail": "corners (-1.14,-6.34), (1.14,-6.34), (1.14,-4.69), (-1.14,-4.69)"
+    },
+    {
+      "check": "M-escape: all wheels inside Z-corridor",
+      "pass": true,
+      "detail": "zone rect [-2.2, -6.5, 2.8, 5.2]"
+    },
+    {
+      "check": "M-stuck: full body inside the command envelope",
+      "pass": true,
+      "detail": "corners (-0.91,1.58), (1.36,1.35), (1.53,2.99), (-0.74,3.22)"
+    },
+    {
+      "check": "M-stuck: all six wheels inside the soft footprint (PG-04)",
+      "pass": true,
+      "detail": "left-front 0.48; right-front 0.47; left-middle 0.14; right-middle 0.28; left-rear 0.07; right-rear 0.33 (below 1 is inside)"
+    },
+    {
+      "check": "Wheel positions from M-stuck to the deep limit stay on the finest mesh",
+      "pass": true,
+      "detail": "L3 rect [-1.5, 0.25, 1.75, 5.5]"
+    },
+    {
+      "check": "M-escape: all six wheels outside the soft margin",
+      "pass": true,
+      "detail": "smallest value 8.12 (above 1 is outside)"
+    },
+    {
+      "check": "Initial approach within the 15 to 25 m starting proposal",
+      "pass": true,
+      "detail": "24.2 m from M-spawn to M-stuck"
+    },
+    {
+      "check": "Replay drive length recorded",
+      "pass": true,
+      "detail": "9.8 m from M-observe to M-stuck; the historical drive was nearly 40 m (PG-05), so this is compressed"
+    },
+    {
+      "check": "Recovery distance recorded",
+      "pass": true,
+      "detail": "7.8 m from M-stuck to M-escape"
+    },
+    {
+      "check": "Soft-sand travel recorded",
+      "pass": true,
+      "detail": "southernmost wheels at z = 2.86; soft footprint ends at z = 0.52; about 2.3 m of soft travel (tuning)"
+    },
+    {
+      "check": "Last low crest is crossed 3.5 to 4 m north of the stuck mast (M-05)",
+      "pass": true,
+      "detail": "crest crosses the track line x = 0.3 at z = -1.78; mast at z = 1.83; 3.61 m"
+    },
+    {
+      "check": "R1-practice-low: mean face slope",
+      "pass": true,
+      "detail": "7.1 degrees for 0.1 m over half-width 0.8 m"
+    },
+    {
+      "check": "R2-practice-low: mean face slope",
+      "pass": true,
+      "detail": "8.0 degrees for 0.14 m over half-width 1 m"
+    },
+    {
+      "check": "L-last-crest: mean face slope",
+      "pass": true,
+      "detail": "7.6 degrees for 0.12 m over half-width 0.9 m"
+    },
+    {
+      "check": "H-purgatory: mean face slope",
+      "pass": true,
+      "detail": "14.8 degrees for 0.33 m over half-width 1.25 m"
+    },
+    {
+      "check": "Hero ripple matches PG-03",
+      "pass": true,
+      "detail": "2.5 m wide, 0.33 m tall"
+    },
+    {
+      "check": "Authored area within 60 to 80 m",
+      "pass": true,
+      "detail": "60 x 60 m"
+    },
+    {
+      "check": "C-establish: geometry recorded",
+      "pass": true,
+      "detail": "height 2.6 m, 22.75 m to target, looking down 5.5 degrees, FOV 40"
+    },
+    {
+      "check": "C-wheel-rf: geometry recorded",
+      "pass": true,
+      "detail": "height 0.32 m, 0.98 m to target, looking down 13.0 degrees, FOV 36"
+    },
+    {
+      "check": "C-wheel-lf: geometry recorded",
+      "pass": true,
+      "detail": "height 0.32 m, 1.03 m to target, looking down 12.4 degrees, FOV 36"
+    },
+    {
+      "check": "C-wheel-rear: geometry recorded",
+      "pass": true,
+      "detail": "height 0.42 m, 1.78 m to target, looking down 9.7 degrees, FOV 40"
+    },
+    {
+      "check": "C-overview: geometry recorded",
+      "pass": true,
+      "detail": "height 3.4 m, 7.63 m to target, looking down 24.8 degrees, FOV 42"
+    },
+    {
+      "check": "C-final: geometry recorded",
+      "pass": true,
+      "detail": "height 1.5 m, 7.99 m to target, looking down 10.5 degrees, FOV 45"
+    }
+  ],
+  "failed": []
+}

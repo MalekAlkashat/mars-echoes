@@ -1,0 +1,114 @@
+{
+  "errors": [],
+  "failed": [],
+  "actions": [
+    {
+      "service": "imaging",
+      "before": 97.70770796541669,
+      "after": 97.6348269304616,
+      "rateBefore": "Reserve loss: 1.09 units/s · full demand",
+      "rateAfter": "Reserve loss: 0.69 units/s · reduced demand"
+    },
+    {
+      "service": "science",
+      "before": 96.02894927159556,
+      "after": 96.01651774091197,
+      "rateBefore": "Reserve loss: 0.74 units/s · reduced demand",
+      "rateAfter": "Reserve loss: 0.34 units/s · reduced demand"
+    }
+  ],
+  "saved": {
+    "version": 2,
+    "savedAt": 1794704206404,
+    "entry": {
+      "scene": "episode-rover-01",
+      "wreckId": "wreck-rover-01",
+      "chapter": "long-night",
+      "resume": {
+        "position": [
+          0,
+          4.7395012054583106
+        ],
+        "heading": 0,
+        "cameraYaw": 0.33,
+        "cameraPitch": 0.095,
+        "cameraDistance": 5.8,
+        "started": true,
+        "time": 7.8165000000000315,
+        "kind": "long-night",
+        "phase": "storm",
+        "elapsed": 4.716599999999999,
+        "imaging": true,
+        "science": true,
+        "reserve": 95.9296841408262
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        -1.6582488298416138,
+        -23.32
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [
+      "blueberry-clue"
+    ],
+    "skills": [
+      "grind"
+    ],
+    "completed": []
+  },
+  "restoreDelta": 0,
+  "noAutoAdvance": true,
+  "returned": {
+    "version": 2,
+    "savedAt": 1794704246070,
+    "entry": {
+      "scene": "mars-hub",
+      "bookmark": {
+        "position": [
+          0,
+          -1.6582488298416138,
+          -23.32
+        ],
+        "heading": 0,
+        "cameraYaw": 0,
+        "cameraPitch": 0.12,
+        "cameraDistance": 5.8
+      }
+    },
+    "bookmark": {
+      "position": [
+        0,
+        -1.6582488298416138,
+        -23.32
+      ],
+      "heading": 0,
+      "cameraYaw": 0,
+      "cameraPitch": 0.12,
+      "cameraDistance": 5.8
+    },
+    "chapters": [
+      "blueberry-clue",
+      "long-night"
+    ],
+    "skills": [
+      "grind",
+      "sunlight"
+    ],
+    "completed": []
+  },
+  "noActionSkip": true,
+  "afterAbort": [
+    "grind",
+    "sunlight"
+  ],
+  "replaySkills": [
+    "grind",
+    "sunlight"
+  ]
+}

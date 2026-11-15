@@ -120,3 +120,23 @@ graphify-out/
 !/outputs/review/blueberry-continuity-v5/*.md
 !/outputs/review/blueberry-continuity-v5/*.json
 !/outputs/review/blueberry-continuity-v5/*.png
+
+# Mission 3 review; full-speed recordings and harnesses remain local in work/.
+!/outputs/review/mission-three/
+/outputs/review/mission-three/*
+!/outputs/review/mission-three/*.md
+!/outputs/review/mission-three/*.json
+!/outputs/review/mission-three/*.png
+
+!/outputs/review/mission-three-correction/
+/outputs/review/mission-three-correction/*
+!/outputs/review/mission-three-correction/*.md
+!/outputs/review/mission-three-correction/*.json
+!/outputs/review/mission-three-correction/*.png
+
+# Consolidated integration evidence; full-speed recordings remain local.
+!/outputs/review/mission-integration/
+/outputs/review/mission-integration/*
+!/outputs/review/mission-integration/*.md
+!/outputs/review/mission-integration/*.json
+!/outputs/review/mission-integration/*.png

@@ -11,6 +11,15 @@ import { RoverHUD } from './hud';
 export async function createRoverEpisode(
   context: SceneContext, entry: EpisodeEntry, signal: AbortSignal,
 ): Promise<GameScene> {
+  // The former development slice now shares the production chapter/save boundary.
+  if(entry.chapter==='purgatory'||entry.resume?.kind==='purgatory'){
+    const {createPurgatorySlice}=await import('./missions/purgatory');
+    return createPurgatorySlice(context,entry,signal);
+  }
+  if(entry.chapter==='long-night'||entry.resume?.kind==='long-night'){
+    const {createLongNight}=await import('./missions/long-night');
+    return createLongNight(context,entry,signal);
+  }
   if(entry.chapter==='blueberry-clue'||entry.resume?.kind==='blueberry-clue'){
     const {createBlueberryClue}=await import('./missions/blueberry-clue');
     return createBlueberryClue(context,entry,signal);
