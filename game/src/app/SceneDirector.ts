@@ -33,7 +33,10 @@ export class SceneDirector {
 
   async open(entry: SceneEntry): Promise<boolean> {
     const succeeded=await this.transition(entry,{kind:'open',entry});
-    if(succeeded)this.options.hooks.settled?.();
+    if(succeeded){
+      if(entry.scene==='episode-rover-01'&&entry.journey&&this.options.session.journey?.boundary==='next'){const j=this.options.session.journey;this.options.session.journey={chapter:j.chapter,bookmark:j.bookmark};}
+      this.options.hooks.settled?.();
+    }
     return succeeded;
   }
 
@@ -96,17 +99,56 @@ export class SceneDirector {
     const {session} = this.options;
     if (request.kind === 'enter-memory') {
       if (this.active?.id !== 'mars-hub') return false;
-      const succeeded = await this.transition(request.entry,{kind:'request',request});
-      if (succeeded) session.bookmark = {...request.bookmark, position: [...request.bookmark.position]};
-      if (succeeded) this.options.hooks.settled?.();
+      const savedJourney=session.journey;
+      const entry=request.entry.journey && savedJourney
+        ? {scene:'episode-rover-01' as const,wreckId:request.entry.wreckId,chapter:savedJourney.chapter,journey:true as const,resume:savedJourney.resume}
+        : request.entry;
+      const succeeded = await this.transition(entry,{kind:'request',request});
+      if (succeeded) {
+        session.bookmark = {...request.bookmark, position: [...request.bookmark.position]};
+        if(entry.journey && !savedJourney)session.journey={chapter:entry.chapter??'blueberry-clue',bookmark:session.bookmark};
+        if(entry.journey && savedJourney){session.bookmark=savedJourney.bookmark;if(savedJourney.boundary==='next')session.journey={chapter:savedJourney.chapter,bookmark:savedJourney.bookmark};}
+        this.options.hooks.settled?.();
+      }
       return succeeded;
     }
     if (this.active?.id !== 'episode-rover-01' || this.entry?.scene !== 'episode-rover-01') return false;
+    if(request.kind==='remember-overtime'){
+      if(!this.entry.journey||!session.chapters.has('purgatory')||!((this.entry.chapter==='purgatory'&&session.journey?.boundary==='next')||this.entry.chapter==='long-night'))return false;
+      session.skills.add('overtime');this.options.hooks.settled?.();return true;
+    }
     if (request.result.episodeId !== this.active.id || request.result.wreckId !== this.entry.wreckId) return false;
     if (request.result.chapter !== this.entry.chapter) return false;
-    const succeeded = await this.transition({scene:'mars-hub', bookmark: session.bookmark},{kind:'request',request});
-    if (succeeded) session.record(request.result);
-    if (succeeded) this.options.hooks.settled?.();
+    const journey=this.entry.journey && session.journey;
+    const next=this.entry.chapter==='blueberry-clue'?'purgatory':this.entry.chapter==='purgatory'?'long-night':undefined;
+    if(request.kind==='chapter-boundary') {
+      if(!journey || request.result.outcome!=='completed')return false;
+      session.record(request.result);
+      session.journey={chapter:next??'long-night',bookmark:journey.bookmark,boundary:next?'next':'return',
+        ...(!next?{resume:(this.active.getSaveEntry?.() as Extract<SceneEntry,{scene:'episode-rover-01'}>)?.resume}:{})};
+      // Save the earned chapter before any asynchronous destination work begins.
+      this.options.hooks.settled?.();
+      return true;
+    }
+    if(journey && request.result.outcome==='completed' && next) {
+      if(session.journey?.boundary!=='next' || session.journey.chapter!==next)return false;
+      const succeeded=await this.transition({scene:'episode-rover-01',wreckId:this.entry.wreckId,chapter:next,journey:true},{kind:'request',request});
+      if(succeeded){session.journey={chapter:next,bookmark:journey.bookmark};this.options.hooks.settled?.();}
+      return succeeded;
+    }
+    // Keep an unfinished checkpoint even when the player deliberately leaves the memory.
+    if(journey && request.result.outcome==='aborted' && !journey.boundary) {
+      const saved=this.active.getSaveEntry?.();
+      if(saved?.scene==='episode-rover-01')journey.resume=saved.resume;
+    }
+    const finished=Boolean(journey && request.result.outcome==='completed' && this.entry.chapter==='long-night');
+    if(finished && journey && journey.boundary!=='return')return false;
+    const succeeded = await this.transition({scene:'mars-hub',bookmark:journey?journey.bookmark:session.bookmark,...(finished?{memoryReturn:true as const}:{})},{kind:'request',request});
+    if (succeeded) {
+      session.record(request.result);
+      if(finished){session.opportunityComplete=['blueberry-clue','purgatory','long-night'].every(id=>session.chapters.has(id));session.journey=undefined;}
+      this.options.hooks.settled?.();
+    }
     return succeeded;
   }
 

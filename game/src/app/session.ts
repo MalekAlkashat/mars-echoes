@@ -1,7 +1,9 @@
-import type { EpisodeResult, HubBookmark } from './contracts';
+import type { EpisodeResult, HubBookmark, OpportunityJourney } from './contracts';
 
 export class GameSession {
   bookmark?: HubBookmark;
+  journey?: OpportunityJourney;
+  opportunityComplete = false;
   readonly completed = new Set<string>();
   readonly chapters = new Set<string>();
   readonly skills = new Set<string>();

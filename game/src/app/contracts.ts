@@ -5,6 +5,8 @@ import type { GameSession } from './session';
 import type {PurgatoryCheckpointData} from '../scenes/episodes/rover/missions/purgatory/checkpoint';
 
 export type MissionPhase = 'approach'|'brush'|'grind'|'inspect'|'compare'|'water'|'evidence';
+export type OpportunityChapter = 'blueberry-clue' | 'purgatory' | 'long-night';
+export type OpportunityJourney = {chapter:OpportunityChapter; bookmark:HubBookmark; resume?:RoverCheckpoint; boundary?:'next'|'return'};
 export type SceneId = 'mars-hub' | 'episode-rover-01';
 export type HubBookmark = {
   position: readonly [number, number, number];
@@ -24,14 +26,16 @@ export type RoverCheckpoint = {
   serviceHeading:number; opticalRemaining:number;
 });
 export type SceneEntry =
-  | { scene: 'mars-hub'; bookmark?: HubBookmark }
-  | { scene: 'episode-rover-01'; wreckId: string; chapter?: 'blueberry-clue' | 'purgatory' | 'long-night'; resume?: RoverCheckpoint };
+  | { scene: 'mars-hub'; bookmark?: HubBookmark; memoryReturn?:true }
+  | { scene: 'episode-rover-01'; wreckId: string; chapter?: OpportunityChapter; journey?:true; resume?: RoverCheckpoint };
 export type EpisodeEntry = Extract<SceneEntry, {scene: 'episode-rover-01'}>;
 export type EpisodeResult = {
   episodeId: 'episode-rover-01'; wreckId: string; outcome: 'completed' | 'aborted'; chapter?: 'blueberry-clue' | 'purgatory' | 'long-night';
 };
 export type SceneRequest =
   | { kind: 'enter-memory'; entry: Extract<SceneEntry, {scene: 'episode-rover-01'}>; bookmark: HubBookmark }
+  | { kind: 'remember-overtime' }
+  | { kind: 'chapter-boundary'; result: EpisodeResult }
   | { kind: 'return-to-hub'; result: EpisodeResult };
 export interface InputFrame {
   moveX: number; moveY: number; rotate: number; lookX: number; lookY: number;
@@ -61,6 +65,8 @@ export interface GameScene {
   getBookmark?(): HubBookmark | undefined;
   /** Current scene-local progress, supplied by the scene rather than inferred from debug labels. */
   getSaveEntry?(): SceneEntry;
+  /** Scene-local cinematic adapter; never interpolates between different maps. */
+  journeyShot?(direction:'in'|'out', seconds:number, reduced:boolean):void;
 }
 export interface SceneContext {
   assets: AssetCache;

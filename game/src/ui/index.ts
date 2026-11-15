@@ -48,6 +48,8 @@ export class UI {
   }
   dismiss():void {this.failed=false;element('transition').hidden=true;this.canvas.focus();}
   setScene(id:string):void {
+    // Visibility belongs to the active scene, not the outgoing chapter's disposal.
+    element('restart-button').hidden=id!=='episode-rover-01';
     element('leave-button').hidden=id!=='episode-rover-01';
     element('touch-leap').hidden=id!=='mars-hub';
     element('hub-controls').hidden=id!=='mars-hub';

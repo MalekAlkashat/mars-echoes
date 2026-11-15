@@ -1,6 +1,12 @@
 import type { GameScene, SceneContext, SceneEntry } from './contracts';
 
-export async function createScene(context:SceneContext,entry:SceneEntry,signal:AbortSignal):Promise<GameScene> {
+import {createJourneyScene} from '../scenes/episodes/rover/journey';
+
+export function createScene(context:SceneContext,entry:SceneEntry,signal:AbortSignal):Promise<GameScene>{
+  return createJourneyScene(context,entry,signal,createRawScene);
+}
+
+async function createRawScene(context:SceneContext,entry:SceneEntry,signal:AbortSignal):Promise<GameScene> {
   if(entry.scene==='mars-hub') {
     const {createMarsHub}=await import('../scenes/mars-hub');
     signal.throwIfAborted();return createMarsHub(context,entry,signal);

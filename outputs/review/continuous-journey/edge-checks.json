@@ -1,0 +1,50 @@
+{
+  "checks": [
+    {
+      "name": "M1 boundary pause/reload, safe cinematic skip, M2 exact pose/soil reload"
+    },
+    {
+      "name": "focus pause, early exit, resume unfinished chapter and restart"
+    },
+    {
+      "name": "M2 boundary image-load failure and retry retain earned work only"
+    },
+    {
+      "name": "cancel in-flight next chapter, leave and resume remain recoverable"
+    },
+    {
+      "name": "final-boundary reload returns once; later exploration bookmark saves normally"
+    },
+    {
+      "name": "four abort/replay cycles return with stable resources",
+      "resources": [
+        {
+          "geometries": "30",
+          "textures": "32",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "32",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "32",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "32",
+          "loops": "1"
+        }
+      ]
+    },
+    {
+      "name": "390x844 touch, large text, reduced motion, pause and skip"
+    }
+  ],
+  "errors": [],
+  "seeded": true,
+  "passed": true
+}

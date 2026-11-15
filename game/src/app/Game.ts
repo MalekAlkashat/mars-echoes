@@ -45,7 +45,7 @@ export class Game {
     const saveRead=showMenu?readSaveRecord():{source:'empty' as const,save:undefined};
     const saved=saveRead.save;
     if(saved){
-      this.hasStarted=true;this.session.bookmark=saved.bookmark;
+      this.hasStarted=true;this.session.bookmark=saved.bookmark;this.session.journey=saved.journey;this.session.opportunityComplete=saved.opportunityComplete??false;
       for(const id of saved.completed)this.session.completed.add(id);
       for(const id of saved.chapters??[])this.session.chapters.add(id);
       for(const id of saved.skills??[])this.session.skills.add(id);
@@ -141,7 +141,7 @@ export class Game {
     this.menu=new MainMenu({
       newGame:async()=>{
         if(this.director.active?.id!=='mars-hub'&&!await this.director.open({scene:'mars-hub'}))return;
-        this.session.completed.clear();this.session.chapters.clear();this.session.skills.clear();this.session.bookmark=undefined;this.hasStarted=true;
+        this.session.completed.clear();this.session.chapters.clear();this.session.skills.clear();this.session.bookmark=undefined;this.session.journey=undefined;this.session.opportunityComplete=false;this.hasStarted=true;
         this.startupNotice='';
         this.director.restart();this.menu?.hide();this.ui.canvas.focus();
         this.menu?.setSaveAvailable(true);this.saveProgress(false,{replaceBackup:true});this.needsRender=true;
@@ -196,11 +196,16 @@ export class Game {
     }
     const checkpoint=this.director.active.getBookmark?.();
     if(checkpoint)this.session.bookmark=checkpoint;
-    const entry=this.director.active.getSaveEntry?.()??
+    let entry=this.director.active.getSaveEntry?.()??
       (this.director.active.id==='mars-hub'?{scene:'mars-hub' as const,...(this.session.bookmark?{bookmark:this.session.bookmark}:{})}:undefined);
+    if(entry?.scene==='episode-rover-01'&&this.director.entry?.scene==='episode-rover-01'&&this.director.entry.journey&&this.session.journey){
+      const journey=this.session.journey;
+      if(!journey.boundary)journey.resume=entry.resume;
+      entry={scene:'episode-rover-01',wreckId:'wreck-rover-01',chapter:journey.chapter,journey:true,...(journey.resume?{resume:journey.resume}:{})};
+    }
     if(!entry){if(manual)this.setSaveStatus('Waiting for a safe checkpoint. Your last save is unchanged.');return false;}
     const savedAt=Date.now();
-    const saved=writeSave({version:2,savedAt,entry,bookmark:this.session.bookmark,completed:[...this.session.completed],chapters:[...this.session.chapters],skills:[...this.session.skills]},undefined,options);
+    const saved=writeSave({version:2,savedAt,entry,bookmark:this.session.bookmark,completed:[...this.session.completed],chapters:[...this.session.chapters],skills:[...this.session.skills],journey:this.session.journey,opportunityComplete:this.session.opportunityComplete},undefined,options);
     if(!saved){
       this.menu?.storageWarning();this.setSaveStatus('Saving failed. Your last valid save has been kept. Check browser storage.');
     }else{

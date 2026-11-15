@@ -1,3 +1,7 @@
+# Continuous journey candidate — 15 November 2026
+
+In codex/continuous-journey (base 6eef598), normal Opportunity entry now advances through all three chapters without intermediate hub returns. Chapter rewards persist at earned boundaries; failed incoming loads retain the completed work. Original hub bookmarks, standalone chapter replay and previews remain separate. OVERTIME is recorded as knowledge, not a usable power. The story-complete flag commits only after the final successful return. Scene-local bridges use the accepted rover and flame, one renderer/update loop, pause-safe clocks, Skip and reduced motion. See outputs/planning/continuous-journey.md and outputs/review/continuous-journey/REVIEW.md. This branch has not been merged, pushed or deployed; the parallel Journal and Epilogue branches need explicit integration of the shared contract/save changes. User visual acceptance remains open.
+
 # Spirit and machine memories: development roadmap
 
 ## Active polish backlog, 15 November 2026

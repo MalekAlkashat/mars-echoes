@@ -1,11 +1,11 @@
-import type { HubBookmark, RoverCheckpoint, SceneEntry } from './contracts.ts';
+import type { HubBookmark, RoverCheckpoint, SceneEntry, OpportunityJourney } from './contracts.ts';
 import {parsePurgatoryData} from '../scenes/episodes/rover/missions/purgatory/checkpoint.ts';
 import {legacyNightReserve,type NightPhase} from '../scenes/episodes/rover/missions/long-night/progress.ts';
 
 export const SAVE_KEY = 'mars-echoes.save.v2';
 export const BACKUP_SAVE_KEY = 'mars-echoes.save.v2.backup';
 export const LEGACY_SAVE_KEY = 'mars-echoes.save.v1';
-export type ExplorationSave = {version:2; savedAt:number; entry:SceneEntry; bookmark?:HubBookmark; completed:string[]; chapters?:string[]; skills?:string[]};
+export type ExplorationSave = {version:2; savedAt:number; entry:SceneEntry; bookmark?:HubBookmark; completed:string[]; chapters?:string[]; skills?:string[]; journey?:OpportunityJourney; opportunityComplete?:boolean};
 export type SaveStorage = Pick<Storage,'getItem'|'setItem'> & Partial<Pick<Storage,'removeItem'>>;
 export type SaveRead = {save?:ExplorationSave; source:'primary'|'backup'|'legacy'|'empty'|'invalid'|'unavailable'};
 const phases=['ready','drive','scan','extract','align','insert','calibrate','relay','transmit','end'];
@@ -62,12 +62,13 @@ function sceneEntry(value:unknown):SceneEntry|undefined {
   }
   if(value.scene!=='episode-rover-01'||value.wreckId!=='wreck-rover-01')return;
   const resume=checkpoint(value.resume);
-  if(!resume)return;
+  if(value.journey!==undefined&&value.journey!==true)return;
+  if(!resume&&!(value.journey===true&&value.resume===undefined&&['blueberry-clue','purgatory','long-night'].includes(String(value.chapter))))return;
   if(value.chapter!==undefined&&value.chapter!=='blueberry-clue'&&value.chapter!=='purgatory'&&value.chapter!=='long-night')return;
-  if(value.chapter==='blueberry-clue'&&resume.kind!=='blueberry-clue')return;
-  if(value.chapter==='long-night'&&resume.kind!=='long-night')return;
-  if(value.chapter==='purgatory'&&resume.kind!=='purgatory')return;
-  return {scene:'episode-rover-01',wreckId:value.wreckId,...(resume.kind==='blueberry-clue'||resume.kind==='purgatory'||resume.kind==='long-night'?{chapter:resume.kind}:{}),resume};
+  if(value.chapter==='blueberry-clue'&&resume&&resume.kind!=='blueberry-clue')return;
+  if(value.chapter==='long-night'&&resume&&resume.kind!=='long-night')return;
+  if(value.chapter==='purgatory'&&resume&&resume.kind!=='purgatory')return;
+  return {scene:'episode-rover-01',wreckId:value.wreckId,...((resume?.kind==='blueberry-clue'||resume?.kind==='purgatory'||resume?.kind==='long-night')?{chapter:resume.kind}:value.journey===true?{chapter:value.chapter as OpportunityJourney['chapter']}:{}),...(value.journey===true?{journey:true as const}:{}),...(resume?{resume}:{})};
 }
 /** Parse and copy only known fields. Invalid runtime numbers never replace a good save. */
 export function parseSave(raw:string|null):ExplorationSave|undefined {
@@ -78,16 +79,31 @@ export function parseSave(raw:string|null):ExplorationSave|undefined {
     if(value.bookmark!==undefined&&!b)return;
     if(value.version===1)return {version:2,savedAt:0,entry:{scene:'mars-hub',...(b?{bookmark:b}:{})},bookmark:b,completed:[...new Set<string>(value.completed)]};
     if(value.chapters!==undefined&&(!Array.isArray(value.chapters)||!value.chapters.every(id=>id==='blueberry-clue'||id==='purgatory'||id==='long-night')))return;
-    if(value.skills!==undefined&&(!Array.isArray(value.skills)||!value.skills.every(id=>id==='grind'||id==='sand'||id==='sunlight')))return;
+    if(value.skills!==undefined&&(!Array.isArray(value.skills)||!value.skills.every(id=>id==='grind'||id==='sand'||id==='sunlight'||id==='overtime')))return;
     const chapters=[...new Set<string>((value.chapters??[]) as string[])];
     const skills=[...new Set<string>((value.skills??[]) as string[])];
+    if(skills.includes('overtime')&&!chapters.includes('purgatory'))return;
     if(chapters.includes('purgatory')!==skills.includes('sand'))return;
     if(chapters.includes('long-night')!==skills.includes('sunlight'))return;
     if(chapters.includes('blueberry-clue')!==skills.includes('grind'))return;
     if(value.version!==2||!inRange(value.savedAt,0,1e15))return;
     const entry=sceneEntry(value.entry);
     if(!entry)return;
-    return {version:2,savedAt:value.savedAt,entry,bookmark:b,...(value.chapters!==undefined?{chapters,skills}:{}),completed:[...new Set<string>(value.completed)]};
+    let journey:OpportunityJourney|undefined;
+    if(value.journey!==undefined){
+      const j=value.journey;
+      if(!record(j)||!['blueberry-clue','purgatory','long-night'].includes(String(j.chapter)))return;
+      const jb=bookmark(j.bookmark),jr=j.resume===undefined?undefined:checkpoint(j.resume);
+      if(!jb||(j.resume!==undefined&&(!jr||jr.kind!==j.chapter)))return;
+      if(j.boundary!==undefined&&j.boundary!=='next'&&j.boundary!=='return')return;
+      if(j.boundary==='return'&&(j.chapter!=='long-night'||!chapters.includes('long-night')))return;
+      if(j.boundary==='next'&&(j.resume!==undefined||j.chapter==='blueberry-clue'||!chapters.includes(j.chapter==='purgatory'?'blueberry-clue':'purgatory')))return;
+      journey={chapter:j.chapter as OpportunityJourney['chapter'],bookmark:jb,...(jr?{resume:jr}:{}),...(j.boundary?{boundary:j.boundary}:{})};
+    }
+    if(entry.scene==='episode-rover-01'&&entry.journey&&(!journey||entry.chapter!==journey.chapter))return;
+    if(value.opportunityComplete!==undefined&&typeof value.opportunityComplete!=='boolean')return;
+    if(value.opportunityComplete&&!['blueberry-clue','purgatory','long-night'].every(id=>chapters.includes(id)))return;
+    return {version:2,savedAt:value.savedAt,entry,...(journey?{journey}:{}),...(value.opportunityComplete!==undefined?{opportunityComplete:value.opportunityComplete}:{}),bookmark:b,...(value.chapters!==undefined?{chapters,skills}:{}),completed:[...new Set<string>(value.completed)]};
   }catch{return;}
 }
 export function readSaveRecord(storage?:SaveStorage):SaveRead {

@@ -170,3 +170,10 @@ graphify-out/
 !/outputs/review/mission-integration/*.md
 !/outputs/review/mission-integration/*.json
 !/outputs/review/mission-integration/*.png
+
+# Continuous journey evidence; native videos stay local.
+!/outputs/review/continuous-journey/
+/outputs/review/continuous-journey/*
+!/outputs/review/continuous-journey/*.md
+!/outputs/review/continuous-journey/*.json
+!/outputs/review/continuous-journey/*.png

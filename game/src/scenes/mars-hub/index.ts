@@ -1,4 +1,4 @@
-import { assertActive, type GameScene, type HubBookmark, type SceneContext, type SceneEntry } from '../../app/contracts';
+import { assertActive, type GameScene, type HubBookmark, type SceneContext, type SceneEntry, type OpportunityChapter } from '../../app/contracts';
 import { ROVER_MEMORY } from '../../content/equipment';
 import { SpiritController } from '../../entities/spirit/controller';
 import { createSpiritAppearance, type SpiritAppearance } from '../../entities/spirit/appearance';
@@ -34,8 +34,9 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
     };
     restore(entry.bookmark);
     const choice=document.createElement('select');choice.id='memory-chapter';choice.setAttribute('aria-label','Choose Opportunity memory');
-    choice.innerHTML='<option value="blueberry-clue">2004 · The Blueberry Clue</option><option value="purgatory">2005 · Stuck in Purgatory</option><option value="long-night">2018 · The Long Night</option>';
+    choice.innerHTML='<option value="journey">Opportunity · Full memory journey</option><option value="blueberry-clue">2004 · The Blueberry Clue</option><option value="purgatory">2005 · Stuck in Purgatory</option><option value="long-night">2018 · The Long Night</option>';
     let choiceReady=false;
+    const firstUnrecorded=():OpportunityChapter=>(['blueberry-clue','purgatory','long-night'] as const).find(id=>!context.session.chapters.has(id))??'blueberry-clue';
     choice.style.cssText='background:#202422;color:#fff;padding:10px;border:1px solid #d6ad78;max-width:100%;min-width:0;font:inherit';choice.hidden=true;element('interaction').prepend(choice);
     const show = () => {
       context.ui.resetView();
@@ -57,7 +58,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
       activate() { active = true; show(); },
       update(dt, input) {
         if (!active || disposed) return;
-        if(!choiceReady){choice.value=!context.session.chapters.has('blueberry-clue')?'blueberry-clue':!context.session.chapters.has('purgatory')?'purgatory':'long-night';choiceReady=true;}
+        if(!choiceReady){choice.value='journey';choiceReady=true;}
         if (!started && input.startPressed) { started = true; show(); }
         const step = paused ? 0 : dt;
         effects.time += step;
@@ -65,7 +66,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
           follow.orbit(input.dragX + input.lookX * dt * 200, input.dragY + input.lookY * dt * 200, input.zoom);
           controller.update(step, input, follow.yaw, world.obstacles, world.height);
           if (input.interactPressed && controller.position.distanceTo(world.wreck.position) < ROVER_MEMORY.entryDistance) {
-            context.request({ kind: 'enter-memory', entry: {scene: ROVER_MEMORY.episodeId, wreckId: ROVER_MEMORY.wreckId, chapter:choice.value==='long-night'?'long-night':choice.value==='purgatory'?'purgatory':'blueberry-clue'},
+            context.request({ kind: 'enter-memory', entry: {scene: ROVER_MEMORY.episodeId, wreckId: ROVER_MEMORY.wreckId, chapter:choice.value==='journey'?firstUnrecorded():choice.value==='long-night'?'long-night':choice.value==='purgatory'?'purgatory':'blueberry-clue',...(choice.value==='journey'?{journey:true as const}:{})},
               bookmark: {position: controller.position.toArray() as [number, number, number], heading: controller.heading,
                 cameraYaw: follow.yaw, cameraPitch: follow.pitch, cameraDistance: follow.distance} });
           }
@@ -85,7 +86,7 @@ export async function createMarsHub(context: SceneContext, entry: Extract<SceneE
           ? context.session.skills.has('sunlight') ? 'SUNLIGHT remembered · Opportunity remains silent.' : context.session.chapters.has('purgatory') ? 'SAND remembered · Opportunity escaped Purgatory.' : context.session.chapters.has('blueberry-clue') ? 'Blueberry Clue remembered · GRIND unlocked.' : context.session.completed.has(ROVER_MEMORY.wreckId) ? 'Rover sequence visited.' : 'A rover lies silent.'
           : `Abandoned rover · ${Math.ceil(distance)} m`;
         element('interact-button').hidden = distance >= ROVER_MEMORY.entryDistance;
-        element('interact-button').textContent = 'Enter memory  E';
+        element('interact-button').textContent = choice.value==='journey'?(context.session.journey?'Continue memory  E':context.session.opportunityComplete?'Replay full memory  E':'Enter memory  E'):'Replay chapter  E';
         element('touch-controls').hidden = false;
         element('touch-controls').style.visibility = 'visible';
       },
