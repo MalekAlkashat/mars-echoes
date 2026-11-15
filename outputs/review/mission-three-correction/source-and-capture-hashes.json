@@ -1,0 +1,178 @@
+{
+  "game/public/assets/long-night/v1/last-message.jpg": {
+    "sha256": "db99314d10489da0937c3fb3ef67a89e087aca11deedafde39a67e27a79f794f",
+    "bytes": 314160
+  },
+  "game/src/app/contracts.ts": {
+    "sha256": "f5db30b584f5e1e449489042dc14e63fbf76752e9a6d801d7c380c21702f3e0e",
+    "bytes": 3792
+  },
+  "game/src/app/save.ts": {
+    "sha256": "513a1f83fe6d3f604bcf3a64f7af21fc851261e4421961672c7a41ae86d2d72c",
+    "bytes": 8682
+  },
+  "game/src/content/long-night.ts": {
+    "sha256": "a0dbad283965a2b60a854ad73433fcdeb6889a8e00dc51abdbe9d29539296b13",
+    "bytes": 1978
+  },
+  "game/src/scenes/episodes/rover/missions/long-night/index.ts": {
+    "sha256": "9e86080af6f8aa89998b5713fee4482118ded3dcb52bca8a765d37ba9853498e",
+    "bytes": 11680
+  },
+  "game/src/scenes/episodes/rover/missions/long-night/progress.ts": {
+    "sha256": "2d762f1680bc8b098acdaae8c241741d9a34672c3b213bfd084f367d4f8b9f65",
+    "bytes": 1776
+  },
+  "game/src/scenes/episodes/rover/missions/long-night/style.css": {
+    "sha256": "c7c3fa4bec3a7cfef410cc559888c18c706b65a000c854ba6435524e81b32082",
+    "bytes": 3406
+  },
+  "game/src/scenes/episodes/rover/missions/long-night/world.ts": {
+    "sha256": "ec2c2130963dc9330ebc08a8f2ef6cd6dc2ec9ed96d4435ce48ce799a611c81c",
+    "bytes": 3314
+  },
+  "game/tests/long-night.test.ts": {
+    "sha256": "ca47492e0d3b66cf0fa1cd77e5f0613f048f7f145cbf35c3abe9260b0994e367",
+    "bytes": 6293
+  },
+  "outputs/review/mission-three-correction/after-balanced-arrival.png": {
+    "sha256": "971fe5d3767190c2be928756504f7eff007deac3bd05e7284aa21dcb7c7b58ae",
+    "bytes": 1067250
+  },
+  "outputs/review/mission-three-correction/after-balanced-onset.png": {
+    "sha256": "dda763c903deab83be02dbcb636ca83fb4f6b8b41f72c54cc6cd5fec7b5f0396",
+    "bytes": 1024048
+  },
+  "outputs/review/mission-three-correction/after-balanced-peak.png": {
+    "sha256": "fa9a80fe1888971d061d1e9d4e9462344dd82820b5196da441b5a23da827850f",
+    "bytes": 812722
+  },
+  "outputs/review/mission-three-correction/after-balanced-silence.png": {
+    "sha256": "6ab204ee2b7fb6e4a17fafed39e293b95e5d194174f0c8055c19b0bacb160dde",
+    "bytes": 1241232
+  },
+  "outputs/review/mission-three-correction/after-low-arrival.png": {
+    "sha256": "7a3d89e63bf0e6a9fa4477bbdba0770b06ec9ac72d8e4eeffe49d3fed1f67ded",
+    "bytes": 872503
+  },
+  "outputs/review/mission-three-correction/after-low-onset.png": {
+    "sha256": "3af66898ad349ca7c1e25648a36ea955d9a68c75b161e9c53e28833bcf013c9a",
+    "bytes": 853833
+  },
+  "outputs/review/mission-three-correction/after-low-peak.png": {
+    "sha256": "274a3a5a26a611ec719d4c7a30853eb6207c3f6a0f87ccad307a3f06e09850a6",
+    "bytes": 869808
+  },
+  "outputs/review/mission-three-correction/after-low-silence.png": {
+    "sha256": "cf7e38e30eb5ca6f8fd3967b6caf7bf681ef78f561584b80c2b6dec37cb686a9",
+    "bytes": 1024116
+  },
+  "outputs/review/mission-three-correction/after-narrow-arrival.png": {
+    "sha256": "a89d602d2a3c9123f79aaf7eb6c65f0762f4dcf3e19437ab7ec2072144e802fa",
+    "bytes": 230440
+  },
+  "outputs/review/mission-three-correction/after-narrow-onset.png": {
+    "sha256": "c48be3a7238549cf0ce948e598f7d9b49cce5df02b4aec2789df70eb0928e260",
+    "bytes": 187685
+  },
+  "outputs/review/mission-three-correction/after-narrow-peak.png": {
+    "sha256": "8d102fda84641ff217abef6b350bf95376ef8259b95a07e07112879eab1320a5",
+    "bytes": 187103
+  },
+  "outputs/review/mission-three-correction/after-narrow-silence.png": {
+    "sha256": "e272bdd4010c7d77eeeb86cdc0516c745e552e6d285645cb698ffd5631c90ea9",
+    "bytes": 214217
+  },
+  "outputs/review/mission-three-correction/before-balanced-arrival.png": {
+    "sha256": "41bb3837e6251c2400113b6af83ff3a7e5e773a661d08f493a99654371e76d95",
+    "bytes": 1070655
+  },
+  "outputs/review/mission-three-correction/before-balanced-onset.png": {
+    "sha256": "5455667097ce25ef74345f9495c1065b2e86319b8aeff067ad5643cd93970a73",
+    "bytes": 1045756
+  },
+  "outputs/review/mission-three-correction/before-balanced-peak.png": {
+    "sha256": "4fd017980ddaed4f861eac2edacd467efb4dd508dbbec168d1f287e4a1b40773",
+    "bytes": 719209
+  },
+  "outputs/review/mission-three-correction/before-balanced-silence.png": {
+    "sha256": "2ede8e8b01e054dbc3aaa3e26e04df0fed48de80d628dda2310b4f6f0b30e09f",
+    "bytes": 1245085
+  },
+  "outputs/review/mission-three-correction/before-low-arrival.png": {
+    "sha256": "072f4b595c77839e8909b65890e10e54319ea569f107393525eb047ede3b8f97",
+    "bytes": 874621
+  },
+  "outputs/review/mission-three-correction/before-low-onset.png": {
+    "sha256": "7fd18011dbb4a9a755756a0a9b02840b0d70a2e5382e2398ffd24d7cf431e72c",
+    "bytes": 865198
+  },
+  "outputs/review/mission-three-correction/before-low-peak.png": {
+    "sha256": "d99b9beca359d2c9b5ba59ea6d64cb354bf6056a634ee5e6b9076cfeea08f820",
+    "bytes": 858893
+  },
+  "outputs/review/mission-three-correction/before-low-silence.png": {
+    "sha256": "e33315a60d01b8a959d038fa0bc5dd8241618947da11ea65cf128f03f73957a1",
+    "bytes": 1036696
+  },
+  "outputs/review/mission-three-correction/before-narrow-arrival.png": {
+    "sha256": "59429e3a86a35ec7f76121b52f2bef2237f87379c64cfa6577db3ded346c1b28",
+    "bytes": 191570
+  },
+  "outputs/review/mission-three-correction/before-narrow-onset.png": {
+    "sha256": "6c9be0b378a3283e1c42ea7bec1ea70464058ae402942ba5407b7290fe4402cc",
+    "bytes": 181424
+  },
+  "outputs/review/mission-three-correction/before-narrow-peak.png": {
+    "sha256": "d805c26f53edc8fcc34355d9f3fb477f61d5b71cf15125ec05e2441e7db43bae",
+    "bytes": 196262
+  },
+  "outputs/review/mission-three-correction/before-narrow-silence.png": {
+    "sha256": "a944dbdce6a894c7533f11d38761559a558010d0a5f3aedc87688d217b20f803",
+    "bytes": 225361
+  },
+  "outputs/review/mission-three-correction/no-action-arrival.png": {
+    "sha256": "3894f05503a0bb61edd8abfed7eb0cb079979fbbf7ec7f34699bd057c5b65ef3",
+    "bytes": 1038481
+  },
+  "outputs/review/mission-three-correction/no-action-onset.png": {
+    "sha256": "47f6e40d0024c256dcfba9e567840607ffcff6c777c4a138554ac60de99f5b35",
+    "bytes": 997842
+  },
+  "outputs/review/mission-three-correction/no-action-peak.png": {
+    "sha256": "77c06316915803c209626d6bbeb0667f1610e05acdeeece1fbd88f708950b917",
+    "bytes": 803548
+  },
+  "outputs/review/mission-three-correction/no-action-silence.png": {
+    "sha256": "18b95c4dd41ca21d45985b7a670d911c0089e3f68acc9b78070bca9f7a85d04d",
+    "bytes": 807457
+  },
+  "outputs/review/mission-three-correction/peak-services.png": {
+    "sha256": "47221b8974114f9b16f4172f781e650ca14c68c0d03a78d224994df4ae60644f",
+    "bytes": 812791
+  },
+  "outputs/review/mission-three-correction/services.png": {
+    "sha256": "8a6f8c2b88261d32ce56837eb2fb05d0506075e11265c607878dac552d1d1d3d",
+    "bytes": 987230
+  },
+  "outputs/review/mission-three-correction/silence-services.png": {
+    "sha256": "97e0355a6b900f11bdc303e5336bea33f7ab78280f27716e37648fb8a9dbcec4",
+    "bytes": 814272
+  },
+  "outputs/review/mission-three-correction/touch-services.png": {
+    "sha256": "b5275c859e145489310e64e1eb42e044af2a47f4683577c1135b1be05ce98452",
+    "bytes": 187963
+  },
+  "outputs/review/mission-three-correction/touch-silence.png": {
+    "sha256": "8380902f1e0bf0b0e174931bf49b83991cd7f81d236eda1298b13c359f6d9e17",
+    "bytes": 213418
+  },
+  "work/correction-acceptance/video/page@5745b953b747beaa5f2436630b6fe439.webm": {
+    "sha256": "c649003baff460f7def774807f4c8fe0ed6e853d58296a7e83d02dc53ca39d6c",
+    "bytes": 8365072
+  },
+  "work/correction-before/candidate-source.zip": {
+    "sha256": "950b31af4b815f2ed7d74f67a3ebb648942a135acfca2e2e156d2062d09415a4",
+    "bytes": 793111
+  }
+}

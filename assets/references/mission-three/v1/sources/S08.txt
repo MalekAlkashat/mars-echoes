@@ -1,0 +1,45 @@
+Rover Team Beaming New Commands to Opportunity on Mars
+https://www.jpl.nasa.gov/news/rover-team-beaming-new-commands-to-opportunity-on-mars/
+
+Solar System.2 min read
+Rover Team Beaming New Commands to Opportunity on Mars
+Jet Propulsion Laboratory https://www.jpl.nasa.gov/ Jan. 25, 2019
+A Goldstone 111.5-foot (34-meter) beam-waveguide antenna tracks a spacecraft as it comes into view. The Goldstone Deep Space Communications Complex is located in the Mojave Desert in California. Engineers at NASA's Jet Propulsion Laboratory in Pasadena, California, will use antennas like this one to transmit a new set of commands to the Opportunity rover in an attempt to compel the 15-year-old Martian explorer to contact Earth.› Full image and caption Credit: NASA/JPL-Caltech
+Engineers at JPL have begun transmitting a new set of commands to Opportunity in an attempt to compel the Mars rover to contact Earth.
+Engineers at NASA's Jet Propulsion Laboratory in Pasadena, California, have begun transmitting a new set of commands to the Opportunity rover in an attempt to compel the 15-year-old Martian explorer to contact Earth. The new commands, which will be beamed to the rover during the next several weeks, address low-likelihood events that could have occurred aboard Opportunity, preventing it from transmitting.
+The rover's last communication with Earth was received June 10, 2018, as a planet-wide dust storm blanketed the solar-powered rover's location on Mars.
+"We have and will continue to use multiple techniques in our attempts to contact the rover," said John Callas, project manager for Opportunity at JPL. "These new command strategies are in addition to the 'sweep and beep' commands we have been transmitting up to the rover since September." With "sweep and beep," instead of just listening for Opportunity, the project sends commands to the rover to respond back with a beep.
+The new transmission strategies are expected to go on for several weeks. They address three possible scenarios: that the rover's primary X-band radio - which Opportunity uses to communicate with Earth - has failed; that both its primary and secondary X-band radios have failed; or that the rover's internal clock, which provides a timeframe for its computer brain, is offset. A series of unlikely events would need to have transpired for any one of these faults to occur. The potential remedies being beamed up to address these unlikely events include a command for the rover to switch to its backup X-band radio and commands directed to reset the clock and respond via UHF.
+"Over the past seven months we have attempted to contact Opportunity over 600 times," said Callas. "While we have not heard back from the rover and the probability that we ever will is decreasing each day, we plan to continue to pursue every logical solution that could put us back in touch."
+Time is of the essence for the Opportunity team. The "dust-clearing season" - the time of year on Mars when increased winds could clear the rover's solar panels of dust that might be preventing it from charging its batteries - is drawing to a close. Meanwhile, Mars is heading into southern winter, which brings with it extremely low temperatures that are likely to cause irreparable harm to an unpowered rover's batteries, internal wiring and/or computer systems.
+If either these additional transmission strategies or "sweep and beep" generates a response from the rover, engineers could attempt a recovery. If Opportunity does not respond, the project team would again consult with the Mars Program Office at JPL and NASA Headquarters to determine the path forward.
+For more information about Opportunity and the Mars Exploration Rover program, visit:
+https://mars.nasa.gov/mer/home/index.html
+http://mars.nasa.gov
+Media Contacts
+DC Agle
+Jet Propulsion Laboratory, Pasadena, Calif.
+818-393-9011
+agle@jpl.nasa.gov
+2019-007
+Related News
+Solar System.
+NASA Invites Media, Public to Join Voyager 1 One-Light Day Activities
+Solar System.
+NASA Awards Moon Base Transportation, Technology, Science Projects
+Mars.
+NASA-funded Study Details One of Oldest Mars Meteorites Ever Found
+Solar System.
+NASA’s Voyager 1 Conserves Power, Resolves Brief Communications Pause
+Mars.
+NASA’s Perseverance Offers Clues to Protect Crews from Mars Dust
+Asteroids and Comets.
+Pedal to the Metal: NASA’s Psyche Heads Toward Asteroid Belt
+Mars.
+NASA’s Perseverance Sets Off-World Record for Total Distance Driven
+Mars.
+NASA’s Curiosity Rover Catches Stunning Martian Dawn
+Mars.
+NASA Discovery Reveals Complex Water Systems on Early Mars
+Mars.
+NASA Tests Featherweight Radar Antenna for SkyFall Mars Helicopters

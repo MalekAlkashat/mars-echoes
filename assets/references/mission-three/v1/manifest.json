@@ -1,0 +1,415 @@
+{
+  "schema_version": 1,
+  "prepared_date": "2026-11-15",
+  "base_revision": "548ce49bbeecbd77404b868c1e47e615a6ef5fd9",
+  "runtime_status": "No runtime import or implementation",
+  "resources": [
+    {
+      "id": "M3-R01",
+      "title": "Opportunity's Last Message — PIA22929",
+      "source_id": "S02",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia22/pia22929/PIA22929.jpg",
+      "path": "images/PIA22929-last-transmitted-partial.jpg",
+      "priority": "essential",
+      "category": "historical observation; incomplete partial full-frame Pancam image",
+      "observation": "2018-06-10; sol 5111; around 09:30 PDT",
+      "publication": "2019-03-12",
+      "credit": "NASA/JPL-Caltech/Cornell/ASU",
+      "instrument": "Opportunity Pancam left eye; solar filter",
+      "use": "Archival evidence card after loss of contact.",
+      "limits": "Black lower region is untransmitted data; white speckles are camera noise. Not the last exposure. Preserve original pixels; no completion, denoising or fake slow reveal of scenery.",
+      "landing_page": "https://science.nasa.gov/photojournal/opportunitys-last-message/",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/Cornell/ASU",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NASA media guidance S12; retain exact item credits. Not labeled CC0; no blanket rights assertion for third-party contributors.",
+      "bytes": 314160,
+      "sha256": "db99314d10489da0937c3fb3ef67a89e087aca11deedafde39a67e27a79f794f",
+      "format": "JPEG",
+      "dimensions": [
+        1024,
+        1024
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R01.jpg",
+      "processing": "historical observation; incomplete partial full-frame Pancam image"
+    },
+    {
+      "id": "M3-R02",
+      "title": "Last Images Opportunity Took — PIA22930",
+      "source_id": "S03",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia22/pia22930/PIA22930.jpg",
+      "path": "images/PIA22930-last-taken-thumbnails.jpg",
+      "priority": "essential",
+      "category": "historical observation; pair of transmitted thumbnails",
+      "observation": "2018-06-10; sol 5111; around 09:33 PDT",
+      "publication": "2019-03-12",
+      "credit": "NASA/JPL-Caltech/Cornell/ASU",
+      "instrument": "Opportunity Pancam left/right; 440 nm and 750 nm filters",
+      "use": "Explain last taken versus last transmitted.",
+      "limits": "Low-resolution thumbnails only; full frames were not received. Source EDT parenthetical has an a.m./p.m. inconsistency; retain PDT. Do not invent missing detail or treat as natural-color photographs.",
+      "landing_page": "https://science.nasa.gov/photojournal/last-images-opportunity-took/",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/Cornell/ASU",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NASA media guidance S12; retain exact item credits. Not labeled CC0; no blanket rights assertion for third-party contributors.",
+      "bytes": 1527,
+      "sha256": "94222d58d6ec992e5a2667eee9145085eb89814adf9fa0ec5204c57de66f653a",
+      "format": "JPEG",
+      "dimensions": [
+        224,
+        96
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R02.jpg",
+      "processing": "historical observation; pair of transmitted thumbnails"
+    },
+    {
+      "id": "M3-R03",
+      "title": "Shades of Martian Darkness — PIA22521",
+      "source_id": "S04",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia22/pia22521/PIA22521.jpg",
+      "path": "images/PIA22521-simulated-sky.jpg",
+      "priority": "essential",
+      "category": "official simulation; not rover photographs",
+      "observation": "Not an image-acquisition sequence; simulated tau 1,3,5,7,9,11",
+      "publication": "2018-06-13",
+      "credit": "NASA/JPL-Caltech/TAMU",
+      "instrument": "Visualization of Opportunity view; no photographic instrument acquisition",
+      "use": "Atmosphere/presentation reference and explicit educational illustration.",
+      "limits": "Not continuous measured illumination or a render-calibration lookup table. Label Simulation. Displayed apparent Sun size is brightness presentation.",
+      "landing_page": "https://science.nasa.gov/photojournal/shades-of-martian-darkness/",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/TAMU",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NASA media guidance S12; retain exact item credits. Not labeled CC0; no blanket rights assertion for third-party contributors.",
+      "bytes": 180203,
+      "sha256": "102f259941462102066dd08113b9254cde2c477a502a265f55d38cf79c37732c",
+      "format": "JPEG",
+      "dimensions": [
+        1500,
+        1000
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R03.jpg",
+      "processing": "official simulation; not rover photographs"
+    },
+    {
+      "id": "M3-R04",
+      "title": "Opportunity Legacy Pan — PIA22909 approximate true color",
+      "source_id": "S21",
+      "download_url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA22909.jpg",
+      "path": "images/PIA22909-final-pan-true-color.jpg",
+      "priority": "essential",
+      "category": "processed observational panorama; approximate true color",
+      "observation": "2018-05-13 through 2018-06-10; sols 5084–5111; 354 component images",
+      "publication": "2019-03-12",
+      "credit": "NASA/JPL-Caltech/Cornell/ASU",
+      "instrument": "Opportunity Pancam; 753,535,432 nm bands combined",
+      "use": "Final-region terrain, rock grouping, horizon and palette reference.",
+      "limits": "Multi-date mosaic, not a single final moment or calibrated scene illumination. Some lower-left panels lack full color. This JPEG is the publisher's provided version; full-resolution TIFF is link-only.",
+      "landing_page": "https://www.jpl.nasa.gov/images/pia22909-opportunity-legacy-pan-true-color/",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/Cornell/ASU",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NASA media guidance S12; retain exact item credits. Not labeled CC0; no blanket rights assertion for third-party contributors.",
+      "bytes": 24818,
+      "sha256": "c5eb94cf0902323bd5fe2296bde6f31de79e95b21c27cee993c7dd6214e7a060",
+      "format": "JPEG",
+      "dimensions": [
+        900,
+        201
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R04.jpg",
+      "processing": "processed observational panorama; approximate true color"
+    },
+    {
+      "id": "M3-R05",
+      "title": "Annotated final panorama — PIA22908 false color",
+      "source_id": "S05",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/p/i/a/-/PIA-22908-LegacyPan-ANNOTATED-NASA.jpg",
+      "path": "images/PIA22908-final-pan-annotated-false-color.jpg",
+      "priority": "useful",
+      "category": "annotated observational mosaic; false color",
+      "observation": "2018-05-13 through 2018-06-10; sols 5084–5111",
+      "publication": "2019-03-12; migrated file listing dates differ",
+      "credit": "NASA/JPL-Caltech/Cornell/ASU",
+      "instrument": "Opportunity Pancam",
+      "use": "Locate tracks, working outcrops, crater rim and valley floor.",
+      "limits": "False color is not material palette. Do not reuse the caption's internally inconsistent June 3/sol 5014 pairing. Diagram labels do not supply rover heading.",
+      "landing_page": "https://science.nasa.gov/resource/opportunity-rovers-final-mars-images/",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/Cornell/ASU",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NASA media guidance S12; retain exact item credits. Not labeled CC0; no blanket rights assertion for third-party contributors.",
+      "bytes": 499084,
+      "sha256": "4c4d9e574a5c1dd4188bbe1be5ed77e3dfe0f75412f4d844a02b5c2978412440",
+      "format": "JPEG",
+      "dimensions": [
+        3000,
+        670
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R05.jpg",
+      "processing": "annotated observational mosaic; false color"
+    },
+    {
+      "id": "M3-R06",
+      "title": "Opportunity After the Dust Storm — PIA22549",
+      "source_id": "S11",
+      "download_url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA22549.jpg",
+      "path": "images/PIA22549-post-storm-orbital.jpg",
+      "priority": "useful",
+      "category": "orbital observation; annotated context/inset",
+      "observation": "2018-09-20, after contact was lost",
+      "publication": "2018-09-25",
+      "credit": "NASA/JPL-Caltech/Univ. of Arizona",
+      "instrument": "MRO HiRISE",
+      "use": "Location and later recovery-campaign context.",
+      "limits": "Does not establish battery state, solar-array dust thickness or new rover motion. Captions refer to different 47 m and approximately 1 km context boxes; do not use a box as a scale without matching the figure.",
+      "landing_page": "https://www.jpl.nasa.gov/images/pia22549-opportunity-after-the-dust-storm/",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/Univ. of Arizona",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NASA media guidance S12; retain exact item credits. Not labeled CC0; no blanket rights assertion for third-party contributors.",
+      "bytes": 492120,
+      "sha256": "ecbcff48b86698a1bb25cf04baf3d97fec105f2fa8938afe1292e9d758964548",
+      "format": "JPEG",
+      "dimensions": [
+        2170,
+        1390
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R06.jpg",
+      "processing": "Publisher-provided orbital color product; natural-color calibration not established"
+    },
+    {
+      "id": "M3-R07",
+      "title": "HiRISE ESP_056955_1775 contextual detail",
+      "source_id": "S10",
+      "download_url": "https://static.uahirise.org/images/2018/details/ESP_056955_1775.jpg",
+      "path": "images/ESP_056955_1775-context.jpg",
+      "priority": "useful",
+      "category": "orbital observation; publisher context image",
+      "observation": "2018-09-20; local Mars time 14:56",
+      "publication": "2018-09-25",
+      "credit": "NASA/JPL-Caltech/UArizona",
+      "instrument": "MRO HiRISE",
+      "use": "Regional layout/orbital orientation reference.",
+      "limits": "Product center is -2.335 degrees latitude, 354.652 degrees east longitude; these are not exact rover coordinates. Source full map-projected scale is 25 cm/pixel, north up; the context JPEG must not inherit that pixel scale. Not a DEM or final rover pose measurement.",
+      "rights_override": "HiRISE usage policy on S10 explicitly states public domain; credit requested.",
+      "landing_page": "https://www.uahirise.org/ESP_056955_1775",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/UArizona",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "HiRISE usage policy on S10 explicitly states public domain; credit requested.",
+      "bytes": 305900,
+      "sha256": "ea52b43def113feefb1af8f10ab2cbabe74da2a0b31eb1d4d181de740cbba693",
+      "format": "JPEG",
+      "dimensions": [
+        840,
+        333
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R07.jpg",
+      "processing": "Publisher-provided orbital color product; natural-color calibration not established"
+    },
+    {
+      "id": "M3-R08",
+      "title": "Atmospheric Opacity from Opportunity's Point of View",
+      "source_id": "S23",
+      "download_url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/41665_OpacityChart.png",
+      "path": "images/opacity-comparison-chart.png",
+      "priority": "useful",
+      "category": "scientific comparison chart",
+      "observation": "Multiple Mars years; 2018 trace shown as of publication",
+      "publication": "2018-06-12",
+      "credit": "NASA/JPL-Caltech/TAMU",
+      "instrument": "Opportunity atmospheric-opacity observations",
+      "use": "Engineering briefing and relative storm onset context.",
+      "limits": "Horizontal axis is Martian season, not wall-clock seconds. Raster chart is not a continuous machine-readable telemetry series; no digitization or calibration was performed.",
+      "landing_page": "https://science.nasa.gov/resource/atmospheric-opacity-from-opportunitys-point-of-view/",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/TAMU",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NASA media guidance S12; retain exact item credits. Not labeled CC0; no blanket rights assertion for third-party contributors.",
+      "bytes": 355537,
+      "sha256": "698098a3d85cfba93fdf2d7cc4d348dc7ee70d7613645bb7427f412cbb2b8ea6",
+      "format": "PNG",
+      "dimensions": [
+        2023,
+        1236
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R08.jpg",
+      "processing": "scientific comparison chart"
+    },
+    {
+      "id": "M3-R09",
+      "title": "Growing dust storm — June 6, 2018 MARCI map",
+      "source_id": "S01",
+      "download_url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/imagesmer20180608PIA22329anno-16.jpg",
+      "path": "images/PIA22329-june6-marci-map.jpg",
+      "priority": "useful",
+      "category": "orbital map composite with annotation",
+      "observation": "Storm extent as of 2018-06-06",
+      "publication": "Original status story 2018-06-08; updated page 2018-07-26",
+      "credit": "NASA/JPL-Caltech/MSSS",
+      "instrument": "MRO MARCI",
+      "use": "Show local-to-regional spread before later planet-encircling classification.",
+      "limits": "Blue dot is approximate Opportunity position; not a rover photograph or elevation product. Annotation/processing must remain identified.",
+      "landing_page": "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/",
+      "acquisition": "download",
+      "creator": "NASA/JPL-Caltech/MSSS",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NASA media guidance S12; retain exact item credits. Not labeled CC0; no blanket rights assertion for third-party contributors.",
+      "bytes": 278147,
+      "sha256": "73bf4878bb65c878f93c180f6ac7c63056eefeb3e6dcc4a0d5c868920916f314",
+      "format": "JPEG",
+      "dimensions": [
+        1400,
+        788
+      ],
+      "frames": 1,
+      "preview": "previews/M3-R09.jpg",
+      "processing": "orbital map composite with annotation"
+    },
+    {
+      "id": "M3-R10",
+      "title": "The Mars Global Dust Storm of 2018 — Smith and Guzewich",
+      "source_id": "S20",
+      "download_url": "https://ntrs.nasa.gov/api/citations/20190027303/downloads/20190027303.pdf",
+      "path": "papers/20190027303.pdf",
+      "priority": "optional",
+      "category": "primary conference paper",
+      "observation": "2018 event; retrospective study",
+      "publication": "2019-07-07; NTRS acquired 2019-07-15",
+      "credit": "Michael D. Smith and Scott D. Guzewich, NASA Goddard Space Flight Center; ICES 2019",
+      "instrument": "Multiple mission observations discussed",
+      "use": "Further atmospheric-engineering research; NTRS abstract verified.",
+      "limits": "PDF text read via web tool: p.4 section II.A and pp.5–7 atmospheric effects/conclusion; figure captions checked. PDF screenshot requests returned cache misses, so no graphical plot inspection is claimed.",
+      "rights_override": "NTRS record: Work of the US Gov. Public Use Permitted.",
+      "landing_page": "https://ntrs.nasa.gov/citations/20190027303",
+      "acquisition": "download",
+      "creator": "Michael D. Smith and Scott D. Guzewich, NASA Goddard Space Flight Center; ICES 2019",
+      "approval": "reference/evidence only; not approved runtime material",
+      "rights": "NTRS record: Work of the US Gov. Public Use Permitted.",
+      "bytes": 1748463,
+      "sha256": "9622be95721b90b13897fd21a7d5e42193fa4717499359b1afbc4e06cc61697e",
+      "pages": 8,
+      "body_review": "Text read; figure screenshots unavailable."
+    }
+  ],
+  "derivatives": [
+    {
+      "path": "previews/M3-R01.jpg",
+      "source": "images/PIA22929-last-transmitted-partial.jpg",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        650,
+        650
+      ],
+      "sha256": "bbf6f46f1e895c89f29528145a041ed5d803ce64586042eac87d57563443f3d2",
+      "bytes": 156733
+    },
+    {
+      "path": "previews/M3-R02.jpg",
+      "source": "images/PIA22930-last-taken-thumbnails.jpg",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        224,
+        96
+      ],
+      "sha256": "9568dce412070ceee99d7fdaf0af8f04603fc552543c61204393742a45e2e534",
+      "bytes": 2380
+    },
+    {
+      "path": "previews/M3-R03.jpg",
+      "source": "images/PIA22521-simulated-sky.jpg",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        975,
+        650
+      ],
+      "sha256": "f02a89462ec9d7c33830c046680f395de5d1f38c5808709b9c99421e98f17006",
+      "bytes": 26272
+    },
+    {
+      "path": "previews/M3-R04.jpg",
+      "source": "images/PIA22909-final-pan-true-color.jpg",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        900,
+        201
+      ],
+      "sha256": "0d4dc9fa07c48dedf436e472c65f3a5a1be225e8d82d3109276b89432b4749f4",
+      "bytes": 35108
+    },
+    {
+      "path": "previews/M3-R05.jpg",
+      "source": "images/PIA22908-final-pan-annotated-false-color.jpg",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        1000,
+        223
+      ],
+      "sha256": "396fd5e8f5f48113f70440ec355072399336d746cdd65a1945b86b87dcbcae66",
+      "bytes": 62005
+    },
+    {
+      "path": "previews/M3-R06.jpg",
+      "source": "images/PIA22549-post-storm-orbital.jpg",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        1000,
+        641
+      ],
+      "sha256": "34192d38064327c1ae9dfb0b38c562574c99590a4366ff41b5161fa45f2b9865",
+      "bytes": 202088
+    },
+    {
+      "path": "previews/M3-R07.jpg",
+      "source": "images/ESP_056955_1775-context.jpg",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        840,
+        333
+      ],
+      "sha256": "864ed08f09bd61201e5199795fa76cddb7db2ac17baabab77150887da6c7f4a5",
+      "bytes": 84782
+    },
+    {
+      "path": "previews/M3-R08.jpg",
+      "source": "images/opacity-comparison-chart.png",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        1000,
+        611
+      ],
+      "sha256": "ef6631844228a1ff90feb5a781db861559c7a2611f27dcfa7c5362888c2c0167",
+      "bytes": 79185
+    },
+    {
+      "path": "previews/M3-R09.jpg",
+      "source": "images/PIA22329-june6-marci-map.jpg",
+      "transform": "RGB conversion and aspect-preserving downsample only; no crop, enhancement or generative fill",
+      "dimensions": [
+        1000,
+        563
+      ],
+      "sha256": "a62f45d0d0953848dbf3179466453da026409bddd97096ded84d79f26f0c1227",
+      "bytes": 174701
+    },
+    {
+      "path": "previews/contact-sheet.jpg",
+      "transform": "Labeled contact sheet; originals unchanged",
+      "sha256": "973f6f58e234f83f8d022c848689367a5c98a3b50cc5dda231c241c6d01f908f",
+      "bytes": 324535,
+      "dimensions": [
+        1680,
+        1110
+      ]
+    }
+  ]
+}

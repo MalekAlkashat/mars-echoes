@@ -1,0 +1,96 @@
+{
+  "base": "548ce49",
+  "assets": [
+    {
+      "path": "game/public/assets/opportunity/opportunity-v1.glb",
+      "bytes": 3498588,
+      "sha256": "b1ddfcd389a7b1b25750a22f3eb6e2ff73f51d44eec3d57e0d91d964b15461d6",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/public/assets/opportunity/rig-metadata.json",
+      "bytes": 3329,
+      "sha256": "65562e2601b305392fbb05d5b812b9ec83fb7c14943a7b1e34642403562d4fae",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/public/assets/opportunity/suspension-metadata.json",
+      "bytes": 105135,
+      "sha256": "38d2fbbe766e047653551d72a20ef0496cbd7cb7ec89dd442a87f5ca235d58c9",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "assets/vendor/nasa/opportunity/24883_MER_static.usdz",
+      "bytes": 3154523,
+      "sha256": "ce21bd6ed7763e1e5cc893a60b53b99e3c3de77e989b75b0da1a18ad5652bcab",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "assets/vendor/nasa/opportunity/SOURCE.md",
+      "bytes": 3720,
+      "sha256": "3ebfe76e64a19097c80738202e998b33523b983af111656a653ba226b489c76d",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/src/app/contracts.ts",
+      "bytes": 3534,
+      "sha256": "f9795eb678824562ab353384e8cf828e4fe52f7b6a295c965a6efc4e9b71a812",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/src/app/save.ts",
+      "bytes": 7536,
+      "sha256": "77e9c8094db780ea6cfb4ecd6c21efba23a127a735226ab58b8dbb039998f717",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/src/entities/rover/model.ts",
+      "bytes": 22604,
+      "sha256": "e4a1c9ec55d6d33a2ab0440666c4bcd9e1062f4d138f133a5f5828d31ba3761e",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/src/entities/rover/controller.ts",
+      "bytes": 7507,
+      "sha256": "a40f69dac9c102a6f692135a04f823405e5e97dc1bde6a2c4ee218fb6d4d5818",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/src/environments/mars/materials.ts",
+      "bytes": 10146,
+      "sha256": "7ad78f7f6aef394286efdf8e866f8dec207a9b0104e144f7ebd80845efee958c",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/public/assets/surfaces/dust/ao.jpg",
+      "bytes": 857066,
+      "sha256": "2f22934c9a85d6cc1b8ff96ad43020f04cdac4fb998e465f08908e67c8f06a54",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/public/assets/surfaces/dust/color.jpg",
+      "bytes": 612747,
+      "sha256": "379c8ccbebbd45d32e3c348b5091132b206f7d9cce07c8d848812bfbdeb47b98",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/public/assets/surfaces/dust/normal.jpg",
+      "bytes": 1205198,
+      "sha256": "77a5d94f97a873610d8a3a2f9454ea953e5d45a09704b999558f9105080b5ff7",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/public/assets/surfaces/dust/roughness.jpg",
+      "bytes": 309275,
+      "sha256": "b1d762932674ba461fc3c97af3c00f543c518c9e8c78bdca180a3fc5b1712221",
+      "role": "reuse or source inspection only; no copy into this pack"
+    },
+    {
+      "path": "game/public/assets/surfaces/dust/SOURCE.md",
+      "bytes": 628,
+      "sha256": "fc9775b7d778eff69dffd80563f3ddd8bf1e1f7307c84c75082af31700720fd8",
+      "role": "reuse or source inspection only; no copy into this pack"
+    }
+  ],
+  "note": "No alternate rover, texture set or audio was acquired. Materials require Mission 3 visual acceptance; existing model is static and not a measured final pose."
+}

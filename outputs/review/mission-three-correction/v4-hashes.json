@@ -1,0 +1,47 @@
+[
+  {
+    "path": "game/src/content/long-night.ts",
+    "sha256": "a90b0a9620bc1b32d060762275c70f8b307e9f3dbd561b363a690944c613372b",
+    "bytes": 3857
+  },
+  {
+    "path": "game/src/scenes/episodes/rover/missions/long-night/index.ts",
+    "sha256": "6c24a33ce0c98b1cd96900d538f67a3e130b5e5f09b464ccd97ed191bb59c94c",
+    "bytes": 15374
+  },
+  {
+    "path": "game/src/scenes/episodes/rover/missions/long-night/style.css",
+    "sha256": "b97953fa0f608c29461f4dee99eaaef1385a419dd11b8ea52a1c38952e0206c6",
+    "bytes": 13782
+  },
+  {
+    "path": "game/src/scenes/episodes/rover/missions/long-night/AGENTS.md",
+    "sha256": "740ff3cd9c89a2d6285332f79d08de19179d53bed70c336ec012917ea7a6f98a",
+    "bytes": 2071
+  },
+  {
+    "path": "game/tests/long-night-archive.test.ts",
+    "sha256": "6a9ee0f58729527a127e6e1da3df991455c609973fa060e1af4b8baf64105900",
+    "bytes": 1466
+  },
+  {
+    "path": "game/public/assets/long-night/v1/last-message.jpg",
+    "sha256": "db99314d10489da0937c3fb3ef67a89e087aca11deedafde39a67e27a79f794f",
+    "bytes": 314160
+  },
+  {
+    "path": "game/public/assets/long-night/v1/legacy-panorama.jpg",
+    "sha256": "c5eb94cf0902323bd5fe2296bde6f31de79e95b21c27cee993c7dd6214e7a060",
+    "bytes": 24818
+  },
+  {
+    "path": "game/public/assets/long-night/v1/last-thumbnails.jpg",
+    "sha256": "94222d58d6ec992e5a2667eee9145085eb89814adf9fa0ec5204c57de66f653a",
+    "bytes": 1527
+  },
+  {
+    "path": "game/public/assets/long-night/v1/after-storm.jpg",
+    "sha256": "ecbcff48b86698a1bb25cf04baf3d97fec105f2fa8938afe1292e9d758964548",
+    "bytes": 492120
+  }
+]

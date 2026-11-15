@@ -1,0 +1,191 @@
+{
+  "date": "2026-11-15",
+  "checks": [
+    {
+      "viewport": {
+        "width": 1440,
+        "height": 1000
+      },
+      "overflow": false,
+      "images": [
+        {
+          "src": "previews/M3-R01.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R02.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R03.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R04.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R05.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R06.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R07.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R08.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R09.jpg",
+          "loaded": true
+        }
+      ],
+      "localLinks": [
+        "README.md",
+        "../../../../outputs/planning/mission-three-research.md",
+        "claims.json",
+        "manifest.json",
+        "images/PIA22929-last-transmitted-partial.jpg",
+        "images/PIA22929-last-transmitted-partial.jpg",
+        "images/PIA22930-last-taken-thumbnails.jpg",
+        "images/PIA22930-last-taken-thumbnails.jpg",
+        "images/PIA22521-simulated-sky.jpg",
+        "images/PIA22521-simulated-sky.jpg",
+        "images/PIA22909-final-pan-true-color.jpg",
+        "images/PIA22909-final-pan-true-color.jpg",
+        "images/PIA22908-final-pan-annotated-false-color.jpg",
+        "images/PIA22908-final-pan-annotated-false-color.jpg",
+        "images/PIA22549-post-storm-orbital.jpg",
+        "images/PIA22549-post-storm-orbital.jpg",
+        "images/ESP_056955_1775-context.jpg",
+        "images/ESP_056955_1775-context.jpg",
+        "images/opacity-comparison-chart.png",
+        "images/opacity-comparison-chart.png",
+        "images/PIA22329-june6-marci-map.jpg",
+        "images/PIA22329-june6-marci-map.jpg",
+        "papers/20190027303.pdf",
+        "source-notes.md",
+        "sources/S01.txt",
+        "sources/S02.txt",
+        "sources/S03.txt",
+        "sources/S04.txt",
+        "sources/S05.txt",
+        "sources/S06.txt",
+        "sources/S07.txt",
+        "sources/S08.txt",
+        "sources/S09.txt",
+        "sources/S10.txt",
+        "sources/S11.txt",
+        "sources/S12.txt",
+        "sources/S13.txt",
+        "sources/S15.txt",
+        "sources/S16.txt",
+        "sources/S17.txt",
+        "sources/S20.txt",
+        "sources/S23.txt",
+        "sources/S24.txt",
+        "SOURCE.md"
+      ]
+    },
+    {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "overflow": false,
+      "images": [
+        {
+          "src": "previews/M3-R01.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R02.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R03.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R04.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R05.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R06.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R07.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R08.jpg",
+          "loaded": true
+        },
+        {
+          "src": "previews/M3-R09.jpg",
+          "loaded": true
+        }
+      ],
+      "localLinks": [
+        "README.md",
+        "../../../../outputs/planning/mission-three-research.md",
+        "claims.json",
+        "manifest.json",
+        "images/PIA22929-last-transmitted-partial.jpg",
+        "images/PIA22929-last-transmitted-partial.jpg",
+        "images/PIA22930-last-taken-thumbnails.jpg",
+        "images/PIA22930-last-taken-thumbnails.jpg",
+        "images/PIA22521-simulated-sky.jpg",
+        "images/PIA22521-simulated-sky.jpg",
+        "images/PIA22909-final-pan-true-color.jpg",
+        "images/PIA22909-final-pan-true-color.jpg",
+        "images/PIA22908-final-pan-annotated-false-color.jpg",
+        "images/PIA22908-final-pan-annotated-false-color.jpg",
+        "images/PIA22549-post-storm-orbital.jpg",
+        "images/PIA22549-post-storm-orbital.jpg",
+        "images/ESP_056955_1775-context.jpg",
+        "images/ESP_056955_1775-context.jpg",
+        "images/opacity-comparison-chart.png",
+        "images/opacity-comparison-chart.png",
+        "images/PIA22329-june6-marci-map.jpg",
+        "images/PIA22329-june6-marci-map.jpg",
+        "papers/20190027303.pdf",
+        "source-notes.md",
+        "sources/S01.txt",
+        "sources/S02.txt",
+        "sources/S03.txt",
+        "sources/S04.txt",
+        "sources/S05.txt",
+        "sources/S06.txt",
+        "sources/S07.txt",
+        "sources/S08.txt",
+        "sources/S09.txt",
+        "sources/S10.txt",
+        "sources/S11.txt",
+        "sources/S12.txt",
+        "sources/S13.txt",
+        "sources/S15.txt",
+        "sources/S16.txt",
+        "sources/S17.txt",
+        "sources/S20.txt",
+        "sources/S23.txt",
+        "sources/S24.txt",
+        "SOURCE.md"
+      ]
+    }
+  ],
+  "errors": [],
+  "failed": [],
+  "externalRequests": [],
+  "passed": true
+}

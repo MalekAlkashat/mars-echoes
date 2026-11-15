@@ -1,0 +1,76 @@
+Opportunity Hunkers Down During Dust Storm
+https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/
+
+Mars.7 min read
+Opportunity Hunkers Down During Dust Storm
+Jet Propulsion Laboratory https://www.jpl.nasa.gov/ July 26, 2018
+This series of images shows simulated views of a darkening Martian sky blotting out the Sun from NASA's Opportunity rover's point of view, with the right side simulating Opportunity's current view in the global dust storm (June 2018). Credit: NASA/JPL-Caltech/TAMU
+Full Image Details
+This graphic compares atmospheric opacity in different Mars years from the point of view of NASA's Opportunity rover. The green spike in 2018 (Mars Year 34) shows how quickly the global dust storm building at Mars blotted out the sky. A previous dust storm in 2007 (red, Mars Year 28) was slower to build. The vertical axis shows atmospheric opacity and the horizontal axis shows the Martian season, which is measured by where the Sun is in the Martian sky compared to its apparent position on Mars' northern spring equinox. Credit: NASA/JPL-Caltech/TAMU
+This global map of Mars shows a growing dust storm as of June 6, 2018. The map was produced by the Mars Color Imager (MARCI) camera on NASA's Mars Reconnaissance Orbiter spacecraft. The blue dot indicates the approximate location of Opportunity. Credit: NASA/JPL-Caltech/MSSS
+It's the beginning of the end for the huge dust storm on Mars. But it could be weeks or months before the Opportunity rover has a chance to recharge its batteries and phone home.
+NASA Mars Exploration Rover Status Report
+Updated at 2:25 p.m. PDT on July 26, 2018
+It's the beginning of the end for the planet-encircling dust storm on Mars. But it could still be weeks, or even months, before skies are clear enough for NASA's Opportunity rover to recharge its batteries and phone home. The last signal received from the rover was on June 10.
+Scientists observing the global event -- which is actually caused by a series of local and regional storms throwing dust into the Martian atmosphere -- say that, as of Monday, July 23, more dust is falling out than is being raised into the planet's thin air. That means the event has reached its decay phase, when dust-raising occurs in ever smaller areas, while others stop raising dust altogether.
+Surface features in many areas are beginning to re-appear as seen from orbit. This should even be apparent through telescopes on the ground: Next week, Mars will make its closest approach to Earth since 2003 -- a particularly good time for observing the Red Planet. Meanwhile, in Gale Crater, the nuclear-powered Mars Science Laboratory/Curiosity rover has noted a decline in dust overhead.
+Temperatures in the middle atmosphere of Mars are no longer rising, and in some areas are starting to decrease. That indicates less solar heating by the dust.
+The changes were spotted by the Mars Color Imager (MARCI), a wide-angle camera, and by the Mars Climate Sounder (MCS), a temperature profiler, on NASA's Mars Reconnaissance Orbiter (MRO). MARCI is managed by Malin Space Science Systems in San Diego. MSL, MRO and MCS are managed by NASA's Jet Propulsion Laboratory.
+All of NASA's Mars spacecraft have been observing the storm, both to support the Opportunity mission and to collect unique science about this global phenomenon.
+Updated at 1:20 p.m. PDT on June 20, 2018
+As of Tuesday morning, June 19, the Martian dust storm had grown in size and was officially a "planet-encircling" (or "global") dust event, according to Bruce Cantor of Malin Space Science Systems, San Diego, who is deputy principal investigator of the Mars Color Imager camera on board NASA's Mars Reconnaissance Orbiter.
+The storm has starkly increased dust at Gale Crater, where NASA's Curiosity rover is studying the storm's effects from the surface.
+There still was no signal received from NASA's Opportunity rover, despite efforts to listen in case it's coming out of sleep during its fault window -- the period of time when it attempts to communicate. A recent analysis of the rover's long-term survivability in Mars' extreme cold suggests Opportunity's electronics and batteries can stay warm enough to function. Regardless, the project doesn't expect to hear back from Opportunity until the skies begin to clear over the rover. That doesn't stop them from listening for the rover every day.
+The dust storm is comparable in scale to a similar storm observed by Viking I in 1977, but not as big as the 2007 storm that Opportunity previously weathered. But it's also different than the massive storms observed by Mariner 9 (1971-1972) and Mars Global Surveyor (2001). Those storms totally obscured the planet's surface, save for the peaks of Mars' tallest volcanoes. The current dust storm is more diffuse and patchy; it's anyone's guess how it will further develop, but it shows no sign of clearing.
+Updated at 6:30 p.m. PDT on June 12, 2018
+NASA engineers attempted to contact the Opportunity rover today but did not hear back from the nearly 15-year old rover. The team is now operating under the assumption that the charge in Opportunity's batteries has dipped below 24 volts and the rover has entered low power fault mode, a condition where all subsystems, except a mission clock, are turned off. The rover's mission clock is programmed to wake the computer so it can check power levels.
+If the rover's computer determines that its batteries don't have enough charge, it will again put itself back to sleep. Due to an extreme amount of dust over Perseverance Valley, mission engineers believe it is unlikely the rover has enough sunlight to charge back up for at least the next several days.
+The Martian dust storm that has blotted out the sun above Opportunity has continued to intensify. The storm, which was first detected on May 30, now blankets 14-million square miles (35-million square kilometers) of Martian surface -- a quarter of the planet.
+NASA is holding a news teleconference on Wednesday, June 13, to discuss the storm and the observations of it by various spacecraft. Details at: https://www.jpl.nasa.gov/news/nasa-to-hold-media-teleconference-on-martian-dust-storm-mars-opportunity-rover/
+Updated at 4:30 p.m. PDT on June 10, 2018
+NASA engineers received a transmission from Opportunity on Sunday morning - a positive sign despite the worsening dust storm. Data from the transmission let engineers know the rover still has enough battery charge to communicate with ground controllers at NASA's Jet Propulsion Laboratory in Pasadena, California. Science operations remain suspended.
+Sunday's transmission was especially good news considering the dust storm has intensified in the past several days. A dark, perpetual night has settled over the rover's location in Mars' Perseverance Valley. The storm's atmospheric opacity - the veil of dust blowing around, which can blot out sunlight -- is now much worse than a 2007 storm that Opportunity weathered. The previous storm had an opacity level, or tau, somewhere above 5.5; this new storm had an estimated tau of 10.8 as of Sunday morning.
+Opportunity's team has requested additional communications coverage from NASA's Deep Space Network, a global system of antennas that talks to all the agency's deep space probes
+This latest data transmission showed the rover's temperature to be about minus 20 degrees Fahrenheit (minus 29 degrees Celsius). One saving grace of dust storms is that they can actually limit the extreme temperature swings experienced on the Martian surface. The same swirling dust that blocks out sunlight also absorbs heat, raising the ambient temperature surrounding Opportunity.
+Engineers will monitor the rover's power levels closely in the week to come. The rover needs to balance low levels of charge in its battery with sub-freezing temperatures. Its heaters are vitally important to keeping it alive, but also draw more power from the battery. Likewise, performing certain actions draws on battery power, but can actually expel energy and raise the rover's temperature.
+The rover has proved hardier than expected by lasting nearly 15 years, despite being designed for a 90-day mission.
+Original story posted on June 8, 2018
+Updated 6:30 p.m. June 12, 2018 to correct and clarify the dates in paragraph 2 below
+Science operations for NASA's Opportunity rover have been temporarily suspended as it waits out a growing dust storm on Mars.
+NASA's Mars Reconnaissance Orbiter first detected the storm on Wednesday, May 30. When the orbiter team saw the storm nearing Opportunity, they notified the rover's team to begin preparing contingency plans.
+In a matter of days, the storm had ballooned. It now spans more than 7 million square miles (18 million square kilometers) -- an area greater than North America -- and includes Opportunity's current location at Perseverance Valley. More importantly, the swirling dust has raised the atmospheric opacity, or "tau," in the valley in the past few days. This is comparable to an extremely smoggy day that blots out sunlight. The rover uses solar panels to provide power and to recharge its batteries.
+Opportunity's power levels had dropped significantly by Wednesday, June 6, requiring the rover to shift to minimal operations.
+This isn't Opportunity's first time hunkering down in bad weather: in 2007, a much larger storm covered the planet. That led to two weeks of minimal operations, including several days with no contact from the rover to save power. The project's management prepared for the possibility that Opportunity couldn't balance low levels of power with its energy-intensive survival heaters, which protect its batteries from Mars' extreme cold. It's not unlike running a car in the winter so that the cold doesn't sap its battery charge.There is a risk to the rover if the storm persists for too long and Opportunity gets too cold while waiting for the skies to clear.
+Ultimately, the storm subsided and Opportunity prevailed. The Martian cold is believed to have resulted in the loss of Spirit, Opportunity's twin in the Mars Exploration Rover mission, back in 2010. Despite this, both rovers have vastly exceeded expectations: they were only designed to last 90 days each. Opportunity is in its 15th year; the team has operated the rover for more than 50 times longer than originally planned.
+Full dust storms like this one are not surprising, but are infrequent. They can crop up suddenly but last weeks, even months. During southern summer, sunlight warms dust particles, lifting them higher into the atmosphere and creating more wind. That wind kicks up yet more dust, creating a feedback loop that NASA scientists still seek to understand.
+Mars Reconnaissance Orbiter and two other NASA spacecraft orbiting the Red Planet --Odyssey and MAVEN -- routinely support rovers on the ground.
+For more information about the Mars Exploration Rovers, visit:
+https://mars.nasa.gov/mer/home/index.html
+http://mars.nasa.gov
+Media Contacts
+Andrew Good
+Jet Propulsion Laboratory, Pasadena, Calif.
+818-393-2433
+andrew.c.good@jpl.nasa.gov
+2018-132
+Related News
+Solar System.
+NASA Invites Media, Public to Join Voyager 1 One-Light Day Activities
+Solar System.
+NASA Awards Moon Base Transportation, Technology, Science Projects
+Mars.
+NASA-funded Study Details One of Oldest Mars Meteorites Ever Found
+Solar System.
+NASA’s Voyager 1 Conserves Power, Resolves Brief Communications Pause
+Mars.
+NASA’s Perseverance Offers Clues to Protect Crews from Mars Dust
+Asteroids and Comets.
+Pedal to the Metal: NASA’s Psyche Heads Toward Asteroid Belt
+Mars.
+NASA’s Perseverance Sets Off-World Record for Total Distance Driven
+Mars.
+NASA’s Curiosity Rover Catches Stunning Martian Dawn
+Mars.
+NASA Discovery Reveals Complex Water Systems on Early Mars
+Earth.
+How 2 US, European Satellites Are Studying Hurricanes During El Niño

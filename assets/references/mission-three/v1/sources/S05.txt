@@ -1,0 +1,49 @@
+Opportunity Rover's Final Mars Images
+https://science.nasa.gov/resource/opportunity-rovers-final-mars-images/
+
+Explore This Section
+Science
+The Solar System
+Opportunity Rover’s Final...
+Solar System Resources
+Curated Resource Packages
+Solar System Home
+Opportunity Rover’s Final Mars Images
+March 12, 2019
+Credit
+NASA/JPL-Caltech/Cornell/ASU
+Historical Date
+June 10, 2018
+Language
+english
+This 360-degree panorama is composed of 354 images taken by the Opportunity rover's Panoramic Camera (Pancam) from May 13 through June 10, 2018, or sols (Martian days) 5,084 through 5,111.
+This is the last panorama Opportunity acquired before the solar-powered rover succumbed to a global Martian dust storm on the same June 10. The view is presented in false color to make some differences between materials easier to see.
+True-color and 3D versions are available in the downloads column to the right.
+To the right of center and near the top of the frame, the rim of Endeavour Crater rises in the distance. Just to the left of that, rover tracks begin their descent from over the horizon towards the location that would become Opportunity's final resting spot in Perseverance Valley, where the panorama was taken. At the bottom, just left of center, is the rocky outcrop Opportunity was investigating with the instruments on its robotic arm. To the right of center and halfway down the frame is another rocky outcrop — about 23 feet (7 meters) distant from the camera — called "Ysleta del Sur," which Opportunity investigated from March 3 through 29, 2018, or sols 5,015 through 5,038. In the far right and left of the frame are the bottom of Perseverance Valley and the floor of Endeavour Crater.
+Located on the inner slope of the western rim of Endeavour Crater, Perseverance Valley is a system of shallow troughs descending eastward about the length of two football fields from the crest of Endeavour's rim to its floor.
+This view combines images collected through three Pancam filters. The filters admit light centered on wavelengths of 753 nanometers (near-infrared), 535 nanometers (green) and 432 nanometers (blue). The three-color bands are combined.
+A few frames (bottom left) remain black and white, as the solar-powered rover did not have the time to photograph those locations using the green and violet filters before a severe Mars-wide dust storm swept in on June 2018.
+Incomplete image frames appear black and white. Color images taken with the rover's Pancam are taken one color at a time requiring three images of the same subject to create full color. Opportunity did not have the time to photograph those locations using the green and blue filters before a severe Mars-wide dust storm swept in on June 2018.
+The solar panel pyro-release mechanism is located at the hinge of the rover's solar panels. The solar arrays are folded for launch, cruise and landing on Mars. After the rover is safely on the surface, pyro-release mechanisms are fired to release the solar panels to their fixed deployment configuration.
+The tabular rock outcrop was the last surface feature Opportunity analyzed on June 3, 2018, (Sol 5,014) during its mission of exploration. The rover team was wrapping up investigations of these rocks when the dust storm hit.
+A portion of Opportunity's solar array can be seen here. The rover’s solar arrays consist of high-efficiency triple-junction solar cells. The extended "wings" of the deployed solar arrays are often visible in images, especially ones that image the ground near the rover.
+Opportunity's entry point to Perseverance Valley. The rover first arrived at the valley rim on May 20, 2017, or Sol 4,736.
+Three pitted rock targets ("Tomé," "Nazas" and "Allende") were investigated by Opportunity in late April and early May 2018. The pitted rocks had textures and compositions that were unique from anything the science team had seen during the mission.
+Endeavour Crater's rim is 250 feet (76 meters) distant.
+This small hill on Endeavour Crater rim is 210 feet (64 meters) distant.
+Rover wheel tracks appear as a reddish-brown color with linear tread marks.
+Rocky outcrop "Ysleta del Sur," which is 23 feet (7 meters) distant, was investigated by Opportunity from March 3 through 29, 2018, or sols 5,015 through 5,038.
+The low-gain antenna, whose upper portion is visible here, would send and receive information in every direction, meaning it was "omni-directional." The antenna was designed to transmit and receive radio waves at a low rate to the Deep Space Network antennas on Earth.
+Downloads
+Original (Annotated – False Color)
+Sep 9, 2023
+JPEG (487.39 KB)
+Original (Unannotated – False Color)
+Sep 9, 2023
+JPEG (600.78 KB)
+Original (True Color)
+Sep 9, 2023
+JPEG (24.24 KB)
+Anaglyph
+Sep 9, 2023
+JPEG (22.58 KB)

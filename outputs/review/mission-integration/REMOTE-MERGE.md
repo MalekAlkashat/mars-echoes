@@ -1,0 +1,13 @@
+# Remote flame spirit merged with the three missions
+
+15 November 2026. Merge parents: local mission integration **9381456** and remote spirit/restoration **8568f41**. Prepared in isolated `codex/merge-remote-spirit`; no shared branch switch or source-worktree mutation.
+
+The merge retains all three production chapter routes, selection, checkpoints, GRIND/SAND/SUNLIGHT transactions and photography. Remote changes add the teammate's blue flame, world-space wake, Shift rush, camera/speed treatment and approved a38322f terrain restoration. The separate abandoned comet remains excluded. Default hub spawn returns to `(0,8)`; reference100 remains explicitly selectable via `legacyTerrain:false`. Historical integration reports describing reference100/placeholder as current are superseded for those points.
+
+Two textual conflicts were resolved: hub disposal now removes both the chapter selector and the spirit's private resources; the roadmap keeps the mission integration plus the remote spirit/terrain decisions. Shared contracts, input defaults, speed uniforms and chapter dispatch merged with both sets of features intact. Mission implementations, save validation and session reward code have no changes relative to 9381456.
+
+**111 automated tests pass**, supported-Node TypeScript and production build pass. Existing large-bundle advisory remains. The full production journey, in isolated fresh storage, passes hub exploration → all three chapters → GRIND/SAND/SUNLIGHT, exact Purgatory soil/pose Continue, Long Night archive Continue, actual PNG photography, repeated abort/reentry and final combined-save reload. No page/HTTP errors occurred. A separate normal-speed native rush/turn/leap/pause/save check passes; its screenshot and source video show the actual flame/wake. These are desktop/browser observations, not new GPU/thermal/physical-device certification or user aesthetic approval.
+
+Current results: `remote-runtime.json`, `remote-spirit.json`, `remote-source-sha256.json` and `remote-spirit-rush.png`. Full recordings/scripts remain local under `work/remote-spirit-merge/work/qa/`. The prior integration's mobile/failure tests remain historical evidence for unchanged chapter code; this merge does not claim a fresh physical-phone pass.
+
+Preservation audit is local under `work/remote-spirit-merge-audit/`. All 35 original staged resources and all three original stashes must remain unchanged. Thirty-eight other original files retain exact bytes; AGENTS.md's local handoff addition is retained on top of the incoming instructions, with its original bytes and patch separately backed up. The staged resources/local notes are excluded from the merge commit and push.

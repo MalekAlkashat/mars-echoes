@@ -1,0 +1,54 @@
+The Mars Global Dust Storm of 2018
+https://ntrs.nasa.gov/citations/20190027303
+
+The Mars Global Dust Storm of 2018 - NASA Technical Reports Server (NTRS)
+NTRS
+NTRS - NASA Technical Reports Server
+Search
+more_vert
+Collections About News Help Login
+Press Enter or click the Search button to begin your search.
+Back to Results
+The Mars Global Dust Storm of 2018Mars is a dusty planet. Wind often lifts dust from the surface into the air forming clouds of dust at different locations across Mars. These dust storms typically last up to a couple days and grow to a few hundred km in size. However, once in a long while when conditions are just right, localized dust storms can interact in a way that optically thick suspended dust covers nearly the entire planet remaining aloft for weeks to months. These global-scale dust storms are the most dramatic of all weather phenomena on Mars, greatly altering the thermal structure and dynamics of the Martian atmosphere and significantly changing the global distribution of surface dust. Such a global-scale dust storm occurred during the summer of 2018, the first such event since 2007. The global dust storm was observed by an international fleet of spacecraft in Mars orbit and on the surface of Mars providing an unprecedented view of the initiation, growth, and decay of the storm as well as the physical properties of the dust during the storm's evolution. The 2018 global-scale dust storm was observed to grow from several localized dust-lifting centers with wind-blown dust suspended in the atmosphere encircling Mars after about two weeks of activity. Dust column optical depths recorded by the Opportunity and Curiosity rovers on the surface were the highest ever recorded on Mars. Peak global intensity of the dust storm was reached in early July 2018. Over the next couple months, the dust settled out and the atmosphere returned to its climatological average. Only a small number of global-scale dust storms have been observed on Mars, and so detailed analysis of the observations of this storm will provide important new insight into how these events occur and their effect on the current Mars climate.
+Document ID
+20190027303
+Acquisition Source
+Goddard Space Flight Center
+Document Type
+Conference Paper
+Authors
+Smith, Michael D. (NASA Goddard Space Flight Center Greenbelt, MD, United States)
+Guzewich, Scott D. (NASA Goddard Space Flight Center Greenbelt, MD, United States)
+Date Acquired
+July 15, 2019
+Publication Date
+July 7, 2019
+Subject Category
+Lunar And Planetary Science And Exploration
+Report/Patent Number
+GSFC-E-DAA-TN77167
+GSFC-E-DAA-TN69947
+Report Number: GSFC-E-DAA-TN77167
+Report Number: GSFC-E-DAA-TN69947
+Meeting Information
+Meeting: International Conference on Environmental Systems
+Location: Boston, MA
+Country: United States
+Start Date: July 7, 2019
+End Date: July 11, 2019
+Sponsors: International Conference On Environmental Systems, Inc.
+Distribution Limits
+Public
+Copyright
+Work of the US Gov. Public Use Permitted.
+Available DownloadsNameType 20190027303.pdf STIcloud_downloadcontent_copyvisibility
+Related Records
+There are no records associated with this record.
+visibility_offNo Preview Available
+No Fear Act | Freedom of Information Act | Office of the Inspector General | Agency Financial Reports
+NASA Web Privacy Policy and Important Notices | NASA Guidelines for Quality of Information
+Disclaimers, Copyright, Terms of Use | Accessibility | NASA OCIO | USA.gov | NASA.gov
+Contact Us | Site Map
+NASA Official: JoAnne R. Calhoun
+Site Curator: STI Compliance and Distribution Services
+Last Modified: September 21, 2026

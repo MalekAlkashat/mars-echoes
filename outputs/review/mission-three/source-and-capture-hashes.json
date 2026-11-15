@@ -1,0 +1,82 @@
+{
+  "game/src/scenes/episodes/rover/missions/long-night/index.ts": {
+    "sha256": "91e35d63591082b412cb40a070bd4a51ce80fa9983cf8b04d1c3b57726f6cf5d",
+    "bytes": 9100
+  },
+  "game/src/scenes/episodes/rover/missions/long-night/progress.ts": {
+    "sha256": "d0c3e45e418bb5676e5424211ed13965105628312ccb1ea7d9c295216b292c40",
+    "bytes": 919
+  },
+  "game/src/scenes/episodes/rover/missions/long-night/style.css": {
+    "sha256": "7b0ec480fbff8d942e29bda09c05129c75b48ed735d06884ef664c7d82cbd1f5",
+    "bytes": 1362
+  },
+  "game/src/scenes/episodes/rover/missions/long-night/world.ts": {
+    "sha256": "105841bb6c837da2f75a55b11fe00bbdd34ceae7932ef9159054de267f2a9cb7",
+    "bytes": 3030
+  },
+  "game/src/content/long-night.ts": {
+    "sha256": "d16d684e7f46257a795f3998318a0a13f5b6b8069c29a21903a88fbdabb0e177",
+    "bytes": 1877
+  },
+  "game/src/app/contracts.ts": {
+    "sha256": "12ab2c1ab73d8f7e9dcb29ead1de27adae371e84c79040eae72ac7503f58cfc7",
+    "bytes": 3775
+  },
+  "game/src/app/save.ts": {
+    "sha256": "8a70a360d6fd7d63438ecdbefa82daaeb43439bf093c50b5703d907c72689e3a",
+    "bytes": 8425
+  },
+  "game/src/app/session.ts": {
+    "sha256": "4ae938d9299aa98dc1acd64271255e295d498f1b0bc3002c3ad9fa988c4ba5bb",
+    "bytes": 604
+  },
+  "game/src/main.ts": {
+    "sha256": "5ea1e09fe62fd50fc35e45a8faba2c63c8523ce7f812c01476c94959849f17d1",
+    "bytes": 1191
+  },
+  "game/src/scenes/episodes/rover/index.ts": {
+    "sha256": "00cff7444d27c67f457d69abe886c711995d5b72ed420cbaeae79a973bd9c012",
+    "bytes": 16572
+  },
+  "game/src/scenes/mars-hub/index.ts": {
+    "sha256": "3ecbea1f6ecaa1ebdec95a8a7bd2b2a5f975d991534f96c2db759531d5f7f7b9",
+    "bytes": 6458
+  },
+  "game/tests/long-night.test.ts": {
+    "sha256": "d268421bac70623e5e6e173ca36fca64b28b51ce608a41760ca84f1b5723ae1f",
+    "bytes": 3210
+  },
+  "game/public/assets/long-night/v1/last-message.jpg": {
+    "sha256": "db99314d10489da0937c3fb3ef67a89e087aca11deedafde39a67e27a79f794f",
+    "bytes": 314160
+  },
+  "outputs/review/mission-three/mobile-archive.png": {
+    "sha256": "deeb6383d92075337a79e7067cac81c57cd81b80c04f0c18e1dbafab97bbe75b",
+    "bytes": 203085
+  },
+  "outputs/review/mission-three/mobile-legacy.png": {
+    "sha256": "bdd3bacae460b4aa5e9ba0a3e8bf85a9cbba3f4415770be40d65e0925da388ff",
+    "bytes": 187856
+  },
+  "outputs/review/mission-three/production-archive.png": {
+    "sha256": "de5563a522251386a870045bb76a2f5e4932ab6ad2ad7e3ce6f5ef96b8c986a9",
+    "bytes": 769679
+  },
+  "outputs/review/mission-three/production-arrival.png": {
+    "sha256": "fd2ab91efe8750667522b16983c0a43dfffff92322d266f9c756bc297f9913cc",
+    "bytes": 1030562
+  },
+  "outputs/review/mission-three/production-peak.png": {
+    "sha256": "7023308587660d0c0922f4cfee142c604d80a8d122ce839496656cf1ff9b9d24",
+    "bytes": 878646
+  },
+  "outputs/review/mission-three/production-recovery.png": {
+    "sha256": "a7dc7ef1362c9c0dee43e0556940f31b1c0cb7e66036d15144abe18eb59514d4",
+    "bytes": 768753
+  },
+  "outputs/review/mission-three/production-return.png": {
+    "sha256": "f0474f01754b09322bd3f16c2325fafd5d7eaf5c891badd8dd75f2a50e229ac1",
+    "bytes": 1198169
+  }
+}

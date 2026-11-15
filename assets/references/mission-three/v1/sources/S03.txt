@@ -1,0 +1,49 @@
+Last Images Opportunity Took
+https://science.nasa.gov/photojournal/last-images-opportunity-took/
+
+Photojournal Navigation
+Science
+Photojournal
+Last Images Opportunity Took
+Photojournal Home
+Photojournal Search
+Latest Content
+Galleries
+Feedback
+RSS
+About
+2 Min Read
+Last Images Opportunity Took
+PIA22930
+Credits:
+NASA/JPL-Caltech/Cornell/ASU
+Image Addition Date:03/12/2019
+Target:
+Mars
+Is a satellite of:
+Sun
+Mission(s):
+Mars Exploration Rovers (MER)
+Spacecraft(s):
+Opportunity (Rover)
+Instrument(s):
+Panoramic Camera
+Downloads
+Last Images Opportunity Took
+JPEG (1.49 KB)
+Last Images Opportunity Took
+TIFF (7.91 KB)
+Description
+Figure 1Figure 2
+These two thumbnail images, with the ghostly dot of a faint Sun near the middle of each, are the last images NASA's Opportunity rover took on Mars as a dust storm darkened the sky.
+These images from the left and right eyes of the Panoramic Camera (Pancam) were used to estimate how opaque the atmosphere was (a measurement known as "tau") on Opportunity's final day of operation. With a tau of about 10.8 on that day, scientists knew that only a tiny amount of sunlight was getting through the dust. The left and right Pancam eyes had camera filters that typically help with geological investigations: 440-nanometer (deep blue) and 750-nanometer (red to infrared) filters, respectively. These filters would normally result in overexposed images, but with such weak sunlight, scientists were able to point the Pancams at the Sun and determine the tau.
+The left Pancam image (Figure 1) has more wavy gradations. In the right Pancam image (Figure 2), the Sun appears as the larger whitish feature in the middle of the frame.
+These images were taken in Perseverance Valley around 9:33 a.m. PDT (12:33 a.m. EDT) on June 10, 2018 (the 5,111st Martian day, or sol, of Opportunity's mission). These thumbnails were not the last images transmitted by the rover: The last image sent (PIA22929) is a partial full-frame image of a dark sky. While full-frame image versions are typically sent after thumbnails, the full-frame versions of these images with faint spots of sun were never transmitted.
+NASA's Jet Propulsion Laboratory, a division of Caltech in Pasadena, California, manages the Mars Exploration Rover Project for NASA's Science Mission Directorate in Washington.
+For more information about Opportunity, visit https://www.nasa.gov/rovers and https://mars.nasa.gov/mer.
+Keep Exploring
+Discover More Topics From Photojournal
+Photojournal
+Search Photojournal
+Photojournal’s Latest Content
+Feedback

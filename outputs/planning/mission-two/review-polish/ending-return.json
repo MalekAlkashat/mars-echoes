@@ -1,0 +1,31 @@
+{
+  "reducedMotion": true,
+  "end": {
+    "chapter": "purgatory-slice",
+    "phase": "end",
+    "phaseTime": "0.042",
+    "busy": false,
+    "queued": 0,
+    "cameraMode": "chase",
+    "control": "cinematic",
+    "recoveryAssist": false,
+    "tracksVisible": false,
+    "position": "-0.397,-4.748",
+    "heading": "0.100",
+    "bodyY": "0.020",
+    "odoWheel": "27.473",
+    "odoMoved": "16.788",
+    "wheelSpeed": "0.00",
+    "chassisSpeed": "0.000",
+    "softnessUnder": "0.00",
+    "meanSink": "0.000",
+    "pitch": "-0.030",
+    "roll": "-0.018",
+    "contacts": "111111",
+    "groundTriangles": 55460,
+    "free": true
+  },
+  "endingReturnPassed": true,
+  "cleanupPassed": true,
+  "errors": []
+}

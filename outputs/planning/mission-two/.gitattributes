@@ -1,0 +1,2 @@
+# Preserve the supplied generated diagram rather than rewriting its path data.
+level-plan.svg -text -diff

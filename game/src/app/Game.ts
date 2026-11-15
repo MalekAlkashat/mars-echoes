@@ -155,6 +155,7 @@ export class Game {
       pauseForSettings:()=>this.pause(true),
       captureTerrain:()=>this.captureTerrain(),
       grindUnlocked:()=>this.session.skills.has('grind'),
+      recordedSkills:()=>[...this.session.skills],
     },showMenu);
     this.menu.setSaveAvailable(Boolean(saved));
     const recoveryMessage=saveRead.source==='backup'?'A saved backup was recovered. Your journey can continue.':

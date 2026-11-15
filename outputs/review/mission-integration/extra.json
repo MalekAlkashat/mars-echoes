@@ -1,0 +1,35 @@
+{
+  "errors": [],
+  "checks": [
+    {
+      "name": "production-touch-recovery-pause-release-image-fallback-and-return"
+    },
+    {
+      "name": "production-touch-long-night-storm-archive-and-reward-return"
+    },
+    {
+      "name": "production-archive-load-failure-cancel-reenter-keeps-source-and-progress"
+    },
+    {
+      "name": "development-failed-return-retry-awards-once-and-three-stable-resource-cycles",
+      "counts": [
+        {
+          "geometries": "30",
+          "textures": "31",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "31",
+          "loops": "1"
+        },
+        {
+          "geometries": "30",
+          "textures": "31",
+          "loops": "1"
+        }
+      ]
+    }
+  ],
+  "passed": true
+}

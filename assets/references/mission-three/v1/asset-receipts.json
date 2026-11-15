@@ -1,0 +1,146 @@
+[
+  {
+    "id": "M3-R01",
+    "status": "acquired",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia22/pia22929/PIA22929.jpg",
+    "path": "images/PIA22929-last-transmitted-partial.jpg",
+    "sha256": "db99314d10489da0937c3fb3ef67a89e087aca11deedafde39a67e27a79f794f",
+    "bytes": 314160,
+    "cached": true,
+    "format": "JPEG",
+    "dimensions": [
+      1024,
+      1024
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R02",
+    "status": "acquired",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia22/pia22930/PIA22930.jpg",
+    "path": "images/PIA22930-last-taken-thumbnails.jpg",
+    "sha256": "94222d58d6ec992e5a2667eee9145085eb89814adf9fa0ec5204c57de66f653a",
+    "bytes": 1527,
+    "cached": true,
+    "format": "JPEG",
+    "dimensions": [
+      224,
+      96
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R03",
+    "status": "acquired",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/photojournal/pia/pia22/pia22521/PIA22521.jpg",
+    "path": "images/PIA22521-simulated-sky.jpg",
+    "sha256": "102f259941462102066dd08113b9254cde2c477a502a265f55d38cf79c37732c",
+    "bytes": 180203,
+    "cached": true,
+    "format": "JPEG",
+    "dimensions": [
+      1500,
+      1000
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R04",
+    "status": "acquired",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA22909.jpg",
+    "path": "images/PIA22909-final-pan-true-color.jpg",
+    "sha256": "c5eb94cf0902323bd5fe2296bde6f31de79e95b21c27cee993c7dd6214e7a060",
+    "bytes": 24818,
+    "cached": true,
+    "format": "JPEG",
+    "dimensions": [
+      900,
+      201
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R05",
+    "status": "acquired",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/solar/2023/09/p/i/a/-/PIA-22908-LegacyPan-ANNOTATED-NASA.jpg",
+    "path": "images/PIA22908-final-pan-annotated-false-color.jpg",
+    "sha256": "4c4d9e574a5c1dd4188bbe1be5ed77e3dfe0f75412f4d844a02b5c2978412440",
+    "bytes": 499084,
+    "cached": true,
+    "format": "JPEG",
+    "dimensions": [
+      3000,
+      670
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R06",
+    "status": "acquired",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/jpegPIA22549.jpg",
+    "path": "images/PIA22549-post-storm-orbital.jpg",
+    "sha256": "ecbcff48b86698a1bb25cf04baf3d97fec105f2fa8938afe1292e9d758964548",
+    "bytes": 492120,
+    "cached": true,
+    "format": "JPEG",
+    "dimensions": [
+      2170,
+      1390
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R07",
+    "status": "acquired",
+    "url": "https://static.uahirise.org/images/2018/details/ESP_056955_1775.jpg",
+    "path": "images/ESP_056955_1775-context.jpg",
+    "sha256": "ea52b43def113feefb1af8f10ab2cbabe74da2a0b31eb1d4d181de740cbba693",
+    "bytes": 305900,
+    "cached": true,
+    "format": "JPEG",
+    "dimensions": [
+      840,
+      333
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R08",
+    "status": "acquired",
+    "url": "https://assets.science.nasa.gov/content/dam/science/psd/mars/downloadable_items/4/41665_OpacityChart.png",
+    "path": "images/opacity-comparison-chart.png",
+    "sha256": "698098a3d85cfba93fdf2d7cc4d348dc7ee70d7613645bb7427f412cbb2b8ea6",
+    "bytes": 355537,
+    "cached": true,
+    "format": "PNG",
+    "dimensions": [
+      2023,
+      1236
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R09",
+    "status": "acquired",
+    "url": "https://d2pn8kiwq2w21t.cloudfront.net/original_images/imagesmer20180608PIA22329anno-16.jpg",
+    "path": "images/PIA22329-june6-marci-map.jpg",
+    "sha256": "73bf4878bb65c878f93c180f6ac7c63056eefeb3e6dcc4a0d5c868920916f314",
+    "bytes": 278147,
+    "cached": true,
+    "format": "JPEG",
+    "dimensions": [
+      1400,
+      788
+    ],
+    "frames": 1
+  },
+  {
+    "id": "M3-R10",
+    "status": "acquired",
+    "url": "https://ntrs.nasa.gov/api/citations/20190027303/downloads/20190027303.pdf",
+    "path": "papers/20190027303.pdf",
+    "sha256": "9622be95721b90b13897fd21a7d5e42193fa4717499359b1afbc4e06cc61697e",
+    "bytes": 1748463,
+    "cached": true
+  }
+]

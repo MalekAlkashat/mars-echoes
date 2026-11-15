@@ -1,0 +1,341 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "S01",
+      "title": "Opportunity Hunkers Down During Dust Storm",
+      "url": "https://www.jpl.nasa.gov/news/opportunity-hunkers-down-during-dust-storm/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "4acd2ecbc98f9fc78e3e2847b22910bf3f6a1dac99e830fbc22e689342cacb5e",
+      "bytes": 321485
+    },
+    {
+      "id": "S02",
+      "title": "Opportunity's Last Message",
+      "url": "https://science.nasa.gov/photojournal/opportunitys-last-message/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "2db84705a0e85ed0ef8b866f7a29286ae757ab224cbce453082e1d9ceacf3a1e",
+      "bytes": 267978
+    },
+    {
+      "id": "S03",
+      "title": "Last Images Opportunity Took",
+      "url": "https://science.nasa.gov/photojournal/last-images-opportunity-took/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "92eab4f1f33d50197f389f676e5f21b2b3a14e9291ec362848f16c3f0a322686",
+      "bytes": 267096
+    },
+    {
+      "id": "S04",
+      "title": "Shades of Martian Darkness",
+      "url": "https://science.nasa.gov/photojournal/shades-of-martian-darkness/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "5cec67840e43e0ffd32ccc51952f9245e8c33d064806f936d116a4f752ab8308",
+      "bytes": 266498
+    },
+    {
+      "id": "S05",
+      "title": "Opportunity Rover's Final Mars Images",
+      "url": "https://science.nasa.gov/resource/opportunity-rovers-final-mars-images/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "c9ced9515a6c3d511ddc30e69ef81ca8fd5ef9e4f6c7be59e41d33ea9bb915c9",
+      "bytes": 265598
+    },
+    {
+      "id": "S06",
+      "title": "Six Things About Opportunity's Recovery Efforts",
+      "url": "https://www.jpl.nasa.gov/news/six-things-about-opportunitys-recovery-efforts/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "584108b590874f0e0b36b81065015c4764d82f62c2bd826e1896d5e800f3ab40",
+      "bytes": 280921
+    },
+    {
+      "id": "S07",
+      "title": "Update on Opportunity Rover Recovery Efforts",
+      "url": "https://www.jpl.nasa.gov/news/update-on-opportunity-rover-recovery-efforts/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "88e8cf2431df92211693307b96d22fda6a33ff8656153e629b952e59e3f8aa52",
+      "bytes": 288621
+    },
+    {
+      "id": "S08",
+      "title": "Rover Team Beaming New Commands to Opportunity on Mars",
+      "url": "https://www.jpl.nasa.gov/news/rover-team-beaming-new-commands-to-opportunity-on-mars/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "a17e1fee172a3463361e414a544de0d88d42e022471a8171af48d6b51270449f",
+      "bytes": 275604
+    },
+    {
+      "id": "S09",
+      "title": "NASA's Opportunity Rover Mission on Mars Comes to End",
+      "url": "https://www.jpl.nasa.gov/news/nasas-opportunity-rover-mission-on-mars-comes-to-end/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "2070fe49a16860f460da8572d8cfb6e26f5b0819e916625b765b70fa08c17cfd",
+      "bytes": 330748
+    },
+    {
+      "id": "S10",
+      "title": "Opportunity Rover in Western Endeavour Crater",
+      "url": "https://www.uahirise.org/ESP_056955_1775",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "042ef472aa4e50eb0571d9e5cee919ed4ff7f85ab9762956686d7421d51293dc",
+      "bytes": 25665
+    },
+    {
+      "id": "S11",
+      "title": "Opportunity After the Dust Storm",
+      "url": "https://www.jpl.nasa.gov/images/pia22549-opportunity-after-the-dust-storm/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "4b40dfa8e93fb4fac4df0e1db2c78d050e36c59c9b0cd00c7439d55ad048cf3d",
+      "bytes": 255832
+    },
+    {
+      "id": "S12",
+      "title": "NASA Images and Media Usage Guidelines",
+      "url": "https://www.nasa.gov/nasa-brand-center/images-and-media/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "94069cfc56f61e7d592a46b6a8293439c574608692b439219283f7e3d19d235a",
+      "bytes": 318229
+    },
+    {
+      "id": "S13",
+      "title": "Opportunity mission overview",
+      "url": "https://science.nasa.gov/mission/mer-opportunity/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "573825333fb94aeba5b5065b00d5254cb9b9985fc6abaf41cb66689942640a6e",
+      "bytes": 327974
+    },
+    {
+      "id": "S14",
+      "title": "Ingenuity team says goodbye for now",
+      "url": "https://www.jpl.nasa.gov/news/nasas-ingenuity-mars-helicopter-team-says-goodbye-for-now/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "offline_mode": "web_read_link_only",
+      "direct_acquisition_error": "Direct HTTP returned an empty body; page remained readable with the web tool."
+    },
+    {
+      "id": "S15",
+      "title": "Spirit mission overview",
+      "url": "https://science.nasa.gov/mission/mer-spirit/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "87ca0a1cdf1112150a2f4421f38c24dc16ecb9d255045899ba4fc97a81789b60",
+      "bytes": 307215
+    },
+    {
+      "id": "S16",
+      "title": "MER NASA 3D model",
+      "url": "https://science.nasa.gov/resource/mars-exploration-rovers-3d-model/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "5de551fdd0a6a4128090dda4d9d80516089bcf374081ca31fcd1d308610d6a43",
+      "bytes": 255172
+    },
+    {
+      "id": "S17",
+      "title": "10 Things: Massive Dust Storm on Mars",
+      "url": "https://science.nasa.gov/solar-system/planets/mars/10-things-massive-dust-storm-on-mars/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "2422b29792b543ebe6560795a047f746503141cae1f268a5217d76e635d9dae6",
+      "bytes": 303714
+    },
+    {
+      "id": "S18",
+      "title": "Opportunity Emerges in a Dusty Picture",
+      "url": "https://www.jpl.nasa.gov/news/opportunity-emerges-in-a-dusty-picture/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "offline_mode": "web_read_link_only",
+      "direct_acquisition_error": "Direct HTTP returned an empty body; page remained readable with the web tool."
+    },
+    {
+      "id": "S19",
+      "title": "Mars Rover Mission Comes to an End, But Science, Legacy Live On",
+      "url": "https://www.jpl.nasa.gov/edu/resources/teachable-moment/mars-rover-mission-comes-to-an-end-but-science-legacy-live-on/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "offline_mode": "web_read_link_only",
+      "direct_acquisition_error": "Direct HTTP returned an empty body; page remained readable with the web tool."
+    },
+    {
+      "id": "S20",
+      "title": "The Mars Global Dust Storm of 2018",
+      "url": "https://ntrs.nasa.gov/citations/20190027303",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "NTRS record and PDF text via web tool; sections II.A/II.B and captions read, PDF screenshots unavailable",
+        "date": "2026-11-15"
+      },
+      "sha256": "6425683f9fb60413a4a74fd55a13847e0ac826c9f6ec07e625f8c0a6e37b7a18",
+      "bytes": 95965
+    },
+    {
+      "id": "S21",
+      "title": "Opportunity Legacy Pan (True Color)",
+      "url": "https://www.jpl.nasa.gov/images/pia22909-opportunity-legacy-pan-true-color/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "offline_mode": "web_read_link_only",
+      "direct_acquisition_error": "Direct HTTP returned an empty body; page remained readable with the web tool."
+    },
+    {
+      "id": "S22",
+      "title": "Opportunity Legacy Pan (False Color)",
+      "url": "https://www.jpl.nasa.gov/images/pia22908-opportunity-legacy-pan-false-color/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "offline_mode": "web_read_link_only",
+      "direct_acquisition_error": "Direct HTTP returned an empty body; page remained readable with the web tool."
+    },
+    {
+      "id": "S23",
+      "title": "Atmospheric Opacity from Opportunity's Point of View",
+      "url": "https://science.nasa.gov/resource/atmospheric-opacity-from-opportunitys-point-of-view/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "25af2e925790d84618e84eb24f46e59676c65ae7c91e6e965c0dc075adda9abc",
+      "bytes": 264378
+    },
+    {
+      "id": "S24",
+      "title": "Opportunity's Final Traverse Map",
+      "url": "https://www.nasa.gov/image-article/opportunitys-final-traverse-map/",
+      "accessed_date": "2026-11-15",
+      "role": "primary source; verification locators recorded in claims.json",
+      "verification": {
+        "status": "read",
+        "method": "Primary page read via browser tool or retained HTML text",
+        "date": "2026-11-15"
+      },
+      "sha256": "f8dfee0bf9611216a7ae1056bf560b0cb74c7411d99e3323e6a58cebec7e606e",
+      "bytes": 271624
+    }
+  ]
+}

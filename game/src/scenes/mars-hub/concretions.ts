@@ -1,9 +1,11 @@
 import {concretionPlacements,createConcretionField,type ConcretionSite} from '../../environments/mars/concretions.ts';
 
-// The first two groups are in the fresh navigation view, before any memory is entered.
+// The first two groups follow the current reference100 spawn; older groups remain on the approach.
 export const HUB_CONCRETION_SITES:readonly ConcretionSite[]=[
- {id:'hub-foreground-east',x:1.5,z:8.8,spreadX:1.2,spreadZ:.65,count:90},
- {id:'hub-foreground-west',x:-1.4,z:6.1,spreadX:1.1,spreadZ:.8,count:90},
+ {id:'hub-reference100-foreground-east',x:1.3,z:36.8,spreadX:1.1,spreadZ:.6,count:45},
+ {id:'hub-reference100-foreground-west',x:-1.3,z:33.8,spreadX:1.1,spreadZ:.7,count:45},
+ {id:'hub-foreground-east',x:1.5,z:8.8,spreadX:1.2,spreadZ:.65,count:45},
+ {id:'hub-foreground-west',x:-1.4,z:6.1,spreadX:1.1,spreadZ:.8,count:45},
  {id:'hub-trough-west',x:-1.5,z:1,spreadX:1.3,spreadZ:1,count:80},
  {id:'hub-trough-east',x:2.1,z:-6.4,spreadX:1.4,spreadZ:.75,count:80},
  {id:'hub-low-pocket',x:-2.1,z:-13,spreadX:1.4,spreadZ:.85,count:80},
